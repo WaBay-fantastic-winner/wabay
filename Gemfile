@@ -62,3 +62,4 @@ end
 group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
 end
+gem "tailwindcss-rails", "~> 2.0"
