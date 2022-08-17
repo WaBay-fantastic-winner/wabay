@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_15_103015) do
+ActiveRecord::Schema.define(version: 2022_08_17_125729) do
 
   create_table "donate_items", force: :cascade do |t|
     t.string "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_08_15_103015) do
     t.integer "count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "price"
     t.index ["project_id"], name: "index_donate_items_on_project_id"
     t.index ["usesr_id"], name: "index_donate_items_on_usesr_id"
   end
