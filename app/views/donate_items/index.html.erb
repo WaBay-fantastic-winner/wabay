@@ -1,0 +1,11 @@
+<h1> 贊助方案 </h1>
+
+<h1><%= @donate_item.title %></h1>
+
+<p><%= @donate_item.content %></p>
+
+<span>NT$ <%= @donate_item.price %></span>
+
+<%= link_to '贊助此方案', project_donate_item_path(id: @donate_item.id) %>
+
+<%= link_to '回到專案', project_path(id: @donate_item.project.id) %> 
