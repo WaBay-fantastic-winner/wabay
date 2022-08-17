@@ -1,0 +1,2 @@
+class DonateItemsController < ApplicationController
+end
