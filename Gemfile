@@ -55,6 +55,9 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'net-smtp', '~> 0.2.1'
+
+# 測試
 group :development, :test do
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
@@ -63,3 +66,4 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
 end
 gem "tailwindcss-rails", "~> 2.0"
+
