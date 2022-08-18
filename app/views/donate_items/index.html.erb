@@ -2,7 +2,9 @@
 
 <% @donate_items.each do |donate_item| %>
   <%= link_to '編輯方案', edit_project_donate_item(id: donate_item.id) %>
+
   <%= link_to '刪除方案', project_donate_item(id: donate_item.id), method: 'delete', data:{ confirm:`確定要刪除「#{donate_item.title}」方案嗎？` } %>
+  
   <h1><%= donate_item.title %></h1>
 
   <p><%= donate_item.content %></p>
