@@ -10,6 +10,6 @@
   <span>NT$ <%= donate_item.price %></span>
 
   <%= link_to '贊助此方案', project_donate_item_path(id: donate_item.id) %>
+  
+  <%= link_to '回到專案', project_path(id: @donate_items.project_id) %> 
 <% end %>
-
-<%= link_to '回到專案', project_path(id: @donate_items.project.id) %> 

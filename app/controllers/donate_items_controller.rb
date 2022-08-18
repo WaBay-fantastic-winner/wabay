@@ -19,7 +19,7 @@ class DonateItemsController < ApplicationController
 
     if @donate_item.save(donate_item_params)
       # create 成功轉址到該專案的頁面。
-      redirect_to project_path(id: @donate_item.project.id), notice:'贊助方案已建立，距離夢想更進一步！'
+      redirect_to project_path(id: @donate_item.project_id), notice:'贊助方案已建立，距離夢想更進一步！'
     else
       render :new
     end
@@ -31,7 +31,7 @@ class DonateItemsController < ApplicationController
   def update
     if @donate_item.update(donate_item_params)
       # update 成功轉址到該專案的頁面。
-      redirect_to project_path(id: @donate_item.project.id), notice: '贊助方案已編輯。'
+      redirect_to project_path(id: @donate_item.project_id), notice: '贊助方案已編輯。'
     else
       render :edit
     end
