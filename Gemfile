@@ -58,3 +58,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "devise-i18n", "~> 1.10"
+
+gem "net-smtp", require: false
