@@ -15,9 +15,9 @@ class DonateItemsController < ApplicationController
   end
 
   def create
-    @donate_item = DonateItem.new
+    @donate_item = DonateItem.new(donate_item_params)
 
-    if @donate_item.save(donate_item_params)
+    if @donate_item.save
       # create 成功轉址到該專案的頁面。
       redirect_to project_path(id: @donate_item.project_id), notice:'贊助方案已建立，距離夢想更進一步！'
     else
