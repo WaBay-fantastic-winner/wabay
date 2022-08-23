@@ -33,6 +33,7 @@ default: &default
     - .woff2
 
   extensions:
+    - .jsx
     - .mjs
     - .js
     - .sass
@@ -90,3 +91,4 @@ production:
 
   # Cache manifest.json for performance
   cache_manifest: true
+
