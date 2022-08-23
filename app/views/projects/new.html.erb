@@ -1,0 +1,31 @@
+<h1 class="text-4xl font-bold underline" >我是優質提案團隊</h1>
+<%= form_for(@project) do |form| %>
+    <%= form.label :organizer, "聯絡窗口姓名 *" %>
+    <%= form.text_field :organizer %>
+  </div>
+  <div>
+    <%= form.label :email, "電子郵件地址 *" %>
+    <%= form.email_field :email  %>
+  </div>
+  <div>
+    <%= form.label :phone, "聯絡電話 *" %>
+    <%= form.telephone_field :phone  %>
+  </div>
+  <div>
+    <%= form.label :project_title, "專案名稱 *" %>
+    <%= form.text_field :project_title %>
+  </div>
+  <div>
+    <%= form.label :project_amount_target, "專案目標金額（新台幣） *" %>
+    <%= form.text_field :project_amount_target %>
+  </div>
+  <div>
+    <%= form.label :project_end_time, "專案結束日期 *" %>
+    <%= form.date_field :project_end_time %>
+  </div>
+  <div>
+    <%= form.label :project_description, "專案描述 *" %>
+    <%= form.rich_text_area :project_description %>
+  </div>
+  <%= form.submit %>
+<% end %>
