@@ -1,1 +1,32 @@
-<%= @message.project_description %>
+<h1>專案內容</h1>
+
+<table>
+  <tr>
+    <td>專案名稱:</td>
+    <td><%= @project.project_title %></td>
+  </tr>
+  <tr>
+    <td>聯絡窗口姓名:</td>
+    <td><%= @project.organizer %></td>
+  </tr>
+  <tr>
+    <td>電子郵件地址:</td>
+    <td><%= @project.email %></td>
+  </tr>
+  <tr>
+    <td>聯絡電話:</td>
+    <td><%= @project.phone %></td>
+  </tr>
+  <tr>
+    <td>專案目標金額（新台幣）:</td>
+    <td><%= @project.project_amount_target %></td>
+  </tr>
+  <tr>
+    <td>專案結束日期:</td>
+    <td><%= @project.project_end_time %></td>
+  </tr>
+  <tr>
+    <td>專案描述:</td>
+    <td><%= @project.project_description %></td>
+  </tr>
+</table>

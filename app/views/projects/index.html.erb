@@ -1,14 +1,21 @@
 <h1>這裡是提案清單</h1>
 
-
+<table>
+  <tr>
+    <td> 專案名稱 </td>
+    <td> 目標金額 </td>
+    <td> 計畫發起人 </td>
+  </tr>
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.project_title %></td>
+    <td><%= link_to project.project_title, project_path(project.id) %></a></td>
+    <td><%= project.project_amount_target %></td>
+    <td><%= project.organizer %></td>
   </tr>
 <% end %>
-
+</table>
 
 
 <div>
-  <a href="/projects/new">立刻前往提案!!</a>
+  <%= link_to "前往提案!!", "new_project" %> 
 </div>

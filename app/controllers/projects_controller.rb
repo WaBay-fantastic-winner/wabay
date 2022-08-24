@@ -7,6 +7,10 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def show
+    @project = Project.find_by(id: params[:id])
+  end
+
   def create
     # 登入後的使用者，使用多對多方式 .projects ，建立表單
     @project = current_user.projects.new(clean_params)
