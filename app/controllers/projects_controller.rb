@@ -4,18 +4,16 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    
     # 登入後的使用者，使用多對多方式 .projects ，建立表單
     @project = current_user.projects.new(clean_params)
   
     if @project.save
        redirect_to projects_path, notic: " 提案成功 !!"
     else
-       redirect_to root_path
+      render :new 
     end
   end
   def index
-    
   end
 
   private
