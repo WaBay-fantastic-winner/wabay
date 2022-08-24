@@ -29,3 +29,11 @@
   </div>
   <%= form.submit %>
 <% end %>
+
+<% if @project.errors.any? %> 
+  <ul>
+    <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %></li> 
+    <% end %> 
+  </ul>
+<% end %>
