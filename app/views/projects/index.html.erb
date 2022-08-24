@@ -1,4 +1,14 @@
 <h1>這裡是提案清單</h1>
+
+
+<% @projects.each do |project| %>
+  <tr>
+    <td><%= project.project_title %></td>
+  </tr>
+<% end %>
+
+
+
 <div>
   <a href="/projects/new">立刻前往提案!!</a>
 </div>
