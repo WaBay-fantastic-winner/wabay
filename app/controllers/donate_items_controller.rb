@@ -1,4 +1,4 @@
-class DonateItemController < ApplicationController
+class DonateItemsController < ApplicationController
   before_action :find_donate_item, only: [:edit, :update, :destroy]
 
   #贊助方案的 index 會顯示在 project 的 index 裡。
@@ -11,7 +11,7 @@ class DonateItemController < ApplicationController
   end
 
   def new
-    @donate_item = DonateItem.news
+    @donate_item = DonateItem.new
   end
 
   def create
