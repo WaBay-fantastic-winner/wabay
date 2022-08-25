@@ -1,10 +1,19 @@
+<% if @project.errors.any? %> 
+  <ul>
+    <% @project.errors.full_messages.each do |message| %>
+      <li><%= message %></li> 
+    <% end %> 
+  </ul>
+<% end %>
+
 <h1 class="text-4xl font-bold underline" >我是優質提案團隊</h1>
 <%= form_for(@project) do |form| %>
+  <div>
     <%= form.label :organizer, "聯絡窗口姓名 *" %>
     <%= form.text_field :organizer, class: "border-2 border-black-300 rounded" %>
   </div>
   <div>
-    <%= form.label :email, "電子郵件地址 *" %>
+    <%= form.label :email, "電子信箱 *" %>
     <%= form.email_field :email, class: "border-2 border-black-300 rounded" %>
   </div>
   <div>
@@ -30,12 +39,6 @@
   <%= form.submit %>
 <% end %>
 
-<% if @project.errors.any? %> 
-  <ul>
-    <% @project.errors.full_messages.each do |message| %>
-      <li><%= message %></li> 
-    <% end %> 
-  </ul>
-<% end %>
+
 
  
