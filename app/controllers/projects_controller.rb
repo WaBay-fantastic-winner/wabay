@@ -38,6 +38,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def search
+    @projects = Project.all
+    render json: @projects
+  end
+
   private
 
   def clean_params
