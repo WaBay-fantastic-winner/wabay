@@ -1,8 +1,8 @@
-<h1 class="text-4xl font-bold">專案內容</h1>
+<h1 class="text-4xl font-bold">提案內容</h1>
 
 <table>
   <tr>
-    <td>專案名稱:</td>
+    <td>提案名稱:</td>
     <td><%= @project.project_title %></td>
   </tr>
   <tr>
@@ -18,15 +18,15 @@
     <td><%= @project.phone %></td>
   </tr>
   <tr>
-    <td>專案目標金額（新台幣）:</td>
+    <td>提案目標金額（新台幣）:</td>
     <td><%= @project.project_amount_target %></td>
   </tr>
   <tr>
-    <td>專案結束日期:</td>
+    <td>提案結束日期:</td>
     <td><%= @project.project_end_time %></td>
   </tr>
   <tr>
-    <td>專案描述:</td>
+    <td>提案描述:</td>
     <td><%= @project.project_description %></td>
   </tr>
 
@@ -35,4 +35,5 @@
 <div class=font-bold >
    <%= link_to "編輯", edit_project_path %>
    <%= link_to "刪除", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}%>
+   <%= link_to "回到我的提案清單", projects_path %>
 </div>

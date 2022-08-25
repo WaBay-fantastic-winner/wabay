@@ -12,19 +12,19 @@
     <%= form.telephone_field :phone, class: "border-2 border-black-300 rounded"%>
   </div>
   <div>
-    <%= form.label :project_title, "專案名稱 *" %>
+    <%= form.label :project_title, "提案名稱 *" %>
     <%= form.text_field :project_title, class: "border-2 border-black-300 rounded" %>
   </div>
   <div>
-    <%= form.label :project_amount_target, "專案目標金額（新台幣） *" %>
+    <%= form.label :project_amount_target, "提案目標金額（新台幣） *" %>
     <%= form.text_field :project_amount_target, class: "border-2 border-black-300 rounded"%>
   </div>
   <div>
-    <%= form.label :project_end_time, "專案結束日期 *" %>
+    <%= form.label :project_end_time, "提案結束日期 *" %>
     <%= form.date_field :project_end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
   </div>
   <div>
-    <%= form.label :project_description, "專案描述 *" %>
+    <%= form.label :project_description, "提案描述 *" %>
     <%= form.rich_text_area :project_description , class: "border-2 border-black-300 rounded"%>
   </div>
   <%= form.submit %>

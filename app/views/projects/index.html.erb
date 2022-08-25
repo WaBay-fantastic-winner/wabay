@@ -1,9 +1,9 @@
-<h1 class="text-4xl font-bold" >這裡是提案清單</h1>
+<h1 class="text-4xl font-bold" >這裡是我的提案清單</h1>
 
 <table>
   <tr>
-    <td> 專案名稱 </td>
-    <td> 目標金額 </td>
+    <td> 提案名稱 </td>
+    <td> 目標金額（新台幣） </td>
     <td> 計畫發起人 </td>
   </tr>
 <% @projects.each do |project| %>
@@ -16,7 +16,6 @@
   </tr>
 <% end %>
 </table>
-
 
 <div class=font-bold >
   <%= link_to "前往提案!!", new_project_path %> 
