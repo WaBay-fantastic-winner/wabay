@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  organizer: MyString
+  email: MyString
+  phone: MyString
+  project_title: MyString
+  project_amount_target: 1
+  project_end_time: MyString
+  project_description: MyString
+  user: one
+
+two:
+  organizer: MyString
+  email: MyString
+  phone: MyString
+  project_title: MyString
+  project_amount_target: 1
+  project_end_time: MyString
+  project_description: MyString
+  user: two
