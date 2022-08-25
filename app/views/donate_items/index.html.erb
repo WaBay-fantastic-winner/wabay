@@ -1,17 +1,19 @@
 <h1> 贊助方案 </h1>
 
 <% @donate_items.each do |donate_item| %>
-  <%= link_to '編輯方案', edit_project_donate_item(id: donate_item.id) %>
+  <div>
+    <%= link_to '編輯贊助項目', edit_project_donate_item_path(project_id: current_user.project_ids, id: @current_project.donate_items) %>
 
-  <%= link_to '刪除方案', project_donate_item(id: donate_item.id), method: 'delete', data:{ confirm:`確定要刪除「#{donate_item.title}」方案嗎？` } %>
-  
-  <h1><%= donate_item.title %></h1>
+    <%= link_to '刪除贊助項目', project_donate_item_path(project_id: current_user.project_ids, id: @current_project.donate_items), method: 'delete', data:{ confirm: "確定要刪除「#{donate_item.title}」項目嗎？" } %>
 
-  <p><%= donate_item.content %></p>
+    <div>
+      <h1><%= donate_item.title %></h1>
+      <p><%= donate_item.content %></p>
+      <span>NT$ <%= donate_item.price %></span>
+    </div>
 
-  <span>NT$ <%= donate_item.price %></span>
-
-  <%= link_to '贊助此方案', project_donate_item_path(id: donate_item.id) %>
-  
-  <%= link_to '回到專案', project_path(id: @donate_items.project_id) %> 
+    <%= link_to '贊助此項目', project_donate_item_path(id: current_user.projects.find_by!(id: params[:project_id]).donate_items) %>
+    
+    <%= link_to '回到專案', project_path(id: current_user.projects) %> 
+  </div>
 <% end %>
