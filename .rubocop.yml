@@ -1,0 +1,14 @@
+AllCops:
+  NewCops: enable
+  Exclude: 
+    - db/**/*
+    - config/**/*
+    - bin/**/*
+    - config.ru
+    - Rakefile
+    - vendor/**/*
+    - spec/**/*
+    - test/**/*
+    - node_modules/**/*
+Style/Documentation:
+  Enabled: false    
