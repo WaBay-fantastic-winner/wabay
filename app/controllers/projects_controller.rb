@@ -7,6 +7,19 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def edit
+    @project = Project.find_by(id: params[:id])
+  end
+
+  def update
+    @project = Project.find_by(id: params[:id])  
+    if @project.update(clean_params)
+       redirect_to project_path, notice: " 提案更新成功 !!"
+    else
+      render :edit 
+    end
+  end
+
   def show
     @project = Project.find_by(id: params[:id])
   end
@@ -16,10 +29,17 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.new(clean_params)
   
     if @project.save
-       redirect_to projects_path, notic: " 提案成功 !!"
+       redirect_to projects_path, notice: " 提案成功 !!"
     else
       render :new 
     end
+  end
+
+  def destroy
+    @project = Project.find_by(id: params[:id]) 
+    @project.destroy 
+
+    redirect_to '/projects', notice: "提案刪除成功 !!"
   end
 
 
