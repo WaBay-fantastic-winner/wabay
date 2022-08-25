@@ -1,0 +1,17 @@
+<h1> 贊助方案 </h1>
+
+<% @donate_items.each do |donate_item| %>
+  <%= link_to '編輯方案', edit_project_donate_item(id: donate_item.id) %>
+
+  <%= link_to '刪除方案', project_donate_item(id: donate_item.id), method: 'delete', data:{ confirm:`確定要刪除「#{donate_item.title}」方案嗎？` } %>
+  
+  <h1><%= donate_item.title %></h1>
+
+  <p><%= donate_item.content %></p>
+
+  <span>NT$ <%= donate_item.price %></span>
+
+  <%= link_to '贊助此方案', project_donate_item_path(id: donate_item.id) %>
+  
+  <%= link_to '回到專案', project_path(id: @donate_items.project_id) %> 
+<% end %>

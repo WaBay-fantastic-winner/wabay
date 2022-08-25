@@ -1,0 +1,28 @@
+<%if @donate_item.errors.any? %>
+  <ul>
+    <%= @donate_item.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for donate_item do |form|%>
+  <div>
+    <%= form.label :title, '方案標題' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :price, '贊助價格' %>
+    <%= form.text_area :price %> 
+  </div>
+
+  <div>
+    <%= form.label :content, '方案內容' %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit '新增方案' %>
+<% end %>
+
+<%= link_to '回到專案', project_path(id: @donate_item.project_id) %> 
