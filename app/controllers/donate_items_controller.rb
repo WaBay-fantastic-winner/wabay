@@ -15,13 +15,12 @@ class DonateItemsController < ApplicationController
   end
 
   def create
-    @donate_item = DonateItem.new(donate_item_params)
-    @donate_item.project = current_user.project
-    @donate_item.users = 
+    current_project = current_user.projects.find_by!(id: params[:project_id])
+    @donate_item = current_project.donate_items.new(donate_item_params)
 
     if @donate_item.save
       # create 成功轉址到該專案的頁面。
-      redirect_to project_path(id: @donate_item.project_id), notice:'贊助方案已建立，距離夢想更進一步！'
+      redirect_to project_path(id: current_user.project_ids), notice:'贊助方案已建立，距離夢想更進一步！'
     else
       render :new
     end
@@ -33,7 +32,7 @@ class DonateItemsController < ApplicationController
   def update
     if @donate_item.update(donate_item_params)
       # update 成功轉址到該專案的頁面。
-      redirect_to project_path(id: @donate_item.project_id), notice: '贊助方案已編輯。'
+      redirect_to project_path(id: current_user.project_ids), notice: '贊助方案已編輯。'
     else
       render :edit
     end
@@ -47,7 +46,7 @@ class DonateItemsController < ApplicationController
 
   private
   def donate_item_params
-    params.request(:donate_item).permit(:title, :content)
+    params.require(:donate_item).permit(:title, :price, :content)
   end
 
   def find_donate_item

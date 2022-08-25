@@ -6,7 +6,7 @@
   </ul>
 <% end %>
 
-<%= form_for donate_item do |form|%>
+<%= form_with model: @donate_item, url: project_donate_items_path(current_user.project_ids) do |form|%>
   <div>
     <%= form.label :title, '方案標題' %>
     <%= form.text_field :title %>
@@ -25,4 +25,4 @@
   <%= form.submit '新增方案' %>
 <% end %>
 
-<%= link_to '回到專案', project_path(id: @donate_item.project_id) %> 
+<%= link_to '回到專案', project_path(id: current_user.project_ids) %> 
