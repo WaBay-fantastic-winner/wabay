@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
   end
 
   def search
-    @projects = Project.all
+    @projects = Project.where("title like?" or "author like?", "%#{keyword}%", "%#{keyword}%")
     render json: @projects
   end
 
