@@ -1,12 +1,19 @@
 <section>
   <div>
     <h1><%= @donate_item.title %></h1>
-    <span>NT$ <%= @donate_item.price %></span>
-    <input type="number" value="1" min="1">
+    <div>
+      <span>NT$ <%= @donate_item.price %> 元</span>
+    </div>
+    額外贊助：<input type="number" value="1" min="1"> 元  <%# 額外贊助功能（待增加） %>
   </div>
   <div>
+    贊助項目內容：
     <p><%= @donate_item.content %></p>
   </div>
+
+  <%= link_to '贊助結帳', '#' %>  <%# 後面接金流 %>
+
+  <%= link_to '回到專案', project_path(id: current_user.project_ids) %> 
 </section>
 
 <%# 頁面參照：https://wabay.tw/projects/unsilencedtw/rewards/21155?locale=zh-TW %>

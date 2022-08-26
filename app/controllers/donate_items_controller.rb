@@ -1,15 +1,16 @@
 class DonateItemsController < ApplicationController
-  before_action :find_donate_item, only: [:edit, :update, :destroy]
+  # before_action :find_donate_item, only: [:edit, :update, :destroy]
+  before_action :current_project, only: %i[index show create update destroy]
+
 
   
   #贊助方案的 index 會顯示在 project 的 index 裡。
   def index
-    @current_project = current_user.projects.find_by!(id: params[:project_id])
     @donate_items = @current_project.donate_items.all
   end
 
   def show
-    @donate_item = @current_project.donate_item.find_by!(id: params[:id])
+    find_donate_item
   end
 
   def new
@@ -17,7 +18,7 @@ class DonateItemsController < ApplicationController
   end
 
   def create
-    @current_project = current_user.projects.find_by!(id: params[:project_id])
+    current_project
 
     @donate_item = @current_project.donate_items.new(donate_item_params)
 
@@ -29,13 +30,12 @@ class DonateItemsController < ApplicationController
   end
 
   def edit
-    # debugger
-    @current_project = current_user.projects.find_by!(id: params[:project_id])
-
-    @donate_item = @current_project.donate_items.new(donate_item_params)
+    find_donate_item
   end
 
   def update
+    find_donate_item
+
     if @donate_item.update(donate_item_params)
       redirect_to project_path(id: current_user.project_ids), notice: '贊助方案已編輯。'
     else
@@ -44,17 +44,23 @@ class DonateItemsController < ApplicationController
   end
 
   def destroy
+    find_donate_item
     @donate_item.destroy
-    # destroy 後，轉址到該專案的頁面。
-    redirect_to project_page, notice: '贊助方案已刪除。'
+    redirect_to project_path(id: current_user.project_ids), notice: '贊助方案已刪除。'
   end
 
   private
+
   def donate_item_params
     params.require(:donate_item).permit(:title, :price, :content)
   end
 
+  def current_project
+    @current_project = current_user.projects.find_by!(id: params[:project_id])
+  end
+
   def find_donate_item
-    @donate_item = current_user.projects.find_by!(id: params[:project_id]).donate_items
+    current_project
+    @donate_item = @current_project.donate_items.find_by!(id: params[:id])
   end
 end

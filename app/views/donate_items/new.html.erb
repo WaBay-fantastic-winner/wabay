@@ -1,3 +1,24 @@
 <h1> 新增贊助方案 </h1>
 
 <%= render 'form' %>
+
+<%= form_with model: @donate_item, url: project_donate_items_path(current_user.project_ids) do |form|%>
+  <div>
+    <%= form.label :title, '贊助項目標題' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :price, '贊助價格' %>
+    <%= form.text_field :price %> 
+  </div>
+
+  <div>
+    <%= form.label :content, '贊助項目內容' %>
+    <%= form.text_area :content %>
+  </div>
+
+  <%= form.submit '更新贊助項目' %>
+<% end %>
+
+<%= link_to '回到專案', project_path(id: current_user.project_ids) %> 
