@@ -4,7 +4,7 @@ class DonateItemsController < ApplicationController
 
 
   
-  #贊助方案的 index 會顯示在 project 的 index 裡。
+  # 贊助方案的 index 會顯示在 project 的 show 裡。 一個專案畫面(show)有很多個贊助項目(index)
   def index
     @donate_items = @current_project.donate_items.all
   end
@@ -23,7 +23,7 @@ class DonateItemsController < ApplicationController
     @donate_item = @current_project.donate_items.new(donate_item_params)
 
     if @donate_item.save
-      redirect_to project_path(id: current_user.project_ids), notice:'贊助方案已建立，距離夢想更進一步！'
+      redirect_to project_path(id: current_user.project_ids), notice: '贊助方案已建立，距離夢想更進一步！'
     else
       render :new
     end
