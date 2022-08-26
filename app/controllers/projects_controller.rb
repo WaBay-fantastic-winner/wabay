@@ -39,8 +39,14 @@ class ProjectsController < ApplicationController
   end
 
   def search
+    keyword = params[:keyword]
+    #render只是查看資料
+    render json: keyword
     @projects = Project.where("title like?" or "author like?", "%#{keyword}%", "%#{keyword}%")
-    render json: @projects
+    respond_to do |format|
+      format.json { render json: @project }
+      # format.html { render :index }
+    end
   end
 
   private
