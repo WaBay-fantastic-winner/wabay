@@ -57,7 +57,23 @@ class ProjectsController < ApplicationController
                                                    :project_end_time, :project_description)
   end
 
-  def find_project
-    @project = Project.find_by(id: params[:id])
+  # def find_project
+  #   @project = Project.find_by(id: params[:id])
+  # end
+
+  def week_hot
+  end
+
+  def recently_launched
+  end
+
+  def recently_ending
+  end
+
+  def all
+    @project = Project.all
+    respond_to do |format|
+      format.json { render json: @project }
+    end
   end
 end
