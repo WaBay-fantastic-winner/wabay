@@ -37,3 +37,11 @@
    <%= link_to "刪除", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}%>
    <%= link_to "回到我的提案清單", projects_path %>
 </div>
+
+<section class="py-5">
+  <h2>留言</h2>
+  <%= form_with model: @comment, url: project_comments_path(@project)  do |form| %>
+    <%= form.text_area :content, class: "border-2 border-black-300 rounded"%>
+    <%= form.submit "送出" %>
+  <% end %>
+</section>

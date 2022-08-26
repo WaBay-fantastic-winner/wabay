@@ -1,4 +1,4 @@
-<h1 class="text-4xl font-bold" >這裡是我的提案清單</h1>
+<h1 class="text-4xl font-bold py-5" >這裡是我的提案清單</h1>
 
 <table>
   <% if @projects.count > 0 %>
@@ -17,10 +17,11 @@
     <td class="py-1 px-6"><%= project.organizer %></td>
     <td class="font-bold px-5"><%= link_to "編輯", edit_project_path(project.id) %></td>
     <td class="font-bold px-5"><%= link_to "刪除", project_path(project.id), method: "delete", data: {confirm: '確定要刪除嗎?'}%></td>
+    <td class="font-bold px-5"><%= link_to "留言", edit_project_path(project.id) %></td>
   </tr>
   <% end %>
 </table>
 
-<div class=font-bold >
+<div class="font-bold py-5" >
   <%= link_to "前往提案!!", new_project_path %> 
 </div>

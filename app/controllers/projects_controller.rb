@@ -8,7 +8,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(id: params[:id])
+    find_project
   end
 
   def destroy
@@ -18,6 +18,7 @@ class ProjectsController < ApplicationController
 
   def show
     find_project
+    @comment = Comment.new
   end
 
   def update
