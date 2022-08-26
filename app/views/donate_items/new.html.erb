@@ -2,7 +2,7 @@
 
 <%= render 'form' %>
 
-<%= form_with model: @donate_item, url: project_donate_items_path(current_user.project_ids) do |form|%>
+<%= form_with model: @donate_item, url: project_donate_items_path(id: current_user.projects.find_by!(id: params[:project_id])), method: :post do |form|%>
   <div>
     <%= form.label :title, '贊助項目標題' %>
     <%= form.text_field :title %>
@@ -21,4 +21,4 @@
   <%= form.submit '更新贊助項目' %>
 <% end %>
 
-<%= link_to '回到專案', project_path(id: current_user.project_ids) %> 
+<%= link_to '回到專案', project_path(id: params[:project_id]) %> 
