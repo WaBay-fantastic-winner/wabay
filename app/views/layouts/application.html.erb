@@ -15,7 +15,6 @@
     <p class="alert"><%= alert %></p>
 
     <%# 顯示使用者登入與否狀態 %>
-    <h1 class="text-5xl">Hello Wubay</h1>
     <% if user_signed_in? %>
       <%= current_user.email %>
       <%= link_to "登出", destroy_user_session_path, method: 'delete' %>

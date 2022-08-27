@@ -1,0 +1,24 @@
+.swiper{
+    padding-bottom: 60px;
+}
+.swiper-button-next{
+    right:15vw;
+}
+.swiper-button-prev{
+    left: 15vw;
+}
+.swiper-button-next, .swiper-button-prev{
+    background-color: white;
+    border-radius: 50%;
+    border: 3px #007aff solid;
+    padding: 3vw;
+    font-size: 20px;
+    display: none;
+    top:50%;
+    transform: translateY(-50%); 
+}
+@media screen and (min-width:768px){
+    .swiper-button-next, .swiper-button-prev{
+        display: flex;
+    }
+}

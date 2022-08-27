@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="85" height="84" viewBox="0 0 85 84">
+    <defs>
+        <linearGradient id="sxn2rf52ya" x1="98.327%" x2="50%" y1="34.835%" y2="100%">
+            <stop offset=".027%" stop-color="#00AFFF"/>
+            <stop offset="100%" stop-color="#FFF"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g transform="translate(-226 -4619) translate(203 4619) translate(23.871) translate(15.18 23)">
+                        <ellipse cx="51.614" cy="27.5" fill="url(#sxn2rf52ya)" rx="17.205" ry="17.5"/>
+                        <g stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" transform="translate(31.373 7)">
+                            <g>
+                                <path d="M0 0L0 18.342 6.072 12.91 12.145 18.342 12.145 0" transform="translate(2.952 16.5)"/>
+                            </g>
+                            <ellipse cx="8.602" cy="9" rx="8.602" ry="9"/>
+                        </g>
+                        <path stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M45.458 34h5.18c1.657 0 3-1.343 3-3V3c0-1.657-1.343-3-3-3H3C1.343 0 0 1.343 0 3v28c0 1.657 1.343 3 3 3h30.314"/>
+                        <path stroke="#008CFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M7.59 9.5L22.771 9.5M7.59 16.5L22.771 16.5M7.59 23.5L16.699 23.5"/>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
