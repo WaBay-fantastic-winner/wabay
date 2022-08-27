@@ -17,7 +17,6 @@
     <td class="py-1 px-6"><%= project.organizer %></td>
     <td class="font-bold px-5"><%= link_to "編輯", edit_project_path(project.id) %></td>
     <td class="font-bold px-5"><%= link_to "刪除", project_path(project.id), method: "delete", data: {confirm: '確定要刪除嗎?'}%></td>
-    <td class="font-bold px-5"><%= link_to "留言", edit_project_path(project.id) %></td>
   </tr>
   <% end %>
 </table>

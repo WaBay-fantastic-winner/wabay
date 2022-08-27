@@ -44,4 +44,11 @@
     <%= form.text_area :content, class: "border-2 border-black-300 rounded"%>
     <%= form.submit "送出" %>
   <% end %>
+  
+  <ul>
+    <% @comments.each do |comment| %>
+    <li><%= comment.content %></li>
+    <% end %>
+  </ul>
+  
 </section>

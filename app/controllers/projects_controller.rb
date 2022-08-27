@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   def show
     find_project
     @comment = Comment.new
+    @comments = @project.comments.order(id: :desc)
   end
 
   def update
