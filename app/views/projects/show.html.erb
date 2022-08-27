@@ -47,7 +47,10 @@
   
   <ul>
     <% @comments.each do |comment| %>
-    <li><%= comment.content %></li>
+    <li>
+    <%= comment.content %>
+    <%= link_to "刪除", comment_path, method: "delete",data: {confirm: "確定要刪除嗎"} %>
+    </li>
     <% end %>
   </ul>
   
