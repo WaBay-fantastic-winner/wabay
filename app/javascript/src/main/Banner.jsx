@@ -2,6 +2,7 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper';
+import  UseRWD from './components/UseRWD.JSX';
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/modules/pagination/pagination.scss';
@@ -32,6 +33,7 @@ const BannerList = (props) => {
 }
 
 const Banner = () => {
+    const device=UseRWD();
     return (
         <section className='banner'>
             <div className='banner-list'>
