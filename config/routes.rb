@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
   end
+
+  resources :transactions, except: [:index, :show, :edit, :update] do
+    collection do
+      post :ecpay
+    end
+  end
 end

@@ -3,8 +3,16 @@ class Transaction < ApplicationRecord
   belongs_to :user
   belongs_to :donate_item
 
-  # transaction state
+  # create serial
+  before_create :create_serial
 
+  def create_serial
+    time = Time.now.strftime('%d%m%Y%H%M%S').split('').uniq.sample(3)
+    words = ("a".."z").to_a.sample(3)
+    @serial = (time + words).join
+  end
+
+  # transaction state
   include AASM
 
   aasm column: "state", no_direct_assignment: true do
