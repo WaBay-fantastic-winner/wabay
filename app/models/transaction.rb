@@ -1,4 +1,30 @@
 class Transaction < ApplicationRecord
+  # relationship
   belongs_to :user
   belongs_to :donate_item
+
+  # transaction state
+
+  include AASM
+
+  aasm column: "state", no_direct_assignment: true do
+    state :pending, initial: true
+    state :paid, :failed, :cancellation, :refunded
+
+    event :pay do
+      transitions from: [:pending, :failed], to: :paid
+    end
+
+    event :refund do
+      transitions from: :paid, to: :refunded
+    end
+
+    event :fail do
+      transitions from: :pending, to: :failed
+    end
+
+    event :cancel do
+      transitions from: [:pending, :failed], to: :cancellation
+    end
+  end
 end
