@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ProjectsController < ApplicationController
   def index
     @projects = Project.all
@@ -44,8 +46,8 @@ class ProjectsController < ApplicationController
 
   def clean_params
     # 資料清洗
-    clean_params = params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target,
-                                                   :project_end_time, :project_description)
+    params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target,
+                                    :project_end_time, :project_description)
   end
 
   def find_project
