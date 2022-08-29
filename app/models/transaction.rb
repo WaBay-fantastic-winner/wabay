@@ -9,7 +9,7 @@ class Transaction < ApplicationRecord
   def create_serial
     time = Time.now.strftime('%d%m%Y%H%M%S').split('').uniq.sample(3)
     words = ("a".."z").to_a.sample(3)
-    @serial = (time + words).join
+    self.serial = (time + words).join
   end
 
   # transaction state

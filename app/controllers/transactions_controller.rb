@@ -1,5 +1,13 @@
 class TransactionsController < ApplicationController
- 
+
+  before_action :create_serial
+
+  def create_serial
+    time = Time.now.strftime('%d%m%Y%H%M%S').split('').uniq.sample(3)
+    words = ("a".."z").to_a.sample(3)
+    @serial = (time + words).join
+  end
+
   def create
     # for ecpay action
     @MerchantTradeNo = @serial
@@ -18,9 +26,13 @@ class TransactionsController < ApplicationController
     current_donate_item = DonateItem.find_by!(project_id: current_project, title: params["donate_item"]["title"])
     @transaction.donate_item_id = current_donate_item.id
 
+    @transaction.serial = @serial
+    @transaction.price = params["donate_item"]["price"]
+
     if @transaction.save
       # 交易訂單成功寫入後，呼叫 Service 打 Request 到綠界
-      ecpay = Service::Payment::Ecpay.new(@MerchantTradeNo, @MerchantTradeDate, @ItemName, @TotalAmount).perform #未完工
+      ecpay = Payment::EcpayRequest.new(@MerchantTradeNo, @MerchantTradeDate, @ItemName, @TotalAmount).perform #未完工
+      debugger
     else
       render :save_error
     end
