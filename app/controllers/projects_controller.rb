@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, except: [:search]
   def index
     @projects = Project.all
   end
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
     keyword = params[:keyword]
     #render只是查看資料
     render json: keyword
-    @projects = Project.where("title like?" or "author like?", "%#{keyword}%", "%#{keyword}%")
+    @projects = Project.where("title like?", "%#{keyword}%")
     respond_to do |format|
       format.json { render json: @project }
       # format.html { render :index }
