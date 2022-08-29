@@ -33,7 +33,9 @@ const BannerList = (props) => {
 }
 
 const Banner = () => {
-    const device=UseRWD();
+
+    const device = UseRWD();
+
     return (
         <section className='banner'>
             <div className='banner-list'>
@@ -46,7 +48,9 @@ const Banner = () => {
             </div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                slidesPerView={1.5}
+                // {device === "PC" ? slidesPerView={1.5} : slidesPerView={"auto"}}
+
+                slidesPerView={device === "PC" ? 1.5 : "auto"}
                 navigation
                 loop={true}
                 spaceBetween={30}

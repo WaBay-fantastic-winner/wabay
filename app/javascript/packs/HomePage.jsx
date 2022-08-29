@@ -1,22 +1,10 @@
 import React from 'react'
-import Header from '../src/header/Header'
-import Banner from '../src/main/Banner'
-import Feature from '../src/main/Feature'
-import Propose from '../src/main/Propose'
-import Recommendation from '../src/main/Recommendation'
-import TheNewest from '../src/main/TheNewest'
+import ReactDOM from 'react-dom'
+import HomePage from '../src/page/HomePage'
 
-const HomePage = () => {
-    return (
-        <>
-            <Header />
-            <Banner />
-            <Recommendation />
-            <TheNewest />
-            <Feature />
-            <Propose/>
-        </>    
-    )
-}
-
-export default HomePage
+document.addEventListener('DOMContentLoaded', () => {
+  ReactDOM.render(
+    <HomePage />,
+    document.body.insertAdjacentElement('afterbegin',document.createElement('div')),
+  )
+})
