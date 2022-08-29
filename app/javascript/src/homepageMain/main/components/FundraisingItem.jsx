@@ -1,4 +1,5 @@
 import React from 'react';
+import ProgressBar from './ProgressBar';
 
 const FundraisingItem = (props) => {
     return (
@@ -14,10 +15,9 @@ const FundraisingItem = (props) => {
             <div>
                 <span className='my-1'>NT $ 10000</span>
             </div>
-
-            <div className='flex justify-between'>
+            <ProgressBar/>
+            <div className=''>
                 <span>倒數??天</span>
-                <span>???%</span>
             </div>
         </div>
     )
