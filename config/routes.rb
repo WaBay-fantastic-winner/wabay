@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :transactions, except: [:index, :show, :edit, :update] do
     collection do
-      post :ecpay
+      get :ecpay
     end
   end
 end

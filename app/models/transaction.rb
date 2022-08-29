@@ -12,6 +12,10 @@ class Transaction < ApplicationRecord
     self.serial = (time + words).join
   end
 
+  def ecpay_uri
+    'https://payment-stage.ecpay.com.tw/Cashier/AioCheckOut/V5'
+  end
+
   # transaction state
   include AASM
 

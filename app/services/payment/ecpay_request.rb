@@ -3,17 +3,18 @@ module Payment
     require 'uri'
     require 'openssl'
     require 'CGI'
+    require 'net/http'
   
     def test
       'test'
     end
   
-    def initialize(merchant_trade_no, 
+    def initialize(merchant_trade_no,
                    merchant_trade_date,
                    title, 
                    price)
   
-      @params = {
+      @basic_params = {
         "TradeDesc": "專案贊助交易", 
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
@@ -29,12 +30,12 @@ module Payment
     end
   
     def perform
-      encrypt(@params)
+      create_check_mac_value(@basic_params)
     end
   
     private
   
-    def encrypt(params) 
+    def create_check_mac_value(params) 
       # 1.由A到Z的順序並轉換為 query string
       order_query_string = URI.encode_www_form(params.to_a.sort!)
       # 2.前後加 Key 跟 IV
@@ -43,12 +44,15 @@ module Payment
       url_encode = (CGI.escape key_vi).downcase.gsub!(/%25/, '%').gsub!(/%2b/, '+')
       # 4.sha256加密轉大寫
       encrypted_result = Digest::SHA256.hexdigest(url_encode).upcase
+      # 5. 把 check_mac_value 的 key, value 加入參數 hash 內
+      entire_params(encrypted_result)
     end
   
-    def request
-      #尚未
+    def entire_params(check_mac_value)
+      check_params = {"CheckMacValue": "#{check_mac_value}"}
+      data = @basic_params.merge(check_params).stringify_keys
     end
-  
-  
+
+
   end
 end
