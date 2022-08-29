@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, except: [:search]
   def index
     @projects = Project.all
   end
