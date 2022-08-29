@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from '../footer/Footer'
 import Header from '../header/Header'
 import Banner from '../homepageMain/main/Banner'
@@ -8,14 +8,16 @@ import Recommendation from '../homepageMain/main/Recommendation'
 import TheNewest from '../homepageMain/main/TheNewest'
 
 const HomePage = () => {
+    const [searchResult, setSearchResult] = useState(null)
     return (
         <>
-            <Header />
+            <Header setSearchResult={setSearchResult} />
             <Banner />
             <Recommendation />
             <TheNewest />
             <Feature />
             <Propose/>
+            {/* <SearchPage searchResult={searchResult}  /> */}
             <Footer/>
         </>    
     )

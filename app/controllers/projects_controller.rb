@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
     keyword = params[:keyword]
     #render只是查看資料
     render json: keyword
-    @projects = Project.where("title like?" or "author like?", "%#{keyword}%", "%#{keyword}%")
+    @projects = Project.where("title like?", "%#{keyword}%")
     respond_to do |format|
       format.json { render json: @project }
       # format.html { render :index }
@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   def clean_params
     # 資料清洗
     clean_params = params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target,
-                                                   :project_end_time, :project_description)
+                                                    :project_end_time, :project_description)
   end
 
   # def find_project

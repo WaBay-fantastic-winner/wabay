@@ -5,7 +5,7 @@ import MobileNav from './components/MobileNav';
 import Search from './components/SearchBar';
 import Member from './components/Member';
 
-const Header = () => {
+const Header = ({ setSearchResult }) => {
     return (
     <div className='header'>
         <header className="text-lg relative w-full border-b text-slate-500 border-gray-200 ">
@@ -25,7 +25,7 @@ const Header = () => {
                 </div>
                 <div className="header-left flex ">
                     {/* <!-- 搜尋相關  --> */}
-                    <Search/>
+                    <Search setSearchResult={setSearchResult} />
                     {/* <!-- 會員相關  --> */}
                     {/* <Member/> */}
                     <div className="member flex mr-5">
