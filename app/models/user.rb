@@ -9,4 +9,7 @@ class User < ApplicationRecord
 
   has_many :projects
   has_many :comments
+  has_many :like_comments
+  has_many :liked_comments, 
+            through: :like_comments, source: :comment
 end
