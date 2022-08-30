@@ -50,5 +50,3 @@ module Payment
     end
   end
 end
-
-{"ChoosePayment"=>"ALL", "EncryptType"=>1, "IgnorePayment"=>"WebATM#ATM#CVS#BARCODE", "ItemName"=>"test", "MerchantID"=>"3002607", "MerchantTradeDate"=>"2022/08/30 12:48:30", "MerchantTradeNo"=>"038wxh", "PaymentType"=>"aio", "ReturnURL"=>"https://f25a-103-3-192-33.jp.ngrok.io/payment/returnpage", "TotalAmount"=>33666, "TradeDesc"=>"專案贊助交易"}

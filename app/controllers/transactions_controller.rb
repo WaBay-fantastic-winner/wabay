@@ -1,5 +1,4 @@
 class TransactionsController < ApplicationController
-  
   before_action :create_serial
 
   def create_serial
@@ -12,17 +11,16 @@ class TransactionsController < ApplicationController
     # for ecpay action
     @MerchantTradeNo = @serial
     @MerchantTradeDate = Time.now.strftime("%Y/%m/%d %H:%M:%S")
-    @merchant_id = 3002607
     @ItemName = params["donate_item"]["title"]
     @TotalAmount = params["donate_item"]["price"]
 
     # 建立交易紀錄（訂單）
     @transaction = Transaction.new
     
-    # 給 user_id
+    ## 給 user_id
     @transaction.user_id = current_user.id
     
-    # 給 donate_item_id
+    ## 給 donate_item_id
     current_project = current_user.projects.find(params["donate_item"]["project_id"])
     current_donate_item = DonateItem.find_by!(project_id: current_project, title: params["donate_item"]["title"])
     @transaction.donate_item_id = current_donate_item.id
@@ -39,7 +37,7 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
-    redirect_to donate_items_path, notice: '此筆交易已刪除...'
+    redirect_to donate_items_path, notice: '此筆交易已刪除...' #尚未
   end
   
   private
