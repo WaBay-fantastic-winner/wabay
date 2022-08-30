@@ -11,10 +11,11 @@ class TransactionsController < ApplicationController
   def create
     # for ecpay action
     @MerchantTradeNo = @serial
-    @MerchantTradeDate = Time.now.strftime("%d/%m/%Y %H:%M")
+    @MerchantTradeDate = Time.now.strftime("%Y/%m/%d %H:%M:%S")
+    @merchant_id = 3002607
     @ItemName = params["donate_item"]["title"]
     @TotalAmount = params["donate_item"]["price"]
-    
+
     # 建立交易紀錄（訂單）
     @transaction = Transaction.new
     
@@ -30,19 +31,13 @@ class TransactionsController < ApplicationController
     @transaction.price = params["donate_item"]["price"]
     
     if @transaction.save
-      # 交易訂單成功寫入後，呼叫 Service 打 Request 到綠界
+      # 交易訂單成功寫入後，呼叫 Service 將完整參數包好。
       @ecpay_params = Payment::EcpayRequest.new(@MerchantTradeNo, @MerchantTradeDate, @ItemName, @TotalAmount).perform
-      
-      redirect_to action: :ecpay
     else
       render :save_error
     end
   end
 
-  def ecpay
-    @ecpay_params
-  end
-  
   def destroy
     redirect_to donate_items_path, notice: '此筆交易已刪除...'
   end

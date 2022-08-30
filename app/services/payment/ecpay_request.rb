@@ -4,22 +4,18 @@ module Payment
     require 'openssl'
     require 'CGI'
     require 'net/http'
-  
-    def test
-      'test'
-    end
-  
+
     def initialize(merchant_trade_no,
                    merchant_trade_date,
                    title, 
                    price)
   
       @basic_params = {
+        "MerchantID": 3002607, 
         "TradeDesc": "專案贊助交易", 
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
         "MerchantTradeNo": merchant_trade_no, 
-        "MerchantID": 3002607, 
         "ReturnURL": "https://f25a-103-3-192-33.jp.ngrok.io/payment/returnpage",
         "ItemName": title,
         "TotalAmount": price, 
@@ -35,7 +31,7 @@ module Payment
   
     private
   
-    def create_check_mac_value(params) 
+    def create_check_mac_value(params)
       # 1.由A到Z的順序並轉換為 query string
       order_query_string = URI.encode_www_form(params.to_a.sort!)
       # 2.前後加 Key 跟 IV
@@ -50,9 +46,9 @@ module Payment
   
     def entire_params(check_mac_value)
       check_params = {"CheckMacValue": "#{check_mac_value}"}
-      data = @basic_params.merge(check_params).stringify_keys
+      data = @basic_params.merge!(check_params).stringify_keys
     end
-
-
   end
 end
+
+{"ChoosePayment"=>"ALL", "EncryptType"=>1, "IgnorePayment"=>"WebATM#ATM#CVS#BARCODE", "ItemName"=>"test", "MerchantID"=>"3002607", "MerchantTradeDate"=>"2022/08/30 12:48:30", "MerchantTradeNo"=>"038wxh", "PaymentType"=>"aio", "ReturnURL"=>"https://f25a-103-3-192-33.jp.ngrok.io/payment/returnpage", "TotalAmount"=>33666, "TradeDesc"=>"專案贊助交易"}
