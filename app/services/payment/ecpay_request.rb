@@ -5,8 +5,8 @@ module Payment
     require 'CGI'
     require 'net/http'
 
-    def initialize(merchant_trade_no,
-                   merchant_trade_date,
+    def initialize(merchant_trade_date,
+                   merchant_trade_no,
                    title, 
                    price)
   
