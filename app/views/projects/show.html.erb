@@ -50,8 +50,11 @@
     <li class="py-1 px-6">
     <%= comment.content %>
     <%= link_to "刪除", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} %>
-    <button id="likeBtn" data-controller="hello" >♡</button>
-    <%# <button>♥</button> %>
+      <div data-controller="like" data-comment-id="<%=comment.id%>">
+        <button data-action="click->like#like_comment">
+          <span data-like-target="love">♡</span>
+        </button>
+      </div>
     </li>
     <% end %>
   </ul>
