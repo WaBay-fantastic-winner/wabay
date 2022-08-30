@@ -65,9 +65,9 @@ class ProjectsController < ApplicationController
 
   def week_hot
     #金額多的就是本週熱門
-    @week_hot = Project.where("project_amount_target.maximum")
+    @week_hot = Project.maximum(:project_amount_target)
     respond_to do |format|
-      format.json { render json: @week_hot }
+      format.json { render json => @week_hot }
     end
   end
 
@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
     #抓出建立時間一週內的project
     @recently_launched = Project.where("created_at" <= Time.now + 1.week)
     respond_to do |format|
-      format.json { render json: @recently_launched }
+      format.json { render json => @recently_launched }
     end
   end
 
@@ -83,7 +83,7 @@ class ProjectsController < ApplicationController
     #抓出結束（倒數）時間一週內的project
     @recently_ending = Project.where("project_end_time" >= Time.now + 1.week)
     respond_to do |format|
-      format.json { render json: @recently_ending }
+      format.json { render json => @recently_ending }
     end
   end
 
@@ -91,7 +91,7 @@ class ProjectsController < ApplicationController
     #全部
     @project_all = Project.all
     respond_to do |format|
-      format.json { render json: @project_all }
+      format.json { render json => @project_all }
     end
   end
 end
