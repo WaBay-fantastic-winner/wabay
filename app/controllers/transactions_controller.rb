@@ -38,7 +38,7 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    @transaction.pay  #尚未，須先解決交易完成，跳轉到專案後登入者被踢出的問題。
+    # @transaction.pay  #尚未，須先解決交易完成，跳轉到專案後登入者被踢出的問題。
   end
 
   def destroy
