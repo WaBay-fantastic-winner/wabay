@@ -42,11 +42,12 @@ class ProjectsController < ApplicationController
   def search
     keyword = params[:keyword]
     #render只是查看資料
-    render json: keyword
-    @projects = Project.where("title like?", "%#{keyword}%")
+    # render html: params
+    @projects = Project.where("project_title like?", "%#{keyword}%")
     respond_to do |format|
-      format.json { render json: @project }
-      # format.html { render :index }
+      format.json { render json => @project }
+      format.html { render :search }
+      # format.jsx { render => HomePage }
     end
   end
 
@@ -58,13 +59,13 @@ class ProjectsController < ApplicationController
                                                     :project_end_time, :project_description)
   end
 
-  # def find_project
-  #   @project = Project.find_by(id: params[:id])
-  # end
+  def find_project
+    @project = Project.find_by(id: params[:id])
+  end
 
   def week_hot
     #金額多的就是本週熱門
-    @week_hot = Project.where("project_amount_target.maximum") #
+    @week_hot = Project.where("project_amount_target.maximum")
     respond_to do |format|
       format.json { render json: @week_hot }
     end

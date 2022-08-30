@@ -154,8 +154,6 @@ GEM
       nio4r (~> 2.0)
     racc (1.6.0)
     rack (2.2.4)
-    rack-mini-profiler (2.3.4)
-      rack (>= 1.2.0)
     rack-proxy (0.7.2)
       rack
     rack-test (2.0.2)
@@ -264,7 +262,6 @@ GEM
       sprockets (>= 3.0.0)
     thor (1.2.1)
     tilt (2.0.11)
-    timecop (0.9.5)
     timeout (0.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -315,7 +312,6 @@ DEPENDENCIES
   net-smtp
   pg
   puma (~> 5.0)
-  rack-mini-profiler (~> 2.0)
   rails (~> 6.1.6, >= 6.1.6.1)
   rails-i18n
   react-rails
@@ -324,7 +320,6 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
-  timecop
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

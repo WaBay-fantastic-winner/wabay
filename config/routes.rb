@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
-  resources :projects, only: [] do
+  resources :projects do
     collection do
       get :search
       #關鍵字搜尋
