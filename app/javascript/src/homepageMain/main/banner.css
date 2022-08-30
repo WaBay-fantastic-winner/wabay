@@ -1,5 +1,5 @@
 .swiper{
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 .swiper-button-next{
     right:15vw;
@@ -16,6 +16,14 @@
     display: none;
     top:50%;
     transform: translateY(-50%); 
+    transition: .3s;
+}
+.swiper-button-next::after, .swiper-button-prev::after{
+    font-size: 3vw;
+}
+.swiper-button-next:hover, .swiper-button-prev:hover{
+    background-color: #007aff;
+    color: white
 }
 @media screen and (min-width:768px){
     .swiper-button-next, .swiper-button-prev{

@@ -17,19 +17,19 @@ const Rand = (min, max) => {
 
 const ImgUrl = () => {
     const id = Rand(1, 200);
-    return `https://picsum.photos/id/${id}/1000/550`;
+    return `https://picsum.photos/id/${id}/1000/500`;
 }
 
 const CreateSlide = () => {
     return (
         <SwiperSlide className='flex justify-center rounded-3xl items-center'>
-            <a href=""><img className="img  rounded-3xl" src={ImgUrl()} alt="" /></a>
+            <a href=""><img className="rounded-3xl" src={ImgUrl()} alt="" /></a>
         </SwiperSlide>
     );
 }
 
 const BannerList = (props) => {
-    return (<li className='mx-3 md:mx-6'>{props.text}</li>)
+    return (<li className='mx-2 md:mx-6'>{props.text}</li>)
 }
 
 const Banner = () => {
@@ -37,7 +37,7 @@ const Banner = () => {
     const device = UseRWD();
 
     return (
-        <section className='banner'>
+        <>
             <div className='banner-list'>
                 <ul className='flex justify-center items-center h-16 md:text-xl text-slate-500'>
                     <BannerList text="原創設計"/>
@@ -49,13 +49,12 @@ const Banner = () => {
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
                 // {device === "PC" ? slidesPerView={1.5} : slidesPerView={"auto"}}
-
                 slidesPerView={device === "PC" ? 1.5 : "auto"}
                 navigation
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{ delay: 1000 }}
+                // autoplay={{ delay: 3000 }}
                 pagination={{ clickable: true }}  
             >
                 {CreateSlide()}
@@ -63,7 +62,7 @@ const Banner = () => {
                 {CreateSlide()}
                 {CreateSlide()}
             </Swiper>
-        </section>
+        </>
     );
 };
 

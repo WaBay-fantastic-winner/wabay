@@ -1,5 +1,4 @@
 import React from 'react'
-// import AboutUs from './text/AboutUs'
 
 const Footer = () => {
 

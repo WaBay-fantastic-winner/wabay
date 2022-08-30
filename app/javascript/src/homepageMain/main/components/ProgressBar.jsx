@@ -9,8 +9,7 @@ const Progress = ({done}) => {
 		const newStyle = {
 			opacity: 1,
 			width: `${done >= 100 ? 100 : done}%`
-		}
-		
+		}	
 		setStyle(newStyle);
 	}, 200);
 	
