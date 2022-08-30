@@ -47,9 +47,11 @@
   
   <ul>
     <% @comments.each do |comment| %>
-    <li>
+    <li class="py-1 px-6">
     <%= comment.content %>
     <%= link_to "刪除", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} %>
+    <button id="likeBtn" data-controller="hello" >♡</button>
+    <%# <button>♥</button> %>
     </li>
     <% end %>
   </ul>
