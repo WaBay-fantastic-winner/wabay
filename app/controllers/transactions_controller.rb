@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :create_serial
+  skip_before_action :verify_authenticity_token
 
   def create_serial
     time = Time.now.strftime('%d%m%Y%H%M%S').split('').uniq.sample(3)
@@ -34,6 +35,10 @@ class TransactionsController < ApplicationController
     else
       render :save_error
     end
+  end
+
+  def paid
+    @transaction.pay  #尚未，須先解決交易完成，跳轉到專案後登入者被踢出的問題。
   end
 
   def destroy

@@ -7,5 +7,9 @@ Rails.application.routes.draw do
     resources :donate_items
   end
 
-  resources :transactions, except: [:index, :show, :edit, :update] 
+  resources :transactions, except: [:index, :show, :edit, :update] do
+    collection do
+      post :paid
+    end
+  end
 end

@@ -16,13 +16,15 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
         "MerchantTradeNo": merchant_trade_no, 
-        "ReturnURL": "https://f25a-103-3-192-33.jp.ngrok.io/payment/returnpage",
+        "ReturnURL": "https://29e3-103-3-192-33.jp.ngrok.io/transactions",
         "ItemName": title,
         "TotalAmount": price, 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
-        "EncryptType": 1
+        "EncryptType": 1,
+        "OrderResultURL": "https://29e3-103-3-192-33.jp.ngrok.io/transactions/paid",
       }
+      # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end
   
     def perform
@@ -48,5 +50,9 @@ module Payment
       check_params = {"CheckMacValue": "#{check_mac_value}"}
       data = @basic_params.merge!(check_params).stringify_keys
     end
+
+    # 官方測試信用卡好
+    4311-9522-2222-2222
+    222
   end
 end
