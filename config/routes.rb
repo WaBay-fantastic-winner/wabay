@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :projects do
     resources :donate_items
+    member do
+      get :follow
+    end
     resource :disclosures, only: [:show]
     resources :comments, shallow: true
   end
