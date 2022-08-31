@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 // Place all the styles related to the projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
@@ -21,24 +21,3 @@
     color: red;
   }
 }
-=======
-// Place all the styles related to the projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-.error_message{
-    color: red;
-  }
-  
-.field_with_errors {
-  display: inline-block;
-  color: red;
-  input {
-    border-color: red;
-    border-width: 2px;
-  }
-
-  label {
-    color: red;
-  }
-}
->>>>>>> origin/feature/comment

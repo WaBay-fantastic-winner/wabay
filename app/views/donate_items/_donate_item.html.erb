@@ -1,6 +1,6 @@
 <h2> 贊助方案 </h2>
 
-<% @donate_items.each do |donate_item| %>
+<% @donate_items&.each do |donate_item| %>
   <div>
     <%= link_to '編輯贊助項目', edit_project_donate_item_path(project_id: current_user.projects.find_by!(id: params[:id]), id: donate_item) %>
     <%= link_to '刪除贊助項目', project_donate_item_path(project_id: current_user.projects.find_by!(id: params[:id]), id: donate_item), method: 'delete', data:{ confirm: "確定要刪除「#{donate_item.title}」項目嗎？" } %>

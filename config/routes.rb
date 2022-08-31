@@ -20,8 +20,7 @@ Rails.application.routes.draw do
       get :all
       #全部專案
     end
-
+    end
   end
-end
 end
 

@@ -22,8 +22,8 @@
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
               <li><a class="mx-5" href="">首頁</a></li>
-              <li><a class="mx-5" href="">探索</a></li>
-              <li><a class="mx-5" href="">提案</a></li>
+              <li><%= link_to "探索", projects_path, class:"mx-5"%></li>
+              <li><%= link_to "提案", new_project_path, class:"mx-5"%></li>
             </ul>
             <!-- 手機側邊收縮導覽列 -->
             <input id="mobile-nav-switch" type="checkbox" class="hidden" />
