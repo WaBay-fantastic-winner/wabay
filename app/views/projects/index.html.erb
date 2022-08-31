@@ -11,8 +11,7 @@
     <td><%= link_to project.project_title, project_path(project.id) %></a></td>
     <td><%= project.project_amount_target %></td>
     <td><%= project.organizer %></td>
-    <td class=font-bold><%= link_to "編輯", edit_project_path(project.id) %></td>
-    <td class=font-bold><%= link_to "刪除", project_path(project.id), method: "delete", data: {confirm: '確定要刪除嗎?'}%></td>
+    
   </tr>
 <% end %>
 </table>

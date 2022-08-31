@@ -10,38 +10,38 @@
   <%= form_for(@project) do |form| %>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :organizer, "聯絡窗口姓名 *", class:"text-blue-400 pr-3 font-medium border-blue-300 border-r-2" %>
+      <%= form.label :organizer, "聯絡窗口姓名 *", class:"text-blue-400 pr-3 font-medium border-blue-300 border-r-2 w-1/5 text-center" %>
       <%= form.text_field :organizer, placeholder: "您的真實姓名", class:"font-light w-9/12 ml-4" %>
     </div>
 
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :email, "電子信箱 *", class:"text-blue-400 font-medium border-blue-300 border-r-2 pr-3" %>
+      <%= form.label :email, "電子信箱 *", class:"text-blue-400 font-medium border-blue-300 border-r-2 pr-3 w-1/5 text-center" %>
       <%= form.email_field :email, placeholder: "請確認您的電子信箱", class:"font-light w-9/12 ml-4" %>
     </div>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :phone, "聯絡電話 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3" %>
+      <%= form.label :phone, "聯絡電話 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3 w-1/5 text-center" %>
       <%= form.telephone_field :phone, placeholder: "您的手機號碼，電話號碼請加入區碼", class:"font-light w-9/12 ml-4" %>
     </div>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :project_title, "提案名稱 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3" %>
+      <%= form.label :project_title, "提案名稱 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3 w-1/5 text-center" %>
       <%= form.text_field :project_title, placeholder: "可日後變更", class:"font-light w-9/12 ml-4" %>
     </div>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :project_amount_target, "提案目標金額（新台幣） *", class:"text-blue-400 font-medium w-1/5  border-blue-300 border-r-2 pr-3" %>
+      <%= form.label :project_amount_target, "提案目標金額（新台幣） *", class:"text-blue-400 font-medium w-1/5  border-blue-300 border-r-2 pr-3 w-1/5 text-center" %>
       <%= form.text_field :project_amount_target, placeholder: "我們採用的是全有全無制，因此團隊可簡略試算集資成本、生產或資金的運用，以推算出集資的門檻", class:"font-light w-9/12 ml-4" %>
     </div>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4 flex">
-      <%= form.label :project_end_time, "提案結束日期 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3" %>
+      <%= form.label :project_end_time, "提案結束日期 *", class:"text-blue-400  font-medium border-blue-300 border-r-2 pr-3 w-1/5 text-center" %>
       <%= form.date_field :project_end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded ml-5" %>
     </div>
 
     <div class="font-extralight border-solid border-2 border-blue-300 px-6 py-6 mb-4">
-      <%= form.label :project_description, "提案描述 *", class:"text-blue-400 font-medium" %>
+      <%= form.label :project_description, "提案描述 *", class:"text-blue-400 font-medium w-1/5 text-center" %>
       <%= form.rich_text_area :project_description , class: "border-2 border-black-300 rounded" %>
     </div>
 
