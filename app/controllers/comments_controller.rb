@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
 
   # 找到該提案下方建立留言
   def find_project
-    @project = Project.find_by(params[:article_id])
+    @project = Project.find_by(id: params[:project_id])
   end
 
   # 找到該提案下方建立留言
