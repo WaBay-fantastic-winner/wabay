@@ -42,6 +42,8 @@ class TransactionsController < ApplicationController
   end
 
   def destroy
-    redirect_to donate_items_path, notice: '此筆交易已刪除...' #尚未，待登入問題解決再來。
+    @transaction = Transaction.find_by!(id: params[:id])
+    @transaction.update(deleted_at: Time.now)
+    redirect_to transactions_path, notice: '此筆交易已刪除...' 
   end
 end

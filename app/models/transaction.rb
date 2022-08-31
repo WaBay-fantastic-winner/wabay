@@ -35,4 +35,8 @@ class Transaction < ApplicationRecord
       transitions from: [:pending, :failed], to: :cancellation
     end
   end
+
+  # 軟刪除 
+  acts_as_paranoid
+  default_scope { where(deleted_at: nil) }
 end
