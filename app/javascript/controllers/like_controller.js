@@ -14,7 +14,8 @@ export default class extends Controller {
   }
 
   like_comment() {
-    const commentId = this.element.dataset.commentId
+    console.log(this.element.dataset.commentId);
+    // const commentId = this.element.dataset.commentId
     Rails.ajax({
       url: `/api/comments/${commentId}/like`,
       type: "post",

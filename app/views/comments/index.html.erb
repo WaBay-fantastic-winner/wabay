@@ -2,16 +2,21 @@
 
 <section class="py-5">
   <h2>留言</h2>
-  <%= form_with model: @comment, url: project_comments_path(@project)  do |form| %>
+  <%= form_with model: @comment, url: project_comments_path(project_id: @project)  do |form| %>
     <%= form.text_area :content, class: "border-2 border-black-300 rounded"%>
     <%= form.submit "送出" %>
   <% end %>
   
   <ul>
     <% @comments.each do |comment| %>
-    <li>
+    <li class="py-1 px-6">
     <%= comment.content %>
     <%= link_to "刪除", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} %>
+      <div data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user.liked?(comment)%>">
+        <button data-action="click->like#like_comment">
+          <span data-like-target="love">♡</span>
+        </button>
+      </div>
     </li>
     <% end %>
   </ul>
