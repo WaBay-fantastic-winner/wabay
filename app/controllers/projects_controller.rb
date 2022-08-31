@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
+  before_action :find_project, only: [:show, :edit, :destroy, :update]
   def index
     @projects = Project.all
   end
@@ -10,22 +11,23 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    find_project
   end
 
   def destroy
-    find_project.destroy
-    redirect_to '/projects', notice: '提案刪除成功 !!'
+    if @project.destroy
+        redirect_to '/projects', notice: '提案刪除成功 !!'
+    else
+        redirect_to '/projects', notice: '不能刪除 !!'
+    end
   end
 
   def show
-    find_project
     @comment = Comment.new
-    @comments = @project.comments.order(id: :desc)
+    @comments = @project.comments.order(id: :desc) 
   end
 
   def update
-    if find_project.update(clean_params)
+    if @project.update(clean_params)
       redirect_to project_path, notice: ' 提案更新成功 !!'
     else
       render :edit
@@ -46,8 +48,7 @@ class ProjectsController < ApplicationController
 
   def clean_params
     # 資料清洗
-    params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target,
-                                    :project_end_time, :project_description)
+    params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target, :project_end_time, :project_description)
   end
 
   def find_project
