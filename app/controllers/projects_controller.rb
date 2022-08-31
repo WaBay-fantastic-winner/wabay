@@ -20,10 +20,8 @@ class ProjectsController < ApplicationController
 
   def show
     find_project
-
     # 在 projects 的 show 頁面，有 donate_items 的 index
-    current_project
-    @donate_items = current_project.donate_items.all
+    @donate_items = @project.donate_items.all
   end
 
   def update
@@ -54,9 +52,5 @@ class ProjectsController < ApplicationController
 
   def find_project
     @project = Project.find_by(id: params[:id])
-  end
-
-  def current_project
-    @current_project = current_user.projects.find_by!(id: params[:id])
   end
 end
