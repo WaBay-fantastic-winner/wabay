@@ -45,7 +45,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
   config.action_mailer.delivery_method = :smtp
   
-  config.hosts << "29e3-103-3-192-33.jp.ngrok.io"
+  config.hosts << "f3ec-103-3-192-33.jp.ngrok.io"
 
 
   config.action_mailer.perform_caching = false
