@@ -29,7 +29,7 @@ const CreateSlide = () => {
 }
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6'>{props.text}</li>)
+    return (<li className='mx-2 md:mx-6 hover:text-blue-400 '><a href=''>{props.text}</a></li>)
 }
 
 const Banner = () => {
@@ -54,7 +54,7 @@ const Banner = () => {
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                // autoplay={{ delay: 3000 }}
+                autoplay={{ delay: 3000 }}
                 pagination={{ clickable: true }}  
             >
                 {CreateSlide()}

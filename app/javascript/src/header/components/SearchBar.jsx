@@ -2,7 +2,6 @@ import React,{ useState } from 'react';
 import { FaSearch, FaTimesCircle } from 'react-icons/fa';
 import axios from "axios"; 
 
-
 const Search = ({ setSearchResult }) => {
 
     const [active, setActive] = useState("hidden")
@@ -11,7 +10,7 @@ const Search = ({ setSearchResult }) => {
     }
 
     const searchAPI = () => {
-        axios.get(`http://127.0.0.1:3000/projects/search`)
+        axios.get(`http://127.0.0.1:3000/projects/search`,)
             .then(res =>{setSearchResult(res.data);})
     }
 
@@ -24,7 +23,7 @@ const Search = ({ setSearchResult }) => {
                 <div className={`search-form ${active} absolute inset-0 px-14 lg:px-28 bg-white`}>
                     <div className="flex items-center h-full">
                         <FaSearch className="inline-block mr-2"/>
-                        <form className="flex-1" action="/projects/search" method='get' onSubmit={searchAPI}>
+                        <form className="flex-1" action="/projects" method='get' onSubmit={searchAPI}>
                             <input id="search-input" className="w-full focus:outline-none" type="text" placeholder="搜尋" name="keyword"/>
                         </form>
                         <button className="close-btn" onClick={searchbarToggle}>
