@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :projects do
     resources :comments, shallow: true
-<<<<<<< HEAD
+
   end
   namespace :api do
     resources :comments, only: [] do
@@ -11,7 +11,5 @@ Rails.application.routes.draw do
         post :like
       end
     end
-=======
->>>>>>> feature/comment
   end
 end
