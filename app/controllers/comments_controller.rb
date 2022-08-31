@@ -10,13 +10,14 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to project_comments_path(@project), notice: '留言成功'
     else
-      redirect_to project_path(@project), notice: '留言失敗'
+      redirect_to project_comments_path(@project), notice: '留言失敗'
     end
   end
 
   def destroy
-    @comment.destroy
-    redirect_to @comment.project, notice: '留言刪除成功'
+    if @comment.destroy
+      redirect_to project_comments_path(@comment.project), notice: '留言刪除成功'
+    end
   end
 
   def index

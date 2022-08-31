@@ -28,7 +28,7 @@
     <%= form.label :project_description, "提案描述 *" %>
     <%= form.rich_text_area :project_description , class: "border-2 border-black-300 rounded"%>
   </div>
-  <%= form.submit %>
+  <%= form.submit "更新" %>
 <% end %>
 
 <% if @project.errors.any? %> 
