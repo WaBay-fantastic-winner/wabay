@@ -277,6 +277,7 @@ GEM
     strscan (3.0.4)
     thor (1.2.1)
     tilt (2.0.11)
+    timecop (0.9.5)
     timeout (0.3.0)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
@@ -339,6 +340,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   spring
+  timecop
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 4.1.0)

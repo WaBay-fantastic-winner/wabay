@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap");
+
+body{
+  font-family: 'Noto Sans TC',sans-serif !important;
+}
+
+.progress-container {
+    /* height: 0.8rem; */
+    width: 100%;
+    /* border-radius: 0.4rem; */
+    /* background: white; */
+    /* position: relative; */
+    /* margin: 15px 0; */
+}
+.progress-container span{
+	position: absolute;
+	right: 0;
+	left: 0;
+    top:-4px;
+	text-align: center;
+    font-size: 18px;
+	color: rgb(248, 216, 109);
+}
+.progress-container .progress {
+    height: 100%;
+    border-radius: 0.4rem;
+	background: linear-gradient(to left, #F2709C, #FF9472);
+	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+    transition: width 0.4s ease;
+}
+footer{
+    background:radial-gradient(350px at 5% 105%,rgb(153, 226, 255),white)
+}
+.footer-items ul li{
+    margin: 10px 0;
+}
