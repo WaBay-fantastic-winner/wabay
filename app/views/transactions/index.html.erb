@@ -5,6 +5,8 @@
 <table>
   <tr>
     <td> 交易序號 </td>
+    <td> 贊助專案 </td>
+    <td> 贊助項目 </td>
     <td> 贊助金額（新台幣）</td>
     <td> 交易狀態 </td>
     <td>  </td>
@@ -13,6 +15,8 @@
     <% if current_user.id === transaction.user_id %>
       <tr>
         <td><%= transaction.serial %></td>
+        <td><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).project_title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
+        <td><%= DonateItem.find_by!(id: transaction.donate_item_id).title %></td>
         <td><%= transaction.price %></td>
         <td><%= transaction.state %></td>
         <% if transaction.state === 'pending' %>
