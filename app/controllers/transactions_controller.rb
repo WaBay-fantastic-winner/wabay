@@ -34,9 +34,10 @@ class TransactionsController < ApplicationController
   def paid
     @transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
     @transaction.pay!
+    # 登入者在付款完成跳轉到專案頁面後會被踢出，導致無法打到 paid action。
   end
 
   def destroy
-    redirect_to donate_items_path, notice: '此筆交易已刪除...' #尚未
+    redirect_to donate_items_path, notice: '此筆交易已刪除...' #尚未，待登入問題解決再來。
   end
 end
