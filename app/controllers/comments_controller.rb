@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
@@ -44,4 +43,3 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 end
-
