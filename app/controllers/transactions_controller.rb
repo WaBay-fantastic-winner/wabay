@@ -1,5 +1,9 @@
 class TransactionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+
+  def index
+    @transactions = Transaction.all
+  end
   
   def create
     # 建立交易紀錄（訂單）
