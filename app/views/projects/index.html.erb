@@ -1,22 +1,26 @@
-<h1 class="text-4xl font-bold" >這裡是我的提案清單</h1>
+<h1 class="text-4xl font-bold py-5" >這裡是我的提案清單</h1>
 
 <table>
+  <% if @projects.count > 0 %>
+    <tr>
+      <td class="py-1 px-6"> 提案名稱 </td>
+      <td class="py-1 px-6"> 目標金額（新台幣） </td>
+      <td class="py-1 px-6"> 計畫發起人 </td>
+    </tr>
+  <% else %>
+    <div>目前還沒有任何專案</div>
+  <% end %>
+  <% @projects.each do |project| %>
   <tr>
-    <td> 提案名稱 </td>
-    <td> 目標金額（新台幣） </td>
-    <td> 計畫發起人 </td>
+    <td class="py-1 px-6"><%= link_to project.project_title, project_path(project.id) %></a></td>
+    <td class="py-1 px-6"><%= project.project_amount_target %></td>
+    <td class="py-1 px-6"><%= project.organizer %></td>
+    <td class="font-bold px-5"><%= link_to "編輯", edit_project_path(project.id) %></td>
+    <td class="font-bold px-5"><%= link_to "刪除", project_path(project.id), method: "delete", data: {confirm: '確定要刪除嗎?'}%></td>
   </tr>
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.project_title, project_path(project.id) %></a></td>
-    <td><%= project.project_amount_target %></td>
-    <td><%= project.organizer %></td>
-    <td class=font-bold><%= link_to "編輯", edit_project_path(project.id) %></td>
-    <td class=font-bold><%= link_to "刪除", project_path(project.id), method: "delete", data: {confirm: '確定要刪除嗎?'}%></td>
-  </tr>
-<% end %>
+  <% end %>
 </table>
 
-<div class=font-bold >
+<div class="font-bold py-5" >
   <%= link_to "前往提案!!", new_project_path %> 
 </div>
