@@ -19,6 +19,7 @@ Rails.application.routes.draw do
       get :all
       #全部專案
     end
->>>>>>> homepageErb
+
   end
+end
 end
