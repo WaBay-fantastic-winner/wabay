@@ -1,0 +1,23 @@
+<h1> 編輯您的贊助方案 </h1>
+
+<%= form_with model: @donate_item, url: project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item), method: "put" do |form|%>
+  <div>
+    <%= form.label :title, '贊助項目標題' %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :price, '贊助價格' %>
+    <%= form.text_field :price %> 
+  </div>
+
+  <div>
+    <%= form.label :content, '贊助項目內容' %>
+    <%= form.rich_text_area :content %>
+  </div>
+
+  <%= form.submit '更新贊助項目' %>
+
+  <%= link_to '回到專案', project_path(id: @donate_item.project_id), method: :get %> 
+  
+<% end %>
