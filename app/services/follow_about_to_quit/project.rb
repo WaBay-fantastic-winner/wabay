@@ -1,19 +1,30 @@
 module Follow
   class Project 
-    def initialize(user)
+    # 專案建立後呼叫，產生空白名單
+    def initialize
       @follower = [] unless defined? @follower
     end
 
+    def add_follower
+      @follower << current_user.id
+    end
+    
+    # 狀態更新後，通知所有的追蹤者。
     def notify_follower
-      @follower.each do 
-
+      @follower.each do |follower|
+        follower.update
       end
     end
-  end
 
-  class Follower
-    def update
+    def update(notification)
+      puts "#{notification}"
+    end
 
+    # 胃給追蹤者的狀態與消息
+    def almost_end
+      if Project.where() <= 7
+        update("您追蹤的專案即將結束募資，還在猶豫是否募資嗎？趕快把握最後機會～")
+      end
     end
   end
 end
