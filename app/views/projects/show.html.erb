@@ -29,6 +29,7 @@
         </div>
       </div>
     </section>
+    
     <div class="flex justify-between px-12 border-t-2 border-b-2 border-double border-gray-300 sticky z-10 top-0 bg-white">
       <div class="h-16 flex items-center font-semibold text-gray-400 ">
         <a class="mx-5" href="">專案介紹</a> 
@@ -97,11 +98,11 @@
 </table>
 
 <div class=font-bold >
-   <%= link_to "編輯", edit_project_path %>
-   <%= link_to "刪除", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'} %>
-   <%= link_to "回到我的提案清單", projects_path %>
+  <%= link_to "編輯", edit_project_path %>
+  <%= link_to "刪除", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'} %>
+  <%= link_to "回到我的提案清單", projects_path %>
 <<<<<<< HEAD
-   <%= link_to "新增贊助項目", new_project_donate_item_path(@project) %>
+  <%= link_to "新增贊助項目", new_project_donate_item_path(@project) %>
 </div>
 
 <%= render partial: 'donate_items/donate_item', donate_items: @donate_items %>

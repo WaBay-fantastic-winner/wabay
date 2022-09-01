@@ -22,20 +22,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const  bullets  =  [...document.querySelectorAll('.bullet')];
   const  bar = document.querySelector('.bar')
   const barClass = {
-    '企劃目的': 0,
-    '款項設定': 33,
-    '回饋品寄送': 66,
-    '實際執行': 100
+    '企劃概念': 0,
+    '樣品狀態': 33,
+    '生產階段': 66,
+    '產品寄送': 100
   }
   const bulletClass = {
-    '企劃目的': 1,
-    '款項設定': 2,
-    '回饋品寄送': 3,
-    '實際執行': 4
+    '企劃概念': 1,
+    '樣品狀態': 2,
+    '生產階段': 3,
+    '產品寄送': 4
   }
   
-  bullets.splice(`${bulletClass['款項設定']}`)
+  let status = '樣品狀態'
+  bullets.splice(bulletClass[status])
   bullets.forEach( (ele) => { ele.classList.add('completed') })
-  bar.style.width = barClass['款項設定'] + "%"
+  bar.style.width = barClass[status] + "%"
 })
 
