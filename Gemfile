@@ -1,4 +1,3 @@
-
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
@@ -73,7 +72,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'devise-i18n', '~> 1.10'
 
 gem 'rails-i18n'
-gem 'net-smtp', require: false
+
 gem 'net-imap', require: false
 gem 'net-pop', require: false
-
+gem 'net-smtp', require: false
