@@ -36,8 +36,8 @@
   <% if @project.user_id == current_user.id %>
     <%= link_to "編輯", edit_project_path%>
     <%= link_to "刪除", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}%>
+  <% end %>
     <%= link_to "回到提案清單", projects_path %>
     <%= link_to "留言", project_comments_path(@project) %>
-  <% end %>
 </div>
 

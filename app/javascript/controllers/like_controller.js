@@ -6,6 +6,7 @@ export default class extends Controller {
   static targets = ["love"]
 
   connect(){
+    console.log(123);
     if (this.element.dataset.like === "true") {
       this.loveTarget.textContent = "♥"
     } else {
@@ -14,8 +15,7 @@ export default class extends Controller {
   }
 
   like_comment() {
-    console.log(this.element.dataset.commentId);
-    // const commentId = this.element.dataset.commentId
+    const commentId = this.element.dataset.commentId
     Rails.ajax({
       url: `/api/comments/${commentId}/like`,
       type: "post",
