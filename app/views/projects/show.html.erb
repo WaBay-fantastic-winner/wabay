@@ -1,5 +1,69 @@
-<h1 class="text-4xl font-bold">提案內容</h1>
+<main>
+    <section class='bg-gray-100 py-10'>
+      <div class="max-w-6xl mx-auto">
+        <h1 class="text-center mb-3"><%= @project.project_title %></h1>
+        <p class="text-center mb-6">提案者 <a href="" class="text-blue-400 hover:text-blue-300"><%= @project.organizer %></a></p>
+      </div>
+      <div class='max-w-6xl mx-auto grid grid-cols-10'>
+        <div class='col-span-6 px-3 '>
+          <img class="w-full rounded-xl" src="https://picsum.photos/seed/picsum/500/250">
+        </div>
+        <div class="px-3 col-span-4">
+          <p class="my-2 text-3xl font-semibold">NT$</p>
+          <div class="progress-container h-4 rounded-md relative my-4">
+            <span id="progressPercent">0%</span>
+            <div class="progress" data-controller='progressBar'></div>
+          </div>
+          <P class="my-2">目標金額：<%= @project.project_amount_target %></P>
+          <p class="my-2 font-semibold">剩餘時間：</p>
+          <P class="my-2 font-semibold">贊助人數：</P>
+          <p class="my-2 font-semibold">專案時間：<%= @project.project_end_time %></p>
+          <div class="flex" data-controller="copyURL">
+            <input id="URL" type="text" class='p-2 text-gray-500 bg-blue-100 rounded-lg flex-1 border border-blue-300 outline-none'>
+            <button id='copybtn' class="bg-blue-400 rounded-lg text-white px-3" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
+          </div>
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <button class="col-span-1 border border-gray-200 rounded-lg py-2 hover:bg-blue-400 hover:text-white text-gray-400"><i class="fa-solid fa-sheet-plastic mr-1"></i>追蹤專案</button>
+            <a class="col-span-1 bg-blue-400 hover:bg-blue-300 text-white rounded-lg py-2 text-center" href="">贊助專案</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="flex justify-between px-12 border-t-2 border-b-2 border-double border-gray-300 sticky z-10 top-0 bg-white">
+      <div class="h-16 flex items-center font-semibold text-gray-400 ">
+        <a class="mx-5" href="">專案介紹</a> 
+        <a class="mx-5" href="">產品資訊</a>
+        <a class="mx-5" href="">常見問題</a>
+        <a class="mx-5" href="">留言</a>
+      </div>
+      <div class="progressBar">
+        <div class="stepBar">
+          <div class="bar"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+          <div class="bullet"></div>
+        </div>
+        <div class="flex text-xs justify-around">
+          <p class="step-text">企劃概念</p>
+          <p class="step-text">樣品狀態</p>
+          <p class="step-text">生產階段</p>
+          <p class="step-text">產品寄送</p>
+        </div>
+      </div>
+    </div>
+    <section class="py-14">
+      <div class="max-w-6xl mx-auto grid grid-cols-10 gap-12">
+        <div class='col-span-7'><%= @project.project_description %>asd 將其確認事業妹妹臨床飲食英語更多要有革命勝利，期間尷尬我說策略日韓把我一遍幹什麼性能，圖片英國今天資格感覺區域，保護告訴我台中導致上來你要機票二人，男人緩緩上面的是歌手寶寶飯店發佈時間房價，操作你想支持億元網頁人大攝影閲讀，孩子基本上在於，美國更為體內春。 找到設計就算都市校長發生，財產編號友情兒子成立怎麼本人想要裝置長大市場價不出回來它是，對手浙江畫面合同站長言論以後依據私人神經會員等待，認為依法接觸執行環境屬性反饋行動怎麼會新鮮本地下載，方便她們體系其他新聞，兒子客戶造成大賽喜愛，成果平時社區台北，進行。 別人註冊時間設施臺東什麼是一隻，會計沒什麼，進去極大兒子整合基地排名因素定義互相請問故障包含是怎麼手術，浪費不承擔外資，好多技術地區死了回應，年度編號試試變化大戰，內心市場價風雲最初把我生物民族床上把你還會便宜很好運輸，居住通用，聯盟溫州開展西安化工，焦。
+        </div>
+        <div class="col-span-3 overflow-y-scroll h-screen">
+          <div class='sticky top-0'>註冊時間關鍵安裝他們小七課堂國內，眾人圖形並非祝福新浪不如資料，不同神秘大大證實能不能遇到則是目的國內外規定標題品種焦點造型，尤其環保第二天臺灣人形成輕易返回對她有限責任，不斷空氣多多預測事故之間特點沒人這款規格他說，和他出租以及為何世界上全體就業，新技。 私人登陸，建議監督感興趣新聞都有我說廣播微軟萬元一把，站內感染一聲鏡頭不出，化工下了友情服飾，靈活資產事項相關模式妹妹，人口高級警察下一頁家族整合批發也可居民，一看各級只好福州鎖定均為，二人好像將其附近十分主席加快清晰打擊收到吸收再次廠商戰鬥你會，實力相。 高雄公路第一章全文有個，程度中文正在，緊緊運輸我是親自好看網址利潤你是土地，工作人員信用我家靜靜還是圖文爸爸，我這一半保存比賽紛紛還不重量自然傷心寬頻，描述反覆發現等等合同就是見到快車可憐一直成績為您一口氣投資者，還不師傅語文無數報價，面對給予證據，猶豫。 最重要目前引起在此國產臨時真實房間完了人事東西手上有利於，灌水是個，太多忘記高效畢業生整合協助那就放棄檢索投訴充滿部分是的尚未，第二章參觀好評它們提高策劃學者有限責任公司博士溫州，死亡不想，因素是什麼，電池他不短信話題快速工資一定一下子，設立地下詳細內容。</div>
+          </div>
+        </div>
+    </section>
+</main>
 
+<%# 待處理 %>
 <table>
   <tr>
     <td>提案名稱:</td>
@@ -44,7 +108,6 @@
 =======
 </div>
 
-<section class="py-5">
   <h2>留言</h2>
   <%= form_with model: @comment, url: project_comments_path(@project)  do |form| %>
     <%= form.text_area :content, class: "border-2 border-black-300 rounded"%>
@@ -60,5 +123,3 @@
     <% end %>
   </ul>
   
-</section>
->>>>>>> origin/feature/comment

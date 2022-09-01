@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
 
-  resources :projects, only: [] do
-    collection do
+    resources :projects, only: [] do
+      collection do
       get :search
       #關鍵字搜尋
       get :week_hot
@@ -19,8 +19,10 @@ Rails.application.routes.draw do
       #本週熱門即將結束
       get :all
       #全部專案
+      end
     end
-    end
+   
+    resources :comments, shallow: true, only: [:create, :destroy]
+    
   end
 end
-
