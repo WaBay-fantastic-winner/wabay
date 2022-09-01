@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_30_023556) do
+ActiveRecord::Schema.define(version: 2022_09_01_033013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_08_30_023556) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "count", default: 0
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_08_30_023556) do
     t.bigint "comment_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "count", default: 0
     t.index ["comment_id"], name: "index_like_comments_on_comment_id"
     t.index ["user_id"], name: "index_like_comments_on_user_id"
   end

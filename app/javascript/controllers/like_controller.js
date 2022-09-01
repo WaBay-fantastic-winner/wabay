@@ -6,7 +6,6 @@ export default class extends Controller {
   static targets = ["love"]
 
   connect(){
-    console.log(123);
     if (this.element.dataset.like === "true") {
       this.loveTarget.textContent = "♥"
     } else {
