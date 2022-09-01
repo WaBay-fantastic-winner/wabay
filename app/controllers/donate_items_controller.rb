@@ -49,7 +49,7 @@ class DonateItemsController < ApplicationController
   end
 
   def current_project
-    @current_project = current_user.projects.find_by!(id: params[:project_id])
+    @current_project = Project.find_by!(id: params[:project_id])
   end
 
   def find_donate_item

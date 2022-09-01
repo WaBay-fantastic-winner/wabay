@@ -73,9 +73,9 @@ gem 'devise-i18n', '~> 1.10'
 
 gem 'rails-i18n'
 
+gem 'net-smtp', require: false
 gem 'net-imap', require: false
 gem 'net-pop', require: false
-gem 'net-smtp', require: false
 
 gem 'aasm', '~> 5.3'
 gem 'paranoia', '~> 2.6'
