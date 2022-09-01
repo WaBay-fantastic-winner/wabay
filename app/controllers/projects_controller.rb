@@ -1,3 +1,4 @@
+
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
@@ -63,3 +64,4 @@ class ProjectsController < ApplicationController
     @current_project = current_user.projects.find_by!(id: params[:id])
   end
 end
+
