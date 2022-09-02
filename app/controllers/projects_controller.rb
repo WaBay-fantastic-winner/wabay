@@ -24,6 +24,9 @@ class ProjectsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @project.comments.order(id: :desc)
+    
+    # 在 projects 的 show 頁面，有 donate_items 的 index
+    @donate_items = @project.donate_items.all
   end
 
   def update
