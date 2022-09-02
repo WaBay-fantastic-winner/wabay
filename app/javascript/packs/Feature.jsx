@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import Feature from '../src/homepageMain/main/Feature'
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
     ReactDOM.render(
     <Feature />,
     document.querySelector('#feature'))

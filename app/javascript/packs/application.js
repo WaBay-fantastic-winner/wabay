@@ -4,20 +4,20 @@
 // that code so it'll be compiled.
 
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../application.css"
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
 import "controllers"
 
-
+// trackerBar
 document.addEventListener('DOMContentLoaded', () => {
   const  bullets  =  [...document.querySelectorAll('.bullet')];
   const  bar = document.querySelector('.bar')
@@ -35,8 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   let status = '樣品狀態'
-  bullets.splice(bulletClass[status])
-  bullets.forEach( (ele) => { ele.classList.add('completed') })
+
+  let completedBullets = bullets.slice(0, bulletClass[status])
+  completedBullets.forEach( (ele) => { ele.classList.add('completed') })
+
+  // bullets.splice(bulletClass[status])
+  // bullets.forEach( (ele) => { ele.classList.add('completed') })
+
   bar.style.width = barClass[status] + "%"
 })
 
