@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "wabay",
   "private": true,
@@ -14,6 +15,8 @@
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "stimulus": "^3.1.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "react-icons": "^4.4.0",
     "stimulus": "^3.1.0",
     "swiper": "^8.3.2",
@@ -29,3 +32,4 @@
     "webpack-dev-server": "^3"
   }
 }
+>>>>>>> origin/feature/liked_comment_reload

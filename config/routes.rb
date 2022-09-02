@@ -1,9 +1,6 @@
-
 Rails.application.routes.draw do
   devise_for :users
-
   root to: 'home#index'
-
   resources :projects do
     resources :donate_items
     resource :disclosures, only: [:show]
@@ -22,7 +19,14 @@ Rails.application.routes.draw do
         #全部專案
       end
     end
-    resources :comments, shallow: true, only: [:create, :destroy]
+    resources :comments, shallow: true
     
+  end
+  namespace :api do
+    resources :comments, only: [] do
+      member do
+        post :like
+      end
+    end
   end
 end
