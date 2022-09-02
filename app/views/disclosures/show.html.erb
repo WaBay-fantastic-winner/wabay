@@ -1,33 +1,145 @@
-  <main>  
-    <section class='bg-gray-100 py-10'>
-      <div class="max-w-6xl mx-auto">
-        <p class="text-center mb-1"><a href="">分類</a></p>
-        <h1 class="text-center mb-3"><%= @project.project_title %></h1>
-        <p class="text-center mb-6">提案者 <a href="" class="text-blue-400 hover:text-blue-300"><%= @project.organizer %></a></p>
+<main>  
+  <section class='bg-gray-100 py-10'>
+    <div class="max-w-6xl mx-auto">
+      <p class="text-center mb-1"><a href="">分類</a></p>
+      <h1 class="text-center mb-3"><%= @project.project_title %></h1>
+      <p class="text-center mb-6">提案者 <a href="" class="text-blue-400 hover:text-blue-300"><%= @project.organizer %></a></p>
+    </div>
+  </section>
+  <%# tracker %>
+  <div class="lg:flex justify-between px-12 border-t-2 border-b-2 border-double border-gray-300 sticky z-10 top-0 bg-white">
+    <div class="h-16 flex items-center font-semibold text-gray-400 ">
+      <a class="mx-5" href="">專案介紹</a> 
+      <%= link_to '產品資訊', project_disclosures_path(@project), class:"imformation-link mx-5"%>
+      <a class="mx-5" href="">常見問題</a>
+      <a class="mx-5" href="">留言</a>
+    </div>
+    <div class="progressBar w-full lg:w-80 ">
+      <div class="stepBar w-full lg:w-64 ">
+        <div class="bar"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
+        <div class="bullet"></div>
       </div>
-    </section>
-    <%# tracker %>
-    <div class="lg:flex justify-between px-12 border-t-2 border-b-2 border-double border-gray-300 sticky z-10 top-0 bg-white">
-      <div class="h-16 flex items-center font-semibold text-gray-400 ">
-        <a class="mx-5" href="">專案介紹</a> 
-        <%= link_to '產品資訊', project_disclosures_path(@project), class:"imformation-link mx-5"%>
-        <a class="mx-5" href="">常見問題</a>
-        <a class="mx-5" href="">留言</a>
-      </div>
-      <div class="progressBar w-full lg:w-80 ">
-        <div class="stepBar w-full lg:w-64 ">
-          <div class="bar"></div>
-          <div class="bullet"></div>
-          <div class="bullet"></div>
-          <div class="bullet"></div>
-          <div class="bullet"></div>
-        </div>
-        <div class="flex text-xs justify-between lg:justify-around -mx-4 lg:mx-0">
-          <p class="step-text">企劃概念</p>
-          <p class="step-text">樣品狀態</p>
-          <p class="step-text">生產階段</p>
-          <p class="step-text">產品寄送</p>
-        </div>
+      <div class="flex text-xs justify-between lg:justify-around -mx-4 lg:mx-0">
+        <p class="step-text">企劃概念</p>
+        <p class="step-text">樣品狀態</p>
+        <p class="step-text">生產階段</p>
+        <p class="step-text">產品寄送</p>
       </div>
     </div>
-  </main>  
+  </div>
+
+  <section>
+    <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12">
+      <div class="accordion col-span-7" id="accordionExample">
+        <div class="accordion-item bg-white border border-gray-200">
+          <h2 class="accordion-header mb-0" id="headingOne">
+            <button class="
+              accordion-button
+              relative
+              flex
+              items-center
+              w-full
+              py-4
+              px-5
+              text-base text-gray-800 text-left
+              bg-white
+              border-0
+              rounded-none
+              transition
+              focus:outline-none
+            " type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+              aria-controls="collapseOne">
+              Accordion Item #1
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body py-4 px-5">
+              <strong>This is the first item's accordion body.</strong> It is shown by default,
+              until the collapse plugin adds the appropriate classes that we use to style each
+              element. These classes control the overall appearance, as well as the showing and
+              hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+              our default variables. It's also worth noting that just about any HTML can go within
+              the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-white border border-gray-200">
+          <h2 class="accordion-header mb-0" id="headingTwo">
+            <button class="
+              accordion-button
+              collapsed
+              relative
+              flex
+              items-center
+              w-full
+              py-4
+              px-5
+              text-base text-gray-800 text-left
+              bg-white
+              border-0
+              rounded-none
+              transition
+              focus:outline-none
+            " type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+              aria-controls="collapseTwo">
+              Accordion Item #2
+            </button>
+          </h2>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body py-4 px-5">
+              <strong>This is the second item's accordion body.</strong> It is hidden by default,
+              until the collapse plugin adds the appropriate classes that we use to style each
+              element. These classes control the overall appearance, as well as the showing and
+              hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+              our default variables. It's also worth noting that just about any HTML can go within
+              the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item bg-white border border-gray-200">
+          <h2 class="accordion-header mb-0" id="headingThree">
+            <button class="
+              accordion-button
+              collapsed
+              relative
+              flex
+              items-center
+              w-full
+              py-4
+              px-5
+              text-base text-gray-800 text-left
+              bg-white
+              border-0
+              rounded-none
+              transition
+              focus:outline-none
+            " type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false"
+              aria-controls="collapseThree">
+              Accordion Item #3
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body py-4 px-5">
+              <strong>This is the third item's accordion body.</strong> It is hidden by default,
+              until the collapse plugin adds the appropriate classes that we use to style each
+              element. These classes control the overall appearance, as well as the showing and
+              hiding via CSS transitions. You can modify any of this with custom CSS or overriding
+              our default variables. It's also worth noting that just about any HTML can go within
+              the <code>.accordion-body</code>, though the transition does limit overflow.
+            </div>
+          </div>
+        </div>
+      </div>
+      <%# 旁邊 %>
+      <div class="col-span-3 mt-7">
+
+      </div>
+    </div>  
+  </section>
+</main>  
