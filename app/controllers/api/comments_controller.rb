@@ -1,6 +1,5 @@
 class Api::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_comment
   def like
     comment = Comment.find(params[:id])
     prev_like_count = comment[:count]
@@ -19,12 +18,5 @@ class Api::CommentsController < ApplicationController
         "count": prev_like_count + 1
       )
     end
-
   end
-
-  private
-  def find_comment
-    @comment = Comment.find(params[:id])
-  end
-
 end

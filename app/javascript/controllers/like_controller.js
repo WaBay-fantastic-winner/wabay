@@ -3,9 +3,10 @@ import log from "tailwindcss/lib/util/log";
 import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = ["love"]
+  static targets = ["love","count"]
 
   connect(){
+    // console.log(this.element.dataset)
     if (this.element.dataset.like === "true") {
       this.loveTarget.textContent = "♥"
     } else {
@@ -19,11 +20,13 @@ export default class extends Controller {
       url: `/api/comments/${commentId}/like`,
       type: "post",
       success: ({ state }) => {
-        console.log(state);
+        // console.log(state)
         if (state === "liked") {
           this.loveTarget.textContent = "♥"
+          this.countTarget.textContent = Number(this.element.dataset.commentCount) + 1
         } else {
           this.loveTarget.textContent = "♡"
+          this.countTarget.textContent = Number(this.element.dataset.commentCount) - 1
         }
       },
       error: (err) => {
@@ -33,5 +36,3 @@ export default class extends Controller {
 
   }
 }
-
-// <%= link_to "♡", like_api_comment_path(comment), method: "post" %> 
