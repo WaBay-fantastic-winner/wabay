@@ -79,3 +79,5 @@ gem 'net-pop', require: false
 
 gem 'aasm', '~> 5.3'
 gem 'paranoia', '~> 2.6'
+
+gem "tailwindcss-rails", "~> 2.0"
