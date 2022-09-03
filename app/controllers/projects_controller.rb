@@ -58,10 +58,10 @@ class ProjectsController < ApplicationController
     
     if find_follow.empty?
       @project.follows.create(:user_id => current_user.id, :follow => "true")
-      to_project_show
+      to_project_show('已追蹤專案，將會收到新消息')
     else
       find_follow.first.destroy
-      to_project_show
+      to_project_show('已取消追蹤專案。')
     end
   end
 
@@ -80,8 +80,8 @@ class ProjectsController < ApplicationController
     Follow.where(user_id: current_user.id, followable_id: params[:id], followable_type: "Project" )
   end
 
-  def to_project_show
-    redirect_to project_path(id: params[:id])
+  def to_project_show(notice)
+    redirect_to project_path(id: params[:id]), notice: notice
   end
 
   def current_project
