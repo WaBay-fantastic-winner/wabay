@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "wabay",
   "private": true,
@@ -8,11 +9,13 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.3",
+    "axios": "^0.27.2",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "stimulus": "^3.1.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "trix": "^1.2.0",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
@@ -20,7 +23,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "webpack-dev-server": "^3"
   }
 }
+>>>>>>> origin/feature/liked_comment_reload
