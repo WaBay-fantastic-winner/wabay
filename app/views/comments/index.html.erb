@@ -10,7 +10,8 @@
   <ul>
     <% @comments.each do |comment| %>
       <li class="py-1 px-6">
-        <%= comment.content %>
+        <div>User:<%= comment.user.email %></div>
+        <div><%= comment.content %></div>
         <% if comment.user_id == current_user.id %>
           <%= link_to "刪除", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} %>
         <% end %>
@@ -18,11 +19,13 @@
         data-comment-id="<%=comment.id%>" 
         data-like="<%=current_user.liked?(comment)%>" <%#判斷 true or false%>
         data-comment-count="<%=comment.count%>">
-            <button data-action="click->like#like_comment">
-              <span data-like-target="love">♡</span> 
-            </button>
-            <div data-like-target="count">
+            <div class="flex">
+              <button data-action="click->like#like_comment">
+                <span data-like-target="love">♡</span> 
+              </button>
+              <div data-like-target="count" class="mx-2">
               <%= comment.count %>
+              </div>
             </div>
         </div>
       </li>
