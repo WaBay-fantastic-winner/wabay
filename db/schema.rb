@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_08_31_155221) do
     t.string "phone"
     t.string "project_title"
     t.integer "project_amount_target"
-    t.string "project_end_time"
+    t.datetime "project_end_time"
     t.string "project_description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
