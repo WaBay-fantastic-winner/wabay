@@ -55,7 +55,14 @@ class ProjectsController < ApplicationController
 
   def follow
     find_project
-    @project.follows.create(:follow => "true")
+    
+    if find_follow.empty?
+      @project.follows.create(:user_id => current_user.id, :follow => "true")
+      to_project_show
+    else
+      find_follow.first.destroy
+      to_project_show
+    end
   end
 
   private
@@ -67,5 +74,17 @@ class ProjectsController < ApplicationController
 
   def find_project
     @project = Project.find(params[:id])
+  end
+
+  def find_follow
+    Follow.where(user_id: current_user.id, followable_id: params[:id], followable_type: "Project" )
+  end
+
+  def to_project_show
+    redirect_to project_path(id: params[:id])
+  end
+
+  def current_project
+    @current_project = current_user.projects.find_by!(id: params[:id])
   end
 end
