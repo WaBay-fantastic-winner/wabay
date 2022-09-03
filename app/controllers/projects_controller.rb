@@ -53,6 +53,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def follow
+    find_project
+    @project.follows.create(:follow => "true")
+  end
+
   private
 
   def clean_params
