@@ -14,9 +14,12 @@
         <% if comment.user_id == current_user.id %>
           <%= link_to "刪除", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} %>
         <% end %>
-        <div data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
+        <div data-controller="like" 
+        data-comment-id="<%=comment.id%>" 
+        data-like="<%=current_user.liked?(comment)%>" <%#判斷 true or false%>
+        data-comment-count="<%=comment.count%>">
             <button data-action="click->like#like_comment">
-              <span data-like-target="love">♡</span>
+              <span data-like-target="love">♡</span> 
             </button>
             <div data-like-target="count">
               <%= comment.count %>
