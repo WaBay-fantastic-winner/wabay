@@ -23,6 +23,9 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :follows, only: [:index]
+
+
   resources :transactions, except: [:show, :edit, :update] do
     collection do
       post :paid

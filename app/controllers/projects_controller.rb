@@ -55,7 +55,7 @@ class ProjectsController < ApplicationController
 
   def follow
     find_project
-    
+
     if find_follow.empty?
       @project.follows.create(:user_id => current_user.id, :follow => "true")
       to_project_show('已追蹤專案，將會收到新消息')
