@@ -6,17 +6,24 @@ class Api::CommentsController < ApplicationController
     if current_user.liked_comments.include?(comment)
       # 移除讚
       current_user.liked_comments.destroy(comment)
-      render json: {state: "unliked", id: params[:id]}
       comment.update(
-        "count": prev_like_count - 1
+        count: prev_like_count - 1
       )
+      like_count = Comment.find(params[:id])[:count]
+      render json: { state: 'unliked', id: params[:id], like_count: "#{like_count}" }
     else
       # 新增讚
       current_user.liked_comments << comment
-      render json: {state: "liked", id: params[:id]}
       comment.update(
-        "count": prev_like_count + 1
+        count: prev_like_count + 1
       )
+      like_count = Comment.find(params[:id])[:count]
+      render json: { state: 'liked', id: params[:id], like_count: "#{like_count}" }
     end
+  end
+
+  def like_count
+    like_count = Comment.find(params[:id])[:count]
+    render json: { like_count: "#{like_count}" }
   end
 end
