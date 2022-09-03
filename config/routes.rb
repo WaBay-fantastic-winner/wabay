@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
@@ -22,4 +21,3 @@ Rails.application.routes.draw do
 end
   end
 end
->>>>>>> origin/feature/liked_comment_reload
