@@ -1,14 +1,14 @@
 import React from 'react'
+import Select from './components/Select'
 import FundraisingItem from "./components/FundraisingItem"
 
 const Recommendation = () => {
     return(
-        <section className="bg-gray-100 pt-8 px-10">
-            <div className="max-w-6xl mx-auto flex items-end mb-4">
-                <h2 className="mx-5 text-3xl font-extrabold">平台推薦</h2>
-                <a className="text-blue-400" href="">More</a>
+        <section className="p-8 mx-auto max-w-6xl">
+            <div className='my-5'>
+                <Select />
             </div>
-            <div className="mx-auto max-w-6xl md:flex ">
+            <div className="grid md:grid-cols-9 gap-5">
                 <FundraisingItem/>
                 <FundraisingItem/>
                 <FundraisingItem/>
