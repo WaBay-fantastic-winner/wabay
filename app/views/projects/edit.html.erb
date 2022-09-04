@@ -26,9 +26,12 @@
     <%= form.label :project_end_time, "提案結束日期 *" %>
     <%= form.date_field :project_end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
   </div>
-  <div>
+  <div class="flex">
     <%= form.label :avatar, "封面照片 *" %>
     <%= form.file_field :avatar%>
+    <% if @project.avatar.attached?%>
+    <div>封面圖片預覽:<%= image_tag @project.avatar.variant(resize: '200x200') %></div>
+    <% end %>
   </div>
   <div>
     <%= form.label :project_description, "提案描述 *" %>
