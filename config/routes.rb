@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
     member do
-      get :follow
+      post :follow
     end
     resource :disclosures, only: [:show]
     resources :comments, shallow: true
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :follows, only: [:index]
+  resources :follows, only: [:index] 
 
 
   resources :transactions, except: [:show, :edit, :update] do

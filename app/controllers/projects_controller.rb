@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'pry'
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :destroy, :update]
   def index
@@ -58,10 +59,10 @@ class ProjectsController < ApplicationController
 
     if find_follow.empty?
       @project.follows.create(:user_id => current_user.id, :follow => "true")
-      to_project_show('已追蹤專案，將會收到新消息')
+      render json: {status: "been_followed"}
     else
       find_follow.first.destroy
-      to_project_show('已取消追蹤專案。')
+      render json: {status: "cancel_follow"}
     end
   end
 
