@@ -25,6 +25,10 @@
     <%= form.date_field :project_end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
   </div>
   <div>
+    <%= form.label :avatar, "封面照片 *" %>
+    <%= form.file_field :avatar%>
+  </div>
+  <div>
     <%= form.label :project_description, "提案描述 *" %>
     <%= form.rich_text_area :project_description , class: "border-2 border-black-300 rounded"%>
   </div>

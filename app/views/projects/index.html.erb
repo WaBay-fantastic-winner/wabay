@@ -6,6 +6,7 @@
       <td class="py-1 px-6"> 提案名稱 </td>
       <td class="py-1 px-6"> 目標金額（新台幣） </td>
       <td class="py-1 px-6"> 計畫發起人 </td>
+      <td class="py-1 px-6"> 提案封面 </td>
     </tr>
   <% else %>
     <div>目前還沒有任何專案</div>
@@ -15,6 +16,7 @@
     <td class="py-1 px-6"><%= link_to project.project_title, project_path(project.id) %></a></td>
     <td class="py-1 px-6"><%= project.project_amount_target %></td>
     <td class="py-1 px-6"><%= project.organizer %></td>
+    <td class="py-1 px-6"><%= image_tag project.avatar if project.avatar.attached?%></td>
   </tr>
   <% end %>
 </table>

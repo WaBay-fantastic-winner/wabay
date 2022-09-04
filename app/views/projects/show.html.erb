@@ -26,6 +26,12 @@
     <td><%= @project.project_end_time %></td>
   </tr>
   <tr>
+    <td>封面圖片:</td>
+    <% if @project.avatar.attached?%>
+    <td><%= image_tag @project.avatar %></td>
+    <% end %>
+  </tr>
+  <tr>
     <td>提案描述:</td>
     <td><%= @project.project_description %></td>
   </tr>
