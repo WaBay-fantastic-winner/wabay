@@ -16,7 +16,7 @@
     <td class="py-1 px-6"><%= link_to project.project_title, project_path(project.id) %></a></td>
     <td class="py-1 px-6"><%= project.project_amount_target %></td>
     <td class="py-1 px-6"><%= project.organizer %></td>
-    <td class="py-1 px-6"><%= image_tag project.avatar if project.avatar.attached?%></td>
+    <td class="py-1 px-6"><%= image_tag project.avatar.variant(resize: '200x200') if project.avatar.attached?%></td>
   </tr>
   <% end %>
 </table>
