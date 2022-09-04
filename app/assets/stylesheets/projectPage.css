@@ -1,6 +1,7 @@
 /* .progressBar{
   width: 300px;
 } */
+/* 百分比進度條 */
 .stepBar{
 	display:  flex;
 	justify-content:  space-between;
@@ -28,6 +29,7 @@
 	height: 4px;
 	z-index: 10;
 }
+/* 點點追蹤條 */
 .step-text  {
   margin-bottom:  10px;
   color:  #60A5FA;
@@ -55,6 +57,7 @@
 	height: 175px;
 	background-image: linear-gradient(0deg,#fff,#fff 20%,hsla(0,0%,100%,0));
 }
+/* 中間導覽列分頁超連結 */
 .introduce-link{
 	color:#60A5FA;
 	text-shadow: 0px 5px 15px#68cdf2;
@@ -63,9 +66,43 @@
 	color:#60A5FA;
 	text-shadow: 0px 5px 15px#68cdf2;
 }
-
-.accordion-items{
+.comments-link{
+	color:#60A5FA;
+	text-shadow: 0px 5px 15px#68cdf2;
+}
+/* 點擊開合問與答 */
+/* .accordion-items{
 	border:1px solid rgb(207, 207, 207);
 	border-radius: 0.5em;
+} */
+.accordion .contentBox{
+	margin:0px 20px 20px;
+	border: 1px solid rgb(218, 209, 209);
+	border-radius: 0.5em;
+	overflow: hidden;
+}
+.accordion .contentBox .contentBtn{
+	position: relative;
+	padding: 10px;
+	cursor: pointer;
+}
+.accordion .contentBox .contentBtn::before{
+	content: "▼";
+	position: absolute;
+	top: 50%;
+	right: 20px;
+	transform: translateY(-50%);
+}
+.accordion .contentBox.active .contentBtn::before{
+	content: "▲";
+}
+.accordion .contentBox .content{
+	background: #fff;
+	display: none;
+	transition: 0.5s;
+	padding: 10px;
 }
 
+.accordion .contentBox.active .content{
+	display: block;
+}

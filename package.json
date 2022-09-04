@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
   "name": "wabay",
   "private": true,
@@ -32,4 +32,4 @@
     "webpack-dev-server": "^3"
   }
 }
->>>>>>> origin/feature/liked_comment_reload
+
