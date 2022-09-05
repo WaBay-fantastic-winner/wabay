@@ -1,12 +1,12 @@
 <main>
     <section class='bg-gray-100 py-10'>
       <div class="max-w-6xl mx-auto">
-        <h1 class="text-center mb-3"><%= @project.project_title %></h1>
+        <h1 class="text-center mb-3 text-2xl font-semibold"><%= @project.project_title %></h1>
         <p class="text-center mb-6">提案者 <a href="" class="text-blue-400 hover:text-blue-300"><%= @project.organizer %></a></p>
       </div>
       <div class='max-w-6xl mx-auto lg:grid px-10 lg:px-5 gap-8 grid-cols-10'>
         <div class='col-span-6'>
-          <img class="w-full rounded-xl" src="https://picsum.photos/seed/picsum/500/250">
+          <img class="w-full h-80 rounded-xl object-cover" src="https://fureverkids.net/wp-content/uploads/2021/04/40150983442_5fc1afe90f_c.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1">
         </div>
         <div class="col-span-4">
           <p class="my-2 text-3xl font-semibold">NT$</p>
@@ -15,7 +15,7 @@
             <div class="progress" data-controller='progressBar'></div>
           </div>
           <P class="my-2">目標金額：<%= @project.project_amount_target %></P>
-          <p class="my-2 font-semibold">剩餘時間：</p>
+          <p class="my-2 font-semibold">剩餘時間：<span id='left-time' data-controller='leftTimer'></span></p>
           <P class="my-2 font-semibold">贊助人數：</P>
           <p class="my-2 font-semibold">專案時間：<%= @project.project_end_time %></p>
           <div class="flex" data-controller="copyURL">

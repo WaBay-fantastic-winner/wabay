@@ -1,11 +1,11 @@
 import React , { useRef } from 'react'
 
 const select = () => {
-  const selectForm = useRef(null)
+  const selectForm = useRef()
   const handleSubmit = () => {selectForm.current.submit()}
   let querystring = (new URL(document.location)).searchParams;
   let params = querystring.get('keyword') || querystring.get('type')
-  console.log(params);
+  // console.log(params);
   // console.log(location.href.searchParams);
   return (
     <div>

@@ -19,10 +19,6 @@ export default tracker = () => {
   
     let completedBullets = bullets.slice(0, bulletClass[status])
     completedBullets.forEach( (ele) => { ele.classList.add('completed') })
-  
-    // bullets.splice(bulletClass[status])
-    // bullets.forEach( (ele) => { ele.classList.add('completed') })
-  
     bar.style.width = barClass[status] + "%"
   })
 }
