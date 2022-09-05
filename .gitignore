@@ -39,5 +39,14 @@
 yarn-debug.log*
 .yarn-integrity
 .env
+<<<<<<< HEAD
 
 local_rails.sh
+=======
+
+/config/master.key
+>>>>>>> d9d23fe (Amazon S3 環境設定)
+
+local_rails.sh
+
+/config/master.key
