@@ -2,7 +2,7 @@ import { Controller } from "stimulus";
 import Rails from "@rails/ujs"
 
 export default class extends Controller {
-  static targets = [ "followButton", "cancellation" ]
+  static targets = [ "followButton" ]
 
   followUp(){
     const projectID = this.element.dataset.projectId
@@ -23,7 +23,7 @@ export default class extends Controller {
     })
   }
 
-  cancelFollow (){
+  cancelFollow(){
     const projectID = this.element.dataset.projectId
 
     Rails.ajax({

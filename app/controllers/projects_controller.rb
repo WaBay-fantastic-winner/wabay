@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
     @donate_items = @project.donate_items.all
 
     # 在 projects 的 show 頁面，針對追蹤按鈕的字樣畫面，設定一開始的狀態為何。
-    if find_follow.empty?
+    if follow_list.empty?
       @follow_state = "追蹤專案"
     else
       @follow_state = "取消追蹤"
@@ -64,12 +64,10 @@ class ProjectsController < ApplicationController
   def follow
     find_project
     
-    if find_follow.empty?
-      @project.follows.create(:user_id => current_user.id, :follow => "true")
-      render json: {status: "been_followed"}
+    if follow_list.empty?
+      add_follow
     else
-      find_follow.first.destroy
-      render json: {status: "cancel_follow"}
+      cancel_follow
     end
   end
 
@@ -84,8 +82,18 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
   end
 
-  def find_follow
-    Follow.where(user_id: current_user.id, followable_id: params[:id], followable_type: "Project" )
+  def follow_list
+    Follow.current_user_follow_this_project(current_user.id, params)
+  end
+
+  def add_follow
+    @project.follows.create(:user_id => current_user.id, :follow => "true")
+    render json: {status: "been_followed"}
+  end
+
+  def cancel_follow
+    follow_list.first.destroy
+    render json: {status: "cancel_follow"}
   end
 
   def to_project_show(notice)
