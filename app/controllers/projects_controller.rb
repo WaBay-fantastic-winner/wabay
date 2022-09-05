@@ -32,6 +32,13 @@ class ProjectsController < ApplicationController
     # 在 projects 的 show 頁面，有 donate_items 的 index
     @donate_items = @project.donate_items.all
 
+    # 在 projects 的 show 頁面，針對追蹤按鈕的字樣畫面，設定一開始的狀態為何。
+    if find_follow.empty?
+      @follow_state = "追蹤專案"
+    else
+      @follow_state = "取消追蹤"
+    end
+
     project_current_total(params[:id])
     percentage_of_currency
   end
@@ -56,7 +63,7 @@ class ProjectsController < ApplicationController
 
   def follow
     find_project
-
+    
     if find_follow.empty?
       @project.follows.create(:user_id => current_user.id, :follow => "true")
       render json: {status: "been_followed"}
