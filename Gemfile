@@ -78,3 +78,5 @@ gem 'net-pop', require: false
 gem 'net-smtp', require: false
 
 gem 'rmagick'
+
+gem "aws-sdk-s3", require: false

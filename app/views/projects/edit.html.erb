@@ -28,7 +28,7 @@
     <%= form.label :avatar, "封面照片 *" %>
     <%= form.file_field :avatar%>
     <% if @project.avatar.attached?%>
-    <div>封面圖片預覽:<%= image_tag @project.avatar.variant(resize: '200x200') %></div>
+    <div>封面圖片預覽:<%= image_tag @project.avatar.variant(resize: '300x200') %></div>
     <% end %>
   </div>
   <div>
