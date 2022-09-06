@@ -7,5 +7,11 @@ Rails.application.routes.draw do
     resources :donate_items
     resources :comments, shallow: true
   end
+
+  resources :transactions, except: [:show, :edit, :update] do
+    collection do
+      post :paid
+    end
+  end
 end
 
