@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class CommentsController < ApplicationController
-  before_action :authenticate_user! # 新增、刪除留言都要先有登入
+  before_action :authenticate_user!, except: [:index] # 新增、刪除留言都要先有登入
   before_action :find_project, only: [:create, :index]
   before_action :find_comment, only: [:destroy]
   def create
@@ -22,7 +22,9 @@ class CommentsController < ApplicationController
 
   def index
     @comment = Comment.new
-    @comments = @project.comments.order(id: :desc)
+    # render html: params
+    @comments = Comment.where("project_id": params[:project_id]).order(id: :desc)
+    # @comments = @project.comments.order(id: :desc)
   end
 
   private
@@ -41,3 +43,8 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 end
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/development
+

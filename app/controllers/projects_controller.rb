@@ -1,9 +1,12 @@
 # frozen_string_literal: true
-
 class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :destroy, :update]
   def index
     @projects = Project.all
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @projects}
+    end
   end
 
   def new
@@ -15,9 +18,9 @@ class ProjectsController < ApplicationController
 
   def destroy
     if @project.destroy
-        redirect_to '/projects', notice: '提案刪除成功 !!'
+      redirect_to '/projects', notice: '提案刪除成功 !!'
     else
-        redirect_to '/projects', notice: '不能刪除 !!'
+      redirect_to '/projects', notice: '不能刪除 !!'
     end
   end
 

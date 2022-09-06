@@ -1,6 +1,6 @@
 require "test_helper"
 
-class DonateItemControllerTest < ActionDispatch::IntegrationTest
+class DisclosuresControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

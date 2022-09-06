@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_31_155221) do
+ActiveRecord::Schema.define(version: 2022_09_01_033013) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_08_31_155221) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "count", default: 0
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -74,13 +75,23 @@ ActiveRecord::Schema.define(version: 2022_08_31_155221) do
     t.index ["project_id"], name: "index_donate_items_on_project_id"
   end
 
+  create_table "like_comments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "comment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "count", default: 0
+    t.index ["comment_id"], name: "index_like_comments_on_comment_id"
+    t.index ["user_id"], name: "index_like_comments_on_user_id"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "organizer"
     t.string "email"
     t.string "phone"
     t.string "project_title"
     t.integer "project_amount_target"
-    t.string "project_end_time"
+    t.datetime "project_end_time"
     t.string "project_description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -119,6 +130,8 @@ ActiveRecord::Schema.define(version: 2022_08_31_155221) do
   add_foreign_key "comments", "projects"
   add_foreign_key "comments", "users"
   add_foreign_key "donate_items", "projects"
+  add_foreign_key "like_comments", "comments"
+  add_foreign_key "like_comments", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "transactions", "donate_items"
   add_foreign_key "transactions", "users"
