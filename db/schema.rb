@@ -63,8 +63,8 @@ ActiveRecord::Schema.define(version: 2022_09_01_033013) do
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
-
-  create_table "donate_items", force: :cascade do |t|
+  
+   create_table "donate_items", force: :cascade do |t|
     t.string "title"
     t.text "content"
     t.integer "price"
