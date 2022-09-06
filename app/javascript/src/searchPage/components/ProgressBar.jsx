@@ -1,17 +1,16 @@
-// import { Progress } from 'antd';
-import React , { useState } from 'react';
+import React , { useState, useEffect } from 'react';
 import './ProgressBar.css'
 
 const Progress = ({done}) => {
 	const [style, setStyle] = useState({});
 	
-	setTimeout(() => {
+	useEffect(() => {
 		const newStyle = {
 			opacity: 1,
 			width: `${done >= 100 ? 100 : done}%`
 		}	
 		setStyle(newStyle);
-	}, 200);
+	},[]);
 	
 	return (
 		<div className="progress">
@@ -22,10 +21,4 @@ const Progress = ({done}) => {
 	)
 }
 
-const ProgressBar = () => {
-    return (
-        <Progress done="90"/>
-    )
-};
-
-export default ProgressBar;
+export default Progress;
