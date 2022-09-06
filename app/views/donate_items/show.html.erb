@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <section>
   <div>
     <h1><%= @donate_item.title %></h1>
@@ -18,3 +19,13 @@
 
 <%# 頁面參照：https://wabay.tw/projects/unsilencedtw/rewards/21155?locale=zh-TW %>
 
+<%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
+    <%= form.hidden_field :title, value: @donate_item.title %>
+    <%= form.hidden_field :price, value: @donate_item.price %>
+    <%= form.hidden_field :project_id, value: @donate_item.project_id %>
+  <%= form.submit '贊助此項目' %>
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to '回到專案', project_path(id: params[:project_id]) %> 

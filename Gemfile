@@ -80,3 +80,6 @@ gem 'net-smtp', require: false
 gem 'rmagick'
 
 gem "aws-sdk-s3", require: false
+
+gem 'aasm', '~> 5.3'
+gem 'paranoia', '~> 2.6'
