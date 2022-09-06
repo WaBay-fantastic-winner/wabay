@@ -13,7 +13,7 @@ class TransactionsController < ApplicationController
     @transaction.user_id = current_user.id
     
     ## 給 donate_item_id
-    current_project = current_user.projects.find(params["donate_item"]["project_id"])
+    current_project = Project.find(params["donate_item"]["project_id"])
     current_donate_item = DonateItem.find_by!(project_id: current_project, title: params["donate_item"]["title"])
     @transaction.donate_item_id = current_donate_item.id
     
