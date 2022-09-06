@@ -1,12 +1,9 @@
 import React , { useRef } from 'react'
 
-const select = () => {
+const DropDownList = () => {
   const selectForm = useRef()
   const handleSubmit = () => {selectForm.current.submit()}
-  let querystring = (new URL(document.location)).searchParams;
-  let params = querystring.get('keyword') || querystring.get('type')
-  // console.log(params);
-  // console.log(location.href.searchParams);
+  
   return (
     <div>
       <form action="/projects" method="get" ref={selectForm} onChange={handleSubmit} >
@@ -21,4 +18,4 @@ const select = () => {
   )
 }
 
-export default select
+export default DropDownList

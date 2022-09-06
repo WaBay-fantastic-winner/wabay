@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Feature from '../src/homepageMain/main/Feature'
+import Feature from '../src/homepage/Feature'
 
 
 document.addEventListener('DOMContentLoaded', () => {

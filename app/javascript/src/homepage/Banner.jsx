@@ -48,7 +48,6 @@ const Banner = () => {
             </div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                // {device === "PC" ? slidesPerView={1.5} : slidesPerView={"auto"}}
                 slidesPerView={device === "PC" ? 1.5 : "auto"}
                 navigation
                 loop={true}

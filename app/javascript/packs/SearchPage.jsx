@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import SearchPage from '../src/searchPage/searchPage'
+import SearchPage from '../src/searchPage/SearchPage'
 
 
 document.addEventListener('DOMContentLoaded', () => {
