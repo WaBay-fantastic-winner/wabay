@@ -4,9 +4,6 @@
 .new-form-list :last-child{
   grid-column: span 8 / span 8
 }
-/* .field_with_errors {
-  display: inline-block;
-} */
 .field_with_errors input {
   border-color: red;
   border-width: 1px;

@@ -26,7 +26,7 @@ const Feature = () => {
     ] 
 
     return (
-        <section className='py-10'>
+        <>
             <div className='max-w-6xl mx-auto'>
                 <div className='mb-4'>
                     <h2 className='text-center font-semibold text-2xl my-3'>給予贊助者的信任承諾</h2>
@@ -40,7 +40,7 @@ const Feature = () => {
                     </ul>
                 </div>
             </div>
-        </section>
+        </>
     )
 }
 

@@ -29,7 +29,7 @@ body{
     transition: width 0.4s ease;
 }
 footer{
-    background:radial-gradient(350px at 5% 105%,rgb(153, 226, 255),white)
+    background:radial-gradient(350px at 5% 105%,rgb(207, 153, 255),white)
 }
 .footer-items ul li{
     margin: 10px 0;

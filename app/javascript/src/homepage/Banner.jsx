@@ -20,10 +20,12 @@ const ImgUrl = () => {
     return `https://picsum.photos/id/${id}/1000/500`;
 }
 
+
 const CreateSlide = () => {
+    const device = UseRWD();
     return (
-        <SwiperSlide className='flex justify-center rounded-3xl items-center'>
-            <a href=""><img className="rounded-3xl" src={ImgUrl()} alt="" /></a>
+        <SwiperSlide className='flex justify-center items-center'>
+            <a href=""><img className={`${ device === "PC" && 'rounded-3xl'}`} src={ImgUrl()} alt="" /></a>
         </SwiperSlide>
     );
 }
@@ -48,12 +50,12 @@ const Banner = () => {
             </div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                slidesPerView={device === "PC" ? 1.5 : "auto"}
+                slidesPerView={device === "PC" ? 1.5 : 1 }
                 navigation
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{ delay: 5000 }}
+                autoplay={{ delay: 4000 }}
                 pagination={{ clickable: true }}  
             >
                 {CreateSlide()}
