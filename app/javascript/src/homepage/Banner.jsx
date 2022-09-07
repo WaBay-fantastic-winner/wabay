@@ -53,7 +53,7 @@ const Banner = () => {
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{ delay: 3000 }}
+                autoplay={{ delay: 5000 }}
                 pagination={{ clickable: true }}  
             >
                 {CreateSlide()}

@@ -1,12 +1,7 @@
-/* .progressBar{
-  width: 300px;
-} */
-/* 百分比進度條 */
 .stepBar{
 	display:  flex;
 	justify-content:  space-between;
 	align-items:  flex-end;
-	/* width:  250px; */
 	margin:  10px  auto;
 	position: relative;
 }
@@ -19,20 +14,20 @@
 	transform: translateY(-50%);
 	height: 4px;
 	width: 100%;
+	z-index: -1;
 }
 .bar{
-	background: #60A5FA;
+	background:#d486f6;
 	position: absolute;
 	top:50%;
 	left: 0px;
 	transform: translateY(-50%);
 	height: 4px;
-	z-index: 10;
+	z-index: 0;
 }
-/* 點點追蹤條 */
 .step-text  {
   margin-bottom:  10px;
-  color:  #60A5FA;
+  color:  #d486f6;
 }
 .bullet {
 	border: 1px solid grey;
@@ -45,9 +40,9 @@
   color: white;
 }
 .completed {
-	background-color:	#60A5FA;
-	border: 1px solid 	#60A5FA;
-  box-shadow: 0px 0px 10px 5px#85aeec
+	background-color:#bd4ef4;
+	border: 1px solid#be4ef4;
+  box-shadow: 0px 0px 15px 10px #c56deb
 }	
 .translucent-cover{
 	position: absolute;
@@ -59,16 +54,16 @@
 }
 /* 中間導覽列分頁超連結 */
 .introduce-link{
-	color:#60A5FA;
-	text-shadow: 0px 5px 15px#68cdf2;
+	color:#bd4ef4;
+	text-shadow: 0px 5px 15px#bc8eea;
 }
 .imformation-link{
-	color:#60A5FA;
-	text-shadow: 0px 5px 15px#68cdf2;
+	color:#bd4ef4;
+	text-shadow: 0px 5px 15px#bc8eea;
 }
 .comments-link{
-	color:#60A5FA;
-	text-shadow: 0px 5px 15px#68cdf2;
+	color:#bd4ef4;
+	text-shadow: 0px 5px 15px#bc8eea;
 }
 /* 點擊開合問與答 */
 /* .accordion-items{

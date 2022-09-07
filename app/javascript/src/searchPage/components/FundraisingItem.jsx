@@ -6,8 +6,28 @@ import axios from '../../../lib/http/client'
 const FundraisingItem = () => {
     let [projectItems, setProjectItems] = useState([])
 
+    // useEffect(() => {
+    //     let fetchProject = () => {
+    //         axios.get('/projects.json')
+    //             .then(resp => {
+    //                 let querystring = (new URL(document.location)).searchParams;
+    //                 let params = querystring.get('keyword') || querystring.get('type')
+    //                 if (params){
+    //                     let filterResult = resp.data.filter((item) => item.project_title.indexOf(params) != -1 )
+    //                     setProjectItems(filterResult)
+    //                 }else{
+    //                     setProjectItems(resp.data)
+    //                 }
+    //             })
+    //             .catch( err => console.log(err))
+    //             }
+    //     fetchProject()
+    // },[])
+
     useEffect(() => {
         let fetchProject = () => {
+            const href = location.href
+            console.log(href);
             axios.get('/projects.json')
                 .then(resp => {
                     let querystring = (new URL(document.location)).searchParams;
