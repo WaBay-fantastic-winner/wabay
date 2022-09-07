@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = [ "unrollBtn", "projectContent"];
+  static targets = ["unrollBtn", "projectContent"];
 
   unroll () {
     let cover = document.querySelector('.translucent-cover');

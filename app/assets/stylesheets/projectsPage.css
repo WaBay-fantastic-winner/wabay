@@ -42,7 +42,7 @@
 .completed {
 	background-color:#bd4ef4;
 	border: 1px solid#be4ef4;
-  box-shadow: 0px 0px 15px 10px #c56deb
+  box-shadow: 0px 0px 15px 8px #c56deb
 }	
 .translucent-cover{
 	position: absolute;
@@ -55,7 +55,7 @@
 /* 中間導覽列分頁超連結 */
 .introduce-link{
 	color:#bd4ef4;
-	text-shadow: 0px 5px 15px#bc8eea;
+	text-shadow: 0px 5px 15px#b578f3;
 }
 .imformation-link{
 	color:#bd4ef4;
@@ -97,7 +97,9 @@
 	transition: 0.5s;
 	padding: 10px;
 }
-
 .accordion .contentBox.active .content{
 	display: block;
+}
+.trix-content{
+	margin-bottom: 10px;
 }
