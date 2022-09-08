@@ -13,6 +13,9 @@ class TransactionsController < ApplicationController
                                    price: price)
 
     if @transaction.save
+      project_current_total(params["donate_item"]["project_id"])
+      Project.find(params["donate_item"]["project_id"]).update(current_total: @sum)
+      # debugger
       # for ecpay action
       produce_ecpay_basic_params
       # 交易訂單成功寫入後，呼叫 Service 將完整參數包好。

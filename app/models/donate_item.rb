@@ -1,7 +1,7 @@
 class DonateItem < ApplicationRecord
   belongs_to :project
 
-  has_many :transactions
+  has_many :transactions, dependent: :delete_all
   has_many :users, through: :transactions
 
   # action_text

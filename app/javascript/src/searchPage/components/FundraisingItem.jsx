@@ -5,7 +5,7 @@ import axios from '../../../lib/http/client'
 
 const FundraisingItem = () => {
     let [projectItems, setProjectItems] = useState([])
-
+    let [progress , setProgress] = useState('0')
     useEffect(() => {
         let fetchProject = () => {
             axios.get('/projects.json')
@@ -22,6 +22,15 @@ const FundraisingItem = () => {
                 .catch( err => console.log(err))
                 }
         fetchProject()
+    },[])
+
+    useEffect(() => {
+        let fetchProgress = () => {
+            axios.get('/projects/percentage.json')
+                .then(resp => console.log(resp))
+                .catch(err => console.log(err))
+        }
+        fetchProgress()
     },[])
 
     console.log(projectItems);
@@ -43,7 +52,7 @@ const FundraisingItem = () => {
                     <div>
                         <span className='my-1'>NT $ 10000</span>
                     </div>
-                    <ProgressBar done="80"/>
+                    <ProgressBar done={progress}/>
                     <div>
                         <DaysLeft endTime={item.project_end_time} />
                     </div>
