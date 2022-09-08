@@ -172,4 +172,5 @@ gem "aws-sdk-s3", require: false
 gem "aws-sdk-s3", require: false
 
 gem 'aasm', '~> 5.3'
+>>>>>>> d6175ba (WIP)
 gem 'paranoia', '~> 2.6'
