@@ -2,7 +2,7 @@
 
 class Project < ApplicationRecord
   belongs_to :user
-  has_many :donate_items
+  has_many :donate_items, dependent: :destroy
   has_rich_text :project_description
   has_many :comments, dependent: :destroy
   
