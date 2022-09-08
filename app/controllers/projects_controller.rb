@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project.destroy!
+    if @project.really_destroy!
       redirect_to '/projects', notice: '提案刪除成功 !!'
     else
       redirect_to '/projects', notice: '不能刪除 !!'
