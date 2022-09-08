@@ -53,15 +53,11 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def percentage
-    @projects
-  end
-
   private
 
   def clean_params
     # 資料清洗
-    params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target, :project_end_time, :project_description)
+    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description)
   end
 
   def find_project
@@ -69,6 +65,6 @@ class ProjectsController < ApplicationController
   end
 
   def percentage_of_currency
-    @percentage = ((@sum.to_f / @project.project_amount_target).round(2) * 100).to_i
+    @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
   end
 end

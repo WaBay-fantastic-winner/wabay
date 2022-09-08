@@ -4,14 +4,16 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
     resource :disclosures, only: [:show]
-    collection do
-      get :percentage
+    resources :comments, shallow: true
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resource :project, only: [] do
+        get :progress_bar
+      end
     end
 
-    resources :comments, shallow: true
-    
-  end
-  namespace :api do
     resources :comments, only: [] do
       member do
         post :like

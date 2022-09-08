@@ -17,8 +17,8 @@
   <% end %>
   <% @projects.each do |project| %>
   <tr>
-    <td class="py-1 px-6"><%= link_to project.project_title, project_path(project.id) %></a></td>
-    <td class="py-1 px-6"><%= project.project_amount_target %></td>
+    <td class="py-1 px-6"><%= link_to project.title, project_path(project.id) %></a></td>
+    <td class="py-1 px-6"><%= project.amount_target %></td>
     <td class="py-1 px-6"><%= project.organizer %></td>
   </tr>
   <% end %>
