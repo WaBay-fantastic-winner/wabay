@@ -11,7 +11,6 @@
       <span class='mb-3 text-2xl tracking-wider font-semibold inline-block'>NT$ <%= donate_item.price %></span>
       <%= donate_item.content %>
     </div>
-
     <%= link_to '贊助', project_donate_item_path(project_id: params[:id], id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
   </div>
 <% end %>

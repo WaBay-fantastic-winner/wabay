@@ -1,6 +1,6 @@
 import { Controller } from "stimulus"
 
-export default class extends Controller {
+export default class extends Controller {z
   connect() {
     function leftTimer(year, month, day, hour, minute, second) {
       var leftTime = (new Date(year, month - 1, day, hour, minute, second)) - (new Date());
