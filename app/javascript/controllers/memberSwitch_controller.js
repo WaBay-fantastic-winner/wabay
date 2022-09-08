@@ -1,8 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
+  static targets = ['button', 'memberCenter']
   switch() {
-    this.element.classList.toggle('border-gray-300')
-    document.getElementById('memberCenter').classList.toggle('hidden')
+    this.buttonTarget.classList.toggle('border-gray-300')
+    this.memberCenterTarget.classList.toggle('hidden')
     }
 }
