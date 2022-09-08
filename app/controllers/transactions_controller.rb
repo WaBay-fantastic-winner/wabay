@@ -7,7 +7,8 @@ class TransactionsController < ApplicationController
   
   def create
     # 建立交易紀錄（訂單）
-    @transaction = Transaction.new(user_id: current_user.id, 
+    @transaction = Transaction.new(user_id: current_user.id,
+                                   project_id: params[:donate_item][:project_id], 
                                    donate_item_id: donate_item_id, 
                                    price: price)
 
