@@ -28,7 +28,7 @@ const FundraisingItem = () => {
         let fetchProject = () => {
             const href = location.href
             console.log(href);
-            axios.get('/projects.json')
+            axios.get(href)
                 .then(resp => {
                     let querystring = (new URL(document.location)).searchParams;
                     let params = querystring.get('keyword') || querystring.get('type')
