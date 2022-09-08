@@ -50,6 +50,7 @@ class ProjectsController < ApplicationController
     end
   end
 
+
   private
 
   def clean_params
