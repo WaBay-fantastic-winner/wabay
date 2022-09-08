@@ -30,6 +30,9 @@ class ProjectsController < ApplicationController
     
     # 在 projects 的 show 頁面，有 donate_items 的 index
     @donate_items = @project.donate_items.all
+
+    project_current_total
+    percentage_of_currency
   end
 
   def update
@@ -50,6 +53,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def percentage
+    percentage_of_currency
+    render json: {"percentage": @percentage}
+  end
+
   private
 
   def clean_params
@@ -59,5 +67,17 @@ class ProjectsController < ApplicationController
 
   def find_project
     @project = Project.find_by(id: params[:id])
+  end
+
+  def project_current_total
+    @sum = 0
+    Transaction.where(project_id: params[:id]).each do |transaction|
+      @sum += transaction.price
+    end
+    @sum
+  end
+
+  def percentage_of_currency
+    @percentage = ((@sum.to_f / @project.project_amount_target).round(2) * 100).to_i
   end
 end
