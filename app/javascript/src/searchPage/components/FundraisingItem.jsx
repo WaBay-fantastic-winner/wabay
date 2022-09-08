@@ -8,24 +8,25 @@ const FundraisingItem = () => {
 
     useEffect(() => {
         let fetchProject = () => {
-            axios.get('/projects.json')
+            let querystring = (new URL(document.location)).searchParams;
+            let keyword = querystring.get('keyword') 
+            let type = querystring.get('type')
+            axios.get('/api/search/projects', {
+                params: {
+                    keyword: keyword,
+                    type : type
+                }
+            })
                 .then(resp => {
-                    let querystring = (new URL(document.location)).searchParams;
-                    let params = querystring.get('keyword') || querystring.get('type')
-                    if (params){
-                        let filterResult = resp.data.filter((item) => item.project_title.indexOf(params) != -1 )
-                        setProjectItems(filterResult)
-                    }else{
-                        setProjectItems(resp.data)
-                    }
+                    setProjectItems(resp.data)
                 })
                 .catch( err => console.log(err))
-                }
-        fetchProject()
+                };
+        fetchProject();
     },[])
 
-    console.log(projectItems);
-    console.log(new Date()); 
+    // console.log(projectItems);
+    // console.log(new Date()); 
 
     return (
         <> 

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
     resource :disclosures, only: [:show]
+    
     resources :comments, shallow: true
   end
   
@@ -12,6 +13,11 @@ Rails.application.routes.draw do
       member do
         post :like
       end
+    end
+    resource :search, only: [] do 
+      collection do
+        get :projects
+      end 
     end
   end
 
