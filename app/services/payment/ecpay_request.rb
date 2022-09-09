@@ -22,7 +22,7 @@ module Payment
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "https://f3ec-103-3-192-33.jp.ngrok.io/transactions/paid",
+        "OrderResultURL": "http://localhost:3000/transactions/paid",
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end

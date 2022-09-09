@@ -11,7 +11,6 @@ const Recommendation = () => {
             </div>
             <div className="grid md:grid-cols-9 gap-5">
                 <FundraisingItem/>
-                <FundraisingItem/>
             </div>
         </section>
     )

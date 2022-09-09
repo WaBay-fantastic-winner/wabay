@@ -1,5 +1,4 @@
 <main class="bg-gray-50" >
-    <%# 輪播片 %>
     <section id="banner">
         <%= javascript_pack_tag 'Banner' %>
     </section>
@@ -65,7 +64,6 @@
             </div>
         </div>
     </section>
-    <%# 特色 %>
     <section id='feature' class="py-10">
         <%= javascript_pack_tag 'Feature' %>
     </section>
@@ -134,10 +132,6 @@
     <%# 提案章節 %>
     <section class='propose flex flex-col items-center py-7'>
         <p class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</p>
-        <a class='bg-blue-400 px-14 py-3 my-6 rounded-lg text-white hover:bg-blue-300' href="">發起提案</a> 
+        <%= link_to "提案", new_project_path, class:"bg-blue-400 px-14 py-3 my-6 rounded-lg text-white hover:bg-blue-300"%>
     </section>
 </main>
-
-
-<%= link_to "專案列表", projects_path %>
-<%# 新增這個link主要是先方便到專案而已。 %>

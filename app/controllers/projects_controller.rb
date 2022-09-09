@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
     @projects = Project.all
     respond_to do |format|
       format.html { render :index }
-      format.json { render json: @projects}
+      format.json { render json: @projects }
     end
   end
 
@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project.destroy
+    if @project.really_destroy!
       redirect_to '/projects', notice: '提案刪除成功 !!'
     else
       redirect_to '/projects', notice: '不能刪除 !!'
@@ -30,6 +30,9 @@ class ProjectsController < ApplicationController
     
     # 在 projects 的 show 頁面，有 donate_items 的 index
     @donate_items = @project.donate_items.all
+
+    project_current_total(params[:id])
+    percentage_of_currency
   end
 
   def update
@@ -54,10 +57,14 @@ class ProjectsController < ApplicationController
 
   def clean_params
     # 資料清洗
-    params.require(:project).permit(:organizer, :email, :phone, :project_title, :project_amount_target, :project_end_time, :project_description)
+    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description)
   end
 
   def find_project
-    @project = Project.find_by(id: params[:id])
+    @project = Project.find(params[:id])
+  end
+
+  def percentage_of_currency
+    @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
   end
 end
