@@ -10,10 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_05_103903) do
+ActiveRecord::Schema.define(version: 2022_09_08_132758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "a_column_to_follows", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -72,7 +77,18 @@ ActiveRecord::Schema.define(version: 2022_09_05_103903) do
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_donate_items_on_deleted_at"
     t.index ["project_id"], name: "index_donate_items_on_project_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.boolean "follow"
+    t.integer "followable_id"
+    t.string "followable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "like_comments", force: :cascade do |t|
@@ -85,16 +101,32 @@ ActiveRecord::Schema.define(version: 2022_09_05_103903) do
     t.index ["user_id"], name: "index_like_comments_on_user_id"
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.jsonb "params"
+    t.datetime "read_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "organizer"
     t.string "email"
     t.string "phone"
-    t.string "project_title"
-    t.integer "project_amount_target"
-    t.datetime "project_end_time"
+    t.string "title"
+    t.integer "amount_target"
+    t.datetime "end_time"
+    t.string "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "current_total", default: 0
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_projects_on_deleted_at"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -107,8 +139,10 @@ ActiveRecord::Schema.define(version: 2022_09_05_103903) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
+    t.bigint "project_id"
     t.index ["deleted_at"], name: "index_transactions_on_deleted_at"
     t.index ["donate_item_id"], name: "index_transactions_on_donate_item_id"
+    t.index ["project_id"], name: "index_transactions_on_project_id"
     t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
