@@ -1,19 +1,19 @@
 <main>
-    <section class='bg-gray-100 py-10'>
+    <section class='py-10 bg-gray-100'>
       <div class="max-w-6xl mx-auto">
-        <h1 class="text-center mb-3 text-2xl font-semibold"><%= @project.title %></h1>
-        <p class="text-center mb-6">提案者 <a href="" class="text-purple-400 hover:text-purple-300"><%= @project.organizer %></a></p>
+        <h1 class="mb-3 text-2xl font-semibold text-center"><%= @project.title %></h1>
+        <p class="mb-6 text-center">提案者 <a href="" class="text-purple-400 hover:text-purple-300"><%= @project.organizer %></a></p>
       </div>
-      <div class='max-w-6xl mx-auto lg:grid px-10 lg:px-5 gap-8 grid-cols-10'>
+      <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
-          <img class="w-full h-80 rounded-xl object-cover" src="https://fureverkids.net/wp-content/uploads/2021/04/40150983442_5fc1afe90f_c.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1">
+          <img class="object-cover w-full h-80 rounded-xl" src="https://fureverkids.net/wp-content/uploads/2021/04/40150983442_5fc1afe90f_c.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1">
           <% if @project.avatar.attached? %>
             <P class="my-2">精選封面：<%= image_tag @project.avatar.variant(resize_to_limit: [200, 200]) %></P>
           <% end %>
         </div>
         <div class="col-span-4">
           <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
-          <div class="progress-container h-4 rounded-md relative my-4">
+          <div class="relative h-4 my-4 rounded-md progress-container">
             <span id="progressPercent">0%</span>
             <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
           </div>
@@ -25,38 +25,38 @@
           <P class="my-2 font-semibold">贊助人數：</P>
           <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
           <div class="flex" data-controller="copyURL">
-            <input data-copyURL-target='URL' type="text" class='p-2 text-gray-500 bg-purple-100 rounded-lg flex-1 border border-purple-300 outline-none'>
-            <button id='copybtn' class="bg-purple-400 rounded-lg text-white px-3" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
+            <input data-copyURL-target='URL' type="text" class='flex-1 p-2 text-gray-500 bg-purple-100 border border-purple-300 rounded-lg outline-none'>
+            <button id='copybtn' class="px-3 text-white bg-purple-400 rounded-lg" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
           </div>
           <div class="grid grid-cols-2 gap-4 mt-4">
-            <button class="col-span-1 border border-gray-400 rounded-lg py-2 hover:bg-purple-400 hover:text-white text-gray-400 duration-200"
+            <button class="col-span-1 py-2 text-gray-400 duration-200 border border-gray-400 rounded-lg hover:bg-purple-400 hover:text-white"
             data-controller='follow' 
             data-action='click->follow#followUp' 
             data-follow-target='followButton'
             data-project-id='<%= @project.id %>'>
-              <i class="fa-solid fa-sheet-plastic mr-1"><%= @follow_state %></i>
+              <i class="mr-1 fa-solid fa-sheet-plastic"><%= @follow_state %></i>
             </button>
-            <a class="col-span-1 bg-purple-400 hover:bg-purple-300 text-white rounded-lg py-2 text-center" href="">贊助專案</a>
+            <a class="col-span-1 py-2 text-center text-white bg-purple-400 rounded-lg hover:bg-purple-300" href="">贊助專案</a>
           </div>
         </div>
       </div>
     </section>
     <%# tracker %>
-    <div class="lg:flex justify-between px-12 border-t-2 border-b-2 border-double border-gray-300 sticky z-10 top-0 bg-white">
-      <div class="h-16 flex items-center font-semibold text-gray-400 border-b border-gray-300 border-solid lg:border-0 py-3">
+    <div class="sticky top-0 z-10 justify-between px-12 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
+      <div class="flex items-center h-16 py-3 font-semibold text-gray-400 border-b border-gray-300 border-solid lg:border-0">
       <%= link_to '專案內容', project_path(@project), class:"introduce-link mx-5"%>
       <%= link_to '常見問題', project_questions_path(@project), class:"mx-5"%>
       <%= link_to '留言', project_comments_path(@project), class:"mx-5"%>
       </div>
-      <div class="progressBar w-full lg:w-80 pt-3 lg:p-0" data-controller="trackerBar">
-        <div class="stepBar w-full lg:w-64 ">
+      <div class="w-full pt-3 progressBar lg:w-80 lg:p-0" data-controller="trackerBar">
+        <div class="w-full stepBar lg:w-64 ">
           <div class="bar "></div>
           <div class="bullet"></div>
           <div class="bullet"></div>
           <div class="bullet"></div>
           <div class="bullet"></div>
         </div>
-        <div class="flex text-xs justify-between lg:justify-around -mx-4  lg:mx-0">
+        <div class="flex justify-between -mx-4 text-xs lg:justify-around lg:mx-0">
           <p class="step-text">企劃概念</p>
           <p class="step-text">樣品狀態</p>
           <p class="step-text">生產階段</p>
@@ -65,22 +65,22 @@
       </div>
     </div>
     <section class="py-8 ">
-      <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12" data-controller="projectUnroll">
-        <div class='project-content col-span-7 h-72 lg:h-auto overflow-hidden relative' data-projectUnroll-target="projectContent" >
+      <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid" data-controller="projectUnroll">
+        <div class='relative col-span-7 overflow-hidden project-content h-72 lg:h-auto' data-projectUnroll-target="projectContent" >
           <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
           <%= @project.description %>
         </div>
-        <div class="unrollBtn lg:hidden h-12" data-projectUnroll-target="unrollBtn">
+        <div class="h-12 unrollBtn lg:hidden" data-projectUnroll-target="unrollBtn">
           <button class="block w-full h-full text-centertext-purple-300" data-action="click->projectUnroll#unroll">點擊查看詳細內容</button>
         </div>
         <%# 側邊滾輪募資金額選項 %>
         <div class="col-span-3">
-          <div class='lg:sticky top-20 lg:overflow-y-auto overflow-x-hidden lg:h-screen p-3'>
-            <div class='p-4 mb-3 border border-gray-300 border-solid w-full rounded-xl'>
+          <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
+            <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
               <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
               <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='text-purple-400 hover:text-purple-300'>查看更多</a></p>
-              <a href='' class="hover:bg-gray-100 text-2xl px-2 py-1 duration-500"><i class="fa-brands fa-square-facebook"></i></a>
-              <a href='' class="hover:bg-gray-100 text-2xl px-2 py-1 duration-500"><i class="fa-brands fa-instagram"></i></a>
+              <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div>
               <%= render partial: 'donate_items/donate_item', donate_items: @donate_items %>
