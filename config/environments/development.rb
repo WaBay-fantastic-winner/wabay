@@ -46,7 +46,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
 
   
-  config.hosts << "f3ec-103-3-192-33.jp.ngrok.io"
+  config.hosts << "87b7-103-3-192-33.jp.ngrok.io"
 
 
 

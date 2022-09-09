@@ -19,6 +19,6 @@ class User < ApplicationRecord
 
             
   def liked?(comment)
-   liked_comments.include?(comment)
+    liked_comments.include?(comment)
   end
 end
