@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
-  
   root to: 'home#index'
-  
   resources :projects do
     resources :donate_items
+    resource :disclosures, only: [:show]
     resources :comments, shallow: true
   end
 
@@ -22,4 +21,3 @@ Rails.application.routes.draw do
     end
   end
 end
-

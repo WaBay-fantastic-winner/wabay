@@ -1,5 +1,3 @@
-<h2> 贊助方案 </h2>
-
 <% @donate_items.each do |donate_item| %>
   <div>
     <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
