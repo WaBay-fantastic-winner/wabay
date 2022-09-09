@@ -35,14 +35,14 @@
         <button class='donate-button' data-action='click->donate#thousand'>1000</button>
         <button class='donate-button' data-action='click->donate#hundredsDigit' >補整數</button>
       </div>
-      <div class='flex justify-end my-6 mx-2 text-3xl'>
-        <div>總金額〈含商品價錢與額外贊助價錢〉：<div>
+      <h2 class='mt-3 font-semibold text-gray-400'>總金額〈含商品總價與額外贊助〉：</h2>
+      <div class='flex justify-end  mx-2 text-3xl'>
         <em><span>NT$ </span><span data-donate-target='sum'></span></em>
       </div>
       <div>
-      <input type='submit' class='bg-purple-400 hover:bg-purple-300 w-full rounded-3xl px-6 py-2 text-white' value='直接結帳'>
+        <input type='submit' class='bg-purple-400 hover:bg-purple-300 w-full rounded-3xl px-6 py-2 text-white' value='直接結帳'>
       </div>
-    </div>
+    </ㄘ>
   </div>  
   <%= link_to '回到專案', project_path(id: params[:project_id]) %> 
   <%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
