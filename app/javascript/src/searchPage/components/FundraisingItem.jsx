@@ -34,7 +34,7 @@ const FundraisingItem = () => {
                         <img className="w-full rounded-3xl" src="https://fakeimg.pl/300x200/200" alt="ss"/>
                     </a>
                     <div className='mb-7'>
-                        <h3 className='hover:text-blue-400 my-1 font-semibold text-xl'><a className='text-blue-400 hover:text-blue-300' href={`/projects/${item.id}`} >{item.project_title}</a></h3>
+                        <h3 className='hover:text-blue-400 my-1 font-semibold text-xl'><a className='text-blue-400 hover:text-blue-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
                         <p className='my-1'>提案者 {item.organizer}</p>
                     </div>
                     <div>
@@ -42,7 +42,7 @@ const FundraisingItem = () => {
                     </div>
                     <ProgressBar done="80"/>
                     <div>
-                        <DaysLeft endTime={item.project_end_time} />
+                        <DaysLeft endTime={item.end_time} />
                     </div>
                 </div>
             )) :

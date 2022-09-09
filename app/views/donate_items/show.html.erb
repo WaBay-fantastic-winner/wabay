@@ -1,5 +1,5 @@
 <main class='bg-gray-100 p-10'>
-  <div class='max-w-5xl mx-auto grid grid-cols-10 my-8' data-controller='donate'>
+  <div class='max-w-5xl mx-auto grid grid-cols-10 my-8' data-controller='donate' data-price='<%= @donate_item.price %>'>
     <div class='col-span-6'>
       <div class='mb-5'>
         <h1 class='text-4xl'><%= @donate_item.title %></h1>
@@ -13,7 +13,7 @@
         </div>
         <div class='flex w-1/2 border border-gray-300 bg-gray-200 rounded-md border-solid'>
           <button class='py-3 px-5' data-action='click->donate#subtract'>–</button>
-          <input value='1' type='number' class='flex-1 input-focus rounded' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"></input>
+          <input value='1' type='number' class='flex-1 input-focus rounded px-2' data-action='change->donate#integer' data-donate-target='amount' >
           <button class='py-3 px-5' data-action='click->donate#plus'>+</button>
         </div>
       </div>
@@ -26,16 +26,18 @@
       <div class='mb-2 font-semibold text-gray-400'>額外贊助</div>
       <div class='flex items-center mb-4'>
         <div class='mr-3'><em>NT$</em></div>
-        <input type="number" value="0" min="0" class='input-focus border-2 border-solid border-gray-300 rounded-lg p-2 flex-1' data-donate-target='extraDonate'> 
+        <input type="number" value="0" min="0" class='input-focus border-2 border-solid border-gray-300 rounded-lg p-2 flex-1' data-action='change->donate#priceInteger' data-donate-target='extraDonate'
+> 
       </div>
       <div class='grid grid-cols-4 gap-2 border-b border-gray-200 border-solid pb-6'>
         <button class='donate-button' data-action='click->donate#reset'>最低額度</button>
         <button class='donate-button' data-action='click->donate#hundred'>100</button>
         <button class='donate-button' data-action='click->donate#thousand'>1000</button>
-        <button class='donate-button' data-action='click->donate#integer'>補整數</button>
+        <button class='donate-button' data-action='click->donate#hundredsDigit' >補整數</button>
       </div>
       <div class='flex justify-end my-6 mx-2 text-3xl'>
-        <em><span>NT$ </span><span data-donate-target='sum'><%= @donate_item.price %></span></em>
+        <div>總金額〈含商品價錢與額外贊助價錢〉：<div>
+        <em><span>NT$ </span><span data-donate-target='sum'></span></em>
       </div>
       <div>
       <input type='submit' class='bg-purple-400 hover:bg-purple-300 w-full rounded-3xl px-6 py-2 text-white' value='直接結帳'>
