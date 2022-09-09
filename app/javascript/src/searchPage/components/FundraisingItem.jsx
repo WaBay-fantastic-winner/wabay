@@ -1,4 +1,4 @@
-import React ,{ useState, useEffect, useRef } from 'react';
+import React ,{ useState, useEffect } from 'react';
 import ProgressBar from './ProgressBar';
 import DaysLeft from './DaysLeft';
 import axios from '../../../lib/http/client'
@@ -12,11 +12,11 @@ const FundraisingItem = () => {
             let keyword = querystring.get('keyword') 
             let type = querystring.get('type')
             axios.get('/api/search/projects', {
-                params: {
-                    keyword: keyword,
-                    type : type
-                }
-            })
+                    params: {
+                        keyword: keyword,
+                        type : type
+                    }
+                })
                 .then(resp => {
                     setProjectItems(resp.data)
                 })
@@ -24,9 +24,6 @@ const FundraisingItem = () => {
                 };
         fetchProject();
     },[])
-
-    // console.log(projectItems);
-    // console.log(new Date()); 
 
     return (
         <> 
@@ -37,7 +34,6 @@ const FundraisingItem = () => {
                         <img className="w-full rounded-3xl" src="https://fakeimg.pl/300x200/200" alt="ss"/>
                     </a>
                     <div className='mb-7'>
-                        <p className='hover:text-gray-500 my-1'>props.class</p>
                         <h3 className='hover:text-blue-400 my-1 font-semibold text-xl'><a className='text-blue-400 hover:text-blue-300' href={`/projects/${item.id}`} >{item.project_title}</a></h3>
                         <p className='my-1'>提案者 {item.organizer}</p>
                     </div>
