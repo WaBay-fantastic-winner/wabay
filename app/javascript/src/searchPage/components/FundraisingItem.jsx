@@ -38,15 +38,15 @@ const FundraisingItem = () => {
                     </a>
                     <div className='mb-7'>
                         <p className='hover:text-gray-500 my-1'>props.class</p>
-                        <h3 className='hover:text-blue-400 my-1 font-semibold text-xl'><a className='text-blue-400 hover:text-blue-300' href={`/projects/${item.id}`} >{item.project_title}</a></h3>
+                        <h3 className='hover:text-blue-400 my-1 font-semibold text-xl'><a className='text-blue-400 hover:text-blue-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
                         <p className='my-1'>提案者 {item.organizer}</p>
                     </div>
                     <div>
                         <span className='my-1'>NT $ 10000</span>
                     </div>
-                    <ProgressBar done="80"/>
+                    <ProgressBar percent="110"/>
                     <div>
-                        <DaysLeft endTime={item.project_end_time} />
+                        <DaysLeft endTime={item.end_time} />
                     </div>
                 </div>
             )) :

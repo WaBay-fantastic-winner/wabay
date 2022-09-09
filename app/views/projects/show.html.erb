@@ -1,7 +1,7 @@
 <main>
     <section class='bg-gray-100 py-10'>
       <div class="max-w-6xl mx-auto">
-        <h1 class="text-center mb-3 text-2xl font-semibold"><%= @project.project_title %></h1>
+        <h1 class="text-center mb-3 text-2xl font-semibold"><%= @project.title %></h1>
         <p class="text-center mb-6">提案者 <a href="" class="text-purple-400 hover:text-purple-300"><%= @project.organizer %></a></p>
       </div>
       <div class='max-w-6xl mx-auto lg:grid px-10 lg:px-5 gap-8 grid-cols-10'>
@@ -12,15 +12,15 @@
           <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
           <div class="progress-container h-4 rounded-md relative my-4">
             <span id="progressPercent">0%</span>
-            <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>' ></div>
+            <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
           </div>
-          <P class="my-2">目標金額：<%= @project.project_amount_target %></P>
+          <P class="my-2">目標金額：<%= @project.amount_target %></P>
           <p class="my-2 font-semibold">
             剩餘時間：
-            <span id='left-time' data-controller='leftTimer' data-project-time="<%= @project.project_end_time%>"></span>
+            <span id='left-time' data-controller='leftTimer' data-project-time="<%= @project.end_time%>"></span>
           </p>
           <P class="my-2 font-semibold">贊助人數：</P>
-          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.project_end_time %>' data-created-time='<%= @project.created_at%>'></p>
+          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
           <div class="flex" data-controller="copyURL">
             <input data-copyURL-target='URL' type="text" class='p-2 text-gray-500 bg-purple-100 rounded-lg flex-1 border border-purple-300 outline-none'>
             <button id='copybtn' class="bg-purple-400 rounded-lg text-white px-3" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
@@ -60,7 +60,7 @@
       <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12" data-controller="projectUnroll">
         <div class='project-content col-span-7 h-72 lg:h-auto overflow-hidden relative' data-projectUnroll-target="projectContent" >
           <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
-          <%= @project.project_description%>
+          <%= @project.description %>
         </div>
         <div class="unrollBtn lg:hidden h-12" data-projectUnroll-target="unrollBtn">
           <button class="block w-full h-full text-centertext-purple-300" data-action="click->projectUnroll#unroll">點擊查看詳細內容</button>
