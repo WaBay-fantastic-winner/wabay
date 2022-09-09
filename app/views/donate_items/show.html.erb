@@ -26,16 +26,16 @@
       <div class='mb-2 font-semibold text-gray-400'>額外贊助</div>
       <div class='flex items-center mb-4'>
         <div class='mr-3'><em>NT$</em></div>
-        <input type="number" value="0" min="0" class='flex-1 p-2 border-2 border-gray-300 border-solid rounded-lg input-focus'> 
+        <input type="number" value="0" min="0" class='flex-1 p-2 border-2 border-gray-300 border-solid rounded-lg input-focus' data-donate-target='extraDonate'> 
       </div>
       <div class='grid grid-cols-4 gap-2 pb-6 border-b border-gray-200 border-solid'>
-        <button class='donate-button' data-action='click->donate#zero'>最低額度</button>
+        <button class='donate-button' data-action='click->donate#reset'>最低額度</button>
         <button class='donate-button' data-action='click->donate#hundred'>100</button>
         <button class='donate-button' data-action='click->donate#thousand'>1000</button>
         <button class='donate-button' data-action='click->donate#integer'>補整數</button>
       </div>
       <div class='flex justify-end mx-2 my-6 text-3xl'>
-        <em><span>NT$ </span><span><%= @donate_item.price %></span></em>
+        <em><span>NT$ </span><span data-donate-target='sum'><%= @donate_item.price %></span></em>
       </div>
       <div>
       <input type='submit' class='w-full px-6 py-2 text-white bg-purple-400 hover:bg-purple-300 rounded-3xl' value='直接結帳'>
