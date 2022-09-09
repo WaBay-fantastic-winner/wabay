@@ -1,25 +1,54 @@
-<section>
-  <div>
-    <h1><%= @donate_item.title %></h1>
-    <div>
-      <span>NT$ <%= @donate_item.price %>元</span>
+<main class='p-10 bg-gray-100'>
+  <div class='grid max-w-5xl grid-cols-10 mx-auto my-8' data-controller='donate'>
+    <div class='col-span-6'>
+      <div class='mb-5'>
+        <h1 class='text-4xl'><%= @donate_item.title %></h1>
+      </div>
+      <div class='mb-5'>
+          <span class='text-3xl'><em>NT$ <%= @donate_item.price %></em></span>
+      </div>
+      <div>
+        <div class='text-gray-400'>
+          選擇數量
+        </div>
+        <div class='flex w-1/2 bg-gray-200 border border-gray-300 border-solid rounded-md'>
+          <button class='px-5 py-3' data-action='click->donate#subtract'>–</button>
+          <input value='1' type='number' class='flex-1 rounded input-focus' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"></input>
+          <button class='px-5 py-3' data-action='click->donate#plus'>+</button>
+        </div>
+      </div>
+      <div class='mt-5'>
+        【贊助項目內容】
+        <p><%= @donate_item.content %></p>
+      </div>
     </div>
-    額外贊助：<input type="number" value="0" min="0"> 元  <%# 額外贊助功能（待增加） %>
-  </div>
-  <div>
-    贊助項目內容：
-    <p><%= @donate_item.content %></p>
-  </div>
-</section>
-
-<%# 頁面參照：https://wabay.tw/projects/unsilencedtw/rewards/21155?locale=zh-TW %>
-
-<%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
+    <div class='col-span-4 px-3 py-5 bg-white shadow-md rounded-xl'>
+      <div class='mb-2 font-semibold text-gray-400'>額外贊助</div>
+      <div class='flex items-center mb-4'>
+        <div class='mr-3'><em>NT$</em></div>
+        <input type="number" value="0" min="0" class='flex-1 p-2 border-2 border-gray-300 border-solid rounded-lg input-focus'> 
+      </div>
+      <div class='grid grid-cols-4 gap-2 pb-6 border-b border-gray-200 border-solid'>
+        <button class='donate-button' data-action='click->donate#zero'>最低額度</button>
+        <button class='donate-button' data-action='click->donate#hundred'>100</button>
+        <button class='donate-button' data-action='click->donate#thousand'>1000</button>
+        <button class='donate-button' data-action='click->donate#integer'>補整數</button>
+      </div>
+      <div class='flex justify-end mx-2 my-6 text-3xl'>
+        <em><span>NT$ </span><span><%= @donate_item.price %></span></em>
+      </div>
+      <div>
+      <input type='submit' class='w-full px-6 py-2 text-white bg-purple-400 hover:bg-purple-300 rounded-3xl' value='直接結帳'>
+      </div>
+    </div>
+  </div>  
+  <%= link_to '回到專案', project_path(id: params[:project_id]) %> 
+  <%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
     <%= form.hidden_field :title, value: @donate_item.title %>
     <%= form.hidden_field :project_id, value: @donate_item.project_id %>
   <%= form.submit '贊助此項目' %>
 <% end %>
-<br>
-<br>
-<br>
-<%= link_to '回到專案', project_path(id: params[:project_id]) %> 
+</main>
+<%# 頁面參照：https://wabay.tw/projects/unsilencedtw/rewards/21155?locale=zh-TW %>
+
+
