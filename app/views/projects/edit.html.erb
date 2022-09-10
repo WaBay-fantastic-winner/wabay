@@ -1,18 +1,18 @@
 <% if @project.errors.any? %> 
-  <div class='bg-gray-100 py-6'>
+  <div class='py-6 bg-gray-100'>
     <p class='text-center'>資料有誤，請填寫正確格式：</p>
     <ul class='text-red-400'>
       <% @project.errors.full_messages.each do |message| %>
-        <li class="error_message text-center"><%= message %></li> 
+        <li class="text-center error_message"><%= message %></li> 
       <% end %> 
     </ul>
   </div>  
 <% end %>
 </div>
 <main class='bg-gray-100'>
-  <div class='max-w-3xl mx-auto py-12'>
-    <div class='p-8 rounded-3xl bg-white'>
-      <h1 class="text-2xl tracking-wider text-center py-4 my-4 bg-purple-400 rounded-2xl text-white " >編輯提案</h1>
+  <div class='max-w-3xl py-12 mx-auto'>
+    <div class='p-8 bg-white rounded-3xl'>
+      <h1 class="py-4 my-4 text-2xl tracking-wider text-center text-white bg-purple-400 rounded-2xl " >編輯提案</h1>
       <%= form_for(@project) do |form| %>
         <div class="new-form-list">
           <%= form.label :organizer, "聯絡窗口 *", class:"new-form-list-label" %>
@@ -45,7 +45,7 @@
             目前的封面照片 <P class="my-2"><%= image_tag @project.avatar.variant(resize_to_limit: [200, 200]) %></P>
           </div>
         </div>
-        <div class="border-solid border-2 border-purple-300 px-6 py-6 mb-4">
+        <div class="px-6 py-6 mb-4 border-2 border-purple-300 border-solid">
           <%= form.label :description, "提案描述 *", class:"text-purple-400" %>
           <%= form.rich_text_area :description , class:"focus:ring focus:border-purple-300" %>
         </div>
