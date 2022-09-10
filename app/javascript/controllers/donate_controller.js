@@ -12,7 +12,7 @@ export default class extends Controller {
 
   subtract() {
     this.amountTarget.value <= 1 ? this.amountTarget.value = 1 : this.amountTarget.value -- ;
-
+    console.log(this.context);
     this.sumTarget.textContent = this.amountTarget.value * this.element.dataset.price + Number(this.extraDonateTarget.value);
     
     this.formSumTarget.value = this.amountTarget.value * this.element.dataset.price + Number(this.extraDonateTarget.value);
