@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     
     if follow_list.empty?
       add_follow
-      # SubscribeMailer.notify.deliver_now
+      SubscribeMailer.notify.deliver_now
     else
       cancel_follow
     end

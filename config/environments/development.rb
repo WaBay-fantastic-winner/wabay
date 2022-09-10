@@ -47,12 +47,12 @@ Rails.application.configure do
     port: 587,
     domain: ENV['DOMAIN'],
     authentication: "plain",
-    user_name: ENV['AMAZON_SES_USERNAME'],
-    password: ENV['AMAZON_SES_PASSWORD'],
+    user_name: ENV['MAILGUN_USERNAME'],
+    password: ENV['MAILGUN_PASSWORD'],
     enable_starttls_auto: true
   }
 
-  config.hosts << "87b7-103-3-192-33.jp.ngrok.io"
+  config.hosts << "87b7-103-3-192-33.jp.ngrok.io" 
 
 
   config.action_mailer.perform_caching = false
