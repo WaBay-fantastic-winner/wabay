@@ -11,9 +11,9 @@
         <div class='text-gray-400'>
           選擇數量
         </div>
-        <div class='flex w-1/2 bg-gray-200 border border-gray-300 border-solid rounded-md'>
+        <div class='flex max-w-sm bg-gray-200 border border-gray-300 border-solid rounded-md'>
           <button class='px-5 py-3' data-action='click->donate#subtract'>–</button>
-          <input value='1' type='number' class='flex-1 rounded input-focus' onkeyup="value=value.replace(/^(0+)|[^\d]+/g,'')"></input>
+          <input value='1' type='number' class='flex-1 px-2 rounded input-focus' data-action='change->donate#integer' data-donate-target='amount' >
           <button class='px-5 py-3' data-action='click->donate#plus'>+</button>
         </div>
       </div>
@@ -35,11 +35,11 @@
         <button class='donate-button' data-action='click->donate#thousand'>1000</button>
         <button class='donate-button' data-action='click->donate#hundredsDigit' >補整數</button>
       </div>
-      <div class='flex justify-end mx-2 my-6 text-3xl'>
-        <div>總金額〈含商品價錢與額外贊助價錢〉：<div>
+      <h2 class='mt-3 font-semibold text-gray-400 '>總金額〈含商品總價與額外贊助〉：</h2>
+      <div class='flex justify-end mx-2 text-3xl'>
         <em><span>NT$ </span><span data-donate-target='sum'></span></em>
       </div>
-      <div>
+      <div class='mt-3'>
         <%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
           <%= form.hidden_field :title, value: @donate_item.title %>
           <%= form.hidden_field :price, value: @donate_item.price, :class => 'total' %>

@@ -83,6 +83,11 @@
               <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div>
+              <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
+                <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center text-purple-400 border-purple-300 border border-dotted' %>
+              <% end %>
+            </div>
+            <div>
               <%= render partial: 'donate_items/donate_item', donate_items: @donate_items %>
             </div>
           </div>
