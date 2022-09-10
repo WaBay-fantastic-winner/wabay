@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     
     if follow_list.empty?
       add_follow
-      SubscribeMailer.notify.deliver_now
+      MailTestWorkerJob.perform_later
     else
       cancel_follow
     end
@@ -99,9 +99,5 @@ class ProjectsController < ApplicationController
 
   def to_project_show(notice)
     redirect_to project_path(id: params[:id]), notice: notice
-  end
-
-  def percentage_of_currency
-    @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
   end
 end

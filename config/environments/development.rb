@@ -54,6 +54,8 @@ Rails.application.configure do
 
   config.hosts << "87b7-103-3-192-33.jp.ngrok.io" 
 
+  # Use a real queuing backend for Active Job (and separate queues per environment).
+  config.active_job.queue_adapter     = :sidekiq
 
   config.action_mailer.perform_caching = false
 

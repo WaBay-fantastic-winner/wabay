@@ -6,8 +6,7 @@ class SubscribeMailer < ApplicationMailer
   #   en.subscribe_mail_mailer.notify.subject
   #
   def notify
-    @greeting = "Hi"
-
-    mail to: "wl02599509@gmail.com", subject: 'TEST!'
+    @greeting = "sideque is working!"
+    mail to: "wl02599509@gmail.com", subject: 'Subscribe '
   end
 end
