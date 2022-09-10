@@ -1,5 +1,5 @@
 <main class='bg-gray-100 p-10'>
-  <div class='max-w-5xl mx-auto grid grid-cols-10 my-8' data-controller='donate' data-price='<%= @donate_item.price %>'>
+  <div class='max-w-xl lg:max-w-5xl mx-auto lg:grid grid-cols-10 my-8' data-controller='donate' data-price='<%= @donate_item.price %>'>
     <div class='col-span-6'>
       <div class='mb-5'>
         <h1 class='text-4xl'><%= @donate_item.title %></h1>
@@ -11,7 +11,7 @@
         <div class='text-gray-400'>
           選擇數量
         </div>
-        <div class='flex w-1/2 border border-gray-300 bg-gray-200 rounded-md border-solid'>
+        <div class='flex max-w-sm border border-gray-300 bg-gray-200 rounded-md border-solid'>
           <button class='py-3 px-5' data-action='click->donate#subtract'>–</button>
           <input value='1' type='number' class='flex-1 input-focus rounded px-2' data-action='change->donate#integer' data-donate-target='amount' >
           <button class='py-3 px-5' data-action='click->donate#plus'>+</button>
@@ -34,11 +34,11 @@
         <button class='donate-button' data-action='click->donate#thousand'>1000</button>
         <button class='donate-button' data-action='click->donate#hundredsDigit' >補整數</button>
       </div>
-      <h2 class='mt-3 font-semibold text-gray-400'>總金額〈含商品總價與額外贊助〉：</h2>
+      <h2 class='mt-3 font-semibold text-gray-400 '>總金額〈含商品總價與額外贊助〉：</h2>
       <div class='flex justify-end  mx-2 text-3xl'>
         <em><span>NT$ </span><span data-donate-target='sum'></span></em>
       </div>
-      <div>
+      <div class='mt-3'>
         <%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
           <%= form.hidden_field :title, value: @donate_item.title %>
           <%= form.hidden_field :price, value: @donate_item.price, :class => 'total' %>

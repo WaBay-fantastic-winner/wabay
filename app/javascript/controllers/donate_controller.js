@@ -1,7 +1,10 @@
 import { Controller } from "stimulus"
 
+function sum() {
+      this.sumTarget.textContent = this.amountTarget.value * this.element.dataset.price + Number(this.extraDonateTarget.value)
+}
 export default class extends Controller {
-  static targets = [ 'sum', 'extraDonate' , 'amount' ]
+  static targets = [ 'sum', 'extraDonate', 'amount' ]
   
   connect() {
     this.sumTarget.textContent = this.element.dataset.price;
