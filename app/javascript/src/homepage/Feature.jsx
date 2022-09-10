@@ -1,25 +1,31 @@
 import React from 'react'
+import track from './img/track.png'
+import communication from './img/communication.png'
+import pay from './img/pay.png';
+import progress from './img/progress.png'
+import search from './img/search.png'
 
 const Feature = () => {
     const FeatureList = [
         {
-            src: "./img/track.jpg",
-            text: '關注追蹤'
-        },
-        {
-            src: "https://diat4w9qa5tx9.cloudfront.net/production-aws/packs/media/images/platform/pages/index/icon-main-dividend-cf2eee542c41bd01e8c3ca0cb4785332.svg",
-            text: '精準搜尋'
-        },
-        {
-            src: "https://diat4w9qa5tx9.cloudfront.net/production-aws/packs/media/images/platform/pages/index/icon-main-funds-beddd4661fba281f57d94b1d684f1c9b.svg",
-            text: '財富自由'
-        },
-        {
-            src: "https://diat4w9qa5tx9.cloudfront.net/production-aws/packs/media/images/platform/pages/index/icon-main-search-bc74f1160e60f60b1f53c865c5d2c84f.svg",
+            src: communication,
             text: '即時通訊'
         },
         {
-            src: "https://diat4w9qa5tx9.cloudfront.net/production-aws/packs/media/images/platform/pages/index/icon-main-time-990777e1d3a7e96521a44aa8612c06a1.svg",
+            src: search,
+            text: '精準搜尋'
+        },
+        {
+            src: pay,
+            text: '財富自由'
+        },
+
+        {
+            src: track,
+            text: '關注追蹤'
+        },
+        {
+            src: progress,
             text: '進度標示'
         }
     ] 
@@ -34,7 +40,7 @@ const Feature = () => {
                 <div className='my-3 md:px-10'>
                     <ul className='flex flex-wrap justify-center'>
                         {FeatureList.map((item, index)=>(
-                            <li className='w-1/3 md:w-1/5 flex  justify-center' key={index}><a href=""><img src={item.src} alt={item.text} className="mx-auto"/><h3 className='font-semibold text-xl'>{item.text}</h3></a></li>
+                            <li className='w-1/3 md:w-1/5' key={index}><img src={item.src} alt={item.text} className="w-20 mx-auto mb-3"/><h3 className='font-semibold text-xl text-center'>{item.text}</h3></li>
                         ))}
                     </ul>
                 </div>
