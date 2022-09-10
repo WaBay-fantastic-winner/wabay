@@ -35,7 +35,7 @@ const Feature = () => {
             <div className='max-w-6xl mx-auto'>
                 <div className='mb-4'>
                     <h2 className='text-center font-semibold text-2xl my-3'>Wubay的五大特色</h2>
-                    <p className='text-center'>致力給贊助會員們最安心的保障！</p>
+                    <p className='text-center mb-8'>致力給贊助會員們最安心的保障！</p>
                 </div>
                 <div className='my-3 md:px-10'>
                     <ul className='flex flex-wrap justify-center'>

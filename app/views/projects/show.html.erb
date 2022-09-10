@@ -2,7 +2,7 @@
     <section class='bg-gray-100 py-10'>
       <div class="max-w-6xl mx-auto">
         <h1 class="text-center mb-3 text-2xl font-semibold"><%= @project.title %></h1>
-        <p class="text-center mb-6">提案者 <a href="" class="text-purple-400 hover:text-purple-300"><%= @project.organizer %></a></p>
+        <p class="text-center mb-6">提案者 <a href="" class="primary-text-color hover:text-purple-300"><%= @project.organizer %></a></p>
       </div>
       <div class='max-w-6xl mx-auto lg:grid px-10 lg:px-5 gap-8 grid-cols-10'>
         <div class='col-span-6'>
@@ -12,7 +12,7 @@
           <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
           <div class="progress-container h-4 rounded-md relative my-4">
             <span id="progressPercent">0%</span>
-            <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>' ></div>
+            <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
           </div>
           <P class="my-2">目標金額：<%= @project.amount_target %></P>
           <p class="my-2 font-semibold">
@@ -70,13 +70,13 @@
           <div class='lg:sticky top-20 lg:overflow-y-auto overflow-x-hidden lg:h-screen p-3'>
             <div class='p-4 mb-3 border border-gray-300 border-solid w-full rounded-xl'>
               <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
-              <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='text-purple-400 hover:text-purple-300'>查看更多</a></p>
+              <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='primary-text-color hover:text-purple-300'>查看更多</a></p>
               <a href='' class="hover:bg-gray-100 text-2xl px-2 py-1 duration-500"><i class="fa-brands fa-square-facebook"></i></a>
               <a href='' class="hover:bg-gray-100 text-2xl px-2 py-1 duration-500"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div>
               <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
-                <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center text-purple-400 border-purple-300 border border-dotted' %>
+                <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center primary-text-color border-purple-300 border border-dotted' %>
               <% end %>
             </div>
             <div>

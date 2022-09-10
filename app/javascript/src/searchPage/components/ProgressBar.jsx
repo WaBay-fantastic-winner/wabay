@@ -1,20 +1,20 @@
 import React , { useState, useEffect } from 'react';
 import './ProgressBar.css'
 
-const Progress = ({done}) => {
+const Progress = ({percent}) => {
 	const [style, setStyle] = useState({});
 	
 	useEffect(() => {
 		const newStyle = {
 			opacity: 1,
-			width: `${done >= 100 ? 100 : done}%`
+			width: `${percent >= 100 ? 100 : percent}%`
 		}	
 		setStyle(newStyle);
 	},[]);
 	
 	return (
 		<div className="progress">
-			<span>{done}%</span>
+			<span>{percent}%</span>
 			<div className="progress-done" style={style}>
 			</div>
 		</div>

@@ -33,7 +33,7 @@ const FundraisingItem = () => {
                         <img className='w-full rounded-3xl' src='https://fakeimg.pl/300x200/200' alt='ss'/>
                     </a>
                     <div className='mb-7'>
-                        <h3 className='hover:text-purple-400 my-1 font-semibold text-xl'><a className='text-purple-400 hover:text-purple-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
+                        <h3 className='my-1 font-semibold text-xl'><a className='primary-text-color hover:text-purple-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
                         <p className='my-1'>提案者 {item.organizer}</p>
                     </div>
                     <div>

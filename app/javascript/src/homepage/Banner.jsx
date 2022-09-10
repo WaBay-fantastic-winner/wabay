@@ -29,7 +29,7 @@ const CreateSlide = () => {
 }
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6 hover:text-blue-400 '><a href=''>{props.text}</a></li>)
+    return (<li className='mx-2 md:mx-6 hover:text-purple-400 '><a href=''>{props.text}</a></li>)
 }
 
 const Banner = () => {
