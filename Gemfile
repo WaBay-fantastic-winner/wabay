@@ -84,3 +84,5 @@ gem 'net-smtp', require: false
 
 gem 'aasm', '~> 5.3'
 gem 'paranoia', '~> 2.6'
+
+gem 'sidekiq', '~> 6.5', '>= 6.5.6'
