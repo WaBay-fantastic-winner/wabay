@@ -1,3 +1,39 @@
+<<<<<<< HEAD
+=======
+<h1 class="text-4xl font-bold">編輯提案</h1>
+
+<%= form_for(@project) do |form| %>
+    <%= form.label :organizer, "聯絡窗口姓名 *" %>
+    <%= form.text_field :organizer, class: "border-2 border-black-300 rounded" %>
+  </div>
+  <div>
+    <%= form.label :email, "電子郵件地址 *" %>
+    <%= form.email_field :email, class: "border-2 border-black-300 rounded" %>
+  </div>
+  <div>
+    <%= form.label :phone, "聯絡電話 *" %>
+    <%= form.telephone_field :phone, class: "border-2 border-black-300 rounded"%>
+  </div>
+  <div>
+    <%= form.label :title, "提案名稱 *" %>
+    <%= form.text_field :title, class: "border-2 border-black-300 rounded" %>
+  </div>
+  <div>
+    <%= form.label :amount_target, "提案目標金額（新台幣） *" %>
+    <%= form.text_field :amount_target, class: "border-2 border-black-300 rounded"%>
+  </div>
+  <div>
+    <%= form.label :end_time, "提案結束日期 *" %>
+    <%= form.date_field :end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
+  </div>
+  <div>
+    <%= form.label :description, "提案描述 *" %>
+    <%= form.rich_text_area :description , class: "border-2 border-black-300 rounded"%>
+  </div>
+  <%= form.submit "更新" %>
+<% end %>
+
+>>>>>>> origin/development
 <% if @project.errors.any? %> 
   <div class='bg-gray-100 py-6'>
     <p class='text-center'>資料有誤，請填寫正確格式：</p>

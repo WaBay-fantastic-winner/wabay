@@ -38,7 +38,7 @@ class DonateItemsController < ApplicationController
   end
 
   def destroy
-    @donate_item.destroy
+    @donate_item.really_destroy!
     back_to_project_page '贊助方案已刪除。'
   end
 

@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resources :projects do
     resources :donate_items
     resource :disclosures, only: [:show]
-    
     resources :comments, shallow: true
   end
-  
+
   namespace :api do
     resources :comments, only: [] do
       member do

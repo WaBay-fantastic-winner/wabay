@@ -9,10 +9,10 @@
           <img class="w-full h-80 rounded-xl object-cover" src="https://fureverkids.net/wp-content/uploads/2021/04/40150983442_5fc1afe90f_c.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1">
         </div>
         <div class="col-span-4">
-          <p class="my-2 text-3xl font-semibold">NT$</p>
+          <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
           <div class="progress-container h-4 rounded-md relative my-4">
             <span id="progressPercent">0%</span>
-            <div class="progress" data-controller='progressBar'></div>
+            <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>' ></div>
           </div>
           <P class="my-2">目標金額：<%= @project.amount_target %></P>
           <p class="my-2 font-semibold">

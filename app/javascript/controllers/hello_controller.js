@@ -1,9 +1,9 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
+  static targets = [ "output" ]
+
   connect() {
-    setTimeout(() => {
-      this.element.style.display = 'none'
-    },5000)
+    this.outputTarget.textContent = 'Hello, Stimulus!'
   }
 }
