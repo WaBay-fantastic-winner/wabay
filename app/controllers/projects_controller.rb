@@ -66,7 +66,6 @@ class ProjectsController < ApplicationController
     
     if follow_list.empty?
       add_follow
-      MailTestWorkerJob.perform_later
     else
       cancel_follow
     end
