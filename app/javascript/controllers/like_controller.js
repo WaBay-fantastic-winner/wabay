@@ -1,5 +1,5 @@
 import { Controller } from "stimulus"
-import log from "tailwindcss/lib/util/log";
+// import log from "tailwindcss/lib/util/log";
 import Rails from "@rails/ujs"
 
 export default class extends Controller {
@@ -33,6 +33,5 @@ export default class extends Controller {
         console.log(err)
       }
     })
-
   }
 }

@@ -25,11 +25,11 @@
           <%= form.telephone_field :phone, placeholder: "您的手機號碼，電話號碼請加入區碼", class:"new-form-list-field" %>
         </div> 
         <div class="new-form-list">
-          <%= form.label :project_title, "提案名稱 *", class:"new-form-list-label" %>
+          <%= form.label :title, "提案名稱 *", class:"new-form-list-label" %>
           <%= form.text_field :title, placeholder: "可日後變更", class:"new-form-list-field" %>
         </div> 
         <div class="new-form-list">
-          <%= form.label :project_amount_target, "提案目標金額 *", class:"new-form-list-label" %>
+          <%= form.label :amount_target, "提案目標金額 *", class:"new-form-list-label" %>
           <%= form.text_field :amount_target, placeholder: "團隊可簡略試算集資成本、生產或資金的運用，以推算出集資的門檻", class:"new-form-list-field" %>
         </div> 
         <div class="new-form-list">
@@ -37,39 +37,10 @@
           <%= form.date_field :end_time, value: "%Y-%m-%d", class: "col-span-3 rounded ml-5 focus:outline-none focus:ring focus:border-purple-300" %>
         </div>
         <div class="border-solid border-2 border-purple-300 px-6 py-6 mb-4">
-          <%= form.label :project_description, "提案描述 *", class:"text-purple-400" %>
+          <%= form.label :description, "提案描述 *", class:"text-purple-400" %>
           <%= form.rich_text_area :description , class:"focus:ring focus:ring-purple-300" %>
         </div>
         <%= form.submit "確認送出", class:"field bg-purple-400 hover:bg-purple-600 w-full rounded px-6 py-2 text-white" %>
       <% end %>
   </div>
 </main>
-<<<<<<< HEAD
-=======
-  <div>
-    <%= form.label :email, "電子信箱 *" %>
-    <%= form.email_field :email, class: "border-2 border-black-300 rounded" %>
-  </div>
-  <div>
-    <%= form.label :phone, "聯絡電話 *" %>
-    <%= form.telephone_field :phone, class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :title, "提案名稱 *" %>
-    <%= form.text_field :title, class: "border-2 border-black-300 rounded" %>
-  </div>
-  <div>
-    <%= form.label :amount_target, "提案目標金額（新台幣） *" %>
-    <%= form.text_field :amount_target, class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :end_time, "提案結束日期 *" %>
-    <%= form.date_field :end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :description, "提案描述 *" %>
-    <%= form.rich_text_area :description , class: "border-2 border-black-300 rounded"%>
-  </div>
-  <%= form.submit %>
-<% end %>
->>>>>>> origin/development
