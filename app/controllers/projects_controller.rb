@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
     
     if follow_list.empty?
       add_follow
-      SubscribeMailer.notify.deliver_now
+      # SubscribeMailer.notify.deliver_now
     else
       cancel_follow
     end
@@ -101,7 +101,7 @@ class ProjectsController < ApplicationController
     redirect_to project_path(id: params[:id]), notice: notice
   end
 
-  def current_project
-    @current_project = current_user.projects.find_by!(id: params[:id])
+  def percentage_of_currency
+    @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
   end
 end
