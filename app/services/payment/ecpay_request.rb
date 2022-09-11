@@ -2,7 +2,7 @@ module Payment
   class EcpayRequest
     require 'uri'
     require 'openssl'
-    require 'CGI'
+    require 'cgi'
     require 'net/http'
 
     def initialize(merchant_trade_date,
