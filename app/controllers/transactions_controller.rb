@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!, except: %i[paid]
 
   def index
     @transactions = Transaction.all
@@ -32,10 +33,14 @@ class TransactionsController < ApplicationController
     end
   end
 
+  
+
   def paid
-    @transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
-    @transaction.pay!
-    # 登入者在付款完成跳轉到專案頁面後會被踢出，導致無法打到 paid action。
+    puts params
+    transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
+    transaction.pay!
+    sign_in(User.find(transaction.user_id))
+    redirect_to project_path(transaction.project_id)
   end
 
   def destroy
