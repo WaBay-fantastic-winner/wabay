@@ -5,12 +5,7 @@ body{
 }
 
 .progress-container {
-    /* height: 0.8rem; */
     width: 100%;
-    /* border-radius: 0.4rem; */
-    /* background: white; */
-    /* position: relative; */
-    /* margin: 15px 0; */
 }
 .progress-container span{
 	position: absolute;

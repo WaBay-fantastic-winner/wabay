@@ -1,7 +1,7 @@
-.new-form-list :first-child{
+.form-list :first-child{
   grid-column: span 2 / span 2;
 }
-.new-form-list :last-child{
+.form-list :last-child{
   grid-column: span 8 / span 8
 }
 .field_with_errors input {

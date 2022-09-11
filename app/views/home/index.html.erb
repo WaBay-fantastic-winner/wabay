@@ -2,23 +2,23 @@
     <section id="banner">
         <%= javascript_pack_tag 'Banner' %>
     </section>
-    <section class='my-5 pb-5'>
-        <div class="max-w-6xl mx-auto flex items-end mb-4">
+    <section class='pb-5 my-5'>
+        <div class="flex items-end max-w-6xl mx-auto mb-4">
             <h2 class="mx-5 text-3xl font-extrabold">平台推薦</h2>
             <a class="text-purple-400" href="">More</a>
         </div>
-        <div class="mx-auto max-w-6xl md:grid grid-cols-9">
+        <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
             <% @projects.each do |project| %>
-                <div class="FundraisingItem pb-6 col-span-3 mx-5">
+                <div class="col-span-3 pb-6 mx-5 FundraisingItem">
                     <a href='projects/<%= "#{project.id}" %>'><img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/></a>
                     <div class='mb-7'>
-                        <h3 class='hover:text-blue-400 my-1 font-semibold text-xl'><%= link_to project.title, project_path(project) %></h3>
+                        <h3 class='my-1 text-xl font-semibold hover:text-blue-400'><%= link_to project.title, project_path(project) %></h3>
                         <p class='my-1'>提案者 <span class='text-blue-400 hover:text-blue-300'><%= project.organizer %></span></p>
                     </div>
                     <div>
                         <span class='my-1'>NT$ <%= project.current_total %></span>
                     </div>
-                    <div class="progress-container h-4 rounded-md relative my-4">
+                    <div class="relative h-4 my-4 rounded-md progress-container">
                         <span id="progressPercent">0%</span>
                         <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
                     </div> 
@@ -29,10 +29,10 @@
             <% end %>
         </div>
     </section>
-    <section id='feature' class="my-5 pb-5">
+    <section id='feature' class="pb-5 my-5">
         <%= javascript_pack_tag 'Feature' %>
     </section>
-    <section class='propose flex flex-col items-center py-5'>
+    <section class='flex flex-col items-center py-5 propose'>
         <p class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</p>
         <br>
         <button><%= link_to "提案", new_project_path, class:"bg-purple-400 px-14 py-3 my-6 rounded-lg text-white hover:bg-purple-300"%></button>

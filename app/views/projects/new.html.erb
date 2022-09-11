@@ -11,29 +11,29 @@
 <main class='py-10 bg-gray-100'>
   <div class='max-w-3xl p-8 py-12 mx-auto bg-white rounded-3xl'>
       <h1 class="py-4 my-4 text-2xl tracking-wider text-center text-white bg-purple-400 rounded-2xl" >我想在Wubay提案</h1>
-      <%= form_for(@project) do |form| %>
-        <div class="new-form-list">
-          <%= form.label :organizer, "聯絡窗口 *", class:"new-form-list-label" %>
-          <%= form.text_field :organizer, placeholder: "您的真實姓名", class:"new-form-list-field" %>
+      <%= form_for(@project) ,  do |form| %>
+        <div class="form-list">
+          <%= form.label :organizer, "聯絡窗口 *", class:"form-list-label" %>
+          <%= form.text_field :organizer, placeholder: "您的真實姓名", class:"form-list-field input-focus" %>
         </div>
-        <div class="new-form-list">
-          <%= form.label :email, "電子信箱 *", class:"new-form-list-label" %>
-          <%= form.email_field :email, placeholder: "請確認您的電子信箱", class:"new-form-list-field" %>
+        <div class="form-list">
+          <%= form.label :email, "電子信箱 *", class:"form-list-label" %>
+          <%= form.email_field :email, placeholder: "請確認您的電子信箱", class:"form-list-field input-focus" %>
         </div>
-        <div class="new-form-list">
-          <%= form.label :phone, "聯絡電話 *", class:"new-form-list-label" %>
-          <%= form.telephone_field :phone, placeholder: "您的手機號碼，電話號碼請加入區碼", class:"new-form-list-field" %>
+        <div class="form-list">
+          <%= form.label :phone, "聯絡電話 *", class:"form-list-label" %>
+          <%= form.telephone_field :phone, placeholder: "您的手機號碼，電話號碼請加入區碼", class:"form-list-field input-focus" %>
         </div> 
-        <div class="new-form-list">
-          <%= form.label :title, "提案名稱 *", class:"new-form-list-label" %>
-          <%= form.text_field :title, placeholder: "可日後變更", class:"new-form-list-field" %>
+        <div class="form-list">
+          <%= form.label :title, "提案名稱 *", class:"form-list-label" %>
+          <%= form.text_field :title, placeholder: "可日後變更", class:"form-list-field input-focus" %>
         </div> 
-        <div class="new-form-list">
-          <%= form.label :amount_target, "提案目標金額 *", class:"new-form-list-label" %>
-          <%= form.text_field :amount_target, placeholder: "團隊可簡略試算集資成本、生產或資金的運用，以推算出集資的門檻", class:"new-form-list-field" %>
+        <div class="form-list">
+          <%= form.label :amount_target, "提案目標金額 *", class:"form-list-label" %>
+          <%= form.text_field :amount_target, placeholder: "團隊可簡略試算集資成本、生產或資金的運用，以推算出集資的門檻", class:"form-list-field input-focus" %>
         </div> 
-        <div class="new-form-list">
-          <%= form.label :end_time, "提案結束日期 *", class:"new-form-list-label" %>
+        <div class="form-list">
+          <%= form.label :end_time, "提案結束日期 *", class:"form-list-label" %>
           <%= form.date_field :end_time, value: "%Y-%m-%d", class: "col-span-3 rounded ml-5 focus:outline-none focus:ring focus:border-purple-300" %>
         </div>
         <div>
@@ -48,32 +48,3 @@
       <% end %>
   </div>
 </main>
-<<<<<<< HEAD
-=======
-  <div>
-    <%= form.label :email, "電子信箱 *" %>
-    <%= form.email_field :email, class: "border-2 border-black-300 rounded" %>
-  </div>
-  <div>
-    <%= form.label :phone, "聯絡電話 *" %>
-    <%= form.telephone_field :phone, class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :title, "提案名稱 *" %>
-    <%= form.text_field :title, class: "border-2 border-black-300 rounded" %>
-  </div>
-  <div>
-    <%= form.label :amount_target, "提案目標金額（新台幣） *" %>
-    <%= form.text_field :amount_target, class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :end_time, "提案結束日期 *" %>
-    <%= form.date_field :end_time, value: "%Y-%m-%d", class: "border-2 border-black-300 rounded"%>
-  </div>
-  <div>
-    <%= form.label :description, "提案描述 *" %>
-    <%= form.rich_text_area :description , class: "border-2 border-black-300 rounded"%>
-  </div>
-  <%= form.submit %>
-<% end %>
->>>>>>> origin/development
