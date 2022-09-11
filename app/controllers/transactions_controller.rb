@@ -15,7 +15,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       project_current_total(params["donate_item"]["project_id"])
       Project.find(params["donate_item"]["project_id"]).update(current_total: @sum)
-      # debugger
+
       # for ecpay action
       produce_ecpay_basic_params
       # 交易訂單成功寫入後，呼叫 Service 將完整參數包好。
@@ -49,13 +49,13 @@ class TransactionsController < ApplicationController
   end
 
   def price
-    params["donate_item"]["price"]
+    DonateItem.where(project_id: params["donate_item"]["project_id"], title: params["donate_item"]["title"]).first.price
   end
 
   def produce_ecpay_basic_params
     @merchant_trade_no = @transaction.serial
     @merchant_trade_date = Time.now.strftime("%Y/%m/%d %H:%M:%S")
     @item_name = params["donate_item"]["title"]
-    @total_amount = params["donate_item"]["price"]
+    @total_amount = price
   end
 end

@@ -16,7 +16,6 @@
 
 <%= form_with model: @donate_item, url: transactions_path, method: "post" do |form| %>
     <%= form.hidden_field :title, value: @donate_item.title %>
-    <%= form.hidden_field :price, value: @donate_item.price %>
     <%= form.hidden_field :project_id, value: @donate_item.project_id %>
   <%= form.submit '贊助此項目' %>
 <% end %>
