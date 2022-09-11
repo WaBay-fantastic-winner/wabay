@@ -13,6 +13,11 @@ Rails.application.routes.draw do
         post :like
       end
     end
+    resource :search, only: [] do 
+      collection do
+        get :projects
+      end 
+    end
   end
 
   resources :transactions, except: [:show, :edit, :update] do

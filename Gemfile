@@ -53,7 +53,6 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', '~> 1.35'
-  
 end
 
 group :test do

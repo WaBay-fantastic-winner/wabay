@@ -3,17 +3,37 @@ import React , { useRef , useState} from 'react'
 const DropDownList = () => {
   const selectForm = useRef()
   const handleSubmit = () => {selectForm.current.submit()}
-  const [optionSelected, setOptionSelected] = useState('')
+  const AllOption = [
+    {
+      "type": "全部主題", 
+      "value": "all"
+    },
+    {
+      "type": "提案時間從新到舊", 
+      "value": "desc"
+    },
+    {
+      "type": "提案時間從舊到新", 
+      "value": "asc"
+    },
+    {
+      "type": "熱門提案", 
+      "value": "popular"
+    },
+  ]
+  const [option,setOption] = useState(AllOption)
   let querystring = (new URL(document.location)).searchParams;
-  let params = querystring.get('type')
+  let selectedOption = querystring.get('type')
+  
   return (
     <div>
       <form action="/projects" method="get" ref={selectForm} onChange={handleSubmit} >
-        <select name="type" id="type" className='p-2 pr-5 rounded-md border border-blue-400 border-solid focus:outline-none focus:ring focus:border-blue-300'>
-          <option>全部主題</option>
-          <option value="origin">原創設計</option>
-          <option value="society" >社會公益</option>
-          <option value="independence">獨立集資</option>
+        <select name="type" id="type" defaultValue={selectedOption} className='p-2 pr-5 rounded-md border border-purple-400 border-solid focus:outline-none focus:ring focus:border-purple-300'>
+          {AllOption.map(ele=>(
+            <option key={ele.value} value={ele.value}>
+              {ele.type}
+            </option>
+          ))}
         </select>
       </form>
     </div>

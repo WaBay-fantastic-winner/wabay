@@ -13,7 +13,7 @@
   <body>
     <header class='header'>
       <% if notice %>
-        <div class="notice text-center py-4 bg-green-200 text-white text-xl font-normal" data-controller="message">
+        <div class="notice text-center py-4 bg-green-200 text-purple-500 text-xl font-normal" data-controller="message">
         <%= notice %>
         </div>
       <% end %>
@@ -21,9 +21,9 @@
         <nav class="header-item h-fit flex justify-between items-center max-w-6xl mx-auto">
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
-              <li><%= link_to "首頁", root_path, class:"mx-5"%></li>
-              <li><%= link_to "探索", projects_path, class:"mx-5"%></li>
-              <li><%= link_to "提案", new_project_path, class:"mx-5"%></li>
+              <li><%= link_to "首頁", root_path, class:"mx-5 hover:text-gray-400"%></li>
+              <li><%= link_to "探索", projects_path, class:"mx-5 hover:text-gray-400"%></li>
+              <li><%= link_to "提案", new_project_path, class:"mx-5 hover:text-gray-400"%></li>
             </ul>
             <!-- 手機側邊收縮導覽列 -->
             <input id="mobile-nav-switch" type="checkbox" class="hidden" />
@@ -31,12 +31,13 @@
               <span class="inline-block"><i class="fa-solid fa-align-justify"></i></span>
               <span class="hidden"><i class="fa-solid fa-angle-left"></i></span>
             </label>
-            <div class="mobile-nav w-full absolute px-20 py-7 text-gray-500 border-t  border-gray-200 lg:hidden z-50 bg-white">
-              <div class="mb-3">
-                <a class="px-4 text-2xl" href="">探索</a>
+            <div class="mobile-nav w-full absolute top-20 px-16 py-7 text-gray-500 border-2  border-gray-200 lg:hidden z-50 bg-white">
+              <div class="mb-3 text-2xl">
+                <%= link_to "首頁", root_path, class:"px-4 pb-2 block"%>
+                <%= link_to "探索", projects_path, class:"px-4 pb-2 block"%>
               </div>
               <div class="mb-3">
-                <h2 class="font-bold text-blue-400">Themes</h2>
+                <h2 class="font-bold text-purple-400">Themes</h2>
                 <ul class="px-4 text-2xl">
                   <li class='py-2'><a href=""></a>原創設計</li>
                   <li class='py-2'><a href=""></a>社會公益</li>
@@ -44,7 +45,7 @@
                 </ul>
               </div>
               <div class="mb-3">
-                <h2 class="font-bold text-blue-400">Member</h2>
+                <h2 class="font-bold text-purple-400">Member</h2>
                 <ul class="px-4 text-2xl">
                 <% if user_signed_in? %>
                     <%= link_to "登出", destroy_user_session_path, method: 'delete', class:"block py-2" %>
@@ -55,15 +56,12 @@
                 </ul>
               </div>
               <div class="mb-3">
-                <h2 class="font-bold text-blue-400">Proposal</h2>
+                <h2 class="font-bold text-purple-400">Proposal</h2>
                 <%= link_to "提案", new_project_path, class:"px-4 block py-4 text-2xl"%>
               </div>
               <div class="flex justify-center">
-                <div class="mr-3">
-                  <p class='text-7xl'>𓃰</p>
-                </div>
                 <div>
-                  <p>Copyright ©2022 Backer-Founder <br/> All rights reserved</p>
+                  <p>Copyright ©2022 Wubay <br/> All rights reserved</p>
                 </div>
               </div>
             </div>
@@ -78,25 +76,24 @@
               <%= javascript_pack_tag 'SearchBar' %>
             </div>
               <!-- 會員相關  -->
-            <div class="member mr-6 text-blue-400 relative" data-controller='memberSwitch'>
-              <div class=' hidden lg:flex items-center'>
+            <div class="member mr-6 text-purple-400 relative" data-controller='memberSwitch'>
+              <div class='hidden lg:flex items-center'>
                 <% if user_signed_in? %>
-                  <button class="bg-blue-400 text-white px-5 ml-4 py-2 rounded-full border-white border-double border-4" data-controller='memberSwitch' data-action="click->memberSwitch#switch"><i class="fa-regular fa-user text-xl"></i></button>
-                  <%= link_to "登出", destroy_user_session_path, method: 'delete', class:"block pl-5" %>
+                  <button class="bg-purple-400 text-white px-5 ml-6 py-2 rounded-full border-white border-double border-4" data-action="click->memberSwitch#switch" data-target='memberSwitch.button'><i class="fa-regular fa-user text-xl"></i></button>
                 <% else %>
                   <%= link_to "登入", new_user_session_path, class:"mx-5"%>
-                  <%= link_to "註冊", new_user_registration_path, class:"px-5 py-3 rounded-md border border-blue-400 hover:bg-blue-400 hover:text-white duration-300" %>
+                  <%= link_to "註冊", new_user_registration_path, class:"px-5 py-3 rounded-md border border-purple-400 hover:bg-purple-400 hover:text-white duration-300" %>
                 <% end %>
               </div>
               <%# 收合會員功能 %>
-              <div id='memberCenter' class='absolute bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0 ) hidden'>
-                <ul class='text-blue-400 text-sm w-40 py-2'>
+              <div class='absolute right-4 bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0) hidden' data-target='memberSwitch.memberCenter'>
+                <ul class='text-purple-400 text-sm w-40 py-2'>
                   <li class='py-2 pl-4 border-b border-gray-200'>個人頁面</li>
-                  <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-blue-300' %></li>
-                  <li class='py-2 pl-4'>紅利紀錄</li>
+                  <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4 border-b border-gray-200'>追蹤專案</li>
                   <li class='py-2 pl-4'>編輯個人資料</li>
-                  <li class='py-2 pl-4'>變更密碼</li>
+                  <li class='py-2 pl-4'><%= link_to "變更密碼", edit_user_password_path, class:'hover:text-purple-300' %></li>
+                  <li class='py-2 pl-4'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
                 </ul>
               </div>
             </div>
@@ -104,19 +101,16 @@
         </nav>
       </div>
     </header>
-    <%# 每個分頁的主內容 %>
     <%= yield %>
-    <%#  %>
-    <footer class="text-sm px-12 py-7 ">
+    <footer class="text-sm px-12 py-7 border-t-2 border-gray-200 border-solid">
       <div class='max-w-6xl auto'>
         <div class='footer-items flex flex-wrap justify-around mx-auto max-w-3xl'>
           <div class='w-1/2 md:w-1/4'>
             <h2 class="font-semibold my-4 text-base">關於</h2>
             <ul class=''>
               <li>關於我們</li>
-              <li>挖貝徽章認證</li>
+              <li>Wubay徽章認證</li>
               <li>贊助保障規範</li>
-              <li>會員紅利介紹</li>
               <li>提案服務說明</li>
             </ul>
           </div>
@@ -140,19 +134,14 @@
           <div class='w-1/2 md:w-1/4'>
             <h2 class="font-semibold my-4 text-base">更多內容</h2>
             <ul class=''>
-              <li>貝殼集器</li>
-              <li>貝殼放大</li>
+              <li>Wubay集器</li>
+              <li>Wubay放大</li>
               <li>群眾觀點</li>
             </ul>
           </div>
         </div>  
         <div class="flex justify-center my-5">
-          <div class="mr-3">
-            <p class='text-4xl'>𓃰</p>
-          </div>
-          <div>
-            <p>Copyright ©2022 Backer-Founder <br/> All rights reserved</p>
-          </div>
+          <p>Copyright ©2022 Wubay <br/> All rights reserved</p>
         </div>
       </div>
     </footer>

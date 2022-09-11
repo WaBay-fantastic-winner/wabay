@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
 import SearchBar from '../src/header/components/SearchBar'
 
-document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-    <SearchBar />,
-    document.querySelector('#searchBar'))
-})
+const searchBar = ReactDOM.createRoot(document.querySelector('#searchBar'));
+searchBar.render(
+    <React.StrictMode>
+        <SearchBar />
+    </React.StrictMode>
+);

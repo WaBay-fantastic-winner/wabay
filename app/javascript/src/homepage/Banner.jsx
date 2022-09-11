@@ -10,7 +10,6 @@ import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
 import './banner.css';
 
-
 const Rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -21,19 +20,19 @@ const ImgUrl = () => {
 }
 
 const CreateSlide = () => {
+    const device = UseRWD();
     return (
-        <SwiperSlide className='flex justify-center rounded-3xl items-center'>
-            <a href=""><img className="rounded-3xl" src={ImgUrl()} alt="" /></a>
+        <SwiperSlide className='flex justify-center items-center'>
+            <a href=""><img className={`${ device === "PC" && 'rounded-3xl'}`} src={ImgUrl()} alt="" /></a>
         </SwiperSlide>
     );
 }
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6 hover:text-blue-400 '><a href=''>{props.text}</a></li>)
+    return (<li className='mx-2 md:mx-6 hover:text-purple-400 '><a href=''>{props.text}</a></li>)
 }
 
 const Banner = () => {
-
     const device = UseRWD();
 
     return (
@@ -48,12 +47,12 @@ const Banner = () => {
             </div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                slidesPerView={device === "PC" ? 1.5 : "auto"}
+                slidesPerView={device === "PC" ? 1.5 : 1 }
                 navigation
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{ delay: 3000 }}
+                autoplay={{ delay: 4000 }}
                 pagination={{ clickable: true }}  
             >
                 {CreateSlide()}

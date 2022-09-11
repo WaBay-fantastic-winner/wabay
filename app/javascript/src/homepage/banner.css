@@ -10,7 +10,7 @@
 .swiper-button-next, .swiper-button-prev{
     background-color: white;
     border-radius: 50%;
-    border: 3px #007aff solid;
+    border: 3px #bd4ef4 solid;
     padding: 3vw;
     font-size: 20px;
     display: none;
@@ -20,10 +20,14 @@
 }
 .swiper-button-next::after, .swiper-button-prev::after{
     font-size: 3vw;
+    color: #bd4ef4;
 }
 .swiper-button-next:hover, .swiper-button-prev:hover{
-    background-color: #007aff;
-    color: white
+    background-color: #bd4ef4;
+    color: white;
+}
+.swiper-button-next:hover::after, .swiper-button-prev:hover::after{
+    color: white;
 }
 @media screen and (min-width:768px){
     .swiper-button-next, .swiper-button-prev{
