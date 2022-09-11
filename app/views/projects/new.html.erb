@@ -11,7 +11,7 @@
 <main class='bg-gray-100 py-10'>
   <div class='max-w-3xl mx-auto py-12 p-8 rounded-3xl bg-white'>
       <h1 class="text-2xl tracking-wider text-center py-4 my-4 bg-purple-400 rounded-2xl text-white" >我想在Wubay提案</h1>
-      <%= form_for(@project) ,  do |form| %>
+      <%= form_for(@project) do |form| %>
         <div class="form-list">
           <%= form.label :organizer, "聯絡窗口 *", class:"form-list-label" %>
           <%= form.text_field :organizer, placeholder: "您的真實姓名", class:"form-list-field input-focus" %>

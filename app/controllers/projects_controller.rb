@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
     # 登入後的使用者，使用多對多方式 .projects ，建立表單
     @project = current_user.projects.new(clean_params)
     if @project.save
-      redirect_to new_project_donate_item_path, notice: ' 提案成功 !!'
+      redirect_to projects_path, notice: ' 提案成功 !!'
     else
       render :new
     end
