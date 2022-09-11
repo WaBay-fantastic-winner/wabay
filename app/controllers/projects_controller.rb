@@ -63,8 +63,4 @@ class ProjectsController < ApplicationController
   def find_project
     @project = Project.find(params[:id])
   end
-
-  def percentage_of_currency
-    @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
-  end
 end
