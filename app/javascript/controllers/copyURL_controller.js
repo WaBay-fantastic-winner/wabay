@@ -18,6 +18,5 @@ export default class extends Controller {
       this.URLTarget.classList.remove('text-red-400')
       this.URLTarget.value = href
     },1000)
-
-  }
+  } 
 }

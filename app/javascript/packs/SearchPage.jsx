@@ -1,10 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
 import SearchPage from '../src/searchPage/SearchPage'
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(
-    <SearchPage />,
-    document.querySelector('#searchPage'))
-})
+const searchPage = ReactDOM.createRoot(document.querySelector('#searchPage'));
+searchPage.render(
+    <React.StrictMode>
+        <SearchPage />
+    </React.StrictMode>
+);

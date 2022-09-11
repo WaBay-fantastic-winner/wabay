@@ -10,7 +10,6 @@ import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
 import './banner.css';
 
-
 const Rand = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
@@ -19,7 +18,6 @@ const ImgUrl = () => {
     const id = Rand(1, 200);
     return `https://picsum.photos/id/${id}/1000/500`;
 }
-
 
 const CreateSlide = () => {
     const device = UseRWD();
@@ -31,11 +29,10 @@ const CreateSlide = () => {
 }
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6 hover:text-blue-400 '><a href=''>{props.text}</a></li>)
+    return (<li className='mx-2 md:mx-6 hover:text-purple-400 '><a href=''>{props.text}</a></li>)
 }
 
 const Banner = () => {
-
     const device = UseRWD();
 
     return (

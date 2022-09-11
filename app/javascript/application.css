@@ -3,16 +3,22 @@
 @import "tailwindcss/components";
 
 @layer components{
-  .new-form-list {
+  .form-list{
     @apply border-solid border-2 border-purple-300 px-6 py-6 mb-4 text-xs md:text-base grid grid-cols-10 ;
   }
-  .new-form-list-label {
+  .form-list-label{
     @apply text-purple-400 pr-3 border-purple-300 border-r-2 col-span-2
   }
-  .new-form-list-field {
+  .form-list-field{
     @apply col-span-8 w-full ml-4 focus:outline-none focus:ring focus:border-purple-300
   }
-  .input-focus {
+  .input-focus{
     @apply focus:outline-none focus:ring focus:ring-purple-300
+  }
+  .donate-button{
+    @apply bg-purple-400 hover:bg-purple-300 text-white rounded-md py-2
+  }
+  .primary-text-color{
+    @apply text-purple-400
   }
 }
