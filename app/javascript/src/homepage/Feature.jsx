@@ -1,9 +1,9 @@
 import React from 'react'
-import track from './img/track.png'
-import communication from './img/communication.png'
-import pay from './img/pay.png';
-import progress from './img/progress.png'
-import search from './img/search.png'
+import track from '../assets/img/track.png'
+import communication from '../assets/img/communication.png'
+import pay from '../assets/img/pay.png';
+import progress from '../assets/img/progress.png'
+import search from '../assets/img/search.png'
 
 const Feature = () => {
     const FeatureList = [
