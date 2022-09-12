@@ -37,7 +37,7 @@
       <li>
         <%= question.title  %>
         <%= question.content  %>
-        <%= question.created_at.strftime("%Y-%m-%d %H:%M")  %>
+        <%= question.updated_at.strftime("%Y-%m-%d %H:%M")  %>
         <%= link_to "編輯", edit_question_path(question.id) %>
         <%= link_to "刪除", question, method: 'delete' %>
       </li>
