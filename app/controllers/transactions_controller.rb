@@ -36,11 +36,10 @@ class TransactionsController < ApplicationController
   
 
   def paid
-    puts params
     transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
     transaction.pay!
     sign_in(User.find(transaction.user_id))
-    redirect_to project_path(transaction.project_id)
+    redirect_to project_path(transaction.project_id), notice: "感謝您贊助 #{DonateItem.find(transaction.donate_item_id).title} !"
   end
 
   def destroy
