@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   belongs_to :user
   has_many :donate_items, dependent: :destroy
   has_rich_text :description
+  has_one_attached :avatar
   has_many :comments, dependent: :destroy
   has_many :follows, as: :followable
   has_many :questions

@@ -73,7 +73,8 @@ class ProjectsController < ApplicationController
   private
 
   def clean_params
-    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description)
+    # 資料清洗
+    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description, :avatar)
   end
 
   def find_project
