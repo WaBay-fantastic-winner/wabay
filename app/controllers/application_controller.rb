@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
-
   # project / transaction / controller shares
   def project_current_total(params)
     @sum = 0

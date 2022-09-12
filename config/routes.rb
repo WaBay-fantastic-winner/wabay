@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
     resource :disclosures, only: [:show]
     resources :comments, shallow: true
+    resources :questions, shallow: true, except: [:show]
   end
 
   namespace :api do

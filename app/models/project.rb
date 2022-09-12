@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_rich_text :description
   has_many :comments, dependent: :destroy
   has_many :follows, as: :followable
+  has_many :questions
   
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,
             :description, presence: true
