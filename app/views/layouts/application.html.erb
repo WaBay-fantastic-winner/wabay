@@ -90,7 +90,7 @@
                 <ul class='text-purple-400 text-sm w-40 py-2'>
                   <li class='py-2 pl-4 border-b border-gray-200'>個人頁面</li>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
-                  <li class='py-2 pl-4 border-b border-gray-200'>追蹤專案</li>
+                  <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path %></li>
                   <li class='py-2 pl-4'>編輯個人資料</li>
                   <li class='py-2 pl-4'><%= link_to "變更密碼", edit_user_password_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>

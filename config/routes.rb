@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'home#index'
   resources :projects do
     resources :donate_items
+    member do
+      post :follow
+    end
     resource :disclosures, only: [:show]
     resources :comments, shallow: true
   end
@@ -19,6 +22,9 @@ Rails.application.routes.draw do
       end 
     end
   end
+
+  resources :follows, only: [:index] 
+
 
   resources :transactions, except: [:show, :edit, :update] do
     collection do
