@@ -80,6 +80,10 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
 
+gem 'dotenv'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 # gem 'rmagick'
 
 gem 'aasm', '~> 5.3'
