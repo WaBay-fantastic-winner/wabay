@@ -3,9 +3,6 @@ class Api::SearchesController < ApplicationController
     keyword = params[:keyword]
     type = params[:type]
     @projects = Project.all
-    p "*"*50
-    p params
-    p "*"*50
     if keyword   # 關鍵字搜尋
       @projects = Project.where("project_title like ?","%#{keyword}%")
     elsif type  # 類別搜尋

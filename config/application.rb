@@ -18,8 +18,7 @@ module Wabay
     # in config/environments, which are processed later.
     #
     config.time_zone = "Taipei"
-    config.active_record.default_timezone = :local
-- 
+    config.active_record.default_timezone = :local 
     config.eager_load_paths << Rails.root.join("extras")
 
     # 讓 Rails 可以找到 sidekiq 的 job 檔案
