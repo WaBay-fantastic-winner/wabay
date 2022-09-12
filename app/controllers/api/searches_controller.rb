@@ -4,7 +4,7 @@ class Api::SearchesController < ApplicationController
     type = params[:type]
     @projects = Project.all
     if keyword   # 關鍵字搜尋
-      @projects = Project.where("project_title like ?","%#{keyword}%")
+      @projects = Project.where("title like ?","%#{keyword}%")
     elsif type  # 類別搜尋
       if type == "desc" # 新到舊
         @projects = @projects.order(created_at: :desc)
