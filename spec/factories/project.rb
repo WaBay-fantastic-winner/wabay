@@ -6,7 +6,7 @@ FactoryBot.define do
     phone { Faker::PhoneNumber }
     title { Faker::Food.dish }
     amount_target { Faker::Number.number(digits: 4) }
-    end_time { "2022/12/30" }
+    end_time { Date.new.end_of_year + 1 }
     description { Faker::Food.description }
   end
 end
