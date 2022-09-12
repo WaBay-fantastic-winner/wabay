@@ -33,8 +33,6 @@ class TransactionsController < ApplicationController
     end
   end
 
-  
-
   def paid
     transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
     transaction.pay!

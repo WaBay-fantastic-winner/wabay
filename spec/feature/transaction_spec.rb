@@ -6,6 +6,8 @@ RSpec.describe "建立交易", type: :feature do
     login_as user
 
     @donate_item = create(:donate_item)
+
+    @transaction = create(:transaction)
   end
 
   it "交易成功" do
@@ -28,13 +30,13 @@ RSpec.describe "建立交易", type: :feature do
     click_on '關閉 Turn off'
     click_on '立即付款'
     click_on '確定 Confirm'
-    
+    # sleep 3
     click_on '取得OTP服務密碼(Get the password)'
+    # sleep 3
     within 'div.cvb-input' do
       find('input#OTP').set('1234')
     end
     click_on '送出(Submit)'
-
-    expect(page).to have_content '登入'
+    expect(@transaction).to transition_from(:pending).to(:paid).on_event(:pay)
   end
 end
