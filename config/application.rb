@@ -19,5 +19,8 @@ module Wabay
     #
     # config.time_zone = "Central Time (US & Canada)"
     config.eager_load_paths << Rails.root.join("extras")
+
+    # 讓 Rails 可以找到 sidekiq 的 job 檔案
+    config.eager_load_paths += %W( #{config.root}/app/jobs )
   end
 end

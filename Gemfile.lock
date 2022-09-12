@@ -89,6 +89,10 @@ GEM
     concurrent-ruby (1.1.10)
     connection_pool (2.2.5)
     crass (1.0.6)
+    database_cleaner (1.8.5)
+    database_cleaner-active_record (1.8.0)
+      activerecord
+      database_cleaner (~> 1.8.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -110,6 +114,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.23.0)
+      i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
     foreman (0.87.2)
     globalid (1.0.0)
@@ -123,6 +129,8 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     json (2.6.2)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     listen (3.7.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -218,6 +226,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.8.0)
     regexp_parser (2.5.0)
     responders (3.0.1)
       actionpack (>= 5.0)
@@ -272,6 +281,10 @@ GEM
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
     semantic_range (3.0.0)
+    sidekiq (6.5.6)
+      connection_pool (>= 2.2.5)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
     spring (4.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -324,13 +337,16 @@ DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
   capybara (>= 3.26)
+  database_cleaner-active_record (~> 1.8.0.beta)
   devise
   devise-i18n (~> 1.10)
   dotenv-rails
   factory_bot_rails (~> 6.2)
+  faker
   foreman (~> 0.87.2)
   image_processing (~> 1.2)
   jbuilder (~> 2.7)
+  launchy (~> 2.4, >= 2.4.3)
   listen (~> 3.3)
   net-imap
   net-pop
@@ -346,9 +362,11 @@ DEPENDENCIES
   rubocop (~> 1.35)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
+  sidekiq (~> 6.5, >= 6.5.6)
   spring
   turbolinks (~> 5)
   tzinfo-data
+  warden (~> 1.2, >= 1.2.9)
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)

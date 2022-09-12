@@ -15,7 +15,7 @@
     <% if current_user.id === transaction.user_id %>
       <tr>
         <td><%= transaction.serial %></td>
-        <td><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).project_title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
+        <td><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
         <td><%= DonateItem.find_by!(id: transaction.donate_item_id).title %></td>
         <td><%= transaction.price %></td>
         <td><%= transaction.state %></td>

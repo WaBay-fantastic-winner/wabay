@@ -61,7 +61,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  # config.active_job.queue_adapter     = :resque
+  config.active_job.queue_adapter     = :sidekiq
   # config.active_job.queue_name_prefix = "wabay_production"
 
   config.action_mailer.perform_caching = false
@@ -72,13 +72,13 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: "http://localhost:3000" } #production的絕對網址
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: ENV['ADDRESS'],
     port: 587,
-    domain: "gmail.com",
+    domain: ENV['DOMAIN'],
     authentication: "plain",
-    user_name: 'darren050106@gmail.com', #你的帳號
-    password: 'iqwpfyrgkzklcltr', #信箱密碼 
-    enable_starttls_auto: true 
+    user_name: ENV['MAILGUN_USERNAME'],
+    password: ENV['MAILGUN_PASSWORD'],
+    enable_starttls_auto: true
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

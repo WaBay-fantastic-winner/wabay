@@ -39,6 +39,20 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'pry', '~> 0.13.1'
+
+  # Adds support for Capybara system testing and selenium driver
+  gem 'capybara', '>= 3.26'
+  gem 'selenium-webdriver', '>= 4.0.0.rc1'
+  # Easy installation and use of web drivers to run system tests with browsers
+  gem 'webdrivers'
+
+  gem 'rspec-rails', '~> 5.1'
+
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'launchy', '~> 2.4', '>= 2.4.3'
+  gem 'warden', '~> 1.2', '>= 1.2.9'
+  gem 'faker'
+  gem 'database_cleaner-active_record', '~> 1.8.0.beta'
 end
 
 group :development do
@@ -53,18 +67,6 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', '~> 1.35'
-end
-
-group :test do
-  # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
-  # Easy installation and use of web drivers to run system tests with browsers
-  gem 'webdrivers'
-
-  gem 'rspec-rails', '~> 5.1'
-
-  gem 'factory_bot_rails', '~> 6.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,3 +84,5 @@ gem 'net-smtp', require: false
 
 gem 'aasm', '~> 5.3'
 gem 'paranoia', '~> 2.6'
+
+gem 'sidekiq', '~> 6.5', '>= 6.5.6'
