@@ -10,6 +10,7 @@ export default class extends Controller {
   
   connect() {
     this.sumTarget.textContent = this.element.dataset.price;
+    this.extraDonate = this.extraDonateTarget.value
   }
 
   subtract() {

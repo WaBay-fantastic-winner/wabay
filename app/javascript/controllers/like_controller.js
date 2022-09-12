@@ -1,14 +1,10 @@
-
-
 import { Controller } from "stimulus";
-import log from "tailwindcss/lib/util/log";
 import Rails from "@rails/ujs";
 
 export default class extends Controller {
 	static targets = ["love", "count"];
 
 	connect() {
-		// console.log(this.element.dataset)
 		if (this.element.dataset.like === "true") {
 			this.loveTarget.textContent = "♥";
 		} else {
