@@ -42,7 +42,7 @@
             <div class="content">
               <p><%= question.content %></p>
               <p><%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-              <% if question.project %> 
+              <% if @project_id == current_user.project_ids %> 
                 <%= link_to "編輯", edit_question_path(question.id) %>
                 <%= link_to "刪除", question, method: 'delete' %>
               <% end %>

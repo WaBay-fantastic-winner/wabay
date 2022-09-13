@@ -88,8 +88,8 @@
               </div>
               <%# 收合會員功能 %>
               <div class='absolute right-4 bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0) hidden' data-target='memberSwitch.memberCenter'>
-                <ul class='w-40 py-2 text-sm text-purple-400'>
-                  <li class='py-2 pl-4 border-b border-gray-200'>個人頁面</li>
+                <ul class='text-purple-400 text-sm w-40 py-2'>
+                  <%= link_to '個人頁面', users_profile_path, class: 'py-2 pl-4 border-b border-gray-200' %>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path %></li>
                   <li class='py-2 pl-4'>編輯個人資料</li>
