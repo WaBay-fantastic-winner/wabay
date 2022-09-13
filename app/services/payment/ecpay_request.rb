@@ -16,7 +16,7 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
         "MerchantTradeNo": merchant_trade_no, 
-        "ReturnURL": "https://f3ec-103-3-192-33.jp.ngrok.io/transactions",
+        "ReturnURL": "http://localhost:3000/transactions",
         "ItemName": title,
         "TotalAmount": price, 
         "ChoosePayment": "ALL", 

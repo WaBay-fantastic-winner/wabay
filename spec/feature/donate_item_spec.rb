@@ -1,14 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "建立贊助項目", type: :feature do
-  before do
-    @project = create(:project)
-    user = User.find_by(id: @project.user_id)
-    login_as user
-  end
+    let(:project) { create(:project) }
+    let(:user) { User.find(project.user_id) }
 
   it "贊助項目建立成功" do
-    visit project_path(id: @project.id)
+    login_as user
+    visit project_path(project)
     click_on '新增贊助項目'
 
     within 'div#donate_item' do

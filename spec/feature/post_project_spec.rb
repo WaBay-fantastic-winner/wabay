@@ -1,13 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'post a new project', type: :feature do
-
-  before do
-    user = create(:user)
-    login_as user
-  end
+    let(:user) { create(:user) }
 
   it "文章新增成功" do
+    login_as user
+    
     visit '/'
     click_button "提案"
 
