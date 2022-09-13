@@ -13,12 +13,12 @@
   <body>
     <header class='header'>
       <% if notice %>
-        <div class="notice text-center py-4 bg-green-300 text-white text-xl font-semibold" data-controller="message">
+        <div class="py-4 text-xl font-semibold text-center text-white bg-green-300 notice" data-controller="message">
         <%= notice %>
         </div>
       <% end %>
-      <div class="text-lg relative w-full border-b text-slate-500 border-gray-200 ">
-        <nav class="header-item h-fit flex justify-between items-center max-w-6xl mx-auto">
+      <div class="relative w-full text-lg border-b border-gray-200 text-slate-500 ">
+        <nav class="flex items-center justify-between max-w-6xl mx-auto header-item h-fit">
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
               <li><%= link_to "首頁", root_path, class:"mx-5 hover:text-gray-400"%></li>
@@ -27,11 +27,11 @@
             </ul>
             <!-- 手機側邊收縮導覽列 -->
             <input id="mobile-nav-switch" type="checkbox" class="hidden" />
-            <label for="mobile-nav-switch" class="lg:hidden ml-8 text-2xl">
+            <label for="mobile-nav-switch" class="ml-8 text-2xl lg:hidden">
               <span class="inline-block"><i class="fa-solid fa-align-justify"></i></span>
               <span class="hidden"><i class="fa-solid fa-angle-left"></i></span>
             </label>
-            <div class="mobile-nav w-full absolute top-20 px-16 py-7 text-gray-500 border-2  border-gray-200 lg:hidden z-50 bg-white">
+            <div class="absolute z-50 w-full px-16 text-gray-500 bg-white border-2 border-gray-200 mobile-nav top-20 py-7 lg:hidden">
               <div class="mb-3 text-2xl">
                 <%= link_to "首頁", root_path, class:"px-4 pb-2 block"%>
                 <%= link_to "探索", projects_path, class:"px-4 pb-2 block"%>
@@ -68,7 +68,7 @@
             </div>
           </div>
           <!-- LOGO -->
-          <div class="logo w-40 absolute right-1/2 transform translate-x-1/2">
+          <div class="absolute w-40 transform translate-x-1/2 logo right-1/2">
             <a href="/"><%= image_tag('wubay.png') %></a>
           </div>
           <%# 搜尋及會員相關 %>
@@ -77,10 +77,10 @@
               <%= javascript_pack_tag 'SearchBar' %>
             </div>
               <!-- 會員相關  -->
-            <div class="member mr-6 primary-text-color relative" data-controller='memberSwitch'>
-              <div class='hidden lg:flex items-center'>
+            <div class="relative mr-6 member primary-text-color" data-controller='memberSwitch'>
+              <div class='items-center hidden lg:flex'>
                 <% if user_signed_in? %>
-                  <button class="bg-purple-400 text-white px-5 ml-6 py-2 rounded-full border-white border-double border-4" data-action="click->memberSwitch#switch" data-target='memberSwitch.button'><i class="fa-regular fa-user text-xl"></i></button>
+                  <button class="px-5 py-2 ml-6 text-white bg-purple-400 border-4 border-white border-double rounded-full" data-action="click->memberSwitch#switch" data-target='memberSwitch.button'><i class="text-xl fa-regular fa-user"></i></button>
                 <% else %>
                   <%= link_to "登入", new_user_session_path, class:"mx-5"%>
                   <%= link_to "註冊", new_user_registration_path, class:"px-5 py-3 rounded-md border border-purple-400 hover:bg-purple-400 hover:text-white duration-300" %>
@@ -88,8 +88,8 @@
               </div>
               <%# 收合會員功能 %>
               <div class='absolute right-4 bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0) hidden' data-target='memberSwitch.memberCenter'>
-                <ul class='primary-text-color text-sm w-40 py-2'>
-                  <li class='py-2 pl-4 border-b border-gray-200'>個人頁面</li>
+                <ul class='w-40 py-2 text-sm primary-text-color'>
+                  <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "個人頁面", class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path %></li>
                   <li class='py-2 pl-4'>編輯個人資料</li>
@@ -103,12 +103,12 @@
       </div>
     </header>
     <%= yield %>
-    <footer class="text-sm px-12 py-7 border-t-2 border-gray-200 border-solid">
+    <footer class="px-12 text-sm border-t-2 border-gray-200 border-solid py-7">
       <div class='max-w-6xl mx-auto'>
-        <div class='footer-items flex flex-wrap justify-around mx-auto max-w-3xl'>
+        <div class='flex flex-wrap justify-around max-w-3xl mx-auto footer-items'>
           <div class='w-1/2 md:w-1/4 '>
-            <ul class='md:flex items-center flex-col'>
-              <h2 class="font-semibold my-4 text-base ">關於</h2>
+            <ul class='flex-col items-center md:flex'>
+              <h2 class="my-4 text-base font-semibold ">關於</h2>
               <li>關於我們</li>
               <li>Wubay徽章認證</li>
               <li>贊助保障規範</li>
@@ -116,8 +116,8 @@
             </ul>
           </div>
           <div class='w-1/2 md:w-1/4'>
-            <ul class='md:flex items-center flex-col'>
-              <h2 class="font-semibold my-4 text-base">支援</h2>
+            <ul class='flex-col items-center md:flex'>
+              <h2 class="my-4 text-base font-semibold">支援</h2>
               <li>常見問題</li>
               <li>使用條款</li>
               <li>隱私權政策</li>
@@ -125,16 +125,16 @@
             </ul>
           </div>
           <div class='w-1/2 md:w-1/4'>
-            <ul class='md:flex items-center flex-col'>
-              <h2 class="font-semibold my-4 text-base">聯繫</h2>
+            <ul class='flex-col items-center md:flex'>
+              <h2 class="my-4 text-base font-semibold">聯繫</h2>
               <li>聯繫我們</li>
               <li>提案諮詢</li>
               <li>品牌資源</li>
             </ul>
           </div>
           <div class='w-1/2 md:w-1/4'>
-            <ul class='md:flex items-center flex-col'>
-              <h2 class="font-semibold my-4 text-base">更多內容</h2>
+            <ul class='flex-col items-center md:flex'>
+              <h2 class="my-4 text-base font-semibold">更多內容</h2>
               <li>Wubay集器</li>
               <li>Wubay放大</li>
               <li>群眾觀點</li>

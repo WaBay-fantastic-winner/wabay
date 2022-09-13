@@ -16,13 +16,13 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
         "MerchantTradeNo": merchant_trade_no, 
-        "ReturnURL": "https://f3ec-103-3-192-33.jp.ngrok.io/transactions",
+        "ReturnURL": "https://localhost:3000/transactions",
         "ItemName": title,
         "TotalAmount": price, 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "https://f3ec-103-3-192-33.jp.ngrok.io/transactions/paid",
+        "OrderResultURL": "https://localhost:3000/transactions/paid",
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end

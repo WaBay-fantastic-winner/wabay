@@ -1,7 +1,6 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-
   connect() {
     let endTime = this.element.dataset.projectTime.split(' ')
     let endYear = endTime[0].split('-')[0]

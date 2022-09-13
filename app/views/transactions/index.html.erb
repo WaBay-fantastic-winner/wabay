@@ -1,43 +1,43 @@
 <div class='border border-gray-300 boder-solid'>
   <div class="max-w-6xl mx-auto text-xs md:text-base">
-    <ul class='grid items-center h-16 grid-cols-6 '>
+    <ul class='grid items-center justify-center h-16 grid-cols-5 '>
       <li class='text-center'><a>個人頁面</a></li>
-      <li class='text-center' class='current-page'><%= link_to "交易紀錄", transactions_path%></li>
+      <li class='text-center current-page'><%= link_to "交易紀錄", transactions_path%></li>
       <li class='text-center'><a>追蹤專案</a></li>
       <li class='text-center'><a>修改個人資料</a></li>
-      <li class='text-center'><a>交易紀錄</a></li>
       <li class='text-center'><a>變更密碼</a></li>
     </ul>
   </div>
 </div>
-
-
-
-<h1>贊助交易紀錄</h1>
-
-<%= link_to "返回首頁", '/' %>
-
-<table>
-  <tr>
-    <td> 交易序號 </td>
-    <td> 贊助專案 </td>
-    <td> 贊助項目 </td>
-    <td> 贊助金額（新台幣）</td>
-    <td> 交易狀態 </td>
-    <td>  </td>
-  </tr>
-  <% @transactions.each do |transaction| %>
-    <% if current_user.id === transaction.user_id %>
-      <tr>
-        <td><%= transaction.serial %></td>
-        <td><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
-        <td><%= DonateItem.find_by!(id: transaction.donate_item_id).title %></td>
-        <td><%= transaction.price %></td>
-        <td><%= transaction.state %></td>
-        <% if transaction.state === 'pending' %>
-          <td><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
+<section class='w-screen bg-gray-100'>
+  <div class="py-16 mx-auto text-xs md:text-base">
+    <table class='mx-auto border border-separate border-gray-300 w-1000 border-spacing-5'>
+      <thead class='bg-purple-400'>
+        <th class="table-layout"> 交易序號 </th>
+        <th class="table-layout"> 贊助專案 </th>
+        <th class="table-layout"> 贊助項目 </th>
+        <th class="table-layout"> 贊助金額（新台幣）</th>
+        <th class="table-layout"> 交易狀態 </th>
+        <th class="table-layout"></th>
+      </thead>
+      <% @transactions.each do |transaction| %>
+        <% if current_user.id === transaction.user_id %>
+          <tr class='bg-purple-200'>
+            <td class="table-layout"><%= transaction.serial %></td>
+            <td class="table-layout"><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
+            <td class="table-layout"><%= DonateItem.find_by!(id: transaction.donate_item_id).title %></td>
+            <td class="table-layout"><%= transaction.price %></td>
+            <td class="table-layout"><%= transaction.state %></td>
+            <% if transaction.state === 'pending' %>
+              <td class="table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
+              <% else %>
+              <td class="table-layout"></td>
+            <% end %>
+          </tr>
         <% end %>
-      </tr>
-    <% end %>
-  <% end %>
-</table>
+      <% end %>
+    </table>  
+  </div>
+</section>
+
+

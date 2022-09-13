@@ -9,8 +9,8 @@ echo --------------------------
 echo
 
 # Get the local IP address
-LOCAL_IP=$(ifconfig wifi0 | grep inet | grep -v inet6 | awk '{print $2}')
-# LOCAL_IP=$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')
+# LOCAL_IP=$(ifconfig wifi0 | grep inet | grep -v inet6 | awk '{print $2}')
+LOCAL_IP=$(ifconfig en0 | grep inet | grep -v inet6 | awk '{print $2}')
 
 echo $LOCAL_IP
 echo

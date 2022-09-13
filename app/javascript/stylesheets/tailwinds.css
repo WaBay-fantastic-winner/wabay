@@ -4,7 +4,7 @@
 
 @layer components{
   .form-list{
-    @apply border-solid border-2 border-purple-300 px-6 py-6 mb-4 text-xs md:text-base grid grid-cols-10 ;
+    @apply grid grid-cols-10 px-6 py-6 mb-4 text-xs border-2 border-purple-300 border-solid md:text-base ;
   }
   .form-list-label{
     @apply text-purple-400 pr-3 border-purple-300 border-r-2 col-span-2
@@ -20,5 +20,8 @@
   }
   .primary-text-color{
     @apply text-purple-400
+  }
+  .table-layout{
+    @apply  text-center px-5 py-3 
   }
 }
