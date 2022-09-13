@@ -7,8 +7,6 @@ ruby '3.1.2'
 
 gem 'devise'
 
-gem 'react-rails'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # Use sqlite3 as the database for Active Record
@@ -80,10 +78,10 @@ gem 'net-imap', require: false
 gem 'net-pop', require: false
 gem 'net-smtp', require: false
 
-gem 'dotenv'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection'
 # gem 'rmagick'
 
 gem 'aasm', '~> 5.3'
