@@ -20,7 +20,7 @@
           <P class="my-2">目標金額：<%= @project.amount_target %></P>
           <p class="my-2 font-semibold">
             剩餘時間：
-            <span id='left-time' data-controller='leftTimer' data-project-time="<%= @project.end_time%>"></span>
+            <span data-controller='leftTimer' date-leftTimer-target='leftTimer' data-percentage="<%= @percentage %>project-time="<%= @project.end_time%>"></span>
           </p>
           <P class="my-2 font-semibold">贊助人數：</P>
           <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
