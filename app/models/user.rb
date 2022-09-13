@@ -18,15 +18,15 @@ class User < ApplicationRecord
   has_many :liked_comments, 
             through: :like_comments, source: :comment, dependent: :destroy
 
-  # def self.from_omniauth(provider_data)
-  #   where(email: provider_data.email).first_or_create do |user|
-  #     user.username = provider_data.info.name
-  #     user.email = provider_data.info.email
+  private
+
+  # def self.from_omniauth(auth)
+  #   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+  #     user.username = auth.info.name
+  #     user.email = auth.info.email
   #     user.password = Devise.friendly_token[0, 20]
   #   end
   # end
-
-  private
 
   def self.from_omniauth(access_token)
     data = access_token.info

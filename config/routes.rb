@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get '/users/profile', to: 'users/registrations#profile'
   end
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" } 
+  get '/users/projects/:id', to: 'projects#show'
   resources :projects do
     resources :donate_items
     member do
@@ -14,7 +15,6 @@ Rails.application.routes.draw do
     resources :comments, shallow: true
     resources :questions, shallow: true, except: [:show]
   end
-
   namespace :api do
     resources :comments, only: [] do
       member do
