@@ -31,12 +31,10 @@ class ProjectsController < ApplicationController
     
     @donate_items = @project.donate_items
 
-    if current_user
-      if follow_list.empty?
-        @follow_state = "追蹤專案"
-      else
-        @follow_state = "取消追蹤"
-      end
+    if follow_list.empty?
+      @follow_state = "追蹤專案"
+    else
+      @follow_state = "取消追蹤"
     end
 
     project_current_total(params[:id])
@@ -81,7 +79,7 @@ class ProjectsController < ApplicationController
   end
 
   def follow_list
-      Follow.current_user_follow_this_project(current_user.id, params)
+      Follow.current_user_follow_this_project(current_user&.id, params)
   end
 
   def add_follow
