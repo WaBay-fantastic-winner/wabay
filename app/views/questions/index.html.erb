@@ -29,9 +29,11 @@
       </div>
     </div>
   </div>
-  <section class='py-8 border-b-2 border-gray-300 border-double'>
-    <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid">
-      <div class="col-span-7 accordion">
+  
+  <%# 常見問題區 %>
+  <section class='py-8 border-b-2 border-double border-gray-300'>
+    <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12">
+      <div class="accordion col-span-7">
         <% @questions.each do |question| %>
           <div class="contentBox">
             <div class="contentBtn">
@@ -40,15 +42,16 @@
             <div class="content">
               <p><%= question.content %></p>
               <p><%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-              <%# <% if question.id == current_user.projects.find(1).questions.ids %>  
+              <% if @project_id == current_user.project_ids %> 
                 <%= link_to "編輯", edit_question_path(question.id) %>
                 <%= link_to "刪除", question, method: 'delete' %>
-              <%# <% end %> 
+              <% end %>
             </div>
           </div>
           <%= link_to "新增常見問題", new_project_question_path(@project.id), class: 'ml-6' %>
         <% end %>
       </div>
+
       <%# silde-bar %>
       <div class='col-span-3 '>
         <div class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
