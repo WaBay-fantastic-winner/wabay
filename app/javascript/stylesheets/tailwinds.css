@@ -4,16 +4,16 @@
 
 @layer components{
   .form-list{
-    @apply grid grid-cols-10 px-6 py-6 mb-4 text-xs border-2 border-purple-300 border-solid md:text-base ;
+    @apply grid grid-cols-10 px-6 py-4 mb-4 text-xs border-2 border-purple-300 border-solid md:text-base ;
   }
   .form-list-label{
-    @apply text-purple-400 pr-3 border-purple-300 border-r-2 col-span-2
+    @apply text-purple-400 pr-3 border-purple-300 border-r-2 col-span-2 py-2
   }
   .form-list-field{
     @apply col-span-8 w-full ml-4 focus:outline-none focus:ring focus:border-purple-300
   }
   .input-focus{
-    @apply focus:outline-none focus:ring focus:ring-purple-300 rounded-xl
+    @apply focus:outline-none focus:ring focus:ring-purple-300 rounded-xl py-2
   }
   .donate-button{
     @apply bg-purple-400 hover:bg-purple-300 text-white rounded-md py-2

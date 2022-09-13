@@ -1,4 +1,4 @@
-.stepBar{
+/* .stepBar{
 	display:  flex;
 	justify-content:  space-between;
 	align-items:  flex-end;
@@ -43,7 +43,7 @@
 	background-color:#bd4ef4;
 	border: 1px solid#be4ef4;
 	box-shadow: 0px 0px 15px 8px #c56deb
-}	
+}	 */
 .translucent-cover{
 	position: absolute;
 	left: 0;
@@ -64,26 +64,26 @@
 	border-radius: 0.5em;
 	overflow: hidden;
 }
-.accordion .contentBox .contentBtn{
+.accordion .contentBox .contentTitle{
 	position: relative;
 	padding: 10px;
 	cursor: pointer;
 }
-.accordion .contentBox .contentBtn::before{
+.accordion .contentBox .contentTitle::before{
 	content: "▼";
 	position: absolute;
 	top: 50%;
 	right: 20px;
 	transform: translateY(-50%);
 }
-.accordion .contentBox.active .contentBtn::before{
+.accordion .contentBox.active .contentTitle::before{
 	content: "▲";
 }
 .accordion .contentBox .content{
 	background: #fff;
 	display: none;
 	transition: 0.5s;
-	padding: 10px;
+	padding: 0px 10px 10px ;
 }
 .accordion .contentBox.active .content{
 	display: block;
