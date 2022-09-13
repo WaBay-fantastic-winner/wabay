@@ -1,17 +1,17 @@
 <h1><%= current_user.email %></h1>
 <h2>提案者專案數:<%= current_user.projects.count %></h2>
-<div class="mx-auto max-w-6xl md:grid grid-cols-9">
+<div class="max-w-6xl grid-cols-9 mx-auto md:grid">
   <% @projects.each do |project| %>
-    <div class="FundraisingItem pb-6 col-span-3 mx-5">
+    <div class="col-span-3 pb-6 mx-5 FundraisingItem">
       <a href='projects/<%= "#{project.id}" %>'><img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/></a>
       <div class='mb-7'>
-        <h3 class='hover:text-blue-400 my-1 font-semibold text-xl'><%= link_to project.title, project_path(project) %></h3>
-        <p class='my-1'>提案者 <span class='text-blue-400 hover:text-blue-300'><%= project.organizer %></span></p>
+        <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h3>
+        <p class='my-1'>提案者 <span class='text-purple-400 hover:text-purple-300'><%= project.organizer %></span></p>
       </div>
       <div>
         <span class='my-1'>NT$ <%= project.current_total %></span>
       </div>
-      <div class="progress-container h-4 rounded-md relative my-4">
+      <div class="relative h-4 my-4 rounded-md progress-container">
         <span id="progressPercent">0%</span>
         <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
       </div> 

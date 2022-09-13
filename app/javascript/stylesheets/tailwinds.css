@@ -13,7 +13,7 @@
     @apply col-span-8 w-full ml-4 focus:outline-none focus:ring focus:border-purple-300
   }
   .input-focus{
-    @apply focus:outline-none focus:ring focus:ring-purple-300
+    @apply focus:outline-none focus:ring focus:ring-purple-300 rounded-xl
   }
   .donate-button{
     @apply bg-purple-400 hover:bg-purple-300 text-white rounded-md py-2
