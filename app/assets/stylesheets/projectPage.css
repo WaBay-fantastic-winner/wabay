@@ -53,23 +53,11 @@
 	background-image: linear-gradient(0deg,#fff,#fff 20%,hsla(0,0%,100%,0));
 }
 /* 中間導覽列分頁超連結 */
-.introduce-link{
+.current-page{
 	color:#bd4ef4;
 	text-shadow: 0px 5px 15px#b578f3;
 }
-.imformation-link{
-	color:#bd4ef4;
-	text-shadow: 0px 5px 15px#bc8eea;
-}
-.comments-link{
-	color:#bd4ef4;
-	text-shadow: 0px 5px 15px#bc8eea;
-}
 /* 點擊開合問與答 */
-/* .accordion-items{
-	border:1px solid rgb(207, 207, 207);
-	border-radius: 0.5em;
-} */
 .accordion .contentBox{
 	margin:0px 20px 20px;
 	border: 1px solid rgb(218, 209, 209);

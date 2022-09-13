@@ -5,12 +5,8 @@ body{
 }
 
 .progress-container {
-    /* height: 0.8rem; */
     width: 100%;
-    /* border-radius: 0.4rem; */
-    /* background: white; */
-    /* position: relative; */
-    /* margin: 15px 0; */
+    background-color: rgb(227, 221, 221);
 }
 .progress-container span{
 	position: absolute;
@@ -24,7 +20,7 @@ body{
 .progress-container .progress {
     height: 100%;
     border-radius: 0.4rem;
-	background: linear-gradient(to left, #F2709C, #FF9472);
+	background: linear-gradient(to left, #cf8ff5, #7060ff);
 	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
     transition: width 0.4s ease;
 }
