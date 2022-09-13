@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2022_09_14_141104) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "count", default: 0
+    t.integer "parent_id"
     t.index ["project_id"], name: "index_comments_on_project_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
