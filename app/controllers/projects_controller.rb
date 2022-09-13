@@ -29,8 +29,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
     @comments = @project.comments.order(id: :desc)
     
-    # 在 projects 的 show 頁面，有 donate_items 的 index
-    @donate_items = @project.donate_items.all
+    @donate_items = @project.donate_items
 
     # 在 projects 的 show 頁面，針對追蹤按鈕的字樣畫面，設定一開始的狀態為何。
     if follow_list.empty?
@@ -75,7 +74,7 @@ class ProjectsController < ApplicationController
 
   def clean_params
     # 資料清洗
-    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description)
+    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description, :avatar)
   end
 
   def find_project

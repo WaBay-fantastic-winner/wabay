@@ -33,12 +33,10 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:content)
   end
 
-  # 找到該提案下方建立留言
   def find_project
     @project = Project.find_by(id: params[:project_id])
   end
 
-  # 找到該提案下方建立留言
   def find_comment
     @comment = current_user.comments.find(params[:id])
   end

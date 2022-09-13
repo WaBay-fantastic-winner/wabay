@@ -16,7 +16,7 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": merchant_trade_date, 
         "MerchantTradeNo": merchant_trade_no, 
-        "ReturnURL": "https://localhost:3000/transactions",
+        "ReturnURL": "http://localhost:3000/transactions",
         "ItemName": title,
         "TotalAmount": price, 
         "ChoosePayment": "ALL", 

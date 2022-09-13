@@ -4,7 +4,6 @@ class Api::CommentsController < ApplicationController
     comment = Comment.find(params[:id])
     prev_like_count = comment[:count]
     if current_user.liked_comments.include?(comment)
-      # 移除讚
       current_user.liked_comments.destroy(comment)
       comment.update( #更新資料庫時機
         count: prev_like_count - 1

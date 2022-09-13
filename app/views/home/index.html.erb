@@ -10,7 +10,7 @@
         <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
             <% @projects.each do |project| %>
                 <div class="col-span-3 pb-6 mx-5 FundraisingItem">
-                    <img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/>
+                    <a href='projects/<%= "#{project.id}" %>'><img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/></a>
                     <div class='mb-7'>
                         <h3 class='my-1 text-xl font-semibold hover:text-pruple-400'><%= link_to project.title, project_path(project) %></h3>
                         <p class='my-1'>提案者 <span class='primary-text-color hover:text-pruple-300'><%= project.organizer %></span></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_08_132758) do
+ActiveRecord::Schema.define(version: 2022_09_12_092812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,15 @@ ActiveRecord::Schema.define(version: 2022_09_08_132758) do
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
+  create_table "questions", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_questions_on_project_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "donate_item_id", null: false
@@ -144,6 +153,7 @@ ActiveRecord::Schema.define(version: 2022_09_08_132758) do
   add_foreign_key "like_comments", "comments"
   add_foreign_key "like_comments", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "questions", "projects"
   add_foreign_key "transactions", "donate_items"
   add_foreign_key "transactions", "users"
 end

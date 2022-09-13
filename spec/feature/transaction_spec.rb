@@ -1,15 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe "建立交易", type: :feature do
-  before do
-    user = create(:user)
-    login_as user
-
-    @donate_item = create(:donate_item)
-  end
+  let(:user) { create(:user) }
+  let(:donate_item) { create(:donate_item) }
+  let(:transaction) { create(:transaction) }
 
   it "交易成功" do
-    visit project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item.id)
+    login_as user
+    visit project_donate_item_path(project_id: donate_item.project_id, id: donate_item.id)
     click_on '贊助此項目', exact: false
     
     within 'div.pay-tab-form' do
@@ -28,13 +26,13 @@ RSpec.describe "建立交易", type: :feature do
     click_on '關閉 Turn off'
     click_on '立即付款'
     click_on '確定 Confirm'
-    
+
     click_on '取得OTP服務密碼(Get the password)'
+
     within 'div.cvb-input' do
       find('input#OTP').set('1234')
     end
     click_on '送出(Submit)'
-
-    expect(page).to have_content '登入'
+    expect(transaction).to transition_from(:pending).to(:paid).on_event(:pay)
   end
 end
