@@ -82,7 +82,7 @@ class ProjectsController < ApplicationController
   end
 
   def follow_list
-    Follow.current_user_follow_this_project(current_user.id, params)
+      Follow.current_user_follow_this_project(current_user.id, params)
   end
 
   def add_follow
