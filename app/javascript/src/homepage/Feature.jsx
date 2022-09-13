@@ -17,7 +17,7 @@ const Feature = () => {
         },
         {
             src: pay,
-            text: '財富自由'
+            text: '安全交易'
         },
         {
             src: track,
