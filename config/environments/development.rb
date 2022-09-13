@@ -36,12 +36,26 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: "http://localhost:3000" }
-  config.action_mailer.smtp_settings = config_for(:email).symbolize_keys
+  config.action_mailer.default_url_options = { host: " https://87b7-103-3-192-33.jp.ngrok.io " }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV['ADDRESS'],
+    port: 587,
+    domain: ENV['DOMAIN'],
+    authentication: "plain",
+    user_name: ENV['MAILGUN_USERNAME'],
+    password: ENV['MAILGUN_PASSWORD'],
+    enable_starttls_auto: true
+  }
+
+  config.hosts << "87b7-103-3-192-33.jp.ngrok.io" 
+
+  # Use a real queuing backend for Active Job (and separate queues per environment).
+  config.active_job.queue_adapter     = :sidekiq
 
   config.action_mailer.perform_caching = false
 

@@ -17,7 +17,11 @@ module Wabay
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
-    # config.eager_load_paths << Rails.root.join("extras")
+    config.time_zone = "Taipei"
+    config.active_record.default_timezone = :local 
+    config.eager_load_paths << Rails.root.join("extras")
+
+    # 讓 Rails 可以找到 sidekiq 的 job 檔案
+    config.eager_load_paths += %W( #{config.root}/app/jobs )
   end
 end
