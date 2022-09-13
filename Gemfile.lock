@@ -124,6 +124,7 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     erubi (1.11.0)
+    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -269,6 +270,12 @@ GEM
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
+    react-rails (2.6.2)
+      babel-transpiler (>= 0.7.0)
+      connection_pool
+      execjs
+      railties (>= 3.2)
+      tilt
     redis (4.8.0)
     regexp_parser (2.5.0)
     responders (3.0.1)
@@ -406,6 +413,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 6.1.6, >= 6.1.6.1)
   rails-i18n
+  react-rails
   rspec-rails (~> 5.1)
   rubocop (~> 1.35)
   sass-rails (>= 6)
