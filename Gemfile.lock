@@ -65,7 +65,6 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
-<<<<<<< HEAD
     aws-eventstream (1.2.0)
     aws-partitions (1.626.0)
     aws-sdk-core (3.141.0)
@@ -86,8 +85,6 @@ GEM
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
-=======
->>>>>>> cb2c1c1 (wip/add omniauth gem)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
