@@ -31,11 +31,12 @@ class ProjectsController < ApplicationController
     
     @donate_items = @project.donate_items
 
-    # 在 projects 的 show 頁面，針對追蹤按鈕的字樣畫面，設定一開始的狀態為何。
-    if follow_list.empty?
-      @follow_state = "追蹤專案"
-    else
-      @follow_state = "取消追蹤"
+    if current_user
+      if follow_list.empty?
+        @follow_state = "追蹤專案"
+      else
+        @follow_state = "取消追蹤"
+      end
     end
 
     project_current_total(params[:id])
@@ -51,7 +52,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # 登入後的使用者，使用多對多方式 .projects ，建立表單
     @project = current_user.projects.new(clean_params)
     if @project.save
       redirect_to projects_path, notice: ' 提案成功 !!'
@@ -73,7 +73,6 @@ class ProjectsController < ApplicationController
   private
 
   def clean_params
-    # 資料清洗
     params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description, :avatar)
   end
 
