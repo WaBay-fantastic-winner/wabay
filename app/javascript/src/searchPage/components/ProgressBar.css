@@ -16,7 +16,7 @@
     color: antiquewhite;
 }
 .progress-done {
-	background: linear-gradient(to left, #F2709C, #FF9472);
+	background: linear-gradient(to left, #ae69f3, #924cfc);
 	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
 	border-radius: 20px;
 	height: 100%;
