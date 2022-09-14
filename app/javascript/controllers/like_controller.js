@@ -18,7 +18,6 @@ export default class extends Controller {
 			url: `/api/comments/${commentId}/like`,
 			type: "post",
 			success: ({ state, like_count }) => {
-				console.log(Number(like_count));
 				if (state === "liked") {
 					this.loveTarget.textContent = "♥";
 					this.countTarget.textContent = Number(like_count);
@@ -28,7 +27,7 @@ export default class extends Controller {
 				}
 			},
 			error: (err) => {
-				console.log(err);
+				alert(err);
 			},
 		});
 	}

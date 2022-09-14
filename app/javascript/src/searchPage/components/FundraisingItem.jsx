@@ -20,7 +20,7 @@ const FundraisingItem = () => {
                 .then(resp => {
                     setProjectItems(resp.data)
                 })
-                .catch( err => console.log(err))
+                .catch( err => alert(err))
                 };
         fetchProject();
     },[])

@@ -18,7 +18,7 @@ export default class extends Controller {
         }
       },
       error: (err) => {
-        console.log(err)
+        alert(err)
       }
     })
   }
@@ -33,7 +33,7 @@ export default class extends Controller {
         location.reload()
       },
       error: (err) => {
-        console.log(err)
+        alert(err)
       }
     })
   }

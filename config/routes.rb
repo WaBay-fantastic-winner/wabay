@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  devise_scope :user do
+  devise_scope :users do
     get '/users', to: 'devise/registrations#new'
     get '/users/profile', to: 'user/registrations#profile'
   end
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" } 
+
   resources :projects do
     resources :donate_items
     member do
