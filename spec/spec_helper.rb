@@ -10,6 +10,7 @@
 require 'Capybara'
 Capybara.default_driver = :selenium_chrome
 Capybara.save_path = 'tmp/capybara'
+Capybara.default_max_wait_time = 10
 
 require 'aasm/rspec'
 

@@ -8,7 +8,6 @@ RSpec.describe "建立交易", type: :feature do
   it "交易成功" do
     login_as user
     visit project_donate_item_path(project_id: donate_item.project_id, id: donate_item.id)
-    sleep 10
     click_on '直接結帳'
     
     within 'div.pay-tab-form' do
