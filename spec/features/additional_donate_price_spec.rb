@@ -17,9 +17,13 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     click_on '-'
 
     amount = find('input#amount').value.to_i
-    sum_from_test = amount * donate_item.price
+    sum_with_amount = amount * donate_item.price
+    sum_from_test = "NT$#{(sum_with_amount).to_s.split('').insert(-4, ',').join}"
 
-    expect(page).to have_content(sum_from_test)
+    click_on '直接結帳'
+    ecpay_sum = find('dd.o-other-total')
+
+    expect(ecpay_sum).to have_content(sum_from_test)
   end
 
   it "一百、一千" do
@@ -28,9 +32,12 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     click_on '100'
 
     additional_donate_price = find('input#additional_donate_price').value.to_i
-    sum_from_test = additional_donate_price + donate_item.price
+    sum_from_test = "NT$#{(additional_donate_price + donate_item.price).to_s.split('').insert(-4, ',').join}"
 
-    expect(page).to have_content(sum_from_test)
+    click_on '直接結帳'
+    ecpay_sum = find('dd.o-other-total')
+
+    expect(ecpay_sum).to have_content(sum_from_test)
   end
 
   it "自己輸入金額" do
@@ -39,22 +46,6 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     additional_donate_price = find('input#additional_donate_price').value.to_i
     sum_from_test = "NT$#{(additional_donate_price + donate_item.price).to_s.split('').insert(-4, ',').join}"
     
-    click_on '直接結帳'
-    ecpay_sum = find('dd.o-other-total')
-
-    expect(ecpay_sum).to have_content(sum_from_test)
-  end
-
-  it "使用額外贊助介面後進入交易" do
-    click_on '+'
-    click_on '+'
-    click_on '100'
-    click_on '1000'
-
-    amount = find('input#amount').value.to_i
-    additional_donate_price = find('input#additional_donate_price').value.to_i
-    sum_from_test = "NT$#{(additional_donate_price + donate_item.price * amount).to_s.split('').insert(-4, ',').join}"
-
     click_on '直接結帳'
     ecpay_sum = find('dd.o-other-total')
 
