@@ -1,7 +1,7 @@
 .progress {
 	background-color: #d8d8d8;
 	border-radius: 20px;
-  position: relative;
+    position: relative;
 	margin: 15px 0;
 	height: 16px;
 	width: 100%;
@@ -11,9 +11,9 @@
     position: absolute;
     right: 0;
     left: 0;
-		top: -3px;
+	top: -3px;
     text-align: center;
-    color: antiquewhite;
+    color: rgb(255, 249, 70);
 }
 .progress-done {
 	background: linear-gradient(to left, #ae69f3, #924cfc);

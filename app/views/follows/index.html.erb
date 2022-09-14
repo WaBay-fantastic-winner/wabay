@@ -11,10 +11,10 @@
     </div>
   </div>
 </main>
-<section class='bg-gray-100'>
-  <h1 class="p-10 m-auto text-xl text-center"><strong>我 的 追 蹤 清 單</strong></h1>
+<section class='py-16 bg-gray-100'>
+  <h1 class="m-auto mb-4 text-xl text-center"><strong>我 的 追 蹤 清 單</strong></h1>
   <% if @follows.empty? %> 
-    <p class="mb-8 text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
+    <p class="text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
     <% else %>
       <div class="max-w-6xl mx-auto md:flex">
       <% @follows.each do |follow| %>
@@ -36,6 +36,6 @@
         </div>
       <% end %>
     </div>
+  <% end %>  
 </section>
 
-<% end %>

@@ -6,9 +6,8 @@
       </div>
       <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
-          <img class="object-cover w-full h-80 rounded-xl" src="https://fureverkids.net/wp-content/uploads/2021/04/40150983442_5fc1afe90f_c.jpg?ezimgfmt=ng%3Awebp%2Fngcb1%2Frs%3Adevice%2Frscb1-1">
           <% if @project.avatar.attached? %>
-            <P class="my-2">精選封面：<%= image_tag @project.avatar.variant(resize_to_limit: [200, 200]) %></P>
+            <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-80 rounded-xl" %>
           <% end %>
         </div>
         <div class="col-span-4">

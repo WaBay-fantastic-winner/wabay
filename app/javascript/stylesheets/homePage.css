@@ -15,17 +15,31 @@ body{
     top:-5px;
 	text-align: center;
     font-size: 18px;
-	color: rgb(127, 2, 244);
+	color: rgb(255, 249, 70);
     z-index: 10;
 }
 .progress-container .progress {
     height: 100%;
     border-radius: 0.4rem;
-	background: #f5f28f;
+    background: linear-gradient(to left, #ae69f3, #924cfc);
+	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
+    transition: 1s ease 0.3s;
 }
 footer{
     background:radial-gradient(350px at 5% 105%,rgb(207, 153, 255),white)
 }
 .footer-items ul li{
     margin: 10px 0;
+}
+.projects-img-box{
+    position: relative;
+    width: 100%;
+    padding-bottom: 60%;
+}
+.projects-link{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
 }

@@ -72,7 +72,9 @@ const Banner = () => {
             >
                 {imgUrl.map((img, index) =>( 
                     <SwiperSlide className='flex items-center justify-center' key={index} >
-                            <img className={`${ device === "PC" ? 'rounded-3xl h-500' : 'h-350'}  w-1000 object-cover`} src={img.src} alt="" />
+                        <div className='img'>
+                            <img className={`${ device === "PC" && 'rounded-3xl' } w-full h-full object-cover`} src={img.src} alt="" />
+                        </div>
                     </SwiperSlide>
                     ))}
             </Swiper>

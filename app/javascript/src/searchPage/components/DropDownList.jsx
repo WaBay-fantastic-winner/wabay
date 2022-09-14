@@ -28,7 +28,7 @@ const DropDownList = () => {
   return (
     <div>
       <form action="/projects" method="get" ref={selectForm} onChange={handleSubmit} >
-        <select name="type" id="type" defaultValue={selectedOption} className='p-2 pr-5 border border-purple-400 border-solid rounded-md focus:outline-none focus:ring focus:border-purple-300'>
+        <select name="type" id="type" defaultValue={selectedOption} className='p-2 pr-5 border border-purple-400 border-solid rounded-md input-focus'>
           {AllOption.map(ele=>(
             <option key={ele.value} value={ele.value}>
               {ele.type}
