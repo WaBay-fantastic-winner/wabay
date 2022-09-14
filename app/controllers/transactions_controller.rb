@@ -17,7 +17,7 @@ class TransactionsController < ApplicationController
     if @transaction.save
       project_current_total(params["projectId"])
       find_project
-      total = @sum + params["additionalSum"].to_i
+      total = @sum + price
       @project.update(current_total: total)
 
       notify_achievement_to_followers(@project.title)
@@ -56,7 +56,7 @@ class TransactionsController < ApplicationController
   end
 
   def price
-    DonateItem.where(project_id: params["projectId"], title: params["donateItemTitle"]).first.price + params["additionalSum"].to_i
+    params["additionalSum"].to_i
   end
 
   def find_project
