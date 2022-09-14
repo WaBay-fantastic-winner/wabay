@@ -42,13 +42,13 @@
             <div class="content">
               <p><%= question.content %></p>
               <p><%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-              <% if @project.user_id == current_user.id %> 
+              <% if @project.user_id == current_user&.id %> 
                 <%= link_to "編輯", edit_question_path(question.id) %>
                 <%= link_to "刪除", question, method: 'delete' %>
               <% end %>
             </div>
           </div>
-          <% if @project.user_id == current_user.id %>
+          <% if @project.user_id == current_user&.id %>
             <%= link_to "新增常見問題", new_project_question_path(@project.id), class: 'ml-6' %>
           <% end %>
         <% end %>
