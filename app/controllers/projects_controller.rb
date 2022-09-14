@@ -31,6 +31,9 @@ class ProjectsController < ApplicationController
     
     @donate_items = @project.donate_items
 
+
+    @donate_users_count = Transaction.where(project_id: @project.id).select(:user_id).map { |transaction| transaction.user_id }.uniq.count
+
     if follow_list.empty?
       @follow_state = "追蹤專案"
     else
@@ -70,7 +73,7 @@ class ProjectsController < ApplicationController
 
   private
 
-  def clean_params
+  def project_params
     params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description, :avatar)
   end
 
