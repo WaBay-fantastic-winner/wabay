@@ -59,7 +59,7 @@
 }
 /* 點擊開合問與答 */
 .accordion .contentBox{
-	margin:0px 20px 20px;
+	margin:20px 0px;
 	border: 1px solid rgb(218, 209, 209);
 	border-radius: 0.5em;
 	overflow: hidden;

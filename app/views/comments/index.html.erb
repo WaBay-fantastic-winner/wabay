@@ -24,7 +24,7 @@
         </div>
         <div class=''>
           <ul>
-            <% if @comment == nil%>
+            <% if @comment.nil?%>
               <a>gdfgdfgdfgdfg</a>
               <% else %>
             <% @comments.each do |comment| %>
@@ -32,8 +32,8 @@
                 <div class='flex justify-between'>
                   <p><%= comment.user.email %></p>
                   <% if comment.user_id == current_user.id %>
-                  <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300'%>
-                <% end %>
+                    <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300'%>
+                  <% end %>
                 </div>
                 <div class='my-4'>
                   <p><%= comment.content %></p>

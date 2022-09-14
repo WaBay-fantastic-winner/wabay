@@ -22,11 +22,26 @@ const ImgUrl = () => {
 const CreateSlide = () => {
     const device = UseRWD();
     return (
-        <SwiperSlide className='flex justify-center items-center'>
+        <SwiperSlide className='flex items-center justify-center'>
             <a href=""><img className={`${ device === "PC" && 'rounded-3xl'}`} src={ImgUrl()} alt="" /></a>
         </SwiperSlide>
     );
 }
+
+const imgUrl = [
+    {
+        'src': 'https://image-cdn-flare.qdm.cloud/q62d43d7008f8e/image/data/markus-winkler-1lmpfq7zxem-unsplash_1.jpg'
+    },
+    {
+        'src': 'https://cdn.quickper.com/media/oldlondon/article/706d3d17-35de-4371-b45b-617aafb99345/origin.jpeg'
+    },
+    {
+        'src': 'https://cdn02.pinkoi.com/product/hDrkPCqW/0/8/640x530.jpg'   
+    },
+    {
+        'src': 'https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-08348-i.jpg'  
+    }
+]    
 
 const BannerList = (props) => {
     return (<li className='mx-2 md:mx-6 hover:text-purple-400 '><a href=''>{props.text}</a></li>)
@@ -38,7 +53,7 @@ const Banner = () => {
     return (
         <>
             <div className='banner-list'>
-                <ul className='flex justify-center items-center h-16 md:text-xl text-slate-500'>
+                <ul className='flex items-center justify-center h-16 md:text-xl text-slate-500'>
                     <BannerList text="原創設計"/>
                     <BannerList text="社會公益"/>
                     <BannerList text="預購商品"/>
@@ -55,10 +70,11 @@ const Banner = () => {
                 autoplay={{ delay: 4000 }}
                 pagination={{ clickable: true }}  
             >
-                {CreateSlide()}
-                {CreateSlide()}
-                {CreateSlide()}
-                {CreateSlide()}
+                {imgUrl.map((img, index) =>( 
+                    <SwiperSlide className='flex items-center justify-center' key={index} >
+                            <img className={`${ device === "PC" ? 'rounded-3xl h-500' : 'h-350'}  w-1000 object-cover`} src={img.src} alt="" />
+                    </SwiperSlide>
+                    ))}
             </Swiper>
         </>
     );
