@@ -27,11 +27,8 @@ export default class extends Controller {
           formField.type = 'hidden';
           formField.name = key;
           formField.value = parameters[key];
-    
           form.appendChild(formField);
       }
-      console.log(parameters)
-
       form.submit();
     }
     
