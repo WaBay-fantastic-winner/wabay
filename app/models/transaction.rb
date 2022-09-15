@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Transaction < ApplicationRecord
   # relationship
   belongs_to :user
@@ -7,20 +9,20 @@ class Transaction < ApplicationRecord
   before_create :create_serial
 
   def create_serial
-    time = Time.now.strftime('%d%m%Y%H%M%S').split('').uniq.sample(3)
-    words = ("a".."z").to_a.sample(3)
+    time = Time.now.strftime('%d%m%Y%H%M%S').chars.uniq.sample(3)
+    words = ('a'..'z').to_a.sample(3)
     self.serial = (time + words).join
   end
 
   # transaction state
   include AASM
 
-  aasm column: "state", no_direct_assignment: true do
+  aasm column: 'state', no_direct_assignment: true do
     state :pending, initial: true
     state :paid, :failed, :cancellation, :refunded
 
     event :pay do
-      transitions from: [:pending, :failed], to: :paid
+      transitions from: %i[pending failed], to: :paid
     end
 
     event :refund do
@@ -32,11 +34,11 @@ class Transaction < ApplicationRecord
     end
 
     event :cancel do
-      transitions from: [:pending, :failed], to: :cancellation
+      transitions from: %i[pending failed], to: :cancellation
     end
   end
 
-  # 軟刪除 
+  # 軟刪除
   acts_as_paranoid
   default_scope { where(deleted_at: nil) }
 end

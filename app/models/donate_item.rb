@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DonateItem < ApplicationRecord
   acts_as_paranoid
 
