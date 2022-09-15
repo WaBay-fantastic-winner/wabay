@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Payment
   class EcpayRequest
     require 'uri'
@@ -50,9 +52,5 @@ module Payment
       check_params = {"CheckMacValue": "#{check_mac_value}"}
       data = @basic_params.merge!(check_params).stringify_keys
     end
-
-    # 官方測試信用卡好
-    4311-9522-2222-2222
-    222
   end
 end

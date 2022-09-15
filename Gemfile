@@ -48,11 +48,11 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 5.1'
 
+  gem 'database_cleaner-active_record', '~> 1.8.0.beta'
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'faker'
   gem 'launchy', '~> 2.4', '>= 2.4.3'
   gem 'warden', '~> 1.2', '>= 1.2.9'
-  gem 'faker'
-  gem 'database_cleaner-active_record', '~> 1.8.0.beta'
 end
 
 group :development do
@@ -88,5 +88,5 @@ gem 'omniauth-rails_csrf_protection'
 gem 'aasm', '~> 5.3'
 gem 'paranoia', '~> 2.6'
 
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 gem 'sidekiq', '~> 6.5', '>= 6.5.6'
