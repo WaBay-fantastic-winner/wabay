@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DonateItemsController < ApplicationController
   before_action :current_project, only: %i[index show create update destroy]
   before_action :find_donate_item, only: %i[show edit update destroy]
@@ -7,8 +9,7 @@ class DonateItemsController < ApplicationController
     @donate_items = @current_project.donate_items.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @donate_item = DonateItem.new
@@ -26,8 +27,7 @@ class DonateItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @donate_item.update(donate_item_params)

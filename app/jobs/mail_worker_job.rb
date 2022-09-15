@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MailWorkerJob < ApplicationJob
   queue_as :default
   def perform(project)
