@@ -7,7 +7,11 @@
         <%= f.label :email, "信箱："%>
         <%= f.email_field :email, autofocus: true, placeholder: "請輸入Email", autocomplete: "email", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
       </div>
-      <div class="py-2 field">
+      <div class="py-6">
+        <p>使用者名稱：</p>
+        <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"field rounded w-full pl-2 py-2 input-focus" %>
+      </div> 
+      <div class="field py-2">
         <% if @minimum_password_length %>
           <%= f.label :password, "密碼："%>
           <%= f.password_field :password, autocomplete: "new-password", placeholder: "請輸入密碼", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %><br />

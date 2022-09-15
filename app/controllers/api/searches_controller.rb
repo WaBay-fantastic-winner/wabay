@@ -2,7 +2,7 @@ class Api::SearchesController < ApplicationController
   def projects
     keyword = params[:keyword]
     type = params[:type]
-
+    
     @projects = Project.all.joins(:avatar_attachment)
     if keyword   # 關鍵字搜尋
       @projects = Project.where("title like ?","%#{keyword}%")
@@ -15,6 +15,7 @@ class Api::SearchesController < ApplicationController
         @projects = Project.includes(:donate_items).order('donate_items.count desc')
       end
     end
+    
     render json: @projects.map { |user| 
       img = {img: url_for(user.avatar)}
       user.as_json.merge(img)

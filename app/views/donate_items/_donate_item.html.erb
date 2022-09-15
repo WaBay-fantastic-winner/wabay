@@ -1,10 +1,12 @@
 <% @donate_items.each do |donate_item| %>
   <div class='p-4 mb-3 border border-gray-300 border-solid w-full rounded-xl'>
     <div class='text-center mb-3'>
-      <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
-        <%= link_to '編輯贊助項目', edit_project_donate_item_path(project_id: donate_item.project_id, id: donate_item), class:'mr-2 p-3 inline-block border border-purple-400 rounded-xl border-soild' %>
-        <%= link_to '刪除贊助項目', project_donate_item_path(project_id: donate_item.project_id, id: donate_item), method: 'delete',class:'text-red-400', data:{ confirm: "確定要刪除「#{donate_item.title}」項目嗎？" } %>
-      <% end %>
+      
+        <% if current_user&.id === Project.find_by!(id: params[:id]).user_id %>
+          <%= link_to '編輯贊助項目', edit_project_donate_item_path(project_id: donate_item.project_id, id: donate_item), class:'mr-2 p-3 inline-block border border-purple-400 rounded-xl border-soild' %>
+          <%= link_to '刪除贊助項目', project_donate_item_path(project_id: donate_item.project_id, id: donate_item), method: 'delete',class:'text-red-400', data:{ confirm: "確定要刪除「#{donate_item.title}」項目嗎？" } %>
+        <% end %>
+      
     </div>
     <div>
       <h2 class='text-2xl tracking-wider font-semibold pl-3'><%= donate_item.title %></h2>

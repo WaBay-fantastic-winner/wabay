@@ -12,7 +12,9 @@
     <%= link_to '留言專區', project_comments_path(@project), class:"mx-5"%>
     </div>
     <div class='flex items-center justify-center my-2'>
-      <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
+      <% if @project.user_id == current_user&.id %>
+        <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
+      <% end %>
     </div>
   </div>
   <%# 常見問題區 %>
@@ -27,13 +29,13 @@
             <div class="content">
               <p><%= question.content %></p>
               <div class='flex justify-between mt-2'>  
-                <p><%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-                <%# <% if @project_id == current_user.project_ids %> 
-                <div>
-                  <%= link_to "編輯", edit_question_path(question.id), class:'mr-3'%>
-                  <%= link_to "刪除", question, method: 'delete' %>
-                </div>
-                <%# <% end %> 
+                <p class='text-sm text-gray-400'>最後更新時間 <%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
+                <% if @project.user_id == current_user&.id %>  
+                  <div>
+                    <%= link_to "編輯", edit_question_path(question.id), class:'mr-3'%>
+                    <%= link_to "刪除", question, method: 'delete' %>
+                  </div>
+                <% end %> 
               </div>
             </div>
           </div>

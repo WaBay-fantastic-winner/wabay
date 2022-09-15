@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index]
   before_action :find_question, only: %i[edit update destroy]
-  before_action :current_project, only: %i[index new create]
-  before_action :find_project, only: %i[edit update destroy]
+  before_action :current_project, only: %i[new create]
+  before_action :find_project, only: %i[index edit update destroy]
   
   def index
     @questions = Question.all
@@ -52,7 +52,6 @@ class QuestionsController < ApplicationController
   end
 
   def find_project
-    @project_id = @question.project_id
-    @project = Project.find(@project_id)
+    @project = Project.find(params[:project_id])
   end  
 end

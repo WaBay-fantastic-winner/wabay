@@ -22,7 +22,11 @@
     <div class="max-w-6xl grid-cols-9 mx-auto mt-8 md:grid">
       <% @projects.each do |project| %>
         <div class="col-span-3 pb-6 mx-5 FundraisingItem">
-          <a href='projects/<%= '#{project.id}' %>'><img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/></a>
+          <div class="projects-img-box">
+            <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
+                <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+            </a>                    
+          </div>
           <div class='mb-7'>
             <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h3>
             <p class='my-1'>提案者 <span class='text-purple-400'><%= project.organizer %></span></p>
