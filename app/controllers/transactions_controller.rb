@@ -10,7 +10,6 @@ class TransactionsController < ApplicationController
 
   def create
     # 建立交易紀錄（訂單）
-    p params
     @transaction = Transaction.new(user_id: current_user.id,
                                    project_id: params['projectId'],
                                    donate_item_id:,
@@ -22,7 +21,7 @@ class TransactionsController < ApplicationController
       total = @sum + price
       @project.update(current_total: total)
 
-      notify_achievement_to_followers(@project.title)
+      notify_achievement_to_followers(@project.id)
 
       # for ecpay action
       produce_ecpay_basic_params
@@ -76,7 +75,16 @@ class TransactionsController < ApplicationController
     @total_amount = price
   end
 
-  def notify_achievement_to_followers(project)
-    MailWorkerJob.perform_later(project) if percentage_of_currency >= 100
+  def followers_not_recepted_yet(project_id)
+    @followers = Follow.where(followable_id: project_id, followable_type: 'Project', mail_sent: 'false')
+  end
+
+  def notify_achievement_to_followers(project_id)
+    if percentage_of_currency >= 100 && followers_not_recepted_yet(project_id).present? === true
+      @followers.each do |follower|
+        MailWorkerJob.perform_later(follower, Project.find(follower.followable_id).title)
+        follower.update(:mail_sent => 'true')
+      end
+    end
   end
 end
