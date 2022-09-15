@@ -80,14 +80,14 @@
             <div class="relative mr-6 member primary-text-color" data-controller='memberSwitch'>
               <div class='items-center hidden lg:flex'>
                 <% if user_signed_in? %>
-                  <button class="px-5 py-2 ml-6 text-white bg-purple-400 border-4 border-white border-double rounded-full" data-action="click->memberSwitch#switch" data-target='memberSwitch.button'><i class="text-xl fa-regular fa-user"></i></button>
+                  <button class="px-5 py-2 ml-6 text-white bg-purple-400 border-4 border-white border-double rounded-full" data-action="click->memberSwitch#switch" data-memberSwitch-target="button"><i class="text-xl fa-regular fa-user"></i></button>
                 <% else %>
                   <%= link_to "登入", new_user_session_path, class:"mx-5"%>
                   <%= link_to "註冊", new_user_registration_path, class:"px-5 py-3 rounded-md border border-purple-400 hover:bg-purple-400 hover:text-white duration-300" %>
                 <% end %>
               </div>
               <%# 收合會員功能 %>
-              <div class='absolute right-4 bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0) hidden' data-target='memberSwitch.memberCenter'>
+              <div class='absolute right-4 bg-white z-50 rounded-lg shadow-2xl 	box-shadow: 0 0 20px 10px rgb(0 0 0) hidden' data-memberSwitch-target="memberCenter">
                 <ul class='w-40 py-2 text-sm primary-text-color'>
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "個人頁面",users_profile_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
