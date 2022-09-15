@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+        :recoverable, :rememberable, :validatable,
+        :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   has_many :projects, dependent: :destroy
 
@@ -17,6 +17,10 @@ class User < ApplicationRecord
   has_many :like_comments, dependent: :destroy
   has_many :liked_comments, 
             through: :like_comments, source: :comment, dependent: :destroy
+
+def liked?(comment)
+  liked_comments.include?(comment)
+end
 
   private
 
@@ -37,9 +41,5 @@ class User < ApplicationRecord
       uid: data['uid'],
       password: Devise.friendly_token[0, 20]
     )
-  end
-
-  def liked?(comment)
-    liked_comments.include?(comment)
   end
 end

@@ -25,6 +25,7 @@ class CommentsController < ApplicationController
     # render html: params
     @comments = Comment.where("project_id": params[:project_id]).order(id: :desc)
     # @comments = @project.comments.order(id: :desc)
+    # @status = @comment.user.liked?
   end
 
   private

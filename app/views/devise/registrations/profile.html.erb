@@ -1,7 +1,10 @@
 <main>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <h1 class="mb-5 text-center"><%= current_user.email %></h1>
+      <h1 class="mb-5 text-center">
+        <p><%= current_user.email %></p>
+        <p><%= current_user.username %></p>  
+      </h1>
     </div>
   </section>
   <div class="justify-between px-5 py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
@@ -24,11 +27,11 @@
         <div class="col-span-3 pb-6 mx-5 FundraisingItem">
           <div class="projects-img-box">
             <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
-                <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+              <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
             </a>                    
           </div>
           <div class='mb-7'>
-            <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h3>
+            <h2 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h2>
             <p class='my-1'>提案者 <span class='text-purple-400'><%= project.organizer %></span></p>
           </div>
           <div>

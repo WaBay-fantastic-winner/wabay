@@ -4,21 +4,21 @@
 // that code so it'll be compiled.
 import 'tw-elements';
 import Rails from "@rails/ujs"
-import Turbolinks from "turbolinks"
+// import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../stylesheets/index"
 import "../../assets/stylesheets/actiontext.scss"
 
 Rails.start()
-Turbolinks.start()
+// Turbolinks.start()
 ActiveStorage.start()
 
 require("trix")
 require("@rails/actiontext")
 import "controllers"
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
 // --------comment accordion
   const contentBtn = document.getElementsByClassName('contentBox')
 

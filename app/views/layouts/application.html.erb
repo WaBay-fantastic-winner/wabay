@@ -7,7 +7,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
     <script src="https://kit.fontawesome.com/4b775a86e6.js" crossorigin="anonymous"></script>
   </head>
   <body class='min-h-screen'>
@@ -39,17 +39,21 @@
               <div class="mb-3">
                 <h2 class="font-bold primary-text-color">Themes</h2>
                 <ul class="px-4 text-2xl">
-                  <li class='py-2'><a href=""></a>原創設計</li>
-                  <li class='py-2'><a href=""></a>社會公益</li>
-                  <li class='py-2'><a href=""></a>設計商品</li>
+                  <li class='py-2'>原創設計</li>
+                  <li class='py-2'>社會公益</li>
+                  <li class='py-2'>設計商品</li>
                 </ul>
               </div>
               <div class="mb-3">
                 <h2 class="font-bold primary-text-color">Member</h2>
                 <ul class="px-4 text-2xl">
                 <% if user_signed_in? %>
-                  <%= link_to "變更密碼", edit_user_password_path, class:'block py-2' %>
-                  <%= link_to "登出", destroy_user_session_path, method:'delete', class:"block py-2" %>
+                  <li class='py-2'><%= link_to "個人頁面",users_profile_path %></li>
+                  <li class='py-2'><%= link_to "交易紀錄", transactions_path %></li>
+                  <li class='py-2'><%= link_to "追蹤專案", follows_path %></li>
+                  <li class='py-2'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
+                  <li class='py-2'><%= link_to "變更密碼", edit_user_password_path, methods: 'get' %></li>
+                  <li class='py-2'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
                 <% else %>
                   <%= link_to "登入", new_user_session_path, class:"block py-2"%>
                   <%= link_to "註冊", new_user_registration_path, class:"block py-2" %>
@@ -92,7 +96,7 @@
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "個人頁面",users_profile_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path %></li>
-                  <li class='py-2 pl-4'>編輯個人資料</li>
+                  <li class='py-2 pl-4'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
                   <li class='py-2 pl-4'><%= link_to "變更密碼", edit_user_password_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
                 </ul>

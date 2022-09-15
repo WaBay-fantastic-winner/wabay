@@ -10,9 +10,9 @@ class TransactionsController < ApplicationController
     # 建立交易紀錄（訂單）
     p params
     @transaction = Transaction.new(user_id: current_user.id,
-                                   project_id: params["projectId"], 
-                                   donate_item_id: donate_item_id, 
-                                   price: price)
+                                  project_id: params["projectId"], 
+                                  donate_item_id: donate_item_id, 
+                                  price: price)
 
     if @transaction.save
       project_current_total(params["projectId"])
@@ -29,7 +29,7 @@ class TransactionsController < ApplicationController
                                                 @merchant_trade_no, 
                                                 @item_name, 
                                                 @total_amount
-                                               ).perform
+                                                ).perform
     else
       render :save_error
     end
