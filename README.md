@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# WuBay
+Nice to see you. It's **WuBay**, a template for people to make dreams or ideas come true by fundraising or to make others' dreams or ideas come true by supporting.
 
-Things you may want to cover:
+We can be various roles in WuBay, such as proposaler, supporters or even either. All you have to do is to take action immediately. 
 
-* Ruby version
+Show the ideas you coming up with from your inspiration.
 
-* System dependencies
+# Team
+- Shawn
+- Darren
+- Jie
+- Mike
 
-* Configuration
+# Technique
 
-* Database creation
+## Back-end
+- RoR
+- Sidekiq
 
-* Database initialization
+## Front-end
+- React
+- Tailwind CSS
+- Stimulus
+- JavaScript (ES6)
+- HTML / CSS
 
-* How to run the test suite
+## Test Automation
+- RSpec
+- Factory_bot
+- Capybara
 
-* Services (job queues, cache servers, search engines, etc.)
+## Database
+- postgreSQL
 
-* Deployment instructions
 
-* ...
+
+
+
