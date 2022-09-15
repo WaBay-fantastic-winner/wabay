@@ -21,14 +21,14 @@ class CommentsController < ApplicationController
   def index
     @comment = Comment.new
     # render html: params
-    @comments = Comment.where(project_id: params[:project_id]).order(id: :desc)
+    @comments = @project.comments.where(parent_id: nil).includes(:user).order(id: :desc) # 只抓第一層留言
     # @comments = @project.comments.order(id: :desc)
   end
 
   private
 
   def clean_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_id)
   end
 
   def find_project
@@ -39,3 +39,4 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
   end
 end
+

@@ -1,0 +1,10 @@
+<div class="bg-purple-100 my-3 rounded">
+  <div>
+    <%= comment.user.email %>
+    <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" if current_user.present? %>
+  </div>
+  <div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600">
+    <%= comment.content %>
+  </div>
+</div>
+
