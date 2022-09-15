@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(clean_params)
+    if @project.update(project_params)
       redirect_to project_path, notice: ' 提案更新成功 !!'
     else
       render :edit
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.new(clean_params)
+    @project = current_user.projects.new(project_params)
     if @project.save
       redirect_to projects_path, notice: ' 提案成功 !!'
     else
