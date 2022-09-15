@@ -67,7 +67,7 @@ const Banner = () => {
                 loop={true}
                 spaceBetween={30}
                 centeredSlides={true}
-                autoplay={{ delay: 4000 }}
+                autoplay={{ delay: 3500 }}
                 pagination={{ clickable: true }}  
             >
                 {imgUrl.map((img, index) =>( 

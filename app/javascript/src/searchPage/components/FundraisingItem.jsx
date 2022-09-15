@@ -19,7 +19,6 @@ const FundraisingItem = () => {
                 })
                 .then(resp => {
                     setProjectItems(resp.data)
-                    console.log(resp.data)
                 })
                 .catch( err => alert(err))
                 };
@@ -29,13 +28,13 @@ const FundraisingItem = () => {
     return (
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
-                <div className='col-span-3 pb-6 FundraisingItem ' key={index}>
+                <div className='col-span-3 mb-8 FundraisingItem ' key={index}>
                     <div className='projects-img-box'>
                         <a className='projects-link' href={`/projects/${item.id}`}>
                             <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
                         </a>
                     </div>
-                    <div className='mb-7'>
+                    <div className='mb-4'>
                         <h3 className='my-1 text-xl font-semibold'><a className='primary-text-color hover:text-purple-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
                         <p className='my-1'>提案者 {item.organizer}</p>
                     </div>

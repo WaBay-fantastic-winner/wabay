@@ -1,4 +1,4 @@
-import React , { useRef , useState} from 'react'
+import React , { useRef } from 'react'
 
 const DropDownList = () => {
   const selectForm = useRef()
@@ -9,7 +9,7 @@ const DropDownList = () => {
       "value": "all"
     },
     {
-      "type": "提案時間從新到舊", 
+      "type": "最新提案", 
       "value": "desc"
     },
     {
@@ -21,7 +21,6 @@ const DropDownList = () => {
       "value": "popular"
     },
   ]
-  const [option,setOption] = useState(AllOption)
   let querystring = (new URL(document.location)).searchParams;
   let selectedOption = querystring.get('type')
   
