@@ -38,6 +38,10 @@ class TransactionsController < ApplicationController
   def paid
     transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
     transaction.pay!
+
+    current_donate_item = DonateItem.find(transaction.donate_item_id)
+    current_donate_item.increment(:donate_logs_count).save
+
     sign_in(User.find(transaction.user_id))
     redirect_to project_path(transaction.project_id), notice: "感謝您贊助 #{DonateItem.find(transaction.donate_item_id).title} !"
   end

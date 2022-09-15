@@ -7,12 +7,10 @@
         <%= form.label :title, '贊助項目標題',class:"form-list-label" %>
         <%= form.text_field :title,class:"form-list-field input-focus", placeholder: "請輸入標題" %>
       </div>
-
       <div class="form-list">
         <%= form.label :price, '贊助價格',class:"form-list-label" %>
         <%= form.text_field :price, class:"form-list-field input-focus", placeholder: "請輸入新台幣" %> 
       </div>
-
       <div class="border-solid border-2 border-purple-300 px-6 py-6 mb-4">
         <%= form.label :content, '贊助項目內容',class:"form-list-label" %>
         <%= form.rich_text_area :content,class:"input-focus" %>

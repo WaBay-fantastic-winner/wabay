@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_09_13_083353) do
+ActiveRecord::Schema.define(version: 2022_09_14_141104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,13 +73,21 @@ ActiveRecord::Schema.define(version: 2022_09_13_083353) do
     t.string "title"
     t.text "content"
     t.integer "price"
-    t.integer "count"
+    t.integer "donate_logs_count"
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.datetime "deleted_at"
     t.index ["deleted_at"], name: "index_donate_items_on_deleted_at"
     t.index ["project_id"], name: "index_donate_items_on_project_id"
+  end
+
+  create_table "donate_logs", force: :cascade do |t|
+    t.bigint "donate_item_id", null: false
+    t.string "ip_address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["donate_item_id"], name: "index_donate_logs_on_donate_item_id"
   end
 
   create_table "follows", force: :cascade do |t|
@@ -163,6 +171,7 @@ ActiveRecord::Schema.define(version: 2022_09_13_083353) do
   add_foreign_key "comments", "projects"
   add_foreign_key "comments", "users"
   add_foreign_key "donate_items", "projects"
+  add_foreign_key "donate_logs", "donate_items"
   add_foreign_key "like_comments", "comments"
   add_foreign_key "like_comments", "users"
   add_foreign_key "projects", "users"
