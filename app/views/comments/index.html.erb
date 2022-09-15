@@ -31,14 +31,14 @@
               <li class="p-4 mt-3 border border-gray-300 rounded-lg">
                 <div class='flex justify-between'>
                   <p><%= comment.user.email %></p>
-                  <% if comment.user_id == current_user.id %>
+                  <% if @project.user_id == current_user&.id %>
                     <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300'%>
                   <% end %>
                 </div>
                 <div class='my-4'>
                   <p><%= comment.content %></p>
                 </div>
-                <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
+                <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user&.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
                   <button data-action="click->like#like_comment">
                     <span data-like-target="love">♡</span>
                   </button>

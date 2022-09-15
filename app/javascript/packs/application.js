@@ -18,7 +18,7 @@ require("trix")
 require("@rails/actiontext")
 import "controllers"
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
 // --------comment accordion
   const contentBtn = document.getElementsByClassName('contentBox')
 

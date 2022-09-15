@@ -6,9 +6,11 @@
       </div>
       <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
-          <% if @project.avatar.attached? %>
-            <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-80 rounded-xl" %>
-          <% end %>
+          <div class="projects-img-box">
+            <div class='projects-link'>
+              <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+            </div>                    
+          </div>
         </div>
         <div class="col-span-4">
           <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
@@ -48,7 +50,7 @@
         <%= link_to '留言', project_comments_path(@project), class:"mx-5"%>
         </div>
         <div class='flex items-center justify-center my-2'>
-          <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
+          <% if @project.user_id == current_user&.id %>
             <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
             <%= link_to "刪除專案", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}, class:'text-red-400 mr-5'%>
           <% end %>
@@ -74,7 +76,7 @@
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
           </div>
           <div>
-            <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
+            <% if @project.user_id == current_user&.id %>
               <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center primary-text-color border-purple-300 border border-dotted' %>
             <% end %>
           </div>
