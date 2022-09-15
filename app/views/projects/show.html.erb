@@ -22,7 +22,7 @@
             剩餘時間：
             <span data-controller='leftTimer' date-leftTimer-target='leftTimer' data-percentage="<%= @percentage %>project-time="<%= @project.end_time%>"></span>
           </p>
-          <P class="my-2 font-semibold">贊助人數：</P>
+          <P class="my-2 font-semibold">贊助人數：<%= @donate_users_count %> 人</P>
           <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
           <div class="flex" data-controller="copyURL">
             <input data-copyURL-target='URL' type="text" class='flex-1 p-2 text-gray-500 bg-purple-100 border border-purple-300 rounded-lg outline-none'>
@@ -83,7 +83,7 @@
               <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
             </div>
             <div>
-              <% if current_user.id === Project.find_by!(id: params[:id]).user_id %>
+              <% if current_user&.id === Project.find_by!(id: params[:id]).user_id %>
                 <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center text-purple-400 border-purple-300 border border-dotted' %>
               <% end %>
             </div>

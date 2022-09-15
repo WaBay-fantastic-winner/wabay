@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 class DonateItem < ApplicationRecord
   acts_as_paranoid
 
   belongs_to :project
-
+  has_many :donate_log, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :users, through: :transactions
 

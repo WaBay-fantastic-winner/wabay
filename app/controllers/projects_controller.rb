@@ -1,7 +1,8 @@
 # frozen_string_literal: true
+
 require 'pry'
 class ProjectsController < ApplicationController
-  before_action :find_project, only: [:show, :edit, :destroy, :update]
+  before_action :find_project, only: %i[show edit destroy update]
   def index
     @projects = Project.all
     respond_to do |format|
@@ -14,8 +15,7 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def destroy
     if @project.really_destroy!
@@ -28,15 +28,16 @@ class ProjectsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @project.comments.order(id: :desc)
-    
+
     @donate_items = @project.donate_items
 
-    # 在 projects 的 show 頁面，針對追蹤按鈕的字樣畫面，設定一開始的狀態為何。
-    if follow_list.empty?
-      @follow_state = "追蹤專案"
-    else
-      @follow_state = "取消追蹤"
-    end
+    @donate_users_count = Transaction.where(project_id: @project.id).select(:user_id).map(&:user_id).uniq.count
+
+    @follow_state = if follow_list.empty?
+                      '追蹤專案'
+                    else
+                      '取消追蹤'
+                    end
 
     project_current_total(params[:id])
     percentage_of_currency
@@ -51,7 +52,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # 登入後的使用者，使用多對多方式 .projects ，建立表單
     @project = current_user.projects.new(clean_params)
     if @project.save
       redirect_to projects_path, notice: ' 提案成功 !!'
@@ -62,7 +62,7 @@ class ProjectsController < ApplicationController
 
   def follow
     find_project
-    
+
     if follow_list.empty?
       add_follow
     else
@@ -72,9 +72,9 @@ class ProjectsController < ApplicationController
 
   private
 
-  def clean_params
-    # 資料清洗
-    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description, :avatar)
+  def project_params
+    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description,
+                                    :avatar)
   end
 
   def find_project
@@ -82,20 +82,20 @@ class ProjectsController < ApplicationController
   end
 
   def follow_list
-    Follow.current_user_follow_this_project(current_user.id, params)
+    Follow.current_user_follow_this_project(current_user&.id, params)
   end
 
   def add_follow
-    @project.follows.create(:user_id => current_user.id, :follow => "true")
-    render json: {status: "been_followed"}
+    @project.follows.create(user_id: current_user.id, follow: 'true')
+    render json: { status: 'been_followed' }
   end
 
   def cancel_follow
     follow_list.first.destroy
-    render json: {status: "cancel_follow"}
+    render json: { status: 'cancel_follow' }
   end
 
   def to_project_show(notice)
-    redirect_to project_path(id: params[:id]), notice: notice
+    redirect_to project_path(id: params[:id]), notice:
   end
 end
