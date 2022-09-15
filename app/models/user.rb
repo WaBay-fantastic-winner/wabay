@@ -18,7 +18,7 @@ class User < ApplicationRecord
   has_many :liked_comments,
            through: :like_comments, source: :comment, dependent: :destroy
 
-  def self.liked?(comment)
+  def liked?(comment)
     liked_comments.include?(comment)
   end
 
