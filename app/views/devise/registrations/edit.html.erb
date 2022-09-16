@@ -10,8 +10,9 @@
       </ul>
     </div>
   </div>
-  <section class='py-8 bg-gray-100 '>
+  <section class='py-5 bg-gray-100 '>
     <%= render "devise/shared/error_messages", resource: resource %>
+    <h1 class="m-auto mb-4 text-xl text-center"><strong>〘 編 輯 個 人 資 料 〙</strong></h1>
     <div class="px-5 mx-auto md:w-400">  
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <div class="py-3">
@@ -39,8 +40,8 @@
         </div>
       <% end %>
       <div class='flex flex-col items-center py-10 mt-5 border-t border-b border-gray-200 border-solid'>
-        <p class='text-center'>要跟我們說再見了嗎 <span class='text-xl'>☹</span><br>請按☟</p>
-        <%= button_to "刪除帳號", registration_path(resource_name), data: { confirm: "確定要刪除帳號嗎？" }, method: :delete, class:'inline-block py-2 px-3 bg-red-600 text-white cursor-not-allowed hover:bg-red-500' %>
+        <p class='mb-1 text-center'>要跟我們說再見了嗎 <span class='text-xl'>☹</span><br>請按☟</p>
+        <%= button_to "刪除帳號", registration_path(resource_name), data: { confirm: "確定不要我們了嗎？" }, method: :delete, class:'inline-block py-2 px-3 bg-red-600 text-white cursor-not-allowed hover:bg-red-500' %>
       </div>
     </div> 
   </section>

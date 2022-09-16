@@ -53,7 +53,7 @@
                       <td class="table-layout"><%= transaction.price %></td>
                       <td class="table-layout"><%= transaction.state %></td>
                       <% if transaction.state === 'pending' %>
-                        <td class="table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
+                        <td class="text-red-400 table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
                         <% else %>
                         <td class="table-layout"></td>
                       <% end %>

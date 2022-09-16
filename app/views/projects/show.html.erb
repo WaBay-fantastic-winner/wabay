@@ -24,7 +24,7 @@
             <span id='leftTime' data-controller='leftTimer' date-leftTimer-target='leftTimer' data-percentage="<%= @percentage %>" data-project-time="<%= @project.end_time%>"></span>
           </p>
           <P class="my-2 font-semibold">贊助人數：<%= @donate_users_count %> 人</P>
-          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
+          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.updated_at%>'></p>
           <div class="flex" data-controller="copyURL">
             <input data-copyURL-target='URL' type="text" class='flex-1 p-2 text-gray-500 bg-purple-100 border border-purple-300 rounded-lg outline-none'>
             <button id='copybtn' class="px-3 text-white bg-purple-400 rounded-lg" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
