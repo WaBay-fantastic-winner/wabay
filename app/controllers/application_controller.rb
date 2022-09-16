@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
+
   # project / transaction / controller shares
   def project_current_total(params)
     @sum = 0
