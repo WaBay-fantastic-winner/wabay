@@ -19,8 +19,9 @@ const FundraisingItem = () => {
                 })
                 .then(resp => {
                     setProjectItems(resp.data)
+                    console.log(resp.data);
                 })
-                .catch( err => console.log(err))
+                .catch( err => alert(err))
                 };
         fetchProject();
     },[])
@@ -28,18 +29,20 @@ const FundraisingItem = () => {
     return (
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
-                <div className='col-span-3 pb-6 FundraisingItem' key={index}>
-                    <a className='' href={`/projects/${item.id}`}>
-                        <img className='w-full rounded-3xl' src='https://fakeimg.pl/300x200/200' alt='ss'/>
-                    </a>
-                    <div className='mb-7'>
-                        <h3 className='my-1 text-xl font-semibold hover:text-purple-400'><a className='text-purple-400 hover:text-purple-300' href={`/projects/${item.id}`} >{item.title}</a></h3>
-                        <p className='my-1'>提案者 {item.organizer}</p>
+                <div className='col-span-3 mb-8 FundraisingItem ' key={index}>
+                    <div className='projects-img-box'>
+                        <a className='projects-link' href={`/projects/${item.id}`}>
+                            <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
+                        </a>
+                    </div>
+                    <div className='mb-4'>
+                        <h3 className='my-1 text-xl font-semibold'><a className=' hover:text-purple-400' href={`/projects/${item.id}`} >{item.title}</a></h3>
+                        <p className='my-1'>提案者<span className='primary-text-color'>{item.organizer}</span></p>
                     </div>
                     <div>
-                        <span className='my-1'>NT $ 10000</span>
+                        <span className='my-1'>NT $ {item.current_total}</span>
                     </div>
-                    <ProgressBar done='80'/>
+                    <ProgressBar percent={Math.round(item.current_total/item.amount_target*100)}/>
                     <div>
                         <DaysLeft endTime={item.end_time} />
                     </div>

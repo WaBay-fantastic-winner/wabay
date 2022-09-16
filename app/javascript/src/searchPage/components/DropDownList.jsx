@@ -1,4 +1,4 @@
-import React , { useRef , useState} from 'react'
+import React , { useRef } from 'react'
 
 const DropDownList = () => {
   const selectForm = useRef()
@@ -9,7 +9,7 @@ const DropDownList = () => {
       "value": "all"
     },
     {
-      "type": "提案時間從新到舊", 
+      "type": "最新提案", 
       "value": "desc"
     },
     {
@@ -21,14 +21,13 @@ const DropDownList = () => {
       "value": "popular"
     },
   ]
-  const [option,setOption] = useState(AllOption)
   let querystring = (new URL(document.location)).searchParams;
   let selectedOption = querystring.get('type')
   
   return (
     <div>
       <form action="/projects" method="get" ref={selectForm} onChange={handleSubmit} >
-        <select name="type" id="type" defaultValue={selectedOption} className='p-2 pr-5 border border-purple-400 border-solid rounded-md focus:outline-none focus:ring focus:border-purple-300'>
+        <select name="type" id="type" defaultValue={selectedOption} className='p-2 pr-5 border border-purple-400 border-solid rounded-md input-focus'>
           {AllOption.map(ele=>(
             <option key={ele.value} value={ele.value}>
               {ele.type}

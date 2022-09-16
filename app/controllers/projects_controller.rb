@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'pry'
 class ProjectsController < ApplicationController
+  before_action :authenticate_user!, except: %i[show]
   before_action :find_project, only: %i[show edit destroy update]
   def index
     @projects = Project.all
@@ -29,7 +29,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
     @comments = @project.comments.order(id: :desc)
 
-    @donate_items = @project.donate_items
+    @donate_items = @project.donate_items.order(created_at: :asc)
 
     @donate_users_count = Transaction.where(project_id: @project.id).select(:user_id).map(&:user_id).uniq.count
 
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    if @project.update(clean_params)
+    if @project.update(project_params)
       redirect_to project_path, notice: ' 提案更新成功 !!'
     else
       render :edit
@@ -52,7 +52,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = current_user.projects.new(clean_params)
+    @project = current_user.projects.new(project_params)
     if @project.save
       redirect_to projects_path, notice: ' 提案成功 !!'
     else
@@ -86,8 +86,8 @@ class ProjectsController < ApplicationController
   end
 
   def add_follow
-    @project.follows.create(user_id: current_user.id, follow: 'true')
-    render json: { status: 'been_followed' }
+    @project.follows.create(:user_id => current_user.id, :mail_sent => "false")
+    render json: {status: "been_followed"}
   end
 
   def cancel_follow

@@ -1,9 +1,9 @@
 
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
 <main class='bg-gray-100 py-10'>
   <div class="px-5 md:w-400 mx-auto">
-    <h1 class="text-purple-400 font-medium text-2xl tracking-wider text-center">變更密碼</h1>
+    <h1 class="primary-text-color font-medium text-2xl tracking-wider text-center">變更密碼</h1>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
     <%= f.hidden_field :reset_password_token %>
 
