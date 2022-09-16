@@ -20,10 +20,9 @@ export default class extends Controller {
       const hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);
       const minutes = parseInt(leftTime / 1000 / 60 % 60, 10); 
       const seconds = parseInt(leftTime / 1000 % 60, 10); 
-      this.leftTimeTarget.textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
-      // document.querySelector('#leftTime').textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
+      // this.leftTimeTarget.textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
+      document.querySelector('#leftTime').textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
     }
-    console.log(this);
-    setInterval(function(){leftTimer(endYear,endMonth,endDay,endHour,endMinute,endSecond)}.bind(this), 1000)
+    setInterval(function(){leftTimer(endYear,endMonth,endDay,endHour,endMinute,endSecond)}, 1000)
   }
 }

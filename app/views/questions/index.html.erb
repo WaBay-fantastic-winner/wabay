@@ -18,7 +18,7 @@
       </div>
       <div class='flex items-center justify-center my-2'>
         <% if @project.user_id == current_user&.id %>
-          <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
+          <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl' %>
         <% end %>
       </div>
     </div>

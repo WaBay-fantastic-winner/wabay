@@ -55,7 +55,7 @@
         </div>
         <div class='flex items-center justify-center my-2'>
           <% if @project.user_id == current_user&.id %>
-            <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
+            <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl ' %>
             <%= link_to "刪除專案", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}, class:'text-red-400 mr-5'%>
           <% end %>
         </div>

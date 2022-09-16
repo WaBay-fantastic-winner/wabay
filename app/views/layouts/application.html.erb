@@ -14,11 +14,11 @@
     <header class='header'>
       <% if notice %>
         <div class="py-4 text-xl font-semibold text-center text-white bg-green-300 notice" data-controller="message">
-        <%= notice %>
+          <%= notice %>
         </div>
       <% end %>
       <div class="relative w-full text-lg border-b border-gray-200 text-slate-500 ">
-        <nav class="flex items-center justify-between max-w-6xl mx-auto header-item h-fit">
+        <nav class="flex items-center justify-between max-w-6xl mx-auto header-item h-70">
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
               <li><%= link_to "首頁", root_path, class:"mx-5 hover:text-gray-400"%></li>
@@ -47,17 +47,16 @@
               <div class="mb-3">
                 <h2 class="font-bold primary-text-color">Member</h2>
                 <ul class="px-4 text-2xl">
-                <% if user_signed_in? %>
-                  <li class='py-2'><%= link_to "個人頁面",users_profile_path %></li>
-                  <li class='py-2'><%= link_to "交易紀錄", transactions_path %></li>
-                  <li class='py-2'><%= link_to "追蹤專案", follows_path %></li>
-                  <li class='py-2'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
-                  <li class='py-2'><%= link_to "變更密碼", edit_user_password_path, methods: 'get' %></li>
-                  <li class='py-2'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
-                <% else %>
-                  <%= link_to "登入", new_user_session_path, class:"block py-2"%>
-                  <%= link_to "註冊", new_user_registration_path, class:"block py-2" %>
-                <% end %>
+                  <% if user_signed_in? %>
+                    <li class='py-2'><%= link_to "個人頁面",users_profile_path %></li>
+                    <li class='py-2'><%= link_to "交易紀錄", transactions_path %></li>
+                    <li class='py-2'><%= link_to "追蹤專案", follows_path %></li>
+                    <li class='py-2'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
+                    <li class='py-2'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
+                  <% else %>
+                    <%= link_to "登入", new_user_session_path, class:"block py-2"%>
+                    <%= link_to "註冊", new_user_registration_path, class:"block py-2" %>
+                  <% end %>
                 </ul>
               </div>
               <div class="mb-3">
@@ -72,7 +71,7 @@
             </div>
           </div>
           <!-- LOGO -->
-          <div class="absolute w-40 transform translate-x-1/2 logo right-1/2">
+          <div class="absolute w-40 transform translate-x-1/2 right-1/2">
             <a href="/"><%= image_tag('wubay.png') %></a>
           </div>
           <%# 搜尋及會員相關 %>
@@ -95,10 +94,9 @@
                 <ul class='w-40 py-2 text-sm primary-text-color'>
                   <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "個人頁面",users_profile_path, class:'hover:text-purple-300' %></li>
                   <li class='py-2 pl-4'><%= link_to "交易紀錄", transactions_path, class:'hover:text-purple-300' %></li>
-                  <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path %></li>
-                  <li class='py-2 pl-4'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
-                  <li class='py-2 pl-4'><%= link_to "變更密碼", edit_user_password_path, class:'hover:text-purple-300' %></li>
-                  <li class='py-2 pl-4'><%= link_to "登出", destroy_user_session_path, method: 'delete'%></li>
+                  <li class='py-2 pl-4 border-b border-gray-200'><%= link_to "追蹤專案", follows_path, class:'hover:text-purple-300'%></li>
+                  <li class='py-2 pl-4'><%= link_to "編輯個人資料", edit_user_registration_path, class:'hover:text-purple-300' %></li>
+                  <li class='py-2 pl-4'><%= link_to "登出", destroy_user_session_path, method: 'delete', class:'hover:text-purple-300'%></li>
                 </ul>
               </div>
             </div>
@@ -106,8 +104,8 @@
         </nav>
       </div>
     </header>
-    <%= yield %>
-    <footer class="pt-10 pb-10 text-sm border-t-2 border-gray-200 border-solid md:pt-20">
+    <%= yield %> 
+    <footer class="p-10 text-sm border-t-2 border-gray-200 md:pt-20">
       <div class='max-w-6xl px-16 mx-auto'>
         <div class='flex flex-wrap justify-around max-w-3xl mx-auto footer-items'>
           <div class='w-1/2 md:w-1/4 '>
@@ -145,15 +143,10 @@
             </ul>
           </div>
         </div> 
-        <div class='w-40 mx-auto my-12 text-2xl'>
-          <ul class='grid grid-cols-4 gap-5'>
-            <li><i class="fa-brands fa-square-facebook"></i></li>
-            <li><i class="fa-brands fa-line"></i></li>
-            <li><i class="fa-brands fa-youtube"></i></li>
-            <li><i class="fa-brands fa-instagram"></i></li>
-          </ul>
+        <div class='my-6 text-4xl text-center'>
+          <a href='https://github.com/WaBay-fantastic-winner/wubay' ><i class="fa-brands fa-github"></i></a>
         </div>
-        <div class="flex justify-center my-5">
+        <div class="my-5 text-center">
           <p>Copyright ©2022 Wubay <br/> All rights reserved</p>
         </div>
       </div>

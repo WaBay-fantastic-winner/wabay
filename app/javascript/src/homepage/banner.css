@@ -4,7 +4,7 @@
 .swiper-slide{
     width: 100%;
     position: relative;
-    padding-top: 35%;
+    padding-top: 45%;
 }
 .swiper-slide .img{
     position: absolute;
@@ -45,5 +45,10 @@
 @media screen and (min-width:768px){
     .swiper-button-next, .swiper-button-prev{
         display: flex;
+    }
+    .swiper-slide{
+        width: 100%;
+        position: relative;
+        padding-top: 30%;
     }
 }
