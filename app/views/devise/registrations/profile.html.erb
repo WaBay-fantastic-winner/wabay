@@ -1,8 +1,8 @@
 <main>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-2xl px-3 mx-auto">
-      <h1 class="text-2xl "><%= current_user.username %> </h1>
-      <p class="mb-4 text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
+      <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
+      <p class="mb-4 text-gray-500 text-center">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
       <p class=''><%= current_user.description %></p>
     </div>
   </section>
@@ -32,7 +32,11 @@
         <div class="col-span-3 mx-5 mb-10 FundraisingItem">
           <div class="projects-img-box">
             <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
-              <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+              <% if project.avatar.attached? %>
+                  <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                <% else %>
+                  <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
+              <% end %>
             </a>                    
           </div>
           <div class='mb-4'>
