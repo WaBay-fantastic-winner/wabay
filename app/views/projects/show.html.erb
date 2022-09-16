@@ -8,7 +8,11 @@
         <div class='col-span-6'>
           <div class="projects-img-box">
             <div class='projects-link'>
-              <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500], format: :jpg), :class=> "object-cover w-full h-full rounded-3xl" %>
+              <% if @project.avatar.attached? %>
+                  <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                <% else %>
+                  <%= image_tag Faker::Avatar.image %>
+              <% end %>
             </div>                    
           </div>
         </div>
@@ -75,7 +79,7 @@
         <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
           <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
             <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
-            <p class='mb-3'><%= @project.user.description%><a href='' class='primary-text-color hover:text-purple-300'>查看更多</a></p>
+            <p class='mb-3'><%= @project.user.description%></p>
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
           </div>

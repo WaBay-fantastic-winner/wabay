@@ -14,14 +14,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  def edit
-    super
-  end
+  # def edit
+  #   super
+  # end
 
   # POST /resource
-  def create
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # PUT /resource
   def update
@@ -42,7 +42,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  private
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
@@ -52,6 +52,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update, keys: [:username, :description])
+  end
+
+  def after_update_path_for(resource)
+    sign_in_after_change_password? ? signed_in_root_path(resource) : new_session_path(resource_name)
   end
 end
 

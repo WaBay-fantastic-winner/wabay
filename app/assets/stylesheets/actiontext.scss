@@ -33,4 +33,41 @@
       max-width: 100% !important;
     }
   }
+
+  ul {
+    list-style-type: disc;
+  }
+  ol {
+    list-style-type: decimal;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  pre {
+
+  }
+  blockquote {
+    
+  }
+}
+
+trix-editor {
+  ul {
+    list-style-type: disc;
+    padding: 5px;
+  }
+  ol {
+    list-style-type: decimal;
+    padding: 5px;
+  }
+  h1 {
+    font-size: 20px;
+    padding: 5px;
+  }
+  pre {
+    padding: 5px;
+  }
+  blockquote {
+    padding: 5px;
+  }
 }

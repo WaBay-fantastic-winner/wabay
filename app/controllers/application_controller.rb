@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :configure_sign_up_params, if: :devise_controller?
-  # before_action :configure_account_update_params, if: :devise_controller?
 
   # project / transaction / controller shares
   def project_current_total(params)

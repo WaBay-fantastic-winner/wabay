@@ -29,10 +29,10 @@ end
   private
 
   def self.from_omniauth(access_token)
-    data = access_token.info
+    data = access_token
     User.where(email: data['email']).first || User.create(
-      username: data['name'],
-      email: data['email'],
+      username: data.info['name'],
+      email: data.info['email'],
       provider: data['provider'],
       uid: data['uid'],
       password: Devise.friendly_token[0, 20]
