@@ -3,7 +3,7 @@
 require 'pry'
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
-  before_action :find_project, only: [:show, :edit, :destroy, :update]
+  before_action :find_project, only: %i[show edit destroy update]
   def index
     @projects = Project.all
     respond_to do |format|
@@ -87,8 +87,8 @@ class ProjectsController < ApplicationController
   end
 
   def add_follow
-    @project.follows.create(user_id: current_user.id, follow: 'true')
-    render json: { status: 'been_followed' }
+    @project.follows.create(:user_id => current_user.id, :mail_sent => "false")
+    render json: {status: "been_followed"}
   end
 
   def cancel_follow
