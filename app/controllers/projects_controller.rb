@@ -3,7 +3,7 @@
 require 'pry'
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
-  before_action :find_project, only: [:show, :edit, :destroy, :update]
+  before_action :find_project, only: %i[show edit destroy update]
   def index
     @projects = Project.all
     respond_to do |format|

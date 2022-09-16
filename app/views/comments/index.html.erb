@@ -23,8 +23,8 @@
         <div class='p-4 border border-gray-300 rounded-lg '>
           <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
             <%= form.hidden_field :parent_id, value: @comment.parent.id if @comment.parent.present?  %>
-            <%= form.text_area :content, class:"rounded focus:outline-none focus:ring focus:border-blue-300 flex-1", placeholder:'請輸入留言'%>
-            <%= form.submit "➤" , class:'text-blue-400 ml-2 px-2 cursor-pointer rounded-full'%>
+            <%= form.text_area :content, class:"rounded input-focus flex-1", placeholder:'請輸入留言'%>
+            <%= form.submit "➤" , class:'primary-text-color ml-2 px-2 cursor-pointer rounded-full'%>
           <% end %>
         </div>
         <div class=''>
@@ -57,8 +57,8 @@
                   <% if comment.parent_id.nil? %>
                     <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
                     <%= form.hidden_field :parent_id, value: comment.id %>
-                    <%= form.text_area :content, class:"rounded focus:outline-none focus:ring focus:border-blue-300 flex-1 bg-gray-100", placeholder:'回覆'%>
-                    <%= form.submit "➤" , class:'text-blue-400 ml-2 px-2 cursor-pointer rounded-full'%>
+                    <%= form.text_area :content, class:"rounded input-focus flex-1 bg-gray-100", placeholder:'回覆'%>
+                    <%= form.submit "➤" , class:'primary-text-color ml-2 px-2 cursor-pointer rounded-full'%>
                     <% end %>
                   <% end %> 
                 </div>
