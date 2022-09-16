@@ -4,9 +4,8 @@ class DonateItemsController < ApplicationController
   before_action :current_project, only: %i[index show create update destroy]
   before_action :find_donate_item, only: %i[show edit update destroy]
 
-  # 贊助方案的 index 會顯示在 project 的 show 裡。 一個專案畫面(show)有很多個贊助項目(index)
   def index
-    @donate_items = @current_project.donate_items.all
+    @donate_items = @current_project.donate_items.order(created_at: :asc)
   end
 
   def show; end

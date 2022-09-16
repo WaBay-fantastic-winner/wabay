@@ -30,7 +30,7 @@ class ProjectsController < ApplicationController
     @comment = Comment.new
     @comments = @project.comments.order(id: :desc)
 
-    @donate_items = @project.donate_items
+    @donate_items = @project.donate_items.order(created_at: :asc)
 
     @donate_users_count = Transaction.where(project_id: @project.id).select(:user_id).map(&:user_id).uniq.count
 

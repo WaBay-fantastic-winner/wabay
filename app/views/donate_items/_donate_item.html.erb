@@ -13,8 +13,8 @@
         <span>已被贊助：<%= donate_item.donate_logs_count %>次</span>
       </div>
       <div>
-        <h2>【贊助項目內容】</h2>
-        <span><%= donate_item.content %></span>
+        <h2 class='text-gray-500'>【贊助項目內容】</h2>
+        <span class='text-gray-500'><%= donate_item.content %></span>
       </div>
     </div>
     <%= link_to '贊助', project_donate_item_path(project_id: params[:id], id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
