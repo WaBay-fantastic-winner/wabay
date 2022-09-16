@@ -1,24 +1,16 @@
 <main>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <h1 class="mb-5 text-center">
-        <p><%= current_user.email %></p>
-        <p><%= current_user.username %></p>  
-      </h1>
+      <h1 class="mb-5 text-2xl text-center"><%= current_user.username %> </h1>
+      <p class='text-center'><%= current_user.description %></p>
     </div>
   </section>
   <div class="justify-between px-5 py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
     <div class="flex items-center justify-center h-16 max-w-6xl py-3 mx-auto font-semibold text-gray-400">
       <div class='current-page'>
         <%=link_to users_profile_path  do %>
-        <p>提案者專案數</p>
-        <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
-        <% end %>
-      </div>
-      <div class='ml-10'>
-        <%=link_to users_profile_path  do %>
-          <p>贊助專案數</p>
-          <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.transactions.count%></span>件</p>
+          <p>提案者專案數</p>
+          <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
         <% end %>
       </div>
     </div>

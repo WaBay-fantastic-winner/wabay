@@ -11,6 +11,10 @@
         <%= f.label :username, "使用者名稱："%>
         <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
       </div> 
+      <div class="py-6">
+        <%= f.label :description, "使用者自我簡介："%>
+        <%= f.text_area :description, autofocus: true, placeholder: "請輸入自我簡介", autocomplete: "description", class:"field rounded w-full pl-2 py-2 input-focus" %>
+      </div> 
       <div class="py-2 field">
         <% if @minimum_password_length %>
           <%= f.label :password, "密碼："%>
