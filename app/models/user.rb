@@ -5,8 +5,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
+        :recoverable, :rememberable, :validatable,
+        :omniauthable, omniauth_providers: %i[facebook google_oauth2]
 
   has_many :projects, dependent: :destroy
 
@@ -21,6 +21,10 @@ class User < ApplicationRecord
   def liked?(comment)
     liked_comments.include?(comment)
   end
+
+def liked?(comment)
+  liked_comments.include?(comment)
+end
 
   private
 

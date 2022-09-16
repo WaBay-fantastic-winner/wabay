@@ -9,10 +9,10 @@ const Search = () => {
     }
 
     return (
-        <div className="search pr-5 lg:pr-2 flex items-center">
-            <button className="search-btn flex " onClick={searchbarToggle}>
+        <div className="flex items-center pr-5 search lg:pr-2">
+            <button className="flex search-btn " onClick={searchbarToggle}>
                 <span className="hidden lg:inline">搜尋</span> 
-                <FaSearch className="pl-2 inline-block text-2xl"/>
+                <FaSearch className="inline-block pl-2 text-2xl "/>
             </button>
             <div className={`search-form ${active} absolute z-10 inset-0 px-14 lg:px-28 bg-white`}>
                 <div className="flex items-center h-full">
