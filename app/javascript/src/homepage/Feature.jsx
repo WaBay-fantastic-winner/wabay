@@ -30,21 +30,19 @@ const Feature = () => {
     ] 
 
     return (
-        <>
-            <div className='max-w-6xl mx-auto'>
-                <div className='mb-4'>
-                    <h2 className='my-3 text-2xl font-semibold text-center'>Wubay的五大特色</h2>
-                    <p className='mb-8 text-center'>致力給贊助會員們最安心的保障！</p>
-                </div>
-                <div className='my-3 md:px-10'>
-                    <ul className='flex flex-wrap justify-center'>
-                        {FeatureList.map((item, index)=>(
-                            <li className='w-1/3 md:w-1/5' key={index}><img src={item.src} alt={item.text} className="w-20 mx-auto mb-3"/><h3 className='text-xl font-semibold text-center'>{item.text}</h3></li>
-                        ))}
-                    </ul>
-                </div>
+        <div className='max-w-6xl mx-auto'>
+            <div className='mb-4'>
+                <h2 className='my-3 text-2xl font-semibold text-center'>Wubay的五大特色</h2>
+                <p className='mb-8 text-center'>致力給贊助會員們最安心的保障！</p>
             </div>
-        </>
+            <div className='my-3 md:px-10'>
+                <ul className='flex flex-wrap justify-center'>
+                    {FeatureList.map((item, index)=>(
+                        <li className='w-1/3 md:w-1/5' key={index}><img src={item.src} alt={item.text} className="w-20 mx-auto mb-3"/><h3 className='text-xl font-semibold text-center'>{item.text}</h3></li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     )
 }
 

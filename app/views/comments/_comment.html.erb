@@ -1,9 +1,12 @@
-<div class="bg-purple-100 my-3 rounded">
-  <div>
-    <%= comment.user.email %>
+<div class="p-3 my-3 bg-purple-100 rounded">
+  <div class="flex justify-between">
+    <p class='text-xl font-bold"'><%= comment.user.email %></p>
     <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" if current_user.present? %>
   </div>
-  <div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600">
+  <div>
+    <p class="text-sm text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M")%></p>
+  </div>
+  <div class="flex-1 mt-4 font-medium ">
     <%= comment.content %>
   </div>
 </div>

@@ -23,12 +23,12 @@
             <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
           </div>
           <P class="my-2">目標金額：<%= @project.amount_target %></P>
-          <p class="my-2 font-semibold">
+          <p class="my-2 font-semibold" data-controller='leftTimer' data-percentage="<%= @percentage %>" data-project-time="<%= @project.end_time %>">
             剩餘時間：
-            <span id='leftTime' data-controller='leftTimer' date-leftTimer-target='leftTimer' data-percentage="<%= @percentage %>" data-project-time="<%= @project.end_time%>"></span>
+            <span id='leftTime' data-leftTimer-target='leftTime'></span>
           </p>
           <P class="my-2 font-semibold">贊助人數：<%= @donate_users_count %> 人</P>
-          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>
+          <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.updated_at%>'></p>
           <div class="flex" data-controller="copyURL">
             <input data-copyURL-target='URL' type="text" class='flex-1 p-2 text-gray-500 bg-purple-100 border border-purple-300 rounded-lg outline-none'>
             <button id='copybtn' class="px-3 text-white bg-purple-400 rounded-lg" data-action='click->copyURL#copy'><i class="fa-solid fa-copy"></i></button>
@@ -49,25 +49,25 @@
     <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-300 border-double'>
       <div class="justify-between max-w-6xl px-5 mx-auto lg:flex">
         <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400">
-        <%= link_to '專案內容', project_path(@project), class:"current-page mx-5"%>
-        <a href='<%= project_questions_path(@project)%>' class="mx-5">
-          常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
-        </a>
-        <a href='<%= project_comments_path(@project)%>' class="mx-5">
-          留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
-        </a>
+          <%= link_to '專案內容', project_path(@project), class:"current-page mx-5"%>
+          <a href='<%= project_questions_path(@project)%>' class="mx-5">
+            常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
+          </a>
+          <a href='<%= project_comments_path(@project)%>' class="mx-5">
+            留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
+          </a>
         </div>
-        <div class='flex items-center justify-center my-2'>
-          <% if @project.user_id == current_user&.id %>
-            <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl border-soild' %>
+        <% if @project.user_id == current_user&.id %>
+          <div class='flex items-center justify-center my-2'>
+            <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl ' %>
             <%= link_to "刪除專案", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}, class:'text-red-400 mr-5'%>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
       </div>
     </div>
   <section class="py-8 ">
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid" data-controller="projectUnroll">
-      <div class='relative col-span-7 overflow-hidden project-content h-72 lg:h-auto' data-projectUnroll-target="projectContent" >
+      <div class='relative h-64 col-span-7 overflow-hidden project-content lg:h-auto' data-projectUnroll-target="projectContent" >
         <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
         <%= @project.description%>
       </div>
@@ -78,8 +78,8 @@
       <div class="col-span-3">
         <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
           <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
-            <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
-            <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='primary-text-color hover:text-purple-300'>查看更多</a></p>
+            <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
+            <p class='mb-3'><%= @project.user.description%></p>
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
           </div>

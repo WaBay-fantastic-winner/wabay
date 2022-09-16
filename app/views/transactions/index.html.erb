@@ -1,12 +1,11 @@
 <main>
   <div class='border border-gray-300 boder-solid'>
-    <div class="max-w-3xl mx-auto text-xs md:text-base">
-      <ul class='grid items-center justify-center h-16 grid-cols-5 '>
+    <div class="max-w-2xl mx-auto text-xs md:text-base">
+      <ul class='grid items-center justify-center h-16 grid-cols-4 '>
         <li class='text-center'><%= link_to "個人頁面",users_profile_path %></li>
         <li class='text-center current-page'><%= link_to "交易紀錄", transactions_path%></li>
         <li class='text-center'><%= link_to "追蹤專案", follows_path %></li>
         <li class='text-center'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
-        <li class='text-center'><a>變更密碼</a></li>
       </ul>
     </div>
   </div>
@@ -53,7 +52,7 @@
                       <td class="table-layout"><%= transaction.price %></td>
                       <td class="table-layout"><%= transaction.state %></td>
                       <% if transaction.state === 'pending' %>
-                        <td class="table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
+                        <td class="text-red-400 table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
                         <% else %>
                         <td class="table-layout"></td>
                       <% end %>

@@ -1,17 +1,17 @@
 <main>
   <div class='border border-gray-300 boder-solid'>
-    <div class="max-w-3xl mx-auto text-xs md:text-base">
-      <ul class='grid items-center justify-center h-16 grid-cols-5 '>
+    <div class="max-w-2xl mx-auto text-xs md:text-base">
+      <ul class='grid items-center justify-center h-16 grid-cols-4 '>
         <li class='text-center'><%= link_to "個人頁面",users_profile_path %></li>
         <li class='text-center'><%= link_to "交易紀錄", transactions_path%></li>
         <li class='text-center'><%= link_to "追蹤專案", follows_path %></li>
         <li class='text-center current-page'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
-        <li class='text-center'><a>變更密碼</a></li>
       </ul>
     </div>
   </div>
-  <section class='py-8 bg-gray-100 '>
+  <section class='py-5 bg-gray-100 '>
     <%= render "devise/shared/error_messages", resource: resource %>
+    <h1 class="m-auto mb-4 text-xl text-center"><strong>〘 編 輯 個 人 資 料 〙</strong></h1>
     <div class="px-5 mx-auto md:w-400">  
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <div class="py-3">
@@ -21,6 +21,10 @@
         <div class="py-3">
           <%= f.label :username, "新使用者名稱："%>
           <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
+        </div> 
+        <div class="py-3">
+          <%= f.label :description, "使用者自我簡介："%>
+          <%= f.text_area :description, autofocus: true, placeholder: "請輸入自我簡介", autocomplete: "description", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
         </div> 
         <div class="py-3 field">
             <%= f.label :password, "新密碼："%><i>(不想更改，留白即可)</i>
@@ -39,8 +43,8 @@
         </div>
       <% end %>
       <div class='flex flex-col items-center py-10 mt-5 border-t border-b border-gray-200 border-solid'>
-        <p class='text-center'>要跟我們說再見了嗎 <span class='text-xl'>☹</span><br>請按☟</p>
-        <%= button_to "刪除帳號", registration_path(resource_name), data: { confirm: "確定要刪除帳號嗎？" }, method: :delete, class:'inline-block py-2 px-3 bg-red-600 text-white cursor-not-allowed hover:bg-red-500' %>
+        <p class='mb-1 text-center'>要跟我們說再見了嗎 <span class='text-xl'>☹</span><br>請按☟</p>
+        <%= button_to "刪除帳號", registration_path(resource_name), data: { confirm: "確定不要我們了嗎？" }, method: :delete, class:'inline-block py-2 px-3 bg-red-600 text-white cursor-not-allowed hover:bg-red-500' %>
       </div>
     </div> 
   </section>

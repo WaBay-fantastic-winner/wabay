@@ -15,4 +15,14 @@ class ApplicationController < ActionController::Base
   def percentage_of_currency
     @percentage = ((@sum.to_f / @project.amount_target).round(2) * 100).to_i
   end
+
+   # If you have extra params to permit, append them to the sanitizer.
+   def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :discription])
+  end
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_account_update_params
+  #   devise_parameter_sanitizer.permit(:account_update, keys: [:username, :discription])
+  # end
 end
