@@ -8,7 +8,7 @@ import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/modules/pagination/pagination.scss';
 import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
-import './banner.css';
+import '../../stylesheets/banner.css';
 
 // const Rand = (min, max) => {
 //   return Math.floor(Math.random() * (max - min + 1) + min);

@@ -4,3 +4,11 @@ import './formPage.css';
 import './projectPage.css';
 import './tailwinds.css'
 import './loginPage.css';
+import './banner.css'
+import './progressBar.css'
+import 'swiper/swiper.scss';
+import 'swiper/modules/navigation/navigation.scss';
+import 'swiper/modules/pagination/pagination.scss';
+import 'swiper/modules/scrollbar/scrollbar.scss';
+import 'swiper/modules/autoplay/autoplay.scss';
+import '../../assets/stylesheets/actiontext.scss'

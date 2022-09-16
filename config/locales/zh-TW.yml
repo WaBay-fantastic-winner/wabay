@@ -27,13 +27,13 @@ zh-TW:
         unlock_token: 解鎖令牌
         updated_at: 更新於
       project:
-        project_description: 提案描述      
-        project_end_time: 提案結束時間
-        project_amount_target: 提案目標金額
+        description: 提案描述      
+        end_time: 提案結束時間
+        amount_target: 提案目標金額
         title: 提案名稱
         phone: 電話
         email: 電子信箱
-        organizer: 提案人
+        organizer: 提案者
         avatar: 封面圖片
     models:
       user: 使用者
