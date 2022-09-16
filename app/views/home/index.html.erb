@@ -27,7 +27,7 @@
                         <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
                     </div> 
                     <div class=''>
-                        <span>倒數 <%= (project.end_time - project.created_at).to_i / 1.day %> 天</span>
+                        <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
                     </div>
                 </div>
             <% end %>
