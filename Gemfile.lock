@@ -403,7 +403,7 @@ DEPENDENCIES
   net-imap
   net-pop
   net-smtp
-  omniauth
+  omniauth (>= 1.0.0)
   omniauth-facebook
   omniauth-google-oauth2
   omniauth-rails_csrf_protection

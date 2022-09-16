@@ -1,7 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 <main class='bg-gray-100 py-10'>
   <div class="px-5 md:w-400 mx-auto">
-    <h1 class="text-purple-400 font-medium text-2xl tracking-wider text-center">忘記密碼?</h1>
+    <h1 class="primary-text-color font-medium text-2xl tracking-wider text-center">忘記密碼?</h1>
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
       <div class="field ">
         <%= f.label :email , class:'block mt-4 mb-3' %>

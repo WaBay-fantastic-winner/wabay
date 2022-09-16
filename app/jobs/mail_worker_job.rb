@@ -2,7 +2,7 @@
 
 class MailWorkerJob < ApplicationJob
   queue_as :default
-  def perform(project)
-    FundraisingAchieveMailer.notify(project).deliver
+  def perform(follower, project_title)
+    FundraisingAchieveMailer.notify(follower, project_title).deliver
   end
 end

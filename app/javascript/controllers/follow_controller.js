@@ -13,12 +13,14 @@ export default class extends Controller {
       success: ({ status }) => {
         if (status === "been_followed"){
           this.followButtonTarget.textContent = "取消追蹤"
+          this.followButtonTarget.classList.add("bg-purple-400","text-white")
         } else {
           this.followButtonTarget.textContent = "追蹤專案"
+          this.followButtonTarget.classList.remove("bg-purple-400","text-white")
         }
       },
       error: (err) => {
-        console.log(err)
+        alert(err)
       }
     })
   }
@@ -33,7 +35,7 @@ export default class extends Controller {
         location.reload()
       },
       error: (err) => {
-        console.log(err)
+        alert(err)
       }
     })
   }

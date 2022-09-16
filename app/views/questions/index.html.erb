@@ -1,64 +1,57 @@
 <main>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <p class="mb-1 text-center"><a href="">分類</a></p>
-      <h1 class="mb-3 text-center"><%= @project.title %></h1>
-      <p class="mb-6 text-center">提案者<a href="" class="text-blue-400 hover:text-blue-300"><%= @project.organizer %></a></p>
+      <h1 class="mb-3 text-2xl text-center text-semibold"><%= @project.title %></h1>
+      <p class="mb-4 text-center">提案者 <a href="" class="primary-text-color"><%= @project.organizer %></a></p>
     </div>
   </section>
-  <div class="sticky top-0 z-10 justify-between px-12 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
-    <div class="flex items-center h-16 font-semibold text-gray-400 ">
-      <%= link_to '專案內容', project_path(@project), class:" mx-5"%>
-      <%= link_to '產品資訊', project_disclosures_path(@project), class:"imformation-link mx-5"%>
-      <a class="mx-5" href="">常見問題</a>
-      <%= link_to '留言', project_comments_path(@project), class:"mx-5"%>
-    </div>
-    <div class="w-full pt-3 progressBar lg:w-80 lg:p-0" data-controller="trackerBar">
-      <div class="w-full stepBar lg:w-64 ">
-        <div class="bar "></div>
-        <div class="bullet"></div>
-        <div class="bullet"></div>
-        <div class="bullet"></div>
-        <div class="bullet"></div>
+  <div class="px-5 bg-white border-t-2 border-b-2 border-gray-300 border-double " >
+    <div class='justify-between max-w-6xl mx-auto lg:flex'>
+      <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400 ">
+        <%= link_to '專案內容', project_path(@project), class:"mx-5"%>
+        <a href='<%= project_questions_path(@project)%>' class="mx-5 current-page">
+          常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
+        </a>
+        <a href='<%= project_comments_path(@project)%>' class="mx-5">
+          留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
+        </a>
       </div>
-      <div class="flex justify-between -mx-4 text-xs lg:justify-around lg:mx-0">
-        <p class="step-text">企劃概念</p>
-        <p class="step-text">樣品狀態</p>
-        <p class="step-text">生產階段</p>
-        <p class="step-text">產品寄送</p>
-      </div>
+      <% if @project.user_id == current_user&.id %>
+        <div class='flex items-center justify-center my-2'>
+          <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl' %>
+        </div>
+      <% end %>
     </div>
   </div>
-  
   <%# 常見問題區 %>
-  <section class='py-8 border-b-2 border-double border-gray-300'>
-    <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12">
-      <div class="accordion col-span-7">
-        <% @questions.each do |question| %>
-          <div class="contentBox">
-            <div class="contentBtn">
-              <h2><span class="mr-8">Q<%= question.id%></span><%= question.title  %></h2>
+  <section class='py-8 border-b-2 border-gray-300 border-double'>
+    <div class="max-w-6xl grid-cols-10 gap-12 px-3 mx-auto lg:grid">
+      <div class="col-span-7 accordion" data-controller='question'>
+        <% @project.questions.each do |question| %>
+          <div class="contentBox" data-question-target='btn' data-action='click->question#switch'>
+            <div class="contentTitle">
+              <h2><span class="mr-8">Q<%= question.id%></span><%= question.title %></h2>
             </div>
             <div class="content">
               <p><%= question.content %></p>
-              <p><%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
-              <% if @project.user_id == current_user&.id %> 
-                <%= link_to "編輯", edit_question_path(question.id) %>
-                <%= link_to "刪除", question, method: 'delete' %>
-              <% end %>
+              <div class='flex justify-between mt-2'>  
+                <p class='text-sm text-gray-400'>最後更新時間 <%= question.updated_at.strftime("%Y-%m-%d %H:%M") %></p>
+                <% if @project.user_id == current_user&.id %>  
+                  <div>
+                    <%= link_to "編輯", edit_question_path(question.id), class:'mr-3'%>
+                    <%= link_to "刪除", question, method: 'delete' %>
+                  </div>
+                <% end %> 
+              </div>
             </div>
           </div>
-          <% if @project.user_id == current_user&.id %>
-            <%= link_to "新增常見問題", new_project_question_path(@project.id), class: 'ml-6' %>
-          <% end %>
         <% end %>
       </div>
-
       <%# silde-bar %>
       <div class='col-span-3 '>
         <div class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
-          <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
-          <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='text-blue-400 hover:text-blue-300'>查看更多</a></p>
+          <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
+          <p class='mb-3'><%= @project.user.description%></p>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
         </div>

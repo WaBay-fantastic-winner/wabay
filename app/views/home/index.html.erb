@@ -9,21 +9,29 @@
         </div>
         <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
             <% @projects.each do |project| %>
-                <div class="col-span-3 pb-6 mx-5 FundraisingItem">
-                    <a href='projects/<%= "#{project.id}" %>'><img class="w-full rounded-3xl" src="https://picsum.photos/300/200/?random=10" alt="ss"/></a>
-                    <div class='mb-7'>
-                        <h3 class='my-1 text-xl font-semibold hover:text-blue-400'><%= link_to project.title, project_path(project) %></h3>
-                        <p class='my-1'>提案者 <span class='text-blue-400 hover:text-blue-300'><%= project.organizer %></span></p>
+                <div class="col-span-3 mx-5 mb-10 FundraisingItem">
+                    <div class="projects-img-box">
+                        <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
+                            <% if project.avatar.attached? %>
+                                <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                            <% else %>
+                                <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
+                            <% end %>
+                        </a>                    
+                    </div>
+                    <div class='mb-4'>
+                        <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h3>
+                        <p class='my-1'>提案者 <span class='primary-text-color'><%= project.organizer %></span></p>
                     </div>
                     <div>
                         <span class='my-1'>NT$ <%= project.current_total %></span>
                     </div>
-                    <div class="relative h-4 my-4 rounded-md progress-container">
+                    <div class="relative h-4 my-1 rounded-md progress-container">
                         <span id="progressPercent">0%</span>
                         <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
                     </div> 
-                    <div class=''>
-                        <span>倒數 <%= (project.end_time - project.created_at).to_i / 1.day %> 天</span>
+                    <div>
+                        <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
                     </div>
                 </div>
             <% end %>
@@ -34,7 +42,6 @@
     </section>
     <section class='flex flex-col items-center py-5 propose'>
         <p class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</p>
-        <br>
-        <button><%= link_to "提案", new_project_path, class:"bg-purple-400 px-14 py-3 my-6 rounded-lg text-white hover:bg-purple-300"%></button>
+        <button class='block py-3 my-6 text-white bg-purple-400 rounded-lg px-14 hover:bg-purple-300'><%= link_to "提案", new_project_path%></button>
     </section>
 </main>

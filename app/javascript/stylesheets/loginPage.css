@@ -1,0 +1,24 @@
+.divider{
+    text-align: center;
+    position: relative;
+    color: rgb(189, 189, 189);
+    margin-top: 40px;
+}
+.divider::after{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    right: 0;
+    height: 1px;
+    background-color: rgb(223, 223, 223);
+}
+.divider::before{
+    content: ' ';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 55%;
+    height: 1px;
+    background-color: rgb(223, 223, 223);
+}

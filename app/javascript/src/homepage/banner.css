@@ -1,6 +1,19 @@
 .swiper{
     padding-bottom: 30px;
 }
+.swiper-slide{
+    width: 100%;
+    position: relative;
+    padding-top: 45%;
+}
+.swiper-slide .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
 .swiper-button-next{
     right:15vw;
 }
@@ -32,5 +45,10 @@
 @media screen and (min-width:768px){
     .swiper-button-next, .swiper-button-prev{
         display: flex;
+    }
+    .swiper-slide{
+        width: 100%;
+        position: relative;
+        padding-top: 30%;
     }
 }
