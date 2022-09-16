@@ -1,12 +1,11 @@
 <main>
   <div class='border border-gray-300 boder-solid'>
-    <div class="max-w-3xl mx-auto text-xs md:text-base">
-      <ul class='grid items-center justify-center h-16 grid-cols-5 '>
+    <div class="max-w-2xl mx-auto text-xs md:text-base">
+      <ul class='grid items-center justify-center h-16 grid-cols-4 '>
         <li class='text-center'><%= link_to "個人頁面",users_profile_path %></li>
         <li class='text-center'><%= link_to "交易紀錄", transactions_path%></li>
         <li class='text-center current-page'><a>追蹤專案</a></li>
         <li class='text-center'><%= link_to "編輯個人資料", edit_user_registration_path %></li>
-        <li class='text-center'><a>變更密碼</a></li>
       </ul>
     </div>
   </div>
@@ -14,7 +13,7 @@
 <section class='py-5 bg-gray-100 '>
   <h1 class="m-auto mb-4 text-xl text-center"><strong>〘 我 的 追 蹤 清 單 〙</strong></h1>
   <% if @follows.empty? %> 
-    <p class="text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
+    <p class="my-8 text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
   <% else %>
     <div class="grid max-w-6xl mx-auto md:grid-cols-9">
       <% @follows.each do |follow| %>

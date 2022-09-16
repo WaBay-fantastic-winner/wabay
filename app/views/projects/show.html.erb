@@ -19,9 +19,9 @@
             <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
           </div>
           <P class="my-2">目標金額：<%= @project.amount_target %></P>
-          <p class="my-2 font-semibold">
+          <p class="my-2 font-semibold" data-controller='leftTimer' data-percentage="<%= @percentage %>" data-project-time="<%= @project.end_time %>">
             剩餘時間：
-            <span id='leftTime' data-controller='leftTimer' date-leftTimer-target='leftTimer' data-percentage="<%= @percentage %>" data-project-time="<%= @project.end_time%>"></span>
+            <span id='leftTime' data-leftTimer-target='leftTime'></span>
           </p>
           <P class="my-2 font-semibold">贊助人數：<%= @donate_users_count %> 人</P>
           <p class="my-2 font-semibold" data-controller='projectTime' data-end-time='<%= @project.end_time %>' data-created-time='<%= @project.created_at%>'></p>

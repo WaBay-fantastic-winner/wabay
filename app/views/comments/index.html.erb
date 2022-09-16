@@ -7,13 +7,13 @@
   </section>
   <div class="px-5 font-semibold text-gray-400 bg-white border-t-2 border-b-2 border-gray-300 border-double">
     <div class="flex items-center justify-center h-16 max-w-6xl py-3 mx-auto lg:justify-start ">
-    <%= link_to '專案內容', project_path(@project), class:"mx-5"%>
-    <a href='<%= project_questions_path(@project)%>' class="mx-5">
-      常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
-    </a>
-    <a href='<%= project_comments_path(@project)%>' class="mx-5 current-page">
-      留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
-    </a>
+      <%= link_to '專案內容', project_path(@project), class:"mx-5"%>
+      <a href='<%= project_questions_path(@project)%>' class="mx-5">
+        常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
+      </a>
+      <a href='<%= project_comments_path(@project)%>' class="mx-5 current-page">
+        留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
+      </a>
     </div>
   </div>
   <%# 留言區 %>
@@ -28,44 +28,44 @@
           <% end %>
         </div>
         <div class=''>
-          <ul>
-            <% if @comment.nil?%>
-              <a>gdfgdfgdfgdfg</a>
-              <% else %>
-            <% @comments.each do |comment| %>
-              <li class="p-4 mt-3 border border-gray-300 rounded-lg">
-                <div class='flex justify-between'>
-                  <p class="font-bold"><%= comment.user.email %></p>
-                  <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300' if current_user.present?%>
-                </div>
-                <p class="text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-                <div class='my-4'>
-                  <p><%= comment.content %></p>
-                </div>
-                <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user&.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
-                  <button data-action="click->like#like_comment">
-                    <span data-like-target="love">♡</span>
-                  </button>
-                  <span data-like-target="count">
-                    <%= comment.count %>
-                  </span>
-                </div>
-                <div>
-                  <%= render comment.comments %>
-                </div>
-                <div class='my-4'>
-                  <% if comment.parent_id.nil? %>
-                    <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
-                    <%= form.hidden_field :parent_id, value: comment.id %>
-                    <%= form.text_area :content, class:"rounded input-focus flex-1 bg-gray-100", placeholder:'回覆'%>
-                    <%= form.submit "➤" , class:'primary-text-color ml-2 px-2 cursor-pointer rounded-full'%>
-                    <% end %>
-                  <% end %> 
-                </div>
-              </li>
-            <% end %>
-            <% end %>
-          </ul>
+          <% if @comment.nil?%>
+            <a>目前沒有留言</a>
+          <% else %>
+            <ul>
+              <% @comments.each do |comment| %>
+                <li class="p-4 mt-3 border border-gray-300 rounded-lg">
+                  <div class='flex justify-between'>
+                    <p class="text-xl font-bold"><%= comment.user.email %></p>
+                    <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300' if current_user.present?%>
+                  </div>
+                  <p class="text-sm text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                  <div class='my-4'>
+                    <p><%= comment.content %></p>
+                  </div>
+                  <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user&.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
+                    <button data-action="click->like#like_comment">
+                      <span data-like-target="love">♡</span>
+                    </button>
+                    <span data-like-target="count">
+                      <%= comment.count %>
+                    </span>
+                  </div>
+                  <div>
+                    <%= render comment.comments %>
+                  </div>
+                  <div class='my-4'>
+                    <% if comment.parent_id.nil? %>
+                      <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
+                        <%= form.hidden_field :parent_id, value: comment.id %>
+                        <%= form.text_area :content, class:"rounded input-focus flex-1 bg-gray-100", placeholder:'回覆'%>
+                        <%= form.submit "➤" , class:'primary-text-color ml-2 px-2 cursor-pointer rounded-full'%>
+                      <% end %>
+                    <% end %> 
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
         </div>
       </div>
       <%# silde-bar %>

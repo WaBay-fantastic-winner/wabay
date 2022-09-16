@@ -1,14 +1,18 @@
 import { Controller } from "stimulus"
+import * as dayjs from 'dayjs'
 
 export default class extends Controller {
+  static targets = ["leftTime"]
+
   connect() {
-    let endTime = this.element.dataset.projectTime.split(' ')
-    let endYear = endTime[0].split('-')[0]
-    let endMonth = endTime[0].split('-')[1]
-    let endDay = endTime[0].split('-')[2]
-    let endHour = endTime[1].split(':')[0]
-    let endMinute = endTime[1].split(':')[1]
-    let endSecond = endTime[1].split(':')[2]
+    const endTimeArr = this.element.dataset.projectTime.split(' ')
+    const endTime = dayjs(endTimeArr[0], endTimeArr[1])
+    const endYear = endTime.$y
+    const endMonth = endTime.$M + 1
+    const endDay = endTime.$D
+    const endHour = endTime.$H
+    const endMinute = endTime.$m
+    const endSecond = endTime.$s
 
     function leftTimer(year, month, day, hour, minute, second) {
       const leftTime = (new Date(year, month - 1, day, hour, minute, second)) - (new Date());
@@ -16,8 +20,10 @@ export default class extends Controller {
       const hours = parseInt(leftTime / 1000 / 60 / 60 % 24, 10);
       const minutes = parseInt(leftTime / 1000 / 60 % 60, 10); 
       const seconds = parseInt(leftTime / 1000 % 60, 10); 
-      document.querySelector('#leftTime').innerHTML = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
+      this.leftTimeTarget.textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
+      // document.querySelector('#leftTime').textContent = days + "天" + hours + "時" + minutes + "分" + seconds + "秒";
     }
-    setInterval(() => {leftTimer(endYear,endMonth,endDay,endHour,endMinute,endSecond)}, 1000);
+    console.log(this);
+    setInterval(function(){leftTimer(endYear,endMonth,endDay,endHour,endMinute,endSecond)}.bind(this), 1000)
   }
 }
