@@ -22,8 +22,9 @@
       <div class='col-span-7 '>
         <div class='p-4 border border-gray-300 rounded-lg '>
           <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
-            <%= form.text_area :content, class:"rounded input-focus flex-1", placeholder:'請輸入留言'%>
-            <%= form.submit "➤" , class:'primary-text-color ml-2 px-2 cursor-pointer rounded-full'%>
+            <%= form.hidden_field :parent_id, value: @comment.parent.id if @comment.parent.present?  %>
+            <%= form.text_area :content, class:"rounded focus:outline-none focus:ring focus:border-blue-300 flex-1", placeholder:'請輸入留言'%>
+            <%= form.submit "➤" , class:'text-blue-400 ml-2 px-2 cursor-pointer rounded-full'%>
           <% end %>
         </div>
         <div class=''>
@@ -34,11 +35,10 @@
             <% @comments.each do |comment| %>
               <li class="p-4 mt-3 border border-gray-300 rounded-lg">
                 <div class='flex justify-between'>
-                  <p><%= comment.user.email %></p>
-                  <% if @project.user_id == current_user&.id %>
-                    <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300'%>
-                  <% end %>
+                  <p class="font-bold"><%= comment.user.email %></p>
+                  <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"} , class:'hover:text-red-300' if current_user.present?%>
                 </div>
+                <p class="text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
                 <div class='my-4'>
                   <p><%= comment.content %></p>
                 </div>
@@ -49,6 +49,18 @@
                   <span data-like-target="count">
                     <%= comment.count %>
                   </span>
+                </div>
+                <div>
+                  <%= render comment.comments %>
+                </div>
+                <div class='my-4'>
+                  <% if comment.parent_id.nil? %>
+                    <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
+                    <%= form.hidden_field :parent_id, value: comment.id %>
+                    <%= form.text_area :content, class:"rounded focus:outline-none focus:ring focus:border-blue-300 flex-1 bg-gray-100", placeholder:'回覆'%>
+                    <%= form.submit "➤" , class:'text-blue-400 ml-2 px-2 cursor-pointer rounded-full'%>
+                    <% end %>
+                  <% end %> 
                 </div>
               </li>
             <% end %>
