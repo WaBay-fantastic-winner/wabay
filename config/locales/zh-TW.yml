@@ -34,6 +34,7 @@ zh-TW:
         phone: 電話
         email: 電子信箱
         organizer: 提案人
+        avatar: 封面圖片
     models:
       user: 使用者
   devise:
