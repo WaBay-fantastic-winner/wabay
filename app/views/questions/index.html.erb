@@ -1,8 +1,8 @@
 <main>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <h1 class="mb-3 text-center"><%= @project.title %></h1>
-      <p class="mb-4 text-center">提案者：<a href="" class="primary-text-color"><%= @project.organizer %></a></p>
+      <h1 class="mb-3 text-2xl text-center text-semibold"><%= @project.title %></h1>
+      <p class="mb-4 text-center">提案者 <a href="" class="primary-text-color"><%= @project.organizer %></a></p>
     </div>
   </section>
   <div class="px-5 bg-white border-t-2 border-b-2 border-gray-300 border-double " >
@@ -16,11 +16,11 @@
           留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
         </a>
       </div>
-      <div class='flex items-center justify-center my-2'>
-        <% if @project.user_id == current_user&.id %>
+      <% if @project.user_id == current_user&.id %>
+        <div class='flex items-center justify-center my-2'>
           <%= link_to "新增常見問題", new_project_question_path(@project.id), class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl' %>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
   </div>
   <%# 常見問題區 %>
@@ -50,8 +50,8 @@
       <%# silde-bar %>
       <div class='col-span-3 '>
         <div class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
-          <h2 class='mb-3'><a href=''><%= @project.organizer %></a></h2>
-          <p class='mb-3'>動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹動態介紹...<a href='' class='primary-text-color hover:text-purple-300'>查看更多</a></p>
+          <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
+          <p class='mb-3'><%= @project.user.description%></p>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
         </div>

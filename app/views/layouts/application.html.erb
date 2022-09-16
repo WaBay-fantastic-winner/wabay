@@ -13,7 +13,7 @@
   <body>
     <header class='header'>
       <% if notice %>
-        <div class="py-4 text-xl font-semibold text-center text-white bg-green-300 notice" data-controller="message">
+        <div class="py-4 text-xl font-semibold text-center text-green-600 bg-green-300 notice" data-controller="message">
           <%= notice %>
         </div>
       <% end %>
@@ -106,9 +106,9 @@
     </header>
     <%= yield %> 
     <footer class="p-10 text-sm border-t-2 border-gray-200 md:pt-20">
-      <div class='max-w-6xl px-16 mx-auto'>
-        <div class='flex flex-wrap justify-around max-w-3xl mx-auto footer-items'>
-          <div class='w-1/2 md:w-1/4 '>
+      <div class='max-w-6xl px-10 mx-auto'>
+        <div class='grid max-w-3xl grid-cols-2 gap-4 mx-auto md:grid-cols-4 footer-items'>
+          <div class=''>
             <ul class='flex-col items-center md:flex'>
               <h2 class="my-4 text-base font-semibold ">關於</h2>
               <li>關於我們</li>
@@ -117,7 +117,7 @@
               <li>提案服務說明</li>
             </ul>
           </div>
-          <div class='w-1/2 md:w-1/4'>
+          <div class=''>
             <ul class='flex-col items-center md:flex'>
               <h2 class="my-4 text-base font-semibold">支援</h2>
               <li>常見問題</li>
@@ -126,7 +126,7 @@
               <li>免責聲明</li>
             </ul>
           </div>
-          <div class='w-1/2 md:w-1/4'>
+          <div class=''>
             <ul class='flex-col items-center md:flex'>
               <h2 class="my-4 text-base font-semibold">聯繫</h2>
               <li>聯繫我們</li>
@@ -134,7 +134,7 @@
               <li>品牌資源</li>
             </ul>
           </div>
-          <div class='w-1/2 md:w-1/4'>
+          <div class=''>
             <ul class='flex-col items-center md:flex'>
               <h2 class="my-4 text-base font-semibold">更多內容</h2>
               <li>Wubay集器</li>
