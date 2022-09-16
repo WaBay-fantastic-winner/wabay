@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, except: %i[show]
   before_action :find_project, only: %i[show edit destroy update]
