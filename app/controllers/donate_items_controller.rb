@@ -2,7 +2,7 @@
 
 class DonateItemsController < ApplicationController
   before_action :authenticate_user!, only: %i[new create edit update destroy]
-  before_action :current_project, only: %i[index show create update destroy]
+  before_action :current_project, only: %i[index show create edit update destroy]
   before_action :find_donate_item, only: %i[show edit update destroy]
 
   def index
@@ -25,7 +25,8 @@ class DonateItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+  end
 
   def update
     if @donate_item.update(donate_item_params)
