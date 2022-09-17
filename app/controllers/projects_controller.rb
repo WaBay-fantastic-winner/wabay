@@ -54,7 +54,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     if @project.save
-      redirect_to projects_path, notice: ' 提案成功 !!'
+      redirect_to new_project_donate_item_path(@project.id), notice: ' 提案成功 !!'
     else
       render :new
     end
