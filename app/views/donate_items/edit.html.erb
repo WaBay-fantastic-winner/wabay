@@ -1,27 +1,6 @@
 <main class='bg-gray-100 py-10'>
   <div id="donate_item" class="max-w-3xl mx-auto py-12 p-8 rounded-3xl bg-white">
     <h1 class="text-2xl tracking-wider text-center py-4 my-4 bg-purple-400 rounded-2xl text-white"> 編輯贊助方案 </h1>
-    <%= render 'form' %>
-    <%= form_with model: @donate_item, url: project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item), method: "put" do |form|%>
-      <div class="form-list">
-        <%= form.label :title, '贊助方案標題', class:"form-list-label" %>
-        <%= form.text_field :title, class:"form-list-field input-focus", placeholder: "請輸入標題" %>
-      </div>
-      <div class="form-list">
-        <%= form.label :price, '贊助方案價格',class:"form-list-label" %>
-        <%= form.text_field :price, class:"form-list-field input-focus", placeholder: "請輸入新台幣" %> 
-      </div>
-      <div class="border-solid border-2 border-purple-300 px-6 py-6 mb-4">
-        <%= form.label :amount, '贊助方案數量',class:"form-list-label" %>
-        <%= form.text_field :amount, class:"input-focus" %>
-      </div>
-      <div class="border-solid border-2 border-purple-300 px-6 py-6 mb-4">
-        <%= form.label :content, '贊助方案內容', class:"form-list-label" %>
-        <%= form.rich_text_area :content, class:"input-focus" %>
-      </div>
-      <%= form.submit '更新贊助方案', class:"field bg-purple-400 hover:bg-purple-600 w-full rounded px-6 py-3 text-white" %>
-    <% end %>
-    <div class='text-center mt-10'>
-      <%= link_to '返回專案', project_path(id: params[:project_id]), class:'inline-block p-2 border border-solid border-purple-400 rounded-xl hover:text-gray-400' %></div>
-  </div>
+    <%= render 'input_errors' %>
+    <%= render 'form', url: @edit_url, method: @edit_method %>
 </main>

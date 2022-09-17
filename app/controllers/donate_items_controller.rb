@@ -13,6 +13,8 @@ class DonateItemsController < ApplicationController
 
   def new
     @donate_item = DonateItem.new
+    @new_url = project_donate_items_path(id: Project.find_by!(id: params[:project_id]))
+    @new_method = 'post'
   end
 
   def create
@@ -26,6 +28,8 @@ class DonateItemsController < ApplicationController
   end
 
   def edit
+    @edit_url = project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item)
+    @edit_method = 'put'
   end
 
   def update
