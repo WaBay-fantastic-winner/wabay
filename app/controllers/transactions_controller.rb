@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class TransactionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: %i[create]
   before_action :authenticate_user!, except: %i[paid]
+  include ProjectPriceSum
 
   def index
     @transactions = Transaction.all
@@ -16,9 +17,8 @@ class TransactionsController < ApplicationController
                                    price:)
 
     if @transaction.save
-      project_current_total(params['projectId'])
       find_project
-      total = @sum + price
+      total = project_current_total(params['projectId']) + price
       @project.update(current_total: total)
 
       notify_achievement_to_followers(@project.id)
@@ -80,7 +80,7 @@ class TransactionsController < ApplicationController
   end
 
   def notify_achievement_to_followers(project_id)
-    if percentage_of_currency >= 100 && followers_not_recepted_yet(project_id).present? === true
+    if percentage_of_currency(project_id) >= 100 && followers_not_recepted_yet(project_id).present? === true
       @followers.each do |follower|
         MailWorkerJob.perform_later(follower, Project.find(follower.followable_id).title)
         follower.update(:mail_sent => 'true')
