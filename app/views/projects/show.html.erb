@@ -39,7 +39,7 @@
             data-action='click->follow#followUp' 
             data-follow-target='followButton'
             data-project-id='<%= @project.id %>'>
-              <i class="mr-1 fa-solid fa-sheet-plastic"><%= @follow_state %></i>
+              <span><%= @follow_state %></span>
             </button>
             <%= link_to '贊助專案', project_donate_items_path(@project), :class => "col-span-1 py-2 text-center text-white bg-purple-400 rounded-lg hover:bg-purple-300" %>
           </div>
