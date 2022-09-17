@@ -1,7 +1,7 @@
 import React ,{ useState, useEffect } from 'react';
-import ProgressBar from './ProgressBar';
 import DaysLeft from './DaysLeft';
 import axios from '../../../lib/http/client'
+// import '../../../stylesheets/progressBar.css'
 
 const FundraisingItem = () => {
     let [projectItems, setProjectItems] = useState([])
