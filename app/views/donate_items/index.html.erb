@@ -1,19 +1,19 @@
 <main >
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <h1 class="mb-3 text-2xl text-center text-semibold"><%= @donate_items[0].project.title %></h1>
-      <p class="mb-4 text-center primary-text-color">提案者 <%= @donate_items[0].project.organizer %></p>
+      <h1 class="mb-3 text-2xl text-center text-semibold"><%= @current_project.title %></h1>
+      <p class="mb-4 text-center primary-text-color">提案者 <%= @current_project.organizer %></p>
     </div>
   </section>
   <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-300 border-double'>
     <div class="justify-between max-w-6xl px-5 mx-auto lg:flex">
       <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400">
-        <%= link_to '專案內容', project_path(@donate_items[0].project), class:"current-page mx-5"%>
-        <a href='<%= project_questions_path(@donate_items[0].project)%>' class="mx-5">
-          常見問題 <span class='text-xs align-top'><%= @donate_items[0].project.questions.count%></span>
+        <%= link_to '專案內容', project_path(@current_project), class:"current-page mx-5"%>
+        <a href='<%= project_questions_path(@current_project)%>' class="mx-5">
+          常見問題 <span class='text-xs align-top'><%= @current_project.questions.count%></span>
         </a>
-        <a href='<%= project_comments_path(@donate_items[0].project)%>' class="mx-5">
-          留言專區 <span class='text-xs align-top'><%= @donate_items[0].project.comments.count%></span>
+        <a href='<%= project_comments_path(@current_project)%>' class="mx-5">
+          留言專區 <span class='text-xs align-top'><%= @current_project.comments.count%></span>
         </a>
       </div>
     </div>
