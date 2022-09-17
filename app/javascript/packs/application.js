@@ -11,7 +11,6 @@ import "../../assets/stylesheets/actiontext.scss"
 
 Rails.start()
 ActiveStorage.start()
-
 require("trix")
 require("@rails/actiontext")
 import "controllers"
