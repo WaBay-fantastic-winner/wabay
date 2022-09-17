@@ -43,10 +43,10 @@
                     <p><%= comment.content %></p>
                   </div>
                   <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user&.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
-                    <button data-action="click->like#like_comment">
+                    <button id="like" data-action="click->like#like_comment">
                       <span data-like-target="love">♡</span>
                     </button>
-                    <span data-like-target="count">
+                    <span id="like-count" data-like-target="count">
                       <%= comment.count %>
                     </span>
                   </div>
