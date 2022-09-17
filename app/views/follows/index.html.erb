@@ -13,7 +13,7 @@
 <section class='py-5 bg-gray-100 '>
   <h1 class="m-auto mb-4 text-xl text-center"><strong>〘 我 的 追 蹤 清 單 〙</strong></h1>
   <% if @follows.empty? %> 
-    <p class="my-8 text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
+    <p class="my-20 text-center primary-text-color">您目前還沒有任何追蹤的專案唷～</p>
   <% else %>
     <div class="grid max-w-6xl mx-auto md:grid-cols-9">
       <% @follows.each do |follow| %>
