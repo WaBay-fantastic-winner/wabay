@@ -44,7 +44,7 @@ const imgUrl = [
 ]    
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6 hover:text-purple-400 '>{props.text}</li>)
+    return (<li className='mx-2 md:mx-6'>{props.text}</li>)
 }
 
 const Banner = () => {
