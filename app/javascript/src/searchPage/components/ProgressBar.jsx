@@ -1,4 +1,5 @@
 import React , { useState, useEffect } from 'react';
+import '../../../stylesheets/progressBar.css'
 
 const Progress = ({percent = 0}) => {
 	const [style, setStyle] = useState({});

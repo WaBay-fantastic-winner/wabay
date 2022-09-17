@@ -11,4 +11,3 @@ import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/modules/pagination/pagination.scss';
 import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
-import '../../assets/stylesheets/actiontext.scss'
