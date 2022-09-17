@@ -6,6 +6,7 @@ class DonateItemsController < ApplicationController
 
   def index
     @donate_items = @current_project.donate_items.order(created_at: :asc)
+    @current_project = @current_project
   end
 
   def show; end
