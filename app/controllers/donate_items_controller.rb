@@ -48,7 +48,7 @@ class DonateItemsController < ApplicationController
   private
 
   def donate_item_params
-    params.require(:donate_item).permit(:title, :price, :content)
+    params.require(:donate_item).permit(:title, :price, :content, :amount)
   end
 
   def current_project
