@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="col-span-4">
-          <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
+          <p class="my-2 text-3xl font-semibold">NT$ <%= @project.current_total %></p>
           <div class="relative h-4 my-4 rounded-md progress-container">
             <span id="progressPercent">0%</span>
             <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>

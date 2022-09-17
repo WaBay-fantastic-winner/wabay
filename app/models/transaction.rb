@@ -9,9 +9,7 @@ class Transaction < ApplicationRecord
   before_create :create_serial
 
   def create_serial
-    time = Time.now.strftime('%d%m%Y%H%M%S').chars.uniq.sample(3)
-    words = ('a'..'z').to_a.sample(3)
-    self.serial = (time + words).join
+    self.serial = SecureRandom.alphanumeric(6)
   end
 
   # transaction state
