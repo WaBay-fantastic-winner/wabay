@@ -20,9 +20,9 @@ body{
 }
 .progress-container .progress {
     height: 100%;
+    width: 0px;
     border-radius: 0.4rem;
     background: linear-gradient(to left, #ae69f3, #924cfc);
-	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
     transition: 1s ease 0.3s;
 }
 footer{
