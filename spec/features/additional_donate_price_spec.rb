@@ -20,7 +20,7 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     sum_with_amount = amount * donate_item.price
     sum_from_test = "NT$#{(sum_with_amount).to_s.split('').insert(-4, ',').join}"
 
-    click_on '直接結帳'
+    click_on '直接贊助'
     ecpay_sum = find('dd.o-other-total')
 
     expect(ecpay_sum).to have_content(sum_from_test)
@@ -34,7 +34,7 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     additional_donate_price = find('input#additional_donate_price').value.to_i
     sum_from_test = "NT$#{(additional_donate_price + donate_item.price).to_s.split('').insert(-4, ',').join}"
 
-    click_on '直接結帳'
+    click_on '直接贊助'
     ecpay_sum = find('dd.o-other-total')
 
     expect(ecpay_sum).to have_content(sum_from_test)
@@ -46,7 +46,7 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     additional_donate_price = find('input#additional_donate_price').value.to_i
     sum_from_test = "NT$#{(additional_donate_price + donate_item.price).to_s.split('').insert(-4, ',').join}"
     
-    click_on '直接結帳'
+    click_on '直接贊助'
     ecpay_sum = find('dd.o-other-total')
 
     expect(ecpay_sum).to have_content(sum_from_test)
