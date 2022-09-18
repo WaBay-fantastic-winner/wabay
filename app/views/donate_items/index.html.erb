@@ -32,7 +32,7 @@
             <h2 class='text-2xl tracking-wider font-semi'><%= donate_item.title %></h2>
             <span class='text-2xl tracking-wider inline-blockmb-3 font-semi'>NT$ <%= donate_item.price %></span>
           <% if donate_item.amount %>
-            <div class='ml-2 bg-gray-100 rounded-lg w-1/3my-3'>
+            <div class='px-2 my-3 bg-gray-100 rounded-lg w-max'>
               <span class='text-xs text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
             </div>
           <% end %>
