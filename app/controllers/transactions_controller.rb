@@ -21,6 +21,13 @@ class TransactionsController < ApplicationController
       total = project_current_total(params['projectId']) + price
       @project.update(current_total: total)
 
+      # 悲觀鎖
+      donate_item = DonateItem.find_by!(project_id: params['projectId'], title: params['donateItemTitle'])
+      donate_item.with_lock do
+        donate_item.decrement(:amount, params['amount'].to_i)
+        donate_item.save
+      end
+
       notify_achievement_to_followers(@project.id)
 
       # for ecpay action
