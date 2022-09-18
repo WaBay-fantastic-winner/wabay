@@ -7,20 +7,17 @@ module Payment
     require 'cgi'
     require 'net/http'
 
-    def initialize(merchant_trade_date,
-                   merchant_trade_no,
-                   title, 
-                   price)
+    def initialize(args)
   
       @basic_params = {
         "MerchantID": 3002607, 
         "TradeDesc": "專案贊助交易", 
         "PaymentType": "aio", 
-        "MerchantTradeDate": merchant_trade_date, 
-        "MerchantTradeNo": merchant_trade_no, 
+        "MerchantTradeDate": args[:merchant_trade_date], 
+        "MerchantTradeNo": args[:merchant_trade_no], 
         "ReturnURL": "http://localhost:3000/transactions",
-        "ItemName": title,
-        "TotalAmount": price, 
+        "ItemName": args[:item_name],
+        "TotalAmount": args[:total_amount], 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,

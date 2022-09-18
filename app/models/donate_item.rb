@@ -13,13 +13,4 @@ class DonateItem < ApplicationRecord
 
   # validation
   validates :title, :content, :price, presence: true
-
-  # pessimistic lock
-  def donate_item_amount_decrease(amount)
-    donate_item = DonateItem.find_by!(project_id: params['projectId'], title: params['donateItemTitle'])
-    donate_item.with_lock do
-      donate_item.decrement(:amount, amount.to_i)
-      donate_item.save
-    end
-  end
 end
