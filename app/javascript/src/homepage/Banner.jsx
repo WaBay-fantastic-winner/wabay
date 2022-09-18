@@ -10,24 +10,6 @@ import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
 import '../../stylesheets/banner.css';
 
-// const Rand = (min, max) => {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-// const ImgUrl = () => {
-//     const id = Rand(1, 200);
-//     return `https://picsum.photos/id/${id}/1000/500`;
-// }
-
-// const CreateSlide = () => {
-//     const device = UseRWD();
-//     return (
-//         <SwiperSlide className='flex items-center justify-center'>
-//             <a href=""><img className={`${ device === "PC" && 'rounded-3xl'}`} src={ImgUrl()} alt="" /></a>
-//         </SwiperSlide>
-//     );
-// }
-
 const imgUrl = [
     {
         'src': 'https://image-cdn-flare.qdm.cloud/q62d43d7008f8e/image/data/markus-winkler-1lmpfq7zxem-unsplash_1.jpg'
