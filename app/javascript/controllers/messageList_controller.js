@@ -4,9 +4,8 @@ import consumer from '../channels/consumer';
 export default class extends Controller {
   static targets = ['input', 'message'];
 
-
-
   connect() {
+    console.log('connected to the message channel')
     this.channel = consumer.subscriptions.create('MessageChannel', {
       connected: this._cableConnected.bind(this),
       disconnected: this._cableDisconnected.bind(this),

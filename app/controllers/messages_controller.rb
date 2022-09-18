@@ -9,7 +9,6 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(params_message)
     @message.save!
     ActionCable.server.broadcast('message_channel', { message: @message }) 
-
   end
 
   private

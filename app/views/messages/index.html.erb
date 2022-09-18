@@ -50,7 +50,7 @@
               ) do |form| %>
             <%= form.hidden_field :project_id, value: @project.id %>
             <%= form.text_field :content, data: { target: 'messageList.input' } %>
-            <%= form.submit 'submit', data: {} %>
+            <%= form.submit '發送', data: { disable_with: false }, class: 'bg-blue-500' %>
           <% end %>
         </div>
       </div>
