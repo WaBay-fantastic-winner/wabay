@@ -1,19 +1,20 @@
 class MessagesController < ApplicationController
   def index
-    @messages = Message.all
+    @project = Project.find(params[:project_id])
+    @messages = @project.messages
+    @message = Message.new
   end
 
   def create
-    @project = Project.find(params[:project_id])
     @message = current_user.messages.new(params_message)
     @message.save!
-    
+    ActionCable.server.broadcast('message_channel', { message: @message }) 
 
   end
 
   private
 
   def params_message
-    params.require(:message).permit(:content)
+    params.require(:message).permit(:content, :project_id)
   end
 end

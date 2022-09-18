@@ -12,7 +12,7 @@ class User < ApplicationRecord
 
   has_many :transactions, dependent: :destroy
   has_many :donate_items, through: :transactions
-
+  has_many :messages
   has_many :comments, dependent: :destroy
   has_many :like_comments, dependent: :destroy
   has_many :liked_comments,

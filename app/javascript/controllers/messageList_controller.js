@@ -2,7 +2,9 @@ import { Controller } from 'stimulus';
 import consumer from '../channels/consumer';
 
 export default class extends Controller {
-  static targets = ['input', 'messages'];
+  static targets = ['input', 'message'];
+
+
 
   connect() {
     this.channel = consumer.subscriptions.create('MessageChannel', {
@@ -26,6 +28,6 @@ export default class extends Controller {
 
   _cableReceived(data) {
     // Called when there's incoming data on the websocket for this channel
-    this.messagesTarget.innerHTML += data.message;
+    this.messageTarget.innerHTML += data.message;
   }
 }
