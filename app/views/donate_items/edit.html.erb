@@ -1,23 +1,6 @@
-<h1> 編輯您的贊助方案 </h1>
-
-<%= form_with model: @donate_item, url: project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item), method: "put" do |form|%>
-  <div>
-    <%= form.label :title, '贊助方案標題' %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :price, '贊助價格' %>
-    <%= form.text_field :price %> 
-  </div>
-
-  <div>
-    <%= form.label :content, '贊助方案內容' %>
-    <%= form.rich_text_area :content %>
-  </div>
-
-  <%= form.submit '更新贊助方案' %>
-
-  <%= link_to '回到專案', project_path(id: @donate_item.project_id), method: :get %> 
-  
-<% end %>
+<main class='bg-gray-100 py-10'>
+  <div id="donate_item" class="max-w-3xl mx-auto py-12 p-8 rounded-3xl bg-white">
+    <h1 class="text-2xl tracking-wider text-center py-4 my-4 bg-purple-400 rounded-2xl text-white"> 編輯贊助方案 </h1>
+    <%= render 'input_errors' %>
+    <%= render 'form', url: @edit_url, method: @edit_method %>
+</main>
