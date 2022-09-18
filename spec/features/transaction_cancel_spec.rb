@@ -7,7 +7,7 @@ RSpec.feature "交易紀錄與取消", type: :feature do
   before do
     login_as user
     visit project_donate_item_path(project_id: donate_item.project_id, id: donate_item.id)
-    click_on '直接結帳'
+    click_on '直接贊助'
     
     within 'div.pay-tab-form' do
       find('input#CCpart1').set('4311')

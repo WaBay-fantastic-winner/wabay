@@ -4,9 +4,13 @@ body{
     font-family: 'Noto Sans TC',sans-serif !important;
 }
 
-.progress-container {
+.progress-container{
     width: 100%;
     background-color: rgb(227, 221, 221);
+    border-radius: 6px;
+    margin: 16px 0px;
+    height: 16px;
+    position:  relative;
 }
 .progress-container span{
 	position: absolute;
@@ -15,14 +19,14 @@ body{
     top:-5px;
 	text-align: center;
     font-size: 18px;
-	color: rgb(255, 249, 70);
+	color: rgb(255, 217, 67);
     z-index: 10;
 }
-.progress-container .progress {
+.progress-container .progress-bar{
     height: 100%;
+    width: 0px;
     border-radius: 0.4rem;
     background: linear-gradient(to left, #ae69f3, #924cfc);
-	box-shadow: 0 3px 3px -5px #F2709C, 0 2px 5px #F2709C;
     transition: 1s ease 0.3s;
 }
 footer{

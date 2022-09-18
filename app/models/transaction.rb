@@ -1,17 +1,17 @@
 # frozen_string_literal: true
 
 class Transaction < ApplicationRecord
+  acts_as_paranoid
+  default_scope { where(deleted_at: nil) }
+
   # relationship
   belongs_to :user
   belongs_to :donate_item
 
-  # create serial
   before_create :create_serial
 
   def create_serial
-    time = Time.now.strftime('%d%m%Y%H%M%S').chars.uniq.sample(3)
-    words = ('a'..'z').to_a.sample(3)
-    self.serial = (time + words).join
+    self.serial = SecureRandom.alphanumeric(6)
   end
 
   # transaction state
@@ -37,8 +37,4 @@ class Transaction < ApplicationRecord
       transitions from: %i[pending failed], to: :cancellation
     end
   end
-
-  # 軟刪除
-  acts_as_paranoid
-  default_scope { where(deleted_at: nil) }
 end

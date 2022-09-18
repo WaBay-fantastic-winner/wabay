@@ -11,13 +11,13 @@ import "../../assets/stylesheets/actiontext.scss"
 
 Rails.start()
 ActiveStorage.start()
-
 require("trix")
 require("@rails/actiontext")
 import "controllers"
 
+
 document.addEventListener('DOMContentLoaded', () => {
-// --------comment accordion
+  // comment accordion
   const contentBtn = document.getElementsByClassName('contentBox')
 
   for (let i = 0; i < contentBtn.length; i++) {
@@ -25,5 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
       this.classList.toggle('active')
     })
   }
+
+  document.querySelector('#mobile-nav-btn').addEventListener('click', () => {
+    document.querySelector('main').classList.toggle('hidden')
+    document.querySelector('footer').classList.toggle('hidden')
+  })
 })
+
+
 

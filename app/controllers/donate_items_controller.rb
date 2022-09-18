@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
 class DonateItemsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   before_action :current_project, only: %i[index show create update destroy]
   before_action :find_donate_item, only: %i[show edit update destroy]
 
   def index
     @donate_items = @current_project.donate_items.order(created_at: :asc)
+    @current_project = @current_project
   end
 
   def show; end
@@ -15,8 +17,6 @@ class DonateItemsController < ApplicationController
   end
 
   def create
-    current_project
-
     @donate_item = @current_project.donate_items.new(donate_item_params)
 
     if @donate_item.save
@@ -52,7 +52,6 @@ class DonateItemsController < ApplicationController
   end
 
   def find_donate_item
-    current_project
     @donate_item = @current_project.donate_items.find_by!(id: params[:id])
   end
 

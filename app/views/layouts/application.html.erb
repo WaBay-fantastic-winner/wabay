@@ -12,8 +12,9 @@
   </head>
   <body>
     <header class='header'>
+    <h1 class='sr-only'>wubay,讓你夢想超越五倍</h1>
       <% if notice %>
-        <div class="py-4 text-xl font-semibold text-center text-green-600 bg-green-300 notice" data-controller="message">
+        <div class="py-4 text-xl font-semibold tracking-wider text-center text-green-600 bg-green-100 notice" data-controller="message">
           <%= notice %>
         </div>
       <% end %>
@@ -27,7 +28,7 @@
             </ul>
             <!-- 手機側邊收縮導覽列 -->
             <input id="mobile-nav-switch" type="checkbox" class="hidden" />
-            <label for="mobile-nav-switch" class="ml-8 text-2xl lg:hidden">
+            <label for="mobile-nav-switch" id='mobile-nav-btn' class="ml-8 text-2xl lg:hidden">
               <span class="inline-block"><i class="fa-solid fa-align-justify"></i></span>
               <span class="hidden"><i class="fa-solid fa-angle-left"></i></span>
             </label>
@@ -72,7 +73,7 @@
           </div>
           <!-- LOGO -->
           <div class="absolute w-40 transform translate-x-1/2 right-1/2">
-            <a href="/"><%= image_tag('wubay.png') %></a>
+            <a href="/" alt='wubay，讓你的夢想超越五倍'><%= image_tag('wubay.png') %></a>
           </div>
           <%# 搜尋及會員相關 %>
           <div class="flex items-center">

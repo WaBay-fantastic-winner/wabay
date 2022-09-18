@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
-  before_action :find_project, only: %i[show edit destroy update]
+  before_action :authenticate_user!, except: %i[show]
+  before_action :find_project, only: %i[show edit destroy update follow]
+  include ProjectPriceSum
+  
   def index
     @projects = Project.all
     respond_to do |format|
@@ -40,7 +42,7 @@ class ProjectsController < ApplicationController
                     end
 
     project_current_total(params[:id])
-    percentage_of_currency
+    percentage_of_currency(params[:id])
   end
 
   def update
@@ -54,15 +56,13 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.new(project_params)
     if @project.save
-      redirect_to projects_path, notice: ' 提案成功 !!'
+      redirect_to new_project_donate_item_path(@project.id), notice: ' 提案成功 !!'
     else
       render :new
     end
   end
 
   def follow
-    find_project
-
     if follow_list.empty?
       add_follow
     else
@@ -87,7 +87,7 @@ class ProjectsController < ApplicationController
 
   def add_follow
     @project.follows.create(:user_id => current_user.id, :mail_sent => "false")
-    render json: {status: "been_followed"}
+    render json: { status: "been_followed" }
   end
 
   def cancel_follow

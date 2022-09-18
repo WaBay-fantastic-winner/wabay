@@ -1,24 +1,29 @@
 <main>
+  <div class='border border-gray-300 boder-solid'>
+    <div class="max-w-2xl mx-auto text-xs md:text-base">
+      <ul class='grid items-center justify-center h-16 grid-cols-3 '>
+        <li class='text-center current-page'><%= link_to "個人頁面",users_profile_path %></li>
+        <li class='text-center'><%= link_to "交易紀錄", transactions_path%></li>
+        <li class='text-center'><a>追蹤專案</a></li>
+      </ul>
+    </div>
+  </div>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-2xl px-3 mx-auto">
       <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
-      <p class="mb-4 text-gray-500 text-center">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
-      <p class=''><%= current_user.description %></p>
+      <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
+      <p class='text-center break-all'><%= current_user.description %></p>
     </div>
   </section>
-  <div class="justify-between px-5 py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
-    <div class="flex items-center justify-center h-16 max-w-6xl py-3 mx-auto font-semibold text-gray-400">
+  <div class="py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double">
+    <div class="flex items-center justify-around h-16 max-w-xl mx-auto font-semibold text-gray-400">
       <div class='current-page'>
-        <%=link_to users_profile_path  do %>
-          <p>提案者專案數</p>
+          <p>我的專案數</p>
           <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
-        <% end %>
       </div>
-      <div class='ml-10'>
-        <%=link_to transactions_path  do %>
+      <div class='current-page'>
           <p>贊助專案數</p>
           <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.transactions.count%></span>件</p>
-        <% end %>
       </div>
     </div>
   </div>
@@ -27,7 +32,7 @@
       <p class='py-40 my-auto text-center'>目前沒有專案，立即去<%= link_to "探索", projects_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
     </div>
   <% else %>
-    <div class="max-w-6xl grid-cols-9 mx-auto mt-8 md:grid">
+    <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
       <% @projects.each do |project| %>
         <div class="col-span-3 mx-5 mb-10 FundraisingItem">
           <div class="projects-img-box">
@@ -46,11 +51,11 @@
           <div>
             <span class='my-1'>NT$ <%= project.current_total %></span>
           </div>
-          <div class="relative h-4 my-1 rounded-md progress-container">
+          <div class="progress-container">
             <span id="progressPercent">0%</span>
-            <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
+            <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
           </div> 
-          <div class=''>
+          <div>
             <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
           </div>
         </div>

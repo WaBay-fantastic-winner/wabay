@@ -5,7 +5,6 @@ import './projectPage.css';
 import './tailwinds.css'
 import './loginPage.css';
 import './banner.css'
-import './progressBar.css'
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/modules/pagination/pagination.scss';

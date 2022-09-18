@@ -21,9 +21,17 @@
       </div>
     <% end %>
     <div class='divider'>或</div>
-    <div class='my-10'>
-      <%= link_to '使用🇬google帳號繼續' , user_google_oauth2_omniauth_authorize_path, class:'outside-link mb-3' %>
-      <%= link_to '使用🇫facebook帳號繼續' , user_facebook_omniauth_authorize_path, class:'outside-link' %>
+    <div class='py-2 my-4 outside-link'>
+      <%=link_to user_google_oauth2_omniauth_authorize_path  do %>
+        <img src='https://diat4w9qa5tx9.cloudfront.net/production-aws/assets/icon/google-68239b5f328377ad0e42357804e1f6d21c2a9e5b9e454b8687631725a5540a4e.png' class='inline w-5 align-middle'>
+        <span>使用google帳號繼續</span>
+      <% end %>
+    </div>
+    <div class='py-2 outside-link'>
+      <%=link_to user_facebook_omniauth_authorize_path do %>
+        <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Facebook_F_icon.svg' class='inline w-5 align-middle'>
+        <span>使用facebook帳號繼續</span>
+      <% end %>
     </div>
     <div class='py-10 my-5 border-t border-b border-gray-200 border-solid'>
       <p class='text-center'>還沒有帳號嗎？ <%= link_to "開始創建帳號", new_user_registration_path, class:"primary-text-color hover:text-purple-300" %></p>

@@ -1,11 +1,11 @@
-<main class="bg-gray-50" >
+<main class="bg-gray-100">
     <section id="banner">
         <%= javascript_pack_tag 'Banner' %>
     </section>
     <section class='pb-5 my-5'>
         <div class="flex items-end max-w-6xl mx-auto mb-4">
             <h2 class="mx-5 text-3xl font-extrabold">平台推薦</h2>
-            <a class="text-purple-400" href="">More</a>
+            <%= link_to "More", projects_path, class:"primary-text-color"%>
         </div>
         <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
             <% @projects.each do |project| %>
@@ -26,9 +26,9 @@
                     <div>
                         <span class='my-1'>NT$ <%= project.current_total %></span>
                     </div>
-                    <div class="relative h-4 my-1 rounded-md progress-container">
+                    <div class="progress-container">
                         <span id="progressPercent">0%</span>
-                        <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
+                        <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
                     </div> 
                     <div>
                         <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
@@ -41,7 +41,7 @@
         <%= javascript_pack_tag 'Feature' %>
     </section>
     <section class='flex flex-col items-center py-5 propose'>
-        <p class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</p>
+        <h2 class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</h2>
         <button class='block py-3 my-6 text-white bg-purple-400 rounded-lg px-14 hover:bg-purple-300'><%= link_to "提案", new_project_path%></button>
     </section>
 </main>
