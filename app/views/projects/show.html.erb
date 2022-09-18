@@ -83,9 +83,9 @@
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
             <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
           </div>
-          <div>
+          <div class='tracking-wider border border-purple-300 border-double'>
             <% if @project.user_id == current_user&.id %>
-              <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center primary-text-color border-purple-300 border border-dotted' %>
+              <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block text-xl w-full py-3 mb-2 text-center primary-text-color tracking-wider ' %>
             <% end %>
           </div>
           <div>
