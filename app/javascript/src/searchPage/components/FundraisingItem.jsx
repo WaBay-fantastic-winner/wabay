@@ -29,7 +29,7 @@ const FundraisingItem = () => {
     return (
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
-                <div className='col-span-3 mb-8 FundraisingItem ' key={index}>
+                <div className='col-span-3 p-3 mb-8 bg-white FundraisingItem rounded-xl' key={index}>
                     <div className='projects-img-box'>
                         <a className='projects-link' href={`/projects/${item.id}`}>
                             <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
@@ -48,7 +48,7 @@ const FundraisingItem = () => {
                     </div>
                 </div>
             )) :
-            <div className='col-span-9'>
+            <div className='col-span-9 py-16 text-gray-600 bg-white rounded-lg'>
                 <p className='text-center'>目前沒有專案，試試看重新探索吧！</p>
             </div>}
         </>

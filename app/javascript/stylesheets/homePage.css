@@ -3,7 +3,6 @@
 body{
     font-family: 'Noto Sans TC',sans-serif !important;
 }
-
 .progress-container{
     width: 100%;
     background-color: rgb(227, 221, 221);
@@ -19,7 +18,7 @@ body{
     top:-5px;
 	text-align: center;
     font-size: 18px;
-	color: rgb(255, 217, 67);
+	color: rgb(255, 249, 70);
     z-index: 10;
 }
 .progress-container .progress-bar{
@@ -46,4 +45,10 @@ footer{
     left: 0;
     bottom: 0;
     right: 0;
+}
+.dot-bg{
+    background-color: #ffffff;
+    opacity: 1;
+    background-image: radial-gradient(rgba(222,189,255,1) 2px, #ffffff 2px);
+    background-size: 40px 40px;
 }

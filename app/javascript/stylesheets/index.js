@@ -3,7 +3,7 @@ import './homePage.css';
 import './formPage.css';
 import './projectPage.css';
 import './tailwinds.css'
-import './loginPage.css';
+import './searchPage.css';
 import './banner.css'
 import 'swiper/swiper.scss';
 import 'swiper/modules/navigation/navigation.scss';
