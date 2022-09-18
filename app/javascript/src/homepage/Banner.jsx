@@ -39,7 +39,7 @@ const Banner = () => {
                     <BannerList text="原創設計"/>
                     <BannerList text="社會公益"/>
                     <BannerList text="預購商品"/>
-                    <BannerList text="挖貝選物"/>
+                    <BannerList text="Wubay選物"/>
                 </ul>
             </div>
             <Swiper

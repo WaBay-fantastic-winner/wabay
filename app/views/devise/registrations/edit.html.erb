@@ -6,27 +6,27 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
         <div class="py-3">
           <%= f.label :email, "信箱："%>
-          <%= f.email_field :email, autofocus: true, placeholder: "請輸入Email", autocomplete: "email", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
+          <%= f.email_field :email, autofocus: true, placeholder: "請輸入Email", autocomplete: "email", class:"mt-2 input-focus" %>
         </div>
         <div class="py-3">
           <%= f.label :username, "新使用者名稱："%>
-          <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
+          <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"mt-2 input-focus" %>
         </div> 
         <div class="py-3">
           <%= f.label :description, "使用者自我簡介："%>
-          <%= f.text_area :description, autofocus: true, placeholder: "請輸入自我簡介", autocomplete: "description", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
+          <%= f.text_area :description, autofocus: true, placeholder: "請輸入自我簡介", autocomplete: "description", class:"mt-2 input-focus h-44" %>
         </div> 
         <div class="pt-3 field">
           <%= f.label :current_password %> <i>(需提供原始密碼，才能更改資料)</i><br />
-          <%= f.password_field :current_password, placeholder: "請輸入原始密碼",autocomplete: "current-password", class:"field rounded w-full mt-2 pl-2 py-2 input-focus"  %>
+          <%= f.password_field :current_password, placeholder: "請輸入原始密碼",autocomplete: "current-password", class:"mt-2 input-focus"  %>
         </div>
         <div class="py-3 field">
             <%= f.label :password, "新密碼："%><i>(不想更改，留白即可)</i>
-            <%= f.password_field :password, autocomplete: "new-password", placeholder: "至少需要#{@minimum_password_length}個字以上密碼", class:"field rounded w-full pl-2 py-2 mt-2 input-focus" %>
+            <%= f.password_field :password, autocomplete: "new-password", placeholder: "至少需要#{@minimum_password_length}個字以上密碼", class:"mt-2 input-focus" %>
         </div>
         <div class="py-3 field">
           <%= f.label :password_confirmation, "新密碼確認："%>
-          <%= f.password_field :password_confirmation, placeholder: "請再輸入一次密碼", autocomplete: "new-password", class:"field rounded w-full mt-2 pl-2 py-2 input-focus" %>
+          <%= f.password_field :password_confirmation, placeholder: "請再輸入一次密碼", autocomplete: "new-password", class:"mt-2 input-focus" %>
         </div>
         <div class="actions">
           <%= f.submit "更新", class:"field bg-purple-400 hover:bg-purple-600 w-full rounded px-6 py-2 text-white my-4" %>

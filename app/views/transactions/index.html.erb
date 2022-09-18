@@ -8,10 +8,10 @@
       </ul>
     </div>
   </div>
-  <section class='pt-5 pb-20 dot-bg'>
+  <section class='pt-5 pb-24 dot-bg'>
     <h2 class="m-auto mb-4 text-xl text-center"><strong>〘 我 的 交 易 紀 錄 〙</strong></h2>
     <div class="text-xs md:text-base">
-      <div class='ml-2 text-xs text-gray-500 sm:hidden'>左右滑動，即可查看完整訂單資訊</div>
+      <div class='ml-2 text-xs text-gray-500 lg:hidden'>左右滑動，即可查看完整訂單資訊</div>
       <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="sm:px-6 lg:px-8">
           <table class="mx-auto border border-separate border-gray-300 w-800 md:w-1000 border-spacing-5">
@@ -38,8 +38,8 @@
             </thead>
             <tbody>
               <% if @transactions.empty? %>
-                <tr class='py-10'>
-                  <td class='text-center'>查無相關交易紀錄</td>
+                <tr class='py-10 '>
+                  <td class='text-center '>查無相關交易紀錄</td>
                 </tr>
               <% else %>
                 <% @transactions.each do |transaction| %>

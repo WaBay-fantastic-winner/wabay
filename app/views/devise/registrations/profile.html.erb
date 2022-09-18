@@ -8,7 +8,7 @@
       </ul>
     </div>
   </div>
-  <section class='py-10 bg-gray-100'>
+  <section class='py-10 bg-gray-50'>
     <div class="max-w-2xl px-3 mx-auto">
       <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
       <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
@@ -24,7 +24,7 @@
   <div class='wavy-bg'>
     <% if current_user.projects.count == 0 %>
       <div class="max-w-6xl mx-auto">
-        <p class='py-40 my-auto text-center'>目前沒有專案，立即去<%= link_to "探索", projects_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
+        <p class='py-40 my-auto text-xl text-center'>目前沒有專案，立即去<%= link_to "提案", new_project_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
       </div>
     <% else %>
       <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
@@ -51,7 +51,7 @@
               <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
             </div> 
             <div>
-              <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
+              <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day %> 天</span>
             </div>
           </div>
         <% end %>

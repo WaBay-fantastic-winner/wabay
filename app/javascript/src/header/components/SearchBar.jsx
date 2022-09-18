@@ -18,7 +18,7 @@ const Search = () => {
                 <div className="flex items-center h-full">
                     <FaSearch className="inline-block mr-2"/>
                     <form className="flex-1" action="/projects" method='get'>
-                        <input id="search-input" className="w-full focus:outline-none" type="text" placeholder="搜尋" name="keyword"/>
+                        <input id="search-input" className="w-full focus:outline-none" type="text" placeholder="請輸入關鍵字" name="keyword"/>
                     </form>
                     <button className="close-btn" onClick={searchbarToggle}>
                         <FaTimesCircle />
