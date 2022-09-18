@@ -5,3 +5,4 @@ import './projectPage.css';
 import './tailwinds.css'
 import './loginPage.css';
 import './banner.css'
+import './searchPage.css'

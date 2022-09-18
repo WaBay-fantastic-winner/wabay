@@ -28,10 +28,10 @@
     @apply tracking-widest block text-center w-full border border-gray-200 border-solid  bg-gray-50 hover:bg-gray-100 
   }
   .progress{
-    @apply bg-gray-300 rounded-2xl relative my-2 h-4 w-full
+    @apply bg-gray-100 rounded-2xl relative my-2 h-4 w-full
   }
   .progress-percent{
-    @apply absolute right-0 left-0 -top-1 text-center text-black
+    @apply absolute right-0 left-0 -top-1 text-center text-yellow-300
   }
   .progress-done{
     @apply rounded-2xl h-full w-0 opacity-0 bg-gradient-to-r from-purple-400 to-purple-500

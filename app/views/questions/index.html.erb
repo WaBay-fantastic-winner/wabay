@@ -25,7 +25,7 @@
   </div>
   <%# 常見問題區 %>
   <section class='py-8 border-b-2 border-gray-300 border-double'>
-    <div class="max-w-6xl grid-cols-10 gap-12 px-3 mx-auto lg:grid">
+    <div class="max-w-xl grid-cols-10 gap-12 px-3 mx-auto lg:max-w-6xl lg:grid">
       <div class="col-span-7 accordion" data-controller='question'>
         <% @project.questions.each do |question| %>
           <div class="contentBox" data-question-target='btn' data-action='click->question#switch'>
@@ -51,7 +51,7 @@
       <div class='col-span-3 '>
         <div class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
           <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
-          <p class='mb-3'><%= @project.user.description%></p>
+          <p class='mb-3 break-words'><%= @project.user.description%></p>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
           <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
         </div>

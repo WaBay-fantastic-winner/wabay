@@ -1,9 +1,10 @@
 <main>
+  <article>
+    <div class="pt-10 bg-gray-100">
+      <h1 class="mb-3 text-2xl font-semibold text-center"><%= @project.title %></h1>
+      <p class="text-center ">提案者 <a href="" class="text-purple-400"><%= @project.organizer %></a></p>
+    </div>
     <section class='py-10 bg-gray-100'>
-      <div class="max-w-6xl mx-auto">
-        <h1 class="mb-3 text-2xl font-semibold text-center"><%= @project.title %></h1>
-        <p class="mb-6 text-center">提案者 <a href="" class="text-purple-400"><%= @project.organizer %></a></p>
-      </div>
       <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
           <div class="projects-img-box">
@@ -65,36 +66,37 @@
         <% end %>
       </div>
     </div>
-  <section class="py-8 ">
-    <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid" data-controller="projectUnroll">
-      <div class='relative h-64 col-span-7 overflow-hidden project-content lg:h-auto' data-projectUnroll-target="projectContent" >
-        <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
-        <%= @project.description%>
-      </div>
-      <div class="h-12 unrollBtn lg:hidden" data-projectUnroll-target="unrollBtn">
-        <button class="block w-full h-full text-centertext-purple-300" data-action="click->projectUnroll#unroll">點擊查看詳細內容</button>
-      </div>
-      <%# 側邊滾輪募資金額選項 %>
-      <div class="col-span-3">
-        <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
-          <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
-            <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
-            <p class='mb-3'><%= @project.user.description%></p>
-            <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
-            <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
-          </div>
-          <div class='tracking-wider border border-purple-300 border-double'>
+    <section class="py-8 ">
+      <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid" data-controller="projectUnroll">
+        <div class='relative h-64 col-span-7 overflow-hidden project-content lg:h-auto' data-projectUnroll-target="projectContent" >
+          <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
+          <%= @project.description%>
+        </div>
+        <div class="h-12 unrollBtn lg:hidden" data-projectUnroll-target="unrollBtn">
+          <button class="block w-full h-full text-centertext-purple-300" data-action="click->projectUnroll#unroll">點擊查看詳細內容</button>
+        </div>
+        <%# 側邊滾輪募資金額選項 %>
+        <div class="col-span-3 ">
+          <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
+            <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
+              <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
+              <p class='mb-3 break-words'><%= @project.user.description%></p>
+              <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-square-facebook"></i></a>
+              <a href='' class="px-2 py-1 text-2xl duration-500 hover:bg-gray-100"><i class="fa-brands fa-instagram"></i></a>
+            </div>
             <% if @project.user_id == current_user&.id %>
-              <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block text-xl w-full py-3 mb-2 text-center primary-text-color tracking-wider ' %>
+              <div class='mb-3 tracking-wider border border-purple-300 border-double'>
+                <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block text-xl w-full py-3 mb-2 text-center primary-text-color tracking-wider ' %>
+                </div>
             <% end %>
-          </div>
-          <div>
-            <%= render partial: 'donate_items/donate_item', donate_items: @donate_items %>
+            <div>
+              <%= render partial: 'donate_items/donate_item', donate_items: @donate_items %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </article>
 </main>
 
 

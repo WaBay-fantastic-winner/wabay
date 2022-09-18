@@ -12,14 +12,14 @@
   </head>
   <body>
     <header class='header'>
-    <h1 class='sr-only'>wubay,讓你夢想超越五倍</h1>
+      <h1 class='sr-only'>wubay,讓你夢想超越五倍</h1>
       <% if notice %>
         <div class="py-4 text-xl font-semibold tracking-wider text-center text-green-600 bg-green-100 notice" data-controller="message">
           <%= notice %>
         </div>
       <% end %>
-      <div class="relative w-full text-lg border-b border-gray-200 text-slate-500 ">
-        <nav class="flex items-center justify-between max-w-6xl mx-auto header-item h-70">
+      <div class="w-full text-lg border-b border-gray-200 text-slate-500 ">
+        <nav class="relative flex items-center justify-between max-w-6xl mx-auto header-item h-70">
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
               <li><%= link_to "首頁", root_path, class:"mx-5 hover:text-gray-400"%></li>
