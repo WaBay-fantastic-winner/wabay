@@ -8,7 +8,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../stylesheets/index"
 import "../../assets/stylesheets/actiontext.scss"
-
+import "../../assets/stylesheets/application.css"
 Rails.start()
 ActiveStorage.start()
 require("trix")
