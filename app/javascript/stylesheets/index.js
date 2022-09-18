@@ -4,5 +4,4 @@ import './formPage.css';
 import './projectPage.css';
 import './tailwinds.css'
 import './loginPage.css';
-import './progressBar.css';
 import './banner.css'
