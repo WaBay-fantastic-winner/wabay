@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/users/projects/:id', to: 'projects#show'
   resources :projects do
     resources :donate_items
+    resources :messages
     member do
       post :follow
     end
