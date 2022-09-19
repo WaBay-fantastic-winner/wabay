@@ -33,7 +33,7 @@ zh-TW:
         title: 提案名稱
         phone: 電話
         email: 電子信箱
-        organizer: 提案人
+        organizer: 提案人  
     models:
       user: 使用者
   devise:

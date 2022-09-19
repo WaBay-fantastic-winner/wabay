@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @project = Project.find(params[:project_id])
     @messages = @project.messages
@@ -8,12 +10,13 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(params_message)
     @message.save!
-    ActionCable.server.broadcast('message_channel', { message: @message }) 
+    # ActionCable.server.broadcast('message_channel', { message: @message }) 
+    SendMessageJob.perform_now(@message)
   end
 
   private
 
   def params_message
-    params.require(:message).permit(:content, :project_id)
+    params.require(:message).permit(:content, :project_id, :user_id)
   end
 end
