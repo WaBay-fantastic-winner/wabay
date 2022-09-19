@@ -15,13 +15,13 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": args[:merchant_trade_date], 
         "MerchantTradeNo": args[:merchant_trade_no], 
-        "ReturnURL": "http://10.8.8.67:3000//transactions",
+        "ReturnURL": "https://wubaywubay.herokuapp.com/transactions",
         "ItemName": args[:item_name],
         "TotalAmount": args[:total_amount], 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "http://10.8.8.67:3000/transactions/paid",
+        "OrderResultURL": "https://wubaywubay.herokuapp.com/transactions/paid",
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end
