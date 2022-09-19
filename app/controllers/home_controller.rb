@@ -2,6 +2,7 @@
 
 class HomeController < ApplicationController
   def index
-    @projects = Project.order(created_at: :desc)
+    @projects = Project.where("current_total < amount_target").order('random()').first(9)
+    @success_projects = Project.where("current_total >= amount_target").order('random()').first(3)
   end
 end
