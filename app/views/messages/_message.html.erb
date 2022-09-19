@@ -1,4 +1,4 @@
-<div class="<%=  if message.user %>">
+<div class="<%= 'bg-blue-200 my-4 float-right' if current_user.id == message.user.id %>">
   <p><%= message.content %></p>
   <p><%= message.user.email %></p>
 </div>
