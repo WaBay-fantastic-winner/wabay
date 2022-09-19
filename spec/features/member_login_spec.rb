@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "member_login", type: :feature do
+RSpec.describe "會員登入", type: :feature do
   let(:user) { create(:user) }
   
   it "登入成功" do
