@@ -10,7 +10,7 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     visit project_donate_item_path(project_id: donate_item.project_id, id: donate_item)
   end
 
-  it "數量" do
+  it "選擇數量" do
     click_on '+'
     click_on '+'
     click_on '+'
@@ -26,7 +26,7 @@ RSpec.feature "額外贊助介面功能", type: :feature do
     expect(ecpay_sum).to have_content(sum_from_test)
   end
 
-  it "一百、一千" do
+  it "選擇一百、一千" do
     click_on '100'
     click_on '1000'
     click_on '100'

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "建立贊助方案", type: :feature do
-    let(:project) { create(:project) }
-    let(:user) { User.find(project.user_id) }
+  let(:project) { create(:project) }
+  let(:user) { User.find(project.user_id) }
 
   it "贊助方案建立成功" do
     login_as user
