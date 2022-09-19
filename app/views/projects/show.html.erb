@@ -17,7 +17,7 @@
           </div>
         </div>
         <div class="col-span-4">
-          <p class="my-2 text-3xl font-semibold">NT$ <%= @sum %></p>
+          <p class="my-2 text-3xl font-semibold">NT$ <%= @project.current_total %></p>
           <div class="relative h-4 my-4 rounded-md progress-container">
             <span id="progressPercent">0%</span>
             <div class="progress" data-controller='progressBar' data-percentage='<%= @percentage %>'></div>
@@ -39,7 +39,7 @@
             data-action='click->follow#followUp' 
             data-follow-target='followButton'
             data-project-id='<%= @project.id %>'>
-              <i class="mr-1 fa-solid fa-sheet-plastic"><%= @follow_state %></i>
+              <span><%= @follow_state %></span>
             </button>
             <%= link_to '贊助專案', project_donate_items_path(@project), :class => "col-span-1 py-2 text-center text-white bg-purple-400 rounded-lg hover:bg-purple-300" %>
           </div>
@@ -85,7 +85,7 @@
           </div>
           <div>
             <% if @project.user_id == current_user&.id %>
-              <%= link_to "新增贊助項目", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center primary-text-color border-purple-300 border border-dotted' %>
+              <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block w-full py-3 mb-2 text-center primary-text-color border-purple-300 border border-dotted' %>
             <% end %>
           </div>
           <div>

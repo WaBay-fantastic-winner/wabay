@@ -28,11 +28,8 @@ Rails.application.routes.draw do
       end 
     end
   end
-
   resources :follows, only: [:index] 
-
-
-  resources :transactions, except: [:show, :edit, :update] do
+  resources :transactions, only: [:index, :create, :destroy] do
     collection do
       post :paid
     end

@@ -1,17 +1,35 @@
 # frozen_string_literal: true
 
 class Transaction < ApplicationRecord
+  acts_as_paranoid
+  default_scope { where(deleted_at: nil) }
+
   # relationship
   belongs_to :user
   belongs_to :donate_item
 
-  # create serial
   before_create :create_serial
 
   def create_serial
-    time = Time.now.strftime('%d%m%Y%H%M%S').chars.uniq.sample(3)
-    words = ('a'..'z').to_a.sample(3)
-    self.serial = (time + words).join
+    self.serial = SecureRandom.alphanumeric(6)
+  end
+
+  # pessimistic lock
+  def self.can_buy?(project_id, donate_item_title, amount)
+    donate_item = DonateItem.find_by!(project_id: project_id, title: donate_item_title)
+    if donate_item.amount === nil
+      true
+    else
+      donate_item.with_lock do
+        if donate_item.amount > 0 && amount.to_i <= donate_item.amount
+          donate_item.decrement(:amount, amount.to_i)
+          donate_item.save
+          true 
+        else
+          false
+        end
+      end
+    end
   end
 
   # transaction state
@@ -37,8 +55,4 @@ class Transaction < ApplicationRecord
       transitions from: %i[pending failed], to: :cancellation
     end
   end
-
-  # 軟刪除
-  acts_as_paranoid
-  default_scope { where(deleted_at: nil) }
 end

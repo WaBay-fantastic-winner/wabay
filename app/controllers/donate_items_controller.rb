@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class DonateItemsController < ApplicationController
-  before_action :current_project, only: %i[index show create update destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
+  before_action :current_project, only: %i[index show create edit update destroy]
   before_action :find_donate_item, only: %i[show edit update destroy]
 
   def index
@@ -12,11 +13,11 @@ class DonateItemsController < ApplicationController
 
   def new
     @donate_item = DonateItem.new
+    @new_url = project_donate_items_path(id: Project.find_by!(id: params[:project_id]))
+    @new_method = 'post'
   end
 
   def create
-    current_project
-
     @donate_item = @current_project.donate_items.new(donate_item_params)
 
     if @donate_item.save
@@ -26,7 +27,10 @@ class DonateItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @edit_url = project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item)
+    @edit_method = 'put'
+  end
 
   def update
     if @donate_item.update(donate_item_params)
@@ -44,7 +48,7 @@ class DonateItemsController < ApplicationController
   private
 
   def donate_item_params
-    params.require(:donate_item).permit(:title, :price, :content)
+    params.require(:donate_item).permit(:title, :price, :content, :amount)
   end
 
   def current_project
@@ -52,7 +56,6 @@ class DonateItemsController < ApplicationController
   end
 
   def find_donate_item
-    current_project
     @donate_item = @current_project.donate_items.find_by!(id: params[:id])
   end
 

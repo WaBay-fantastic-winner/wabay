@@ -10,7 +10,7 @@
     <div class="flex items-center justify-center h-16 max-w-6xl py-3 mx-auto font-semibold text-gray-400">
       <div class='current-page'>
         <%=link_to users_profile_path  do %>
-          <p>提案者專案數</p>
+          <p>我的專案數</p>
           <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
         <% end %>
       </div>

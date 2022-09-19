@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.feature "交易紀錄與取消", type: :feature do
+RSpec.feature "交易訂單取消", type: :feature do
   let(:user) { create(:user) }
   let(:donate_item) { create(:donate_item) }
 
   before do
     login_as user
     visit project_donate_item_path(project_id: donate_item.project_id, id: donate_item.id)
-    click_on '直接結帳'
+    click_on '直接贊助'
     
     within 'div.pay-tab-form' do
       find('input#CCpart1').set('4311')
@@ -34,7 +34,7 @@ RSpec.feature "交易紀錄與取消", type: :feature do
     click_on '送出(Submit)'
   end
 
-  it "取消交易訂單" do   
+  it "取消交易訂單成功" do   
     visit transactions_path
 
     accept_confirm do
