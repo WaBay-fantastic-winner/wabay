@@ -18,13 +18,13 @@ import "controllers"
 
 document.addEventListener('DOMContentLoaded', () => {
   // comment accordion
-  const contentBtn = document.getElementsByClassName('contentBox')
+  // const contentBtn = document.getElementsByClassName('contentBox')
 
-  for (let i = 0; i < contentBtn.length; i++) {
-    contentBtn[i].addEventListener('click', function () {
-      this.classList.toggle('active')
-    })
-  }
+  // for (let i = 0; i < contentBtn.length; i++) {
+  //   contentBtn[i].addEventListener('click', function () {
+  //     this.classList.toggle('active')
+  //   })
+  // }
 
   document.querySelector('#mobile-nav-btn').addEventListener('click', () => {
     document.querySelector('main').classList.toggle('hidden')

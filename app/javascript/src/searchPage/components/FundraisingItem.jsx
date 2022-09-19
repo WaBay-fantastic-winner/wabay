@@ -37,7 +37,7 @@ const FundraisingItem = () => {
                     </div>
                     <div className='mb-4'>
                         <h3 className='my-1 text-xl font-semibold'><a className=' hover:text-purple-400' href={`/projects/${item.id}`} >{item.title}</a></h3>
-                        <p className='my-1'>提案者<span className='primary-text-color'>{item.organizer}</span></p>
+                        <p className='my-1'>提案者 <span className='primary-text-color'>{item.organizer}</span></p>
                     </div>
                     <div>
                         <span className='my-1'>NT $ {item.current_total}</span>
