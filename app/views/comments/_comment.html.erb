@@ -1,6 +1,6 @@
 <div class="p-3 my-3 bg-purple-100 rounded">
   <div class="flex justify-between">
-    <p class='text-xl font-bold"'><%= comment.user.email %></p>
+    <p class='text-xl font-bold"'><%= comment.user.username %></p>
     <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" if current_user.present? %>
   </div>
   <div>
