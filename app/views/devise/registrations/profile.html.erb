@@ -1,10 +1,10 @@
 <main>
   <div class='border border-gray-300 boder-solid'>
-    <div class="max-w-2xl mx-auto text-xs md:text-base">
+    <div class="max-w-2xl mx-auto">
       <ul class='grid items-center justify-center h-16 grid-cols-3 '>
         <li class='text-center current-page'><%= link_to "個人頁面",users_profile_path %></li>
         <li class='text-center'><%= link_to "交易紀錄", transactions_path%></li>
-        <li class='text-center'><a>追蹤專案</a></li>
+        <li class='text-center'><%= link_to "追蹤專案", follows_path %></li>
       </ul>
     </div>
   </div>
@@ -21,7 +21,7 @@
         <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
     </div>
   </div>
-  <div class='wavy-bg'>
+  <div class='bg-gray-50'>
     <% if current_user.projects.count == 0 %>
       <div class="max-w-6xl mx-auto">
         <p class='py-40 my-auto text-xl text-center'>目前沒有專案，立即去<%= link_to "提案", new_project_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
