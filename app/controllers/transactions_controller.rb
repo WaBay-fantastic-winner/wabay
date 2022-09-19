@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class TransactionsController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: %i[create]
+  skip_before_action :verify_authenticity_token, only: %i[create paid]
   before_action :authenticate_user!, except: %i[paid]
+  before_action :find_transaction_by_serial_after_ecpay, only: %i[paid]
   include ProjectPriceSum
 
   def index
-    @transactions = Transaction.all
+    @transactions = Transaction.order(created_at: :desc)
   end
 
   def create
@@ -22,15 +23,10 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
-    transaction.pay!
-
-    current_donate_item = DonateItem.find(transaction.donate_item_id)
-    current_donate_item.increment(:donate_logs_count).save
-
-    sign_in(User.find(transaction.user_id))
-    redirect_to project_path(transaction.project_id),
-                notice: "感謝您贊助 #{DonateItem.find(transaction.donate_item_id).title} !"
+    pending_to_paid
+    increase_donate_count
+    sign_in(User.find(@serial_transaction.user_id))
+    render :paid
   end
 
   def destroy
@@ -98,5 +94,18 @@ class TransactionsController < ApplicationController
         follower.update(:mail_sent => 'true')
       end
     end
+  end
+  
+  def find_transaction_by_serial_after_ecpay
+    @serial_transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
+  end
+
+  def pending_to_paid
+    @serial_transaction.pay!
+  end
+
+  def increase_donate_count
+    current_donate_item = DonateItem.find(@serial_transaction.donate_item_id)
+    current_donate_item.increment(:donate_logs_count).save
   end
 end

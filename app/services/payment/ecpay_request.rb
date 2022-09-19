@@ -21,7 +21,7 @@ module Payment
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "http://10.8.8.67:3000//transactions/paid",
+        "OrderResultURL": "http://10.8.8.67:3000/transactions/paid",
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end
