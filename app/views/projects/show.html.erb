@@ -57,7 +57,8 @@
           <a href='<%= project_comments_path(@project)%>' class="mx-5">
             留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
           </a>
-        </div>
+          <%= link_to '即時通訊', project_messages_path(@project), class:"mx-5"%>
+        </div>  
         <% if @project.user_id == current_user&.id %>
           <div class='flex items-center justify-center my-2'>
             <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl ' %>
