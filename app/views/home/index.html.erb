@@ -32,7 +32,7 @@
                             <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
                         </div> 
                         <div>
-                            <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day %> 天</span>
+                            <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day  %> 天</span>
                         </div>
                     </div>
                 <% end %>

@@ -27,8 +27,8 @@
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-xl grid-cols-10 gap-12 px-3 mx-auto lg:max-w-6xl lg:grid">
       <div class="col-span-7 accordion" data-controller='questionSwitch'>
-        <% @project.questions.each do |question| %>
-          <div class="contentBox" data-questionSwitch-target='btn' data-action='click->questionSwitch#switch'>
+        <% @project.questions.each.with_index do |question,index| %>
+          <div class="contentBox" data-questionSwitch-target='btn' data-action='click->questionSwitch#switch' data-index=<%= index %>>
             <div class="contentTitle">
               <h2><span class="mr-8">Q<%= question.id%></span><%= question.title %></h2>
             </div>
