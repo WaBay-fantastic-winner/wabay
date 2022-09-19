@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "交易紀錄與取消", type: :feature do
+RSpec.feature "交易訂單取消", type: :feature do
   let(:user) { create(:user) }
   let(:donate_item) { create(:donate_item) }
 
@@ -34,7 +34,7 @@ RSpec.feature "交易紀錄與取消", type: :feature do
     click_on '送出(Submit)'
   end
 
-  it "取消交易訂單" do   
+  it "取消交易訂單成功" do   
     visit transactions_path
 
     accept_confirm do
