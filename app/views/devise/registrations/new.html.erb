@@ -29,7 +29,10 @@
       </div>
     <% end %>
     <div class='py-10 my-5 border-t border-b border-gray-200 border-solid'>
-    <p class='text-center'>已有 Wubay 帳號 <%= render "devise/shared/links" %></p>
+      <p class='text-center'>已有 Wubay 帳號 
+        <%= link_to 'Google', user_google_oauth2_omniauth_authorize_path, method: :post %>
+        <%= link_to 'Facebook', user_facebook_omniauth_authorize_path, method: :post %>
+      </p>
     </div>
     
   </div> 

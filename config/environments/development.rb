@@ -52,7 +52,7 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.hosts << "f8d9-61-220-182-115.jp.ngrok.io" 
+  config.hosts << "009b-61-220-182-115.jp.ngrok.io" 
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_adapter     = :sidekiq

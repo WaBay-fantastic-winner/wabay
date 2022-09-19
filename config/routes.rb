@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/users', to: 'devise/registrations#new'
     get '/users/profile', to: 'users/registrations#profile'
   end
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" } 
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: 'users/registrations' } 
   get '/users/projects/:id', to: 'projects#show'
   resources :projects do
     resources :donate_items
