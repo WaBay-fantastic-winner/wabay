@@ -8,25 +8,7 @@ import 'swiper/modules/navigation/navigation.scss';
 import 'swiper/modules/pagination/pagination.scss';
 import 'swiper/modules/scrollbar/scrollbar.scss';
 import 'swiper/modules/autoplay/autoplay.scss';
-import './banner.css';
-
-// const Rand = (min, max) => {
-//   return Math.floor(Math.random() * (max - min + 1) + min);
-// }
-
-// const ImgUrl = () => {
-//     const id = Rand(1, 200);
-//     return `https://picsum.photos/id/${id}/1000/500`;
-// }
-
-// const CreateSlide = () => {
-//     const device = UseRWD();
-//     return (
-//         <SwiperSlide className='flex items-center justify-center'>
-//             <a href=""><img className={`${ device === "PC" && 'rounded-3xl'}`} src={ImgUrl()} alt="" /></a>
-//         </SwiperSlide>
-//     );
-// }
+import '../../stylesheets/banner.css';
 
 const imgUrl = [
     {
@@ -44,7 +26,7 @@ const imgUrl = [
 ]    
 
 const BannerList = (props) => {
-    return (<li className='mx-2 md:mx-6 hover:text-purple-400 '>{props.text}</li>)
+    return (<li className='mx-2 md:mx-6'>{props.text}</li>)
 }
 
 const Banner = () => {
@@ -57,7 +39,7 @@ const Banner = () => {
                     <BannerList text="原創設計"/>
                     <BannerList text="社會公益"/>
                     <BannerList text="預購商品"/>
-                    <BannerList text="挖貝選物"/>
+                    <BannerList text="Wubay選物"/>
                 </ul>
             </div>
             <Swiper

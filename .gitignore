@@ -39,5 +39,4 @@
 yarn-debug.log*
 .yarn-integrity
 .env
-
 local_rails.sh

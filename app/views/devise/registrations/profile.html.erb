@@ -1,60 +1,61 @@
 <main>
-  <section class='py-10 bg-gray-100'>
-    <div class="max-w-2xl px-3 mx-auto">
-      <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
-      <p class="mb-4 text-gray-500 text-center">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
-      <p class=''><%= current_user.description %></p>
-    </div>
-  </section>
-  <div class="justify-between px-5 py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double lg:flex">
-    <div class="flex items-center justify-center h-16 max-w-6xl py-3 mx-auto font-semibold text-gray-400">
-      <div class='current-page'>
-        <%=link_to users_profile_path  do %>
-          <p>我的專案數</p>
-          <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
-        <% end %>
-      </div>
-      <div class='ml-10'>
-        <%=link_to transactions_path  do %>
-          <p>贊助專案數</p>
-          <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.transactions.count%></span>件</p>
-        <% end %>
-      </div>
+  <div class='border border-gray-300 boder-solid'>
+    <div class="max-w-2xl mx-auto">
+      <ul class='grid items-center justify-center h-16 grid-cols-3 '>
+        <li class='text-center current-page'><%= link_to "個人頁面",users_profile_path %></li>
+        <li class='text-center'><%= link_to "交易紀錄", transactions_path%></li>
+        <li class='text-center'><%= link_to "追蹤專案", follows_path %></li>
+      </ul>
     </div>
   </div>
-  <% if current_user.projects.count == 0 %>
-    <div class="max-w-6xl mx-auto">
-      <p class='py-40 my-auto text-center'>目前沒有專案，立即去<%= link_to "探索", projects_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
+  <section class='py-10 bg-gray-50'>
+    <div class="max-w-2xl px-3 mx-auto">
+      <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
+      <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
+      <p class='text-center break-all'><%= current_user.description %></p>
     </div>
-  <% else %>
-    <div class="max-w-6xl grid-cols-9 mx-auto mt-8 md:grid">
-      <% @projects.each do |project| %>
-        <div class="col-span-3 mx-5 mb-10 FundraisingItem">
-          <div class="projects-img-box">
-            <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
-              <% if project.avatar.attached? %>
-                  <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
-                <% else %>
-                  <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
-              <% end %>
-            </a>                    
-          </div>
-          <div class='mb-4'>
-            <h2 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h2>
-            <p class='my-1'>提案者 <span class='text-purple-400'><%= project.organizer %></span></p>
-          </div>
-          <div>
-            <span class='my-1'>NT$ <%= project.current_total %></span>
-          </div>
-          <div class="relative h-4 my-1 rounded-md progress-container">
-            <span id="progressPercent">0%</span>
-            <div class="progress" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
-          </div> 
-          <div class=''>
-            <span>倒數 <%= (project.end_time - project.updated_at).to_i / 1.day %> 天</span>
-          </div>
-        </div>
-      <% end %>
+  </section>
+  <div class="py-4 bg-white border-t-2 border-b-2 border-gray-300 border-double">
+      <div class='current-page'>
+        <p class='text-center'>我的專案數</p>
+        <p class="text-center"><span class='mr-1 text-3xl'><%= current_user.projects.count %></span>件</p>
     </div>
-  <% end %>
+  </div>
+  <div class='bg-gray-50'>
+    <% if current_user.projects.count == 0 %>
+      <div class="max-w-6xl mx-auto">
+        <p class='py-40 my-auto text-xl text-center'>目前沒有專案，立即去<%= link_to "提案", new_project_path, class:"primary-text-color hover:text-purple-300 mx-2"%>！</p>
+      </div>
+    <% else %>
+      <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
+        <% @projects.each do |project| %>
+          <div class="col-span-3 p-3 mx-5 mb-8 bg-white rounded-xl">
+            <div class="projects-img-box">
+              <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
+                <% if project.avatar.attached? %>
+                    <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                  <% else %>
+                    <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
+                <% end %>
+              </a>                    
+            </div>
+            <div class='mb-4'>
+              <h2 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h2>
+              <p class='my-1'>提案者 <span class='text-purple-400'><%= project.organizer %></span></p>
+            </div>
+            <div>
+              <span class='my-1'>NT$ <%= project.current_total %></span>
+            </div>
+            <div class="progress-container">
+              <span id="progressPercent">0%</span>
+              <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
+            </div> 
+            <div>
+              <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day %> 天</span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  <div>
 </main>

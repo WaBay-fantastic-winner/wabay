@@ -6,19 +6,20 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application' %>
     <script src="https://kit.fontawesome.com/4b775a86e6.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header class='header'>
+      <h1 class='sr-only'>wubay,讓你夢想超越五倍</h1>
       <% if notice %>
-        <div class="py-4 text-xl font-semibold text-center text-green-600 bg-green-300 notice" data-controller="message">
+        <div class="py-4 text-xl font-semibold tracking-wider text-center text-green-600 bg-green-100 notice" data-controller="message">
           <%= notice %>
         </div>
       <% end %>
-      <div class="relative w-full text-lg border-b border-gray-200 text-slate-500 ">
-        <nav class="flex items-center justify-between max-w-6xl mx-auto header-item h-70">
+      <div class="w-full text-lg border-b border-gray-200 text-slate-500 ">
+        <nav class="relative flex items-center justify-between max-w-6xl mx-auto header-item h-70">
           <div class="header-webnav">
             <ul class="hidden lg:flex ">
               <li><%= link_to "首頁", root_path, class:"mx-5 hover:text-gray-400"%></li>
@@ -27,7 +28,7 @@
             </ul>
             <!-- 手機側邊收縮導覽列 -->
             <input id="mobile-nav-switch" type="checkbox" class="hidden" />
-            <label for="mobile-nav-switch" class="ml-8 text-2xl lg:hidden">
+            <label for="mobile-nav-switch" id='mobile-nav-btn' class="ml-8 text-2xl lg:hidden">
               <span class="inline-block"><i class="fa-solid fa-align-justify"></i></span>
               <span class="hidden"><i class="fa-solid fa-angle-left"></i></span>
             </label>
@@ -37,11 +38,15 @@
                 <%= link_to "探索", projects_path, class:"px-4 pb-2 block"%>
               </div>
               <div class="mb-3">
+                <h2 class="font-bold primary-text-color">Proposal</h2>
+                <%= link_to "提案", new_project_path, class:"px-4 block py-4 text-2xl"%>
+              </div>
+              <div class="mb-3">
                 <h2 class="font-bold primary-text-color">Themes</h2>
                 <ul class="px-4 text-2xl">
                   <li class='py-2'>原創設計</li>
                   <li class='py-2'>社會公益</li>
-                  <li class='py-2'>設計商品</li>
+                  <li class='py-2'>Wubay選物</li>
                 </ul>
               </div>
               <div class="mb-3">
@@ -59,10 +64,6 @@
                   <% end %>
                 </ul>
               </div>
-              <div class="mb-3">
-                <h2 class="font-bold primary-text-color">Proposal</h2>
-                <%= link_to "提案", new_project_path, class:"px-4 block py-4 text-2xl"%>
-              </div>
               <div class="flex justify-center">
                 <div>
                   <p>Copyright ©2022 Wubay <br/> All rights reserved</p>
@@ -72,7 +73,7 @@
           </div>
           <!-- LOGO -->
           <div class="absolute w-40 transform translate-x-1/2 right-1/2">
-            <a href="/"><%= image_tag('wubay.png') %></a>
+            <a href="/" alt='wubay，讓你的夢想超越五倍'><%= image_tag('wubay.png') %></a>
           </div>
           <%# 搜尋及會員相關 %>
           <div class="flex items-center">
