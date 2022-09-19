@@ -14,6 +14,7 @@
       <a href='<%= project_comments_path(@project)%>' class="mx-5 current-page">
         留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
       </a>
+      <%= link_to '即時通訊', project_messages_path(@project), class:"mx-5"%>
     </div>
   </div>
   <%# 留言區 %>
