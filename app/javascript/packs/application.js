@@ -8,22 +8,29 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../stylesheets/index"
 import "../../assets/stylesheets/actiontext.scss"
-
+import "../../assets/stylesheets/application.css"
 Rails.start()
 ActiveStorage.start()
-
 require("trix")
 require("@rails/actiontext")
 import "controllers"
 
-document.addEventListener('DOMContentLoaded', () => {
-// --------comment accordion
-  const contentBtn = document.getElementsByClassName('contentBox')
 
-  for (let i = 0; i < contentBtn.length; i++) {
-    contentBtn[i].addEventListener('click', function () {
-      this.classList.toggle('active')
-    })
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  // comment accordion
+  // const contentBtn = document.getElementsByClassName('contentBox')
+
+  // for (let i = 0; i < contentBtn.length; i++) {
+  //   contentBtn[i].addEventListener('click', function () {
+  //     this.classList.toggle('active')
+  //   })
+  // }
+
+  document.querySelector('#mobile-nav-btn').addEventListener('click', () => {
+    document.querySelector('main').classList.toggle('hidden')
+    document.querySelector('footer').classList.toggle('hidden')
+  })
 })
+
+
 

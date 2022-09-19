@@ -1,7 +1,11 @@
 @import "tailwindcss/base";
 @import "tailwindcss/utilities";
 @import "tailwindcss/components";
-
+@layer utilities {
+  .content-auto {
+    content-visibility: auto;
+  }
+}
 @layer components{
   .form-list{
     @apply grid grid-cols-10 px-6 py-4 mb-4 text-xs border-2 border-purple-300 border-solid md:text-base ;
@@ -13,7 +17,7 @@
     @apply col-span-8 w-full ml-4 focus:outline-none focus:ring focus:border-purple-300
   }
   .input-focus{
-    @apply focus:outline-none focus:ring focus:ring-purple-300 rounded-xl p-2
+    @apply focus:outline-none focus:ring focus:ring-purple-300 rounded-xl p-2 w-full 
   }
   .donate-button{
     @apply bg-purple-400 hover:bg-purple-300 text-white rounded-md py-2
@@ -25,6 +29,15 @@
     @apply  text-center px-5 py-3 
   }
   .outside-link{
-    @apply tracking-widest block text-center w-full border border-gray-200 border-solid py-2 bg-gray-50 hover:bg-gray-100 text-gray-400
+    @apply tracking-widest block text-center w-full border border-gray-200 border-solid  bg-gray-50 hover:bg-gray-100 
+  }
+  .progress{
+    @apply bg-gray-100 rounded-2xl relative my-2 h-4 w-full
+  }
+  .progress-percent{
+    @apply absolute right-0 left-0 -top-1 text-center text-yellow-300
+  }
+  .progress-done{
+    @apply rounded-2xl h-full w-0 opacity-0 bg-gradient-to-r from-purple-400 to-purple-500
   }
 }
