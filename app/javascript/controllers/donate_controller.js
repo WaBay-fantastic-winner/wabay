@@ -35,6 +35,7 @@ export default class extends Controller {
     sendData('/transactions', {
       donateItemTitle: `${donateItemTitle}`,
       projectId: `${projectId}`,
+      amount: `${this.amountTarget.value}`,
       additionalSum: amount,
       });
   }

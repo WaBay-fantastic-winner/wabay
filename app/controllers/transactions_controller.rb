@@ -10,28 +10,14 @@ class TransactionsController < ApplicationController
   end
 
   def create
-    # 建立交易紀錄（訂單）
-    @transaction = Transaction.new(user_id: current_user.id,
-                                   project_id: params['projectId'],
-                                   donate_item_id:,
-                                   price:)
-
-    if @transaction.save
-      find_project
-      total = project_current_total(params['projectId']) + price
-      @project.update(current_total: total)
-
-      notify_achievement_to_followers(@project.id)
-
-      # for ecpay action
-      produce_ecpay_basic_params
-      # 交易訂單成功寫入後，呼叫 Service 將完整參數包好。
-      @ecpay_params = Payment::EcpayRequest.new(@merchant_trade_date,
-                                                @merchant_trade_no,
-                                                @item_name,
-                                                @total_amount).perform
+    if Transaction.can_buy?(params['projectId'], params['donateItemTitle'], params['amount'])
+      @transaction = Transaction.new(user_id: current_user.id,
+                                    project_id: params['projectId'],
+                                    donate_item_id:,
+                                    price:)
+      create_order_and_ecpay(params['projectId'])
     else
-      render :save_error
+      render :amount_error
     end
   end
 
@@ -73,6 +59,32 @@ class TransactionsController < ApplicationController
     @merchant_trade_date = Time.now.strftime('%Y/%m/%d %H:%M:%S')
     @item_name = params['donateItemTitle']
     @total_amount = price
+  end
+
+  def order_params_for_ecpay_params
+    { 
+      merchant_trade_date: @merchant_trade_date,
+      merchant_trade_no: @merchant_trade_no,
+      item_name: @item_name,
+      total_amount: @total_amount
+    }
+  end
+
+  def create_order_and_ecpay(project_id)
+    if @transaction.save
+      find_project
+      total = project_current_total(project_id) + price
+      @project.update(current_total: total)
+
+      notify_achievement_to_followers(@project.id)
+
+      # for ecpay action
+      produce_ecpay_basic_params
+      ## 交易訂單成功寫入後，呼叫 Service 將完整參數包好。
+      @ecpay_params = Payment::EcpayRequest.new(order_params_for_ecpay_params).perform
+    else
+      render :save_error
+    end
   end
 
   def followers_not_recepted_yet(project_id)
