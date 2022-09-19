@@ -7,24 +7,21 @@ module Payment
     require 'cgi'
     require 'net/http'
 
-    def initialize(merchant_trade_date,
-                   merchant_trade_no,
-                   title, 
-                   price)
+    def initialize(args)
   
       @basic_params = {
         "MerchantID": 3002607, 
         "TradeDesc": "專案贊助交易", 
         "PaymentType": "aio", 
-        "MerchantTradeDate": merchant_trade_date, 
-        "MerchantTradeNo": merchant_trade_no, 
-        "ReturnURL": "http://localhost:3000/transactions",
-        "ItemName": title,
-        "TotalAmount": price, 
+        "MerchantTradeDate": args[:merchant_trade_date], 
+        "MerchantTradeNo": args[:merchant_trade_no], 
+        "ReturnURL": "http://10.8.8.67:3000//transactions",
+        "ItemName": args[:item_name],
+        "TotalAmount": args[:total_amount], 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "http://localhost:3000/transactions/paid",
+        "OrderResultURL": "http://10.8.8.67:3000/transactions/paid",
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end

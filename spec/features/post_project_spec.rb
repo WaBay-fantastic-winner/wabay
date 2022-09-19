@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.feature 'post a new project', type: :feature do
+RSpec.feature '建立專案', type: :feature do
     let(:user) { create(:user) }
 
-  it "文章新增成功" do
+  it "專案新增成功" do
     login_as user
     
     visit '/'
