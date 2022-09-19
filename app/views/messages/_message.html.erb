@@ -1,3 +1,4 @@
-
-  <p><%= message.content %></p>
-  <p><%= message.user.username %></p>
+<div class=''>
+  <p class='px-3 text-xl text-white bg-gray-400 rounded-xl w-max'><%= message.content %></p>
+  <p class='text-lg '> <%= message.user.username %> <span class='text-base text-gray-400'><%= message.created_at.strftime('%H:%M')%></span></p>
+</div>  

@@ -15,6 +15,7 @@
         <a href='<%= project_comments_path(@project)%>' class="mx-5">
           留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
         </a>
+        <%= link_to '即時通訊', project_messages_path(@project), class:"mx-5"%>
       </div>
       <% if @project.user_id == current_user&.id %>
         <div class='flex items-center justify-center my-2'>
@@ -30,7 +31,7 @@
         <% @project.questions.each.with_index do |question,index| %>
           <div class="contentBox" data-questionSwitch-target='btn' data-action='click->questionSwitch#switch' data-index=<%= index %>>
             <div class="contentTitle">
-              <h2><span class="mr-8">Q<%= question.id%></span><%= question.title %></h2>
+              <h2><span class="mr-8">Q<%= question.id%></span><%¡= question.title %></h2>
             </div>
             <div class="content">
               <p><%= question.content %></p>

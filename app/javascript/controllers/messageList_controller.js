@@ -11,6 +11,9 @@ export default class extends Controller {
       disconnected: this._cableDisconnected.bind(this),
       received: this._cableReceived.bind(this),
     });
+    document.getElementById('bottom').scrollIntoView({
+      block: "end",
+    });
   }
 
   clearInput() {
