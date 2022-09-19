@@ -3,7 +3,6 @@
 class TransactionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[create paid]
   before_action :authenticate_user!, except: %i[paid]
-  before_action :find_transaction_by_serial_after_ecpay, only: %i[paid]
   include ProjectPriceSum
 
   def index
@@ -23,6 +22,7 @@ class TransactionsController < ApplicationController
   end
 
   def paid
+    find_transaction_by_serial_after_ecpay
     pending_to_paid
     increase_donate_count
     sign_in(User.find(@serial_transaction.user_id))
