@@ -1,5 +1,4 @@
 zh-TW:
-  
   activerecord:
     attributes:
       user:
@@ -33,7 +32,14 @@ zh-TW:
         title: 提案名稱
         phone: 電話
         email: 電子信箱
-        organizer: 提案人  
+        organizer: 提案人
+      transaction:
+        state:
+          pending: 尚未付款
+          paid: 已付款
+          cancellation: 取消訂單
+          failed: 交易失敗
+          refunded: 已退款
     models:
       user: 使用者
   devise:
