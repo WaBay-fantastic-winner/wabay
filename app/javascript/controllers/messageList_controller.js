@@ -2,7 +2,7 @@ import { Controller } from 'stimulus';
 import consumer from '../channels/consumer';
 
 export default class extends Controller {
-  static targets = ['input', 'message'];
+  static targets = ['input', 'message', 'bottom', 'box'];
 
   connect() {
     console.log('connected to the message channel')
@@ -11,9 +11,10 @@ export default class extends Controller {
       disconnected: this._cableDisconnected.bind(this),
       received: this._cableReceived.bind(this),
     });
-    document.getElementById('bottom').scrollIntoView({
-      block: "end",
-    });
+    // this.bottomTarget.scrollIntoView({
+    //   block: "end",
+    // });
+    this.boxTarget.scrollTop = this.boxTarget.scrollHeight; // 设置聊天区域的滚动条为最新内容的位置
   }
 
   clearInput() {
@@ -30,8 +31,12 @@ export default class extends Controller {
 
   _cableReceived(data) {
     // Called when there's incoming data on the websocket for this channel
-    console.log(data);
+    // console.log(data);
     this.messageTarget.innerHTML += data.message;
     this.inputTarget.value = '';
+  }
+  bottom() {
+    console.log(123);
+    this.boxTarget.scrollTop = this.boxTarget.scrollHeight;
   }
 }
