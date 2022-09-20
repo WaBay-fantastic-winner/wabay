@@ -8,7 +8,7 @@
       <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
           <div class="projects-img-box">
-            <div class='projects-link'>
+            <div class='fit-size'>
               <% if @project.avatar.attached? %>
                   <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
                 <% else %>

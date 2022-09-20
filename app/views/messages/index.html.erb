@@ -22,9 +22,9 @@
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
       <% if @donated %>
-        <div class="col-span-5 col-start-2 accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
+        <div class="col-span-5 col-start-2 px-3 shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
           <div data-messageList-target='box' class='overflow-x-hidden overflow-y-auto h-450' id='box'>
-            <div data-messageList-target='message' class='px-4 border border-gray-300 rounded-xl '>
+            <div data-messageList-target='message' class='p-4 border border-gray-300 rounded-xl '>
               <% if @project.messages.empty? %>
                 <div>開始對話</div>
               <% else %>
@@ -41,21 +41,20 @@
           <%= form_with(model: @message, url: project_messages_path(@project.id), method: 'post',
                         local: true,
                         data: { action: 'ajax:success->messageList#clearInput'},
-                        class:''
+                        data: { action: 'submit->messageList#bottom'}
               ) do |form| %>
             <%= form.hidden_field :project_id, value: @project.id %>
             <%= form.hidden_field :user_id, value: @project.user_id %>
             <div class='flex p-2 mx-auto w-max'>
               <%= form.text_field :content, data: { 'messageList-target': 'input' }, class:'py-3 input-focus mx-1 bg-gray-200', placeholder:'輸入訊息'%>
               <%= button_tag type: 'submit', data: {disable_with: false}, class: 'text-purple-400 hover:text-purple-600 py-2 pl-3 pr-4 rounded-full border border-purple-400', data: { action: ''} do %>
-                <i class="text-lg fa-solid fa-paper-plane" data-action='click->messageList#bottom'></i>
+                <i class="text-lg fa-solid fa-paper-plane"></i>
               <% end %>
             </div>
           <% end %>
         </div>
       <% else %>
-        <%= link_to '請先贊助此專案，即可使用即時通訊功能', project_path(@project), class:'col-span-5 col-start-2 '%>
-        <%= link_to '贊助專案', project_donate_items_path(@project) %>
+        <p class='col-span-5 col-start-2 text-center pt-11 '><%= link_to '贊助專案', project_donate_items_path(@project) , class:'primary-text-color text-lg p-2 border border-purple-300 rounded-xl hover:bg-purple-400 hover:text-white'%> 即可開通即時通訊</p>
       <% end %>
       <%# silde-bar %>
       <div class='col-span-3 col-end-11 '>

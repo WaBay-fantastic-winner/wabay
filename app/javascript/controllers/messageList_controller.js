@@ -38,7 +38,9 @@ export default class extends Controller {
     this.inputTarget.value = '';
   }
   bottom() {
-    console.log(123);
-    document.querySelector("#box").scrollTop = document.querySelector("#box").scrollHeight
+    setTimeout(()=>{
+      this.boxTarget.scrollTop = this.boxTarget.scrollHeight;
+    },150)
+
   }
 }

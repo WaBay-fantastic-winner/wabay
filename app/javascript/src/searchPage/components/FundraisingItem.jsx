@@ -29,23 +29,25 @@ const FundraisingItem = () => {
     return (
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
-                <div className='col-span-3 p-3 mb-8 bg-white FundraisingItem rounded-xl' key={index}>
-                    <div className='projects-img-box'>
-                        <a className='projects-link' href={`/projects/${item.id}`}>
-                            <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
-                        </a>
-                    </div>
-                    <div className='mb-4'>
-                        <h3 className='my-1 text-xl font-semibold'><a className=' hover:text-purple-400' href={`/projects/${item.id}`} >{item.title}</a></h3>
-                        <p className='my-1'>提案者 <span className='primary-text-color'>{item.organizer}</span></p>
-                    </div>
-                    <div>
-                        <span className='my-1'>NT $ {item.current_total}</span>
-                    </div>
-                    <ProgressBar percent={Math.round(item.current_total/item.amount_target*100)}/>
-                    <div>
-                        <DaysLeft endTime={item.end_time} />
-                    </div>
+                <div className="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                    <a href={`/projects/${item.id}`}>
+                        <div className="projects-img-box">
+                            <div className='fit-size'>
+                                <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
+                            </div>
+                        </div>
+                        <div className='mb-4'>
+                            <h3 className='my-1 text-xl font-semibold'><a className=' hover:text-purple-400' href={`/projects/${item.id}`} >{item.title}</a></h3>
+                            <p className='my-1'>提案者 <span className='primary-text-color'>{item.organizer}</span></p>
+                        </div>
+                        <div>
+                            <span className='my-1'>NT$ {item.current_total}</span>
+                        </div>
+                        <ProgressBar percent={Math.round(item.current_total/item.amount_target*100)}/>
+                        <div>
+                            <DaysLeft endTime={item.end_time} />
+                        </div>
+                    </a>  
                 </div>
             )) :
             <div className='col-span-9 py-16 text-gray-600 bg-white rounded-lg'>
