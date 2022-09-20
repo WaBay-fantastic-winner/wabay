@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/feature/actioncable
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]

@@ -10,8 +10,13 @@ class MessagesController < ApplicationController
   def create
     @message = current_user.messages.new(params_message)
     @message.save!
+    @project = Project.find(params[:project_id])
+    # p '-'*100
+    p @project
+    # p '-'*100
+
     # ActionCable.server.broadcast('message_channel', { message: @message }) 
-    SendMessageJob.perform_now(@message)
+    SendMessageJob.perform_now(@message, @project)
   end
 
   private
