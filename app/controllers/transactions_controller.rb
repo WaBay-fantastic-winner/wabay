@@ -14,7 +14,8 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.new(user_id: current_user.id,
                                     project_id: params['projectId'],
                                     donate_item_id:,
-                                    price: )
+                                    price:,
+                                    amount: params['amount'])
       create_order_and_ecpay(params['projectId'])
     else
       render :amount_error
@@ -24,6 +25,7 @@ class TransactionsController < ApplicationController
   def paid
     find_transaction_by_serial_after_ecpay
     pending_to_paid
+    decrease_donate_amount(DonateItem.find(@serial_transaction.donate_item_id).title, @serial_transaction.amount)
     increase_donate_count
     sign_in(User.find(@serial_transaction.user_id))
     render :paid
@@ -107,5 +109,13 @@ class TransactionsController < ApplicationController
   def increase_donate_count
     current_donate_item = DonateItem.find(@serial_transaction.donate_item_id)
     current_donate_item.increment(:donate_logs_count).save
+  end
+
+  def decrease_donate_amount(donate_item_title, amount)
+    donate_item = DonateItem.find_by!(title: donate_item_title)
+    donate_item.with_lock do
+      donate_item.decrement(:amount, amount.to_i)
+      donate_item.save
+    end
   end
 end
