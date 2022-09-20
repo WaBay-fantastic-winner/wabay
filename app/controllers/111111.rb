@@ -1,0 +1,17 @@
+Parameters: {
+  "CustomField1"=>"",
+  "CustomField2"=>"", 
+  "CustomField3"=>"", 
+  "CustomField4"=>"", 
+  "MerchantID"=>"3002607", 
+  "MerchantTradeNo"=>"GsxTgz", 
+  "PaymentDate"=>"2022/09/20 16:17:45", 
+  "PaymentType"=>"Credit_CreditCard", 
+  "PaymentTypeChargeFee"=>"1", 
+  "RtnCode"=>"1", 
+  "RtnMsg"=>"Succeeded", 
+  "SimulatePaid"=>"0", 
+  "StoreID"=>"", 
+  "TradeAmt"=>"33", 
+  "TradeDate"=>"2022/09/20 16:16:32", 
+  "TradeNo"=>"2209201616328780", "CheckMacValue"=>"13C62D224C3AFBAEE756AA08A78E4CDC45A3910F035F70E2250D1547345DD87C"}
