@@ -35,11 +35,7 @@ zh-TW:
         description: 提案描述      
         end_time: 提案結束時間
         amount_target: 提案目標金額
-<<<<<<< HEAD
         title: 提案名稱
-=======
-        title: 提案名稱 
->>>>>>> origin/feature/actioncable
         phone: 電話
         email: 電子信箱
         organizer: 提案人

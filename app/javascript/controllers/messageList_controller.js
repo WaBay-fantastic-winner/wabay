@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ['input', 'message', 'bottom', 'box'];
 
   connect() {
-    console.log('connected to the message channel')
     const projectId = this.element.dataset.projectId
     this.channel = consumer.subscriptions.create(
       { channel: 'MessageChannel', project_id: projectId }, 
@@ -15,10 +14,7 @@ export default class extends Controller {
       disconnected: this._cableDisconnected.bind(this),
       received: this._cableReceived.bind(this),
     });
-    // this.bottomTarget.scrollIntoView({
-    //   block: "end",
-    // });
-    this.boxTarget.scrollTop = this.boxTarget.scrollHeight; // 设置聊天区域的滚动条为最新内容的位置
+    this.boxTarget.scrollTop = this.boxTarget.scrollHeight;
   }
 
   clearInput() {
