@@ -19,7 +19,6 @@
       </div>
     </div>
   </div>
-<<<<<<< HEAD
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
       <div class="col-span-5 col-start-2 accordion " data-controller='messageList'>
@@ -34,32 +33,6 @@
             <% end %>
           </div>
           <div class='h-8'></div>
-=======
-  
-  <%# 常見問題區 %>
-  <section class='py-8 border-b-2 border-double border-gray-300'>
-    <div class="max-w-6xl mx-auto lg:grid grid-cols-10 gap-12">
-      <div class="accordion col-span-7">
-
-        <div data-controller='messageList' data-project-id=<%= @project.id %>>
-          <div data-messageList-target='message'>
-            <% @project.messages.each do |message| %>
-              <div class=" <%= 'bg-blue-200 my-4' if message.user == current_user %>">
-                <%= render 'messages/message', message: message %>
-              </div>
-            <% end %>
-          </div>
-
-          <%= form_with(model: @message, url: project_messages_path(@project.id), method: 'post', local: true, data: { action: 'ajax:success->messageList#clearInput' }
-          ) do |form| %>
-            <%= form.hidden_field :project_id, value: @project.id %>
-            <%= form.hidden_field :user_id, value: @message.user_id %>
-            <div>
-              <%= form.text_field :content, data: { "messageList-target": 'input' } %>
-              <%= form.submit '發送', data: { disable_with: false }, class: 'bg-blue-500' %>
-            </div>
-          <% end %>
->>>>>>> origin/feature/actioncable
         </div>
         <%= form_with(model: @message, url: project_messages_path(@project.id), method: 'post',
                       local: true,
