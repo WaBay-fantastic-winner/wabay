@@ -1,28 +1,28 @@
 <main class=''>
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
-      <h1 class="mb-3 text-2xl text-center text-semibold"><%= @project.title %></h1>
+      <h2 class="mb-3 text-2xl text-center text-semibold"><%= @project.title %></h2>
       <p class="mb-4 text-center">提案者 <span class="primary-text-color"><%= @project.organizer %></span></p>
     </div>
   </section>
   <div class="px-5 bg-white border-t-2 border-b-2 border-gray-300 border-double " >
-    <div class='justify-between max-w-6xl mx-auto lg:flex'>
-      <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400 ">
-        <%= link_to '專案內容', project_path(@project), class:"mx-5"%>
-        <a href='<%= project_questions_path(@project)%>' class="mx-5">
-          常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
+    <div class="justify-between max-w-6xl mx-auto text-sm md:text-base lg:flex">
+      <div class="flex items-center justify-center h-16 font-semibold text-gray-400">
+        <%= link_to '專案內容', project_path(@project), class:"mx-2 md:mx-5"%>
+        <a href='<%= project_questions_path(@project)%>' class="mx-2 md:mx-5">
+          常見問題 <span class='text-xs align-top '><%= @project.questions.count%></span>
         </a>
-        <a href='<%= project_comments_path(@project)%>' class="mx-5">
-          留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
+        <a href='<%= project_comments_path(@project)%>' class="mx-2 md:mx-5 ">
+          留言專區 <span class='text-xs align-top '><%= @project.comments.count%></span>
         </a>
-        <%= link_to '即時通訊', project_messages_path(@project), class:"mx-5 current-page"%>
-      </div>
-    </div>
+        <%= link_to '即時通訊', project_messages_path(@project), class:"mx-2 md:mx-5 current-page"%>
+      </div> 
+    </div>  
   </div>
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
       <% if @donated %>
-        <div class="col-span-5 col-start-2 px-3 shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
+        <div class="col-span-5 col-start-2 px-3 mb-3 lg:shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
           <div data-messageList-target='box' class='overflow-x-hidden overflow-y-auto h-450' id='box'>
             <div data-messageList-target='message' class='p-4 border border-gray-300 rounded-xl '>
               <% if @project.messages.empty? %>
@@ -57,13 +57,13 @@
         <p class='col-span-5 col-start-2 text-center pt-11 '>請先 <%= link_to '贊助專案', project_donate_items_path(@project) , class:'primary-text-color text-lg p-2 border border-purple-300 rounded-xl hover:bg-purple-400 hover:text-white'%> 即可開通即時通訊</p>
       <% end %>
       <%# silde-bar %>
-      <div class='col-span-3 col-end-11 '>
-        <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
+      <div class='col-span-3 col-end-11 px-3 '>
+        <article class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
           <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
           <p class='mb-3 break-words'><%= @project.user.description%></p>
           <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>
-          <i class="text-2xl fa-brands fa-instagram"></i></a>
-        </div>
+          <i class="text-2xl fa-brands fa-instagram"></i>
+        </article>
       </div>
     </div>  
   </section>

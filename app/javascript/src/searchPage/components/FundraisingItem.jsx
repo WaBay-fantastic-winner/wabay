@@ -29,7 +29,7 @@ const FundraisingItem = () => {
     return (
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
-                <div className="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                <article className="col-span-3 p-3 mb-8 bg-white shadow-xl lg:mx-5 rounded-xl FundraisingItem">
                     <a href={`/projects/${item.id}`}>
                         <div className="projects-img-box">
                             <div className='fit-size'>
@@ -37,7 +37,7 @@ const FundraisingItem = () => {
                             </div>
                         </div>
                         <div className='mb-4'>
-                            <h3 className='my-1 text-xl font-semibold'><a className=' hover:text-purple-400' href={`/projects/${item.id}`} >{item.title}</a></h3>
+                            <h3 className='my-1 text-xl font-semibold'>{item.title}</h3>
                             <p className='my-1'>提案者 <span className='primary-text-color'>{item.organizer}</span></p>
                         </div>
                         <div>
@@ -48,7 +48,7 @@ const FundraisingItem = () => {
                             <DaysLeft endTime={item.end_time} />
                         </div>
                     </a>  
-                </div>
+                </article>
             )) :
             <div className='col-span-9 py-16 text-gray-600 bg-white rounded-lg'>
                 <p className='text-center'>目前沒有專案，試試看重新探索吧！</p>

@@ -10,7 +10,7 @@
             </div>
             <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
                 <% @projects.each do |project| %>
-                    <div class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                    <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
                         <a href='projects/<%= "#{project.id}" %>' class=''>
                             <div class="projects-img-box">
                                 <div class='fit-size'>
@@ -36,7 +36,7 @@
                                 <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day  %> 天</span>
                             </div>
                         </a>  
-                    </div>
+                    </article>
                 <% end %>
             </div>
         </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
                 <% @success_projects.each do |success_project| %>
-                    <div class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                    <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
                         <a href='projects/<%= "#{success_project.id}" %>'>
                             <div class="projects-img-box">
                                 <div class='fit-size'>
@@ -78,7 +78,7 @@
                                 <span>倒數 <%= (success_project.end_time - Time.now).to_i / 1.day  %> 天</span>
                             </div>
                         </a>  
-                    </div>
+                    </article>
                 <% end %>
             </div>
         </div>

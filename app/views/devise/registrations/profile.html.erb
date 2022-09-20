@@ -10,7 +10,7 @@
   </div>
   <section class='py-10 bg-gray-50'>
     <div class="max-w-2xl px-3 mx-auto">
-      <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
+      <h2 class="text-2xl text-center "><%= current_user.username %> </h2>
       <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
       <p class='text-center break-all'><%= current_user.description %></p>
     </div>
@@ -29,7 +29,7 @@
     <% else %>
       <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
         <% @projects.each do |project| %>
-          <div class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
+          <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
             <a href='projects/<%= "#{project.id}" %>'>
               <div class="projects-img-box">
                   <div class='fit-size'>
@@ -55,7 +55,7 @@
                 <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day  %> 天</span>
               </div>
             </a>  
-          </div>
+          </article>
         <% end %>
       </div>
     <% end %>
