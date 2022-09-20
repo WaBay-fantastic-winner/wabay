@@ -3,7 +3,7 @@
     <div class='mb-3 text-center'>
         <% if current_user&.id === Project.find_by!(id: params[:id]).user_id %>
           <%= link_to '編輯贊助方案', edit_project_donate_item_path(project_id: donate_item.project_id, id: donate_item), class:'mr-2 p-3 inline-block border border-purple-400 rounded-xl' %>
-          <%= link_to '刪除贊助方案', project_donate_item_path(project_id: donate_item.project_id, id: donate_item), method: 'delete',class:'text-red-400', data:{ confirm: "確定要刪除「#{donate_item.title}」方案嗎？" } %>
+          <%= link_to '刪除贊助方案', project_donate_item_path(project_id: donate_item.project_id, id: donate_item), method: 'delete',class:'text-red-400', data:{ confirm: "確定要刪除「#{donate_item.title}」方案嗎？" } %> 
         <% end %>
     </div>
     <div>
