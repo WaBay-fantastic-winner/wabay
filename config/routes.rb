@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations", sessions: "users/sessions" } 
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations" } 
   devise_scope :user do
     get '/users', to: 'devise/registrations#new'
     get '/users/profile', to: 'users/registrations#profile'

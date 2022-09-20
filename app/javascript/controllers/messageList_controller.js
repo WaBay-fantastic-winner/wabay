@@ -39,6 +39,6 @@ export default class extends Controller {
   }
   bottom() {
     console.log(123);
-    this.boxTarget.scrollTop = this.boxTarget.scrollHeight;
+    document.querySelector("#box").scrollTop = document.querySelector("#box").scrollHeight
   }
 }
