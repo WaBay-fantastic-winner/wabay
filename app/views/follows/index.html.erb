@@ -15,6 +15,7 @@
     <% else %>
       <div class="grid max-w-6xl mx-auto md:grid-cols-9">
         <% @follows.each do |follow| %>
+<<<<<<< HEAD
           <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
             <a href='projects/<%= "#{follow.followable_id}" %>'>
               <div class="projects-img-box">
@@ -22,7 +23,7 @@
                       <% if Project.find(follow.followable_id).avatar.attached? %>
                         <%= image_tag Project.find_by!(id: follow.followable_id).avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
                       <% else %>
-                        <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
+                        <%= image_tag 'wubay.png' %>
                       <% end %>
                   </div>
               </div>

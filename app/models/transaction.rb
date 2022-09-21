@@ -17,19 +17,7 @@ class Transaction < ApplicationRecord
   # pessimistic lock
   def self.can_buy?(project_id, donate_item_title, amount)
     donate_item = DonateItem.find_by!(project_id: project_id, title: donate_item_title)
-    if donate_item.amount === nil
-      true
-    else
-      donate_item.with_lock do
-        if donate_item.amount > 0 && amount.to_i <= donate_item.amount
-          donate_item.decrement(:amount, amount.to_i)
-          donate_item.save
-          true 
-        else
-          false
-        end
-      end
-    end
+    true if donate_item.amount === nil || donate_item.amount > 0 && amount.to_i <= donate_item.amount
   end
 
   # transaction state

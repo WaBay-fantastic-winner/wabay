@@ -14,7 +14,8 @@ class TransactionsController < ApplicationController
       @transaction = Transaction.new(user_id: current_user.id,
                                     project_id: params['projectId'],
                                     donate_item_id:,
-                                    price:)
+                                    price:,
+                                    amount: params['amount'])
       create_order_and_ecpay(params['projectId'])
     else
       render :amount_error
@@ -24,6 +25,7 @@ class TransactionsController < ApplicationController
   def paid
     find_transaction_by_serial_after_ecpay
     pending_to_paid
+    decrease_donate_amount(DonateItem.find(@serial_transaction.donate_item_id).title, @serial_transaction.amount)
     increase_donate_count
     sign_in(User.find(@serial_transaction.user_id))
     render :paid
@@ -46,10 +48,6 @@ class TransactionsController < ApplicationController
     params['additionalSum'].to_i
   end
 
-  def find_project
-    @project = Project.find(params['projectId'])
-  end
-
   def produce_ecpay_basic_params
     @merchant_trade_no = @transaction.serial
     @merchant_trade_date = Time.now.strftime('%Y/%m/%d %H:%M:%S')
@@ -68,15 +66,7 @@ class TransactionsController < ApplicationController
 
   def create_order_and_ecpay(project_id)
     if @transaction.save
-      find_project
-      total = project_current_total(project_id) + price
-      @project.update(current_total: total)
-
-      notify_achievement_to_followers(@project.id)
-
-      # for ecpay action
       produce_ecpay_basic_params
-      ## 交易訂單成功寫入後，呼叫 Service 將完整參數包好。
       @ecpay_params = Payment::EcpayRequest.new(order_params_for_ecpay_params).perform
     else
       render :save_error
@@ -100,12 +90,32 @@ class TransactionsController < ApplicationController
     @serial_transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
   end
 
+  def find_project
+    @project = Project.find(find_transaction_by_serial_after_ecpay.project_id)
+  end
+
+  def payment_write_into_database
+    find_project
+    total = project_current_total(@project.id) + @serial_transaction.price
+    @project.update(current_total: total)
+  end
+
   def pending_to_paid
+    payment_write_into_database
+    notify_achievement_to_followers(@project.id)
     @serial_transaction.pay!
   end
 
   def increase_donate_count
     current_donate_item = DonateItem.find(@serial_transaction.donate_item_id)
     current_donate_item.increment(:donate_logs_count).save
+  end
+
+  def decrease_donate_amount(donate_item_title, amount)
+    donate_item = DonateItem.find_by!(title: donate_item_title)
+    donate_item.with_lock do
+      donate_item.decrement(:amount, amount.to_i)
+      donate_item.save
+    end
   end
 end
