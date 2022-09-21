@@ -17,6 +17,7 @@ class User < ApplicationRecord
   has_many :like_comments, dependent: :destroy
   has_many :liked_comments,
            through: :like_comments, source: :comment, dependent: :destroy
+  has_one_attached :avatar
 
   def liked?(comment)
     liked_comments.include?(comment)
@@ -28,6 +29,7 @@ class User < ApplicationRecord
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.username = auth.info.name || auth.info.email.split('@').first
+      user.avatar_url = auth.info.image
       user.provider = auth.provider
       user.uid = auth.uid
       user.password = Devise.friendly_token[0, 20]

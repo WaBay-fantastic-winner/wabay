@@ -12,6 +12,10 @@
         <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"mt-2 input-focus" %>
       </div> 
       <div class="py-3">
+        <%= f.label :avatar, "使用者自我簡介："%>
+        <%= f.file_field :avatar, autofocus: true, autocomplete: "description", class:"mt-2 input-focus" %>
+      </div>
+      <div class="py-3">
         <%= f.label :description, "使用者自我簡介："%>
         <%= f.text_area :description, autofocus: true, placeholder: "請輸入自我簡介", autocomplete: "description", class:"mt-2 input-focus" %>
       </div> 
@@ -30,14 +34,10 @@
       </div>
     <% end %>
     <div class='py-10 my-5 border-t border-b border-gray-200 border-solid'>
-<<<<<<< HEAD
-      <p class='text-center'>已有 Wubay 帳號 <%= link_to "登入", new_session_path(resource_name), class:'primary-text-color hover:text-purple-300' %></p>
-=======
       <p class='text-center'>已有 Wubay 帳號 
         <%= link_to 'Google', user_google_oauth2_omniauth_authorize_path, method: :post %>
         <%= link_to 'Facebook', user_facebook_omniauth_authorize_path, method: :post %>
       </p>
->>>>>>> 241f761 (fix/devise omniauth issue fixed)
     </div>
     <div class='py-2 my-4 outside-link'>
       <%=link_to user_google_oauth2_omniauth_authorize_path, method: :post  do %>
