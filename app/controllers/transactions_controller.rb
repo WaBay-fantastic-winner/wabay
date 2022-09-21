@@ -113,9 +113,11 @@ class TransactionsController < ApplicationController
 
   def decrease_donate_amount(donate_item_title, amount)
     donate_item = DonateItem.find_by!(title: donate_item_title)
-    donate_item.with_lock do
-      donate_item.decrement(:amount, amount.to_i)
-      donate_item.save
+    if donate_item.amount != nil
+      donate_item.with_lock do
+        donate_item.decrement(:amount, amount.to_i)
+        donate_item.save
+      end
     end
   end
 end
