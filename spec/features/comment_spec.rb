@@ -9,9 +9,7 @@ RSpec.feature "在專案底下留言", type: :feature do
 
   it "留言" do
     login_as user
-
     visit project_path(project.id)
-
     click_on '留言'
 
     within 'div#comment-area' do
@@ -25,27 +23,20 @@ RSpec.feature "在專案底下留言", type: :feature do
     end
 
     find('input.sub-comment-submit').click
-
     expect(page).to have_content('Wubay好好用')
   end
 
   it "按讚" do
     login_as user
-
     visit project_path(comment.project_id)
-
     click_on '留言專區'
-
     click_on '♡'
-
     expect(find('span#like-count')).to have_content('1')
   end
 
   it "刪除留言" do
     login_as user
-
     visit project_path(comment.project_id)
-    
     click_on '留言專區'
 
     accept_confirm do

@@ -12,7 +12,7 @@ class Api::SearchesController < ApplicationController
       elsif type == "asc" # 舊到新
         @projects = @projects.order(created_at: :asc)
       else # 熱門
-        @projects = Project.includes(:donate_items).order('donate_items.count desc')
+        @projects = Project.all.order(current_total: :desc)
       end
     end
     

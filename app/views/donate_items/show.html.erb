@@ -1,8 +1,8 @@
 <main class='p-10 bg-gray-100'>
   <div class='max-w-xl grid-cols-10 mx-auto my-8 lg:max-w-5xl lg:grid' data-controller='donate' data-price='<%= @donate_item.price %>' data-donate-item-title='<%= @donate_item.title %>', data-project-id='<%= @donate_item.project_id %>'>
-    <div class='col-span-6'>
+    <article class='col-span-6'>
       <div class='mb-5'>
-        <h1 class='text-4xl'><%= @donate_item.title %></h1>
+        <h2 class='text-4xl'><%= @donate_item.title %></h2>
       </div>
       <div class='mb-5'>
         <span class='text-3xl'><em>NT$ <%= @donate_item.price %></em></span>
@@ -17,11 +17,11 @@
           <button class='px-5 py-3' data-action='click->donate#plus'>+</button>
         </div>
       </div>
-      <div class='mt-5'>
-        【贊助方案內容】
+      <section class='mt-5'>
+        <h3 class='text-xl'>贊助方案內容：</h3>
         <p><%= @donate_item.content %></p>
-      </div>
-    </div>
+      </section>
+    </article>
     <div id="additional_donate_interface" class='col-span-4 px-3 py-5 bg-white shadow-md rounded-xl'>
       <div class='mb-2 font-semibold text-gray-400'>額外贊助</div>
       <div class='flex items-center mb-4'>

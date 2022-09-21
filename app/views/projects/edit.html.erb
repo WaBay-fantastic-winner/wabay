@@ -1,5 +1,5 @@
 <% if @project.errors.any? %> 
-  <div class='py-6 bg-gray-100'>
+  <div class='py-6 reverse-bg'>
     <p class='text-center'>資料有誤，請填寫正確格式：</p>
     <ul class='text-red-400'>
       <% @project.errors.full_messages.each do |message| %>
@@ -9,9 +9,9 @@
   </div>  
 <% end %>
 </div>
-<main class='bg-gray-100'>
-  <div class='max-w-3xl py-12 mx-auto'>
-    <div class='p-8 bg-white rounded-3xl'>
+<main class='reverse-bg'>
+  <div class='max-w-3xl py-12 mx-auto '>
+    <div id="edit_project" class='p-8 bg-white shadow rounded-3xl'>
       <h2 class="py-4 my-4 text-2xl tracking-wider text-center text-white bg-purple-400 rounded-2xl " >編輯專案</h2>
       <%= form_for(@project) do |form| %>
         <div class="form-list">
@@ -36,7 +36,7 @@
         </div> 
         <div class="form-list">
           <%= form.label :end_time, "提案結束日期 *", class:"form-list-label" %>
-          <%= form.date_field :end_time, value: "%Y-%m-%d", class: "col-span-3 rounded ml-5 input-focus" %>
+          <%= form.date_field :end_time, class: "col-span-3 rounded ml-5 input-focus" %>
         </div>
         <div class="form-list">
           <%= form.label :avatar, "封面照片 *", class:"form-list-label" %>

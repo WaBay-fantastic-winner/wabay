@@ -9,10 +9,10 @@ class Project < ApplicationRecord
   has_rich_text :description
   has_one_attached :avatar
   has_many :comments, dependent: :destroy
-  has_many :follows, as: :followable
+  has_many :follows, as: :followable, dependent: :destroy
   has_many :questions
   has_many :messages
 
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,
-            :description, presence: true
+            :description, :avatar, presence: true
 end
