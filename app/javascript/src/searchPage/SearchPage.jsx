@@ -9,7 +9,7 @@ const SearchPage = () => {
             <div className='my-5'>
                 <Select />
             </div>
-            <div className="grid gap-5 md:grid-cols-9">
+            <div className="grid md:grid-cols-9">
                 <FundraisingItem/>
             </div>
         </section>

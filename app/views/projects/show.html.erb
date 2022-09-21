@@ -2,13 +2,13 @@
   <article>
     <div class="pt-10 bg-gray-100">
       <h1 class="mb-3 text-2xl font-semibold text-center"><%= @project.title %></h1>
-      <p class="text-center ">提案者 <a href="" class="text-purple-400"><%= @project.organizer %></a></p>
+      <p class="text-center">提案者 <span class="primary-text-color"><%= @project.organizer %></span></p>
     </div>
     <section class='py-10 bg-gray-100'>
       <div class='max-w-6xl grid-cols-10 gap-8 px-10 mx-auto lg:grid lg:px-5'>
         <div class='col-span-6'>
           <div class="projects-img-box">
-            <div class='projects-link'>
+            <div class='fit-size'>
               <% if @project.avatar.attached? %>
                   <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
                 <% else %>
@@ -48,19 +48,19 @@
       </div>
     </section>
     <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-300 border-double'>
-      <div class="justify-between max-w-6xl px-5 mx-auto lg:flex">
-        <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400">
-          <%= link_to '專案內容', project_path(@project), class:"current-page mx-5"%>
-          <a href='<%= project_questions_path(@project)%>' class="mx-5">
+      <div class="justify-between max-w-6xl mx-auto text-sm md:text-base lg:flex">
+        <div class="flex items-center justify-center h-16 font-semibold text-gray-400">
+          <%= link_to '專案內容', project_path(@project), class:"current-page mx-2 md:mx-5"%>
+          <a href='<%= project_questions_path(@project)%>' class="mx-2 md:mx-5">
             常見問題 <span class='text-xs align-top'><%= @project.questions.count%></span>
           </a>
-          <a href='<%= project_comments_path(@project)%>' class="mx-5">
+          <a href='<%= project_comments_path(@project)%>' class="mx-2 md:mx-5">
             留言專區 <span class='text-xs align-top'><%= @project.comments.count%></span>
           </a>
-          <%= link_to '即時通訊', project_messages_path(@project), class:"mx-5"%>
+          <%= link_to '即時通訊', project_messages_path(@project), class:"mx-2 md:mx-5"%>
         </div>  
         <% if @project.user_id == current_user&.id %>
-          <div class='flex items-center justify-center my-2'>
+          <div class='flex items-center justify-center mb-4 lg:my-3'>
             <%= link_to "編輯專案", edit_project_path, class:'mx-5 p-2 inline-block border border-purple-400 rounded-xl ' %>
             <%= link_to "刪除專案", project_path, method: "delete", data: {confirm: '確定要刪除嗎?'}, class:'text-red-400 mr-5'%>
           </div>
@@ -68,7 +68,7 @@
       </div>
     </div>
     <section class="py-8 ">
-      <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid" data-controller="projectUnroll">
+      <div class="max-w-6xl grid-cols-10 gap-12 p-5 mx-auto lg:grid" data-controller="projectUnroll">
         <div class='relative h-64 col-span-7 overflow-hidden project-content lg:h-auto' data-projectUnroll-target="projectContent" >
           <div class="translucent-cover lg:hidden" data-projectUnroll-target="translucentCover"></div>
           <%= @project.description%>
@@ -79,15 +79,15 @@
         <%# 側邊滾輪募資金額選項 %>
         <div class="col-span-3 ">
           <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
-            <div class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
+            <article class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
               <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
               <p class='mb-3 break-words'><%= @project.user.description%></p>
               <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>
-              <i class="text-2xl fa-brands fa-instagram"></i></a>
-            </div>
+              <i class="text-2xl fa-brands fa-instagram"></i>
+            </article>
             <% if @project.user_id == current_user&.id %>
-              <div class='mb-3 tracking-wider border border-purple-300 border-double'>
-                <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block text-xl w-full py-3 mb-2 text-center primary-text-color tracking-wider ' %>
+              <div class='py-4 mb-3 tracking-wider border border-purple-300 border-double'>
+                <%= link_to "新增贊助方案", new_project_donate_item_path(@project), class:'block text-xl text-center primary-text-color tracking-wider ' %>
                 </div>
             <% end %>
             <div>

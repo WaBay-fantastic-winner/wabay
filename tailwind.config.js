@@ -2,6 +2,12 @@
 module.exports = {
   content: ['./src/**/*.{html,js}', './node_modules/tw-elements/dist/js/**/*.js'],
   theme: {
+    minHeight: {
+      '180': '180px',
+    },
+    minHeight: {
+      '300px': '300px',
+    },
     extend: {
       width: {
         '400': '400px',
@@ -11,7 +17,8 @@ module.exports = {
       height: {
         '500': '500px',
         '350': '350px',
-        '70': '70px'
+        '70': '70px',
+        '450': '450px'
       }
     }
   },

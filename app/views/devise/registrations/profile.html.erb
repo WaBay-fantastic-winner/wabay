@@ -10,7 +10,7 @@
   </div>
   <section class='py-10 bg-gray-50'>
     <div class="max-w-2xl px-3 mx-auto">
-      <h1 class="text-2xl text-center "><%= current_user.username %> </h1>
+      <h2 class="text-2xl text-center "><%= current_user.username %> </h2>
       <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>
       <p class='text-center break-all'><%= current_user.description %></p>
     </div>
@@ -29,31 +29,33 @@
     <% else %>
       <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
         <% @projects.each do |project| %>
-          <div class="col-span-3 p-3 mx-5 mb-8 bg-white rounded-xl">
-            <div class="projects-img-box">
-              <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
-                <% if project.avatar.attached? %>
-                    <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
-                  <% else %>
-                    <%= image_tag 'wubay.png' %>
-                <% end %>
-              </a>                    
-            </div>
-            <div class='mb-4'>
-              <h2 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h2>
-              <p class='my-1'>提案者 <span class='text-purple-400'><%= project.organizer %></span></p>
-            </div>
-            <div>
-              <span class='my-1'>NT$ <%= project.current_total %></span>
-            </div>
-            <div class="progress-container">
-              <span id="progressPercent">0%</span>
-              <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
-            </div> 
-            <div>
-              <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day %> 天</span>
-            </div>
-          </div>
+          <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
+            <a href='projects/<%= "#{project.id}" %>'>
+              <div class="projects-img-box">
+                  <div class='fit-size'>
+                      <% if project.avatar.attached? %>
+                        <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                      <% else %>
+                        <%= image_tag 'wubay.png' %>
+                      <% end %>
+                  </div>
+              </div>
+              <div class='mb-4'>
+                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= project.title %></h3>
+                <p class='my-1'>提案者 <span class='primary-text-color'><%= project.organizer %></span></p>
+              </div>
+              <div>
+                <span class='my-1'>NT$ <%= project.current_total %></span>
+              </div>
+              <div class="progress-container">
+                <span id="progressPercent">0%</span>
+                <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
+              </div> 
+              <div>
+                <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day  %> 天</span>
+              </div>
+            </a>  
+          </article>
         <% end %>
       </div>
     <% end %>
