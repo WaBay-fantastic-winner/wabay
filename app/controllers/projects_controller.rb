@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: %i[show]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_project, only: %i[show edit destroy update follow]
   include ProjectPriceSum
   

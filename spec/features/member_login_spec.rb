@@ -6,7 +6,7 @@ RSpec.describe "會員登入", type: :feature do
   it "登入成功" do
     visit '/'
     click_on '登入'
-    within "div#sign_in_form" do
+    within "form#new_user" do
       fill_in '請輸入Email', with: user.email
       fill_in '請輸入密碼', with: '33445566'
     end
