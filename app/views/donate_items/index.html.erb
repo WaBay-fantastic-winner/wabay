@@ -5,18 +5,19 @@
       <p class="mb-4 text-center primary-text-color">提案者 <%= @current_project.organizer %></p>
     </div>
   </section>
-  <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-300 border-double'>
-    <div class="justify-between max-w-6xl px-5 mx-auto lg:flex">
-      <div class="flex items-center justify-center h-16 py-3 font-semibold text-gray-400">
-        <%= link_to '專案內容', project_path(@current_project), class:"mx-5"%>
-        <a href='<%= project_questions_path(@current_project)%>' class="mx-5">
-          常見問題 <span class='text-xs align-top'><%= @current_project.questions.count%></span>
+  <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-200 border-double'>
+    <div class="justify-between max-w-6xl mx-auto text-sm md:text-base lg:flex">
+      <div class="flex items-center justify-center h-16 font-semibold text-gray-400">
+        <%= link_to '專案內容', project_path(@current_project), class:"mx-2 md:mx-5"%>
+        <a href='<%= project_questions_path(@current_project)%>' class="mx-2 md:mx-5">
+          常見問題 <span class='text-xs align-top '><%= @current_project.questions.count%></span>
         </a>
-        <a href='<%= project_comments_path(@current_project)%>' class="mx-5">
-          留言專區 <span class='text-xs align-top'><%= @current_project.comments.count%></span>
+        <a href='<%= project_comments_path(@current_project)%>' class="mx-2 md:mx-5 ">
+          留言專區 <span class='text-xs align-top '><%= @current_project.comments.count%></span>
         </a>
-      </div>
-    </div>
+        <%= link_to '即時通訊', project_messages_path(@current_project), class:"mx-2 md:mx-5"%>
+      </div> 
+    </div>  
   </div>
   <div class="w-5/6 py-10 m-auto overflow-x-scroll">
     <div class="flex w-max">
@@ -31,18 +32,18 @@
           <div class='flex-1'>
             <h2 class='text-2xl tracking-wider font-semi'><%= donate_item.title %></h2>
             <span class='text-2xl tracking-wider inline-blockmb-3 font-semi'>NT$ <%= donate_item.price %></span>
-          <% if donate_item.amount %>
-            <div class='px-2 my-3 bg-gray-100 rounded-lg w-max'>
-              <span class='text-xs text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
-            </div>
-          <% end %>
+            <% if donate_item.amount %>
+              <div class='px-2 my-3 bg-gray-100 rounded-lg w-max'>
+                <span class='text-xs text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
+              </div>
+            <% end %>
             <div class='px-2 my-3 bg-gray-100 rounded-lg w-max '>
               <span class='text-xs text-gray-500'>已被贊助: <%= donate_item.donate_logs_count || 0 %> 次</span>
             </div>
-            <div class='text-gray-500' >
+            <section class='text-gray-500' >
               <h3 class='rounded-sm w-max'>贊助方案內容：</h3>
               <div><%= donate_item.content %></div>
-            </div>
+            </section>
           </div>
           <%= link_to '贊助', project_donate_item_path(project_id:  donate_item.project_id, id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
         </article>

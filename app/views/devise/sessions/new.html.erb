@@ -1,7 +1,7 @@
 <%= render "devise/shared/error_messages", resource: resource %>
 <main class='py-10 bg-gray-100 wave-bg'>
-  <div id="sign_in_form" class="p-4 mx-auto bg-gray-100 md:w-400 rounded-xl">
-    <h1 class="text-2xl font-medium tracking-wider text-center primary-text-color">歡迎光臨Wubay登入</h1>
+  <section id="sign_in_form" class="p-4 mx-auto bg-gray-100 md:w-400 rounded-xl">
+    <h2 class="text-2xl font-medium tracking-wider text-center primary-text-color">歡迎光臨Wubay登入</h2>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="py-6 field">
         <%= f.email_field :email, autofocus: true, placeholder: "請輸入Email", autocomplete: "email", class:"input-focus" %>
@@ -22,13 +22,13 @@
     <% end %>
     <div class='divider'>或</div>
     <div class='py-2 my-4 outside-link'>
-      <%=link_to user_google_oauth2_omniauth_authorize_path  do %>
+      <%=link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
         <img src='https://diat4w9qa5tx9.cloudfront.net/production-aws/assets/icon/google-68239b5f328377ad0e42357804e1f6d21c2a9e5b9e454b8687631725a5540a4e.png' class='inline w-6 align-top'>
         <span>使用google帳號</span>
       <% end %>
     </div>
     <div class='py-2 outside-link'>
-      <%=link_to user_facebook_omniauth_authorize_path do %>
+      <%=link_to user_facebook_omniauth_authorize_path, method: :post do %>
         <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Facebook_F_icon.svg' class='inline w-5 align-top'>
         <span>使用facebook帳號</span>
       <% end %>

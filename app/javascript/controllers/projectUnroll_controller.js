@@ -5,7 +5,7 @@ export default class extends Controller {
 
   unroll () {
     this.unrollBtnTarget.classList.add("hidden");
-    this.projectContentTarget.classList.remove("h-72");
+    this.projectContentTarget.classList.remove("h-64");
     this.translucentCoverTarget.classList.add("hidden")
   }
 }

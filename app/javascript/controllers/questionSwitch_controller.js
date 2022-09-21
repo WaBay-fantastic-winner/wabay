@@ -3,7 +3,7 @@ import { Controller } from "stimulus"
 export default class extends Controller {
     static targets = ["btn"];
 
-    switch () {
-    this.btnTarget.classList.toggle('active')
+    switch (e) {
+    this.btnTargets[e.currentTarget.dataset.index].classList.toggle('active')
     }
 }

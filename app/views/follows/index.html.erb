@@ -11,38 +11,42 @@
   <section class='py-5 bg-gray-50'>
     <h2 class="m-auto mb-4 text-xl text-center"><strong>〘 我 的 追 蹤 清 單 〙</strong></h2>
     <% if @follows.empty? %> 
-      <p class="mx-auto my-20 text-center bg-white primary-text-color w-max">您目前還沒有任何追蹤的專案唷～</p>
+      <p class="mx-auto my-20 text-center primary-text-color w-max">您目前還沒有任何追蹤的專案唷～</p>
     <% else %>
       <div class="grid max-w-6xl mx-auto md:grid-cols-9">
         <% @follows.each do |follow| %>
-          <div class="col-span-3 p-3 mx-5 mb-8 bg-white rounded-xl FundraisingItem">
-            <div class="projects-img-box">
-              <a href='projects/<%= follow.followable_id %>', class='projects-link'>
-                <% if Project.find(follow.followable_id).avatar.attached? %>
-                  <%= image_tag Project.find_by!(id: follow.followable_id).avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
-                <% else %>
-                  <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
-                <% end %>
-              </a>                    
-            </div>
-            <div class='mb-4'>
-              <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to Project.find(follow.followable_id).title, project_path(id: follow.followable_id) %></h3>
-              <p class='my-1'>提案者 <span class='text-purple-400'><%= Project.find(follow.followable_id).organizer %></span></p>
-            </div>
-            <div>
-              <span class='my-1'>NT$  <%= Project.find_by!(id: follow.followable_id).current_total %></span>
-            </div>
-            <div class="progress-container">
-              <span id="progressPercent">0%</span>
-              <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((Project.find(follow.followable_id).current_total.to_f / Project.find(follow.followable_id).amount_target).round(2) * 100).to_i %>'></div>
-            </div> 
-            <div class='mt-3'>
-              <button class="w-full col-span-1 py-2 text-gray-400 duration-200 border border-gray-400 rounded-lg hover:bg-purple-400 hover:text-white" data-controller='follow' data-action='click->follow#cancelFollow' data-project-id='<%= Project.find(follow.followable_id).id %>'>
+<<<<<<< HEAD
+          <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
+            <a href='projects/<%= "#{follow.followable_id}" %>'>
+              <div class="projects-img-box">
+                  <div class='fit-size'>
+                      <% if Project.find(follow.followable_id).avatar.attached? %>
+                        <%= image_tag Project.find_by!(id: follow.followable_id).avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                      <% else %>
+                        <%= image_tag 'wubay.png' %>
+                      <% end %>
+                  </div>
+              </div>
+              <div class='mb-4'>
+                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= Project.find(follow.followable_id).title %></h3>
+                <p class='my-1'>提案者 <span class='primary-text-color'><%= Project.find(follow.followable_id).organizer %></span></p>
+              </div>
+              <div>
+                <span class='my-1'>NT$ <%= Project.find_by!(id: follow.followable_id).current_total %></span>
+              </div>
+              <div class="progress-container">
+                <span id="progressPercent">0%</span>
+                <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((Project.find(follow.followable_id).current_total.to_f / Project.find(follow.followable_id).amount_target).round(2) * 100).to_i %>'></div>
+              </div> 
+              <div class='mb-2'>
+                <span>倒數 <%= (Project.find_by!(id: follow.followable_id).end_time - Time.now).to_i / 1.day  %> 天</span>
+              </div>
+            </a>
+            <button class="w-full col-span-1 py-2 text-gray-400 duration-200 border border-gray-400 rounded-lg hover:bg-purple-400 hover:text-white" data-controller='follow' data-action='click->follow#cancelFollow' data-project-id='<%= Project.find(follow.followable_id).id %>'>
                 <i class="mr-1 fa-solid fa-sheet-plastic"></i>
                 取消追蹤
-              </button>
-            </div> 
-          </div>        
+            </button>     
+          </article>  
         <% end %>
       </div>
     <% end %>  

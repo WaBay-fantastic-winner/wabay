@@ -10,31 +10,33 @@
             </div>
             <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
                 <% @projects.each do |project| %>
-                    <div class="col-span-3 p-3 mx-5 mb-8 bg-white rounded-xl FundraisingItem">
-                        <div class="projects-img-box">
-                            <a href='projects/<%= "#{project.id}" %>', class='projects-link'>
-                                <% if project.avatar.attached? %>
-                                    <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
-                                <% else %>
-                                    <%= image_tag Faker::Avatar.image(slug: "my-own-slug", size: "1000x500", format: "jpg") %>
-                                <% end %>
-                            </a>                    
-                        </div>
-                        <div class='mb-4'>
-                            <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= link_to project.title, project_path(project) %></h3>
-                            <p class='my-1'>提案者 <span class='primary-text-color'><%= project.organizer %></span></p>
-                        </div>
-                        <div>
-                            <span class='my-1'>NT$ <%= project.current_total %></span>
-                        </div>
-                        <div class="progress-container">
-                            <span id="progressPercent">0%</span>
-                            <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
-                        </div> 
-                        <div>
-                            <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day %> 天</span>
-                        </div>
-                    </div>
+                    <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                        <a href='projects/<%= "#{project.id}" %>' class=''>
+                            <div class="projects-img-box">
+                                <div class='fit-size'>
+                                    <% if project.avatar.attached? %>
+                                        <%= image_tag project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                                    <% else %>
+                                        <%= image_tag 'wubay.png' %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class='mb-4'>
+                                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= project.title %></h3>
+                                <p class='my-1'>提案者 <span class='primary-text-color'><%= project.organizer %></span></p>
+                            </div>
+                            <div>
+                                <span class='my-1'>NT$ <%= project.current_total %></span>
+                            </div>
+                            <div class="progress-container">
+                                <span id="progressPercent">0%</span>
+                                <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((project.current_total.to_f / project.amount_target).round(2) * 100).to_i %>'></div>
+                            </div> 
+                            <div>
+                                <span>倒數 <%= (project.end_time - Time.now).to_i / 1.day  %> 天</span>
+                            </div>
+                        </a>  
+                    </article>
                 <% end %>
             </div>
         </div>
@@ -42,8 +44,47 @@
     <section id='feature' class="pb-5 my-5">
         <%= javascript_pack_tag 'Feature' %>
     </section>
+    <section class='py-5 bg-gray-50'>
+        <div class='max-w-6xl mx-auto'>
+            <div class="flex items-end p-2 mb-4 w-max ">
+                <h2 class="mx-5 text-3xl font-extrabold">成功案例</h2>
+                <%= link_to "More", projects_path, class:"primary-text-color"%>
+            </div>
+            <div class="max-w-6xl grid-cols-9 mx-auto md:grid">
+                <% @success_projects.each do |success_project| %>
+                    <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl FundraisingItem">
+                        <a href='projects/<%= "#{success_project.id}" %>'>
+                            <div class="projects-img-box">
+                                <div class='fit-size'>
+                                    <% if success_project.avatar.attached? %>
+                                        <%= image_tag success_project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                                    <% else %>
+                                        <%= image_tag 'wubay.png' %>
+                                    <% end %>
+                                </div>
+                            </div>
+                            <div class='mb-4'>
+                                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= success_project.title %></h3>
+                                <p class='my-1'>提案者 <span class='primary-text-color'><%= success_project.organizer %></span></p>
+                            </div>
+                            <div>
+                                <span class='my-1'>NT$ <%= success_project.current_total %></span>
+                            </div>
+                            <div class="progress-container">
+                                <span id="progressPercent">0%</span>
+                                <div class="progress-bar" data-controller='progressBar' data-percentage='<%= ((success_project.current_total.to_f / success_project.amount_target).round(2) * 100).to_i %>'></div>
+                            </div> 
+                            <div>
+                                <span>倒數 <%= (success_project.end_time - Time.now).to_i / 1.day  %> 天</span>
+                            </div>
+                        </a>  
+                    </article>
+                <% end %>
+            </div>
+        </div>
+    </section>
     <section class='flex flex-col items-center py-5 '>
         <h2 class='text-center'>用群眾的力量，<br/>讓有價值的事物獲得更好的機會！</h2>
-        <button class='block py-3 my-6 text-white bg-purple-400 rounded-lg px-14 hover:bg-purple-300'><%= link_to "提案", new_project_path%></button>
+        <%= link_to "提案", new_project_path, class:'block py-3 my-6 text-white bg-purple-400 rounded-lg px-14 hover:bg-purple-500'%>
     </section>
 </main>

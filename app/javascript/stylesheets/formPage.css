@@ -46,7 +46,8 @@
   height: 1px;
   background-color: rgb(223, 223, 223);
 }
-.burst-bg{
-  background-image: url(../src/assets/img/bbburst.svg);
-  background-size: 100%;
+.reverse-bg{
+  background-image: url(../src/assets/img/reversewave.png);
+  background-size: 100% 80%; 
+  background-repeat: no-repeat;
 }
