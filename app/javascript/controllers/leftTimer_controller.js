@@ -12,6 +12,7 @@ export default class extends Controller {
     let leftTimeID = setInterval(function(){leftTimer(endTime)}, 1000)
     function leftTimer(endTime) {
       const totalSeconds = endTime.diff(dayjs(),'seconds')
+
       if (totalSeconds <= 0) {
         leftTime.textContent = '募款已結束'
         leftTime.classList.add('text-red-500')
