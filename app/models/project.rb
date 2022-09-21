@@ -14,5 +14,5 @@ class Project < ApplicationRecord
   has_many :messages
 
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,
-            :description, presence: true
+            :description, :avatar, presence: true
 end
