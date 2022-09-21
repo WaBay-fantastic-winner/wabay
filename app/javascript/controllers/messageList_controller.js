@@ -33,7 +33,6 @@ export default class extends Controller {
   _cableReceived(data) {
     // Called when there's incoming data on the websocket for this channel
 
-    console.log(data);
     this.messageTarget.innerHTML += data;
     this.inputTarget.value = '';
   }
