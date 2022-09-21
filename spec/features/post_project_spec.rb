@@ -9,12 +9,13 @@ RSpec.feature '專案功能', type: :feature do
     visit '/'
     click_button "提案"
 
-    within 'div#new_project' do
+    within 'form#new_project' do
       fill_in 'project_organizer', with: Faker::Name.name
       fill_in 'project_email', with: Faker::Internet.email
       fill_in 'project_phone', with: Faker::PhoneNumber
       fill_in 'project_title', with: Faker::Food.dish
       fill_in 'project_amount_target', with: Faker::Number.number(digits: 4)
+      attach_file('project_avatar', File.absolute_path('app/assets/images/wubay.png'))
       find("input#project_end_time").set("#{Date.new.end_of_year + 1}")
       find("trix-editor").set(Faker::Food.description) 
     end
@@ -30,6 +31,7 @@ RSpec.feature '專案功能', type: :feature do
     within 'div#edit_project' do
       fill_in 'project_organizer', with: Faker::Name.name
       fill_in 'project_amount_target', with: Faker::Number.number(digits: 4)
+      attach_file('project_avatar', File.absolute_path('app/assets/images/wubay.png'))
       find("input#project_end_time").set("#{Date.new.end_of_year + 1}")
       find("trix-editor").set(Faker::Food.description) 
     end
