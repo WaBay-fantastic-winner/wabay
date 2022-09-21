@@ -90,3 +90,5 @@ gem 'paranoia', '~> 2.6'
 
 gem 'aws-sdk-s3', require: false
 gem 'sidekiq', '~> 6.5', '>= 6.5.6'
+
+gem 'active_storage_validations'
