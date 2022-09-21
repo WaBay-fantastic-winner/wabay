@@ -19,7 +19,6 @@ const FundraisingItem = () => {
                 })
                 .then(resp => {
                     setProjectItems(resp.data)
-                    console.log(resp.data);
                 })
                 .catch( err => alert(err))
                 };

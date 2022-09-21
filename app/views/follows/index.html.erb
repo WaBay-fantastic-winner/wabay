@@ -15,7 +15,7 @@
     <% else %>
       <div class="grid max-w-6xl mx-auto md:grid-cols-9">
         <% @follows.each do |follow| %>
-          <div class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
+          <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
             <a href='projects/<%= "#{follow.followable_id}" %>'>
               <div class="projects-img-box">
                   <div class='fit-size'>
@@ -45,7 +45,7 @@
                 <i class="mr-1 fa-solid fa-sheet-plastic"></i>
                 取消追蹤
             </button>     
-          </div>  
+          </article>  
         <% end %>
       </div>
     <% end %>  

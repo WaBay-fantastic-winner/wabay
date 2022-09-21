@@ -17,10 +17,10 @@
       <div class='w-1/2 px-2 my-3 bg-gray-100 rounded-lg'>
         <span class='text-gray-500'>已被贊助: <%= donate_item.donate_logs_count || 0 %> 次</span>
       </div>
-      <div>
+      <section>
         <h3 class='text-gray-500'>贊助方案內容：</h3>
         <span class='text-gray-500'><%= donate_item.content %></span>
-      </div>
+      </section>
     </div>
     <%= link_to '贊助', project_donate_item_path(project_id: params[:id], id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
   </article>
