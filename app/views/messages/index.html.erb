@@ -21,21 +21,17 @@
   </div>
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
-      <% if @donated %>
+      <% if @donated || current_user.id == @project.user.id %>
         <div class="col-span-5 col-start-2 px-3 mb-3 lg:shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
           <div data-messageList-target='box' class='overflow-x-hidden overflow-y-auto h-450' id='box'>
-            <div data-messageList-target='message' class='p-4 border border-gray-300 rounded-xl '>
-              <% if @project.messages.empty? %>
-                <div>開始對話</div>
-              <% else %>
-                <% @project.messages.each do |message| %>
-                  <% if message.user == current_user %>
-                    <%= render 'messages/selfmessage', message: message %>
-                  <% else %>  
-                      <%= render 'messages/message', message: message %>  
-                  <% end %>
+            <div data-messageList-target='message' class='p-4 rounded-xl'>
+              <% @project.messages.each do |message| %>
+                <% if message.user == current_user %>
+                  <%= render 'messages/selfmessage', message: message %>
+                <% else %>  
+                    <%= render 'messages/message', message: message %>  
                 <% end %>
-              <% end %>  
+              <% end %>
             </div>
           </div>
           <%= form_with(model: @message, url: project_messages_path(@project.id), method: 'post',
