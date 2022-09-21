@@ -9,8 +9,9 @@ export default class extends Controller {
     const endTime = dayjs(endTimeArr[0], endTimeArr[1])
     const leftTime =  document.querySelector('#leftTime')
 
-    let leftTimeID = setInterval(function(){leftTimer(endTime)}, 1000)
-    function leftTimer(endTime) {
+    const leftTimeID = setInterval(function(){leftTimer(endTime)}, 1000)
+    
+    const leftTimer = function(endTime) {
       const totalSeconds = endTime.diff(dayjs(),'seconds')
 
       if (totalSeconds <= 0) {
@@ -18,7 +19,7 @@ export default class extends Controller {
         leftTime.classList.add('text-red-500')
         clearInterval(leftTimeID)
         document.querySelector('.donate-link').remove()
-        let closeDonate = document.createElement('p')
+        const closeDonate = document.createElement('p')
         closeDonate.setAttribute('class','py-2 text-center text-gray-500 bg-gray-300 rounded-lg')
         closeDonate.textContent = '募資已結束'
         document.querySelector('.donate-box').appendChild(closeDonate)

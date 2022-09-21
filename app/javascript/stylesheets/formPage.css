@@ -12,16 +12,9 @@
   color: red;
   display: block;
 }
-.square-bg{
-  background-color: #e5e5f7;
-  background-image:  linear-gradient(30deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(150deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(30deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(150deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(60deg, #ca9cff77 25%, transparent 25.5%, transparent 75%, #ca9cff77 75%, #ca9cff77), linear-gradient(60deg, #ca9cff77 25%, transparent 25.5%, transparent 75%, #ca9cff77 75%, #ca9cff77);
-  background-size: 56px 98px;
-  background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
-}
 .wave-bg{
   background-image: url(../src/assets/img/YPwave.png);
 }
-
 .divider{
   text-align: center;
   position: relative;

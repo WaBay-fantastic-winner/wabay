@@ -6,20 +6,20 @@
           <%= link_to '刪除贊助方案', project_donate_item_path(project_id: donate_item.project_id, id: donate_item), method: 'delete',class:'text-red-400', data:{ confirm: "確定要刪除「#{donate_item.title}」方案嗎？" } %> 
         <% end %>
     </div>
-    <div>
+    <div> 
       <h2 class='text-2xl tracking-wider font-semi'><%= donate_item.title %></h2>
       <span class='inline-block mb-3 text-2xl tracking-wider font-semi'>NT$ <%= donate_item.price %></span>
-      <% if donate_item.amount %>
-        <div class='w-1/3 my-3 bg-gray-100 rounded-lg'>
-          <span class='pl-3 text-xs text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
+      <% if donate_item.amount && donate_item.amount > 0 %>
+        <div class='my-3 bg-gray-100 rounded-lg w-max'>
+          <span class='px-2 text-sm text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
         </div>
       <% end %>
-      <div class='w-1/2 px-2 my-3 bg-gray-100 rounded-lg'>
+      <div class='px-2 my-3 bg-gray-100 rounded-lg w-max'>
         <span class='text-gray-500'>已被贊助: <%= donate_item.donate_logs_count || 0 %> 次</span>
       </div>
       <section>
         <h3 class='text-gray-500'>贊助方案內容：</h3>
-        <span class='text-gray-500'><%= donate_item.content %></span>
+        <span class='text-gray-500 break-words'><%= donate_item.content %></span>
       </section>
     </div>
     <%= link_to '贊助', project_donate_item_path(project_id: params[:id], id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
