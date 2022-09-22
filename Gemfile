@@ -7,7 +7,7 @@ ruby '3.1.2'
 
 gem 'devise', '~> 4.2'
 
-ggem 'react-rails', '~> 2.6', '>= 2.6.2'
+gem 'react-rails', '~> 2.6', '>= 2.6.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
