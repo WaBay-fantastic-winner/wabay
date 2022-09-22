@@ -7,7 +7,7 @@ RSpec.feature '專案功能', type: :feature do
   it "專案新增成功" do
     login_as user
     visit '/'
-    click_button "提案"
+    find("a.rspec-link").click
 
     within 'form#new_project' do
       fill_in 'project_organizer', with: Faker::Name.name

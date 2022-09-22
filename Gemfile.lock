@@ -390,7 +390,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   database_cleaner-active_record (~> 1.8.0.beta)
-  devise
+  devise (~> 4.2)
   devise-i18n (~> 1.10)
   dotenv-rails
   factory_bot_rails (~> 6.2)
@@ -408,12 +408,12 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-rails_csrf_protection
   paranoia (~> 2.6)
-  pg
+  pg (~> 1.4, >= 1.4.3)
   pry (~> 0.13.1)
   puma (~> 5.0)
   rails (~> 6.1.6, >= 6.1.6.1)
-  rails-i18n
-  react-rails
+  rails-i18n (~> 7.0, >= 7.0.5)
+  react-rails (~> 2.6, >= 2.6.2)
   redis (~> 4.0)
   rspec-rails (~> 5.1)
   rubocop (~> 1.35)
