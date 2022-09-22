@@ -6,27 +6,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_account_update_params, only: [:update]
 
   def profile
-    @projects = current_user.projects
+    if user_signed_in? 
+      @projects = current_user.projects
+    else  
+      redirect_to new_user_session_path
+    end   
   end
-  
-  # GET /resource/sign_up
-  # def new
-  #   super
-  # end
-
-  # GET /resource/edit
-  # def edit
-  #   super
-  # end
-
-  # POST /resource
-  # def create
-  #   super
-  # end
 
   # PUT /resource
   def update
-    super
+    if current_user.uid == nil
+      super
+   else
+      current_user.update(params.require(:user).permit(:username, :password, :description, :avatar_url))
+      redirect_to '/users/profile'
+   end
   end
 
   # DELETE /resource
@@ -34,25 +28,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
   end
 
-  # GET /resource/cancel
-  # Forces the session data which is usually expired after sign
-  # in to be expired now. This is useful if the user wants to
-  # cancel oauth signing in/up in the middle of the process,
-  # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
-
   private
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username description])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[username description avatar_url])
   end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[username description])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[username description avatar_url])
   end
 end
 

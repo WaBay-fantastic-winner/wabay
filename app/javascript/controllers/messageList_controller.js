@@ -23,7 +23,6 @@ export default class extends Controller {
 
   _cableConnected() {
     // Called when the subscription is ready for use on the server
-    console.log('connected');
   }
 
   _cableDisconnected() {

@@ -35,11 +35,12 @@ zh-TW:
         organizer: 提案人
         avatar: 封面照片
       transaction:
-        pending: 尚未付款
-        paid: 已付款
-        cancellation: 取消訂單
-        failed: 交易失敗
-        refunded: 已退款  
+        state: 
+          pending: 尚未付款
+          paid: 已付款
+          cancellation: 取消訂單
+          failed: 交易失敗
+          refunded: 已退款  
     models:
       user: 使用者
   devise:
@@ -148,6 +149,7 @@ zh-TW:
       unlocked: 您的帳號已被解鎖，現在已經登入。
   errors:
     messages:
+      content_type_invalid: 檔案格式錯誤
       already_confirmed: 已經驗證，請直接登入。
       confirmation_period_expired: 必須在 %{period} 內驗證，請重新申請。
       expired: 已經過期，請重新申請。

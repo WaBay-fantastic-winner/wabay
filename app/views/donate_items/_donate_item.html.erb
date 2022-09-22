@@ -14,8 +14,8 @@
           <span class='px-2 text-sm text-gray-500'>剩餘: <%= donate_item.amount %> 個</span>
         </div>
       <% end %>
-      <div class='px-2 my-3 bg-gray-100 rounded-lg w-max'>
-        <span class='text-gray-500'>已被贊助: <%= donate_item.donate_logs_count || 0 %> 次</span>
+      <div class='w-1/2 px-2 my-3 bg-gray-100 rounded-lg'>
+        <span class='text-gray-500'>已被贊助: <%= donate_item.donate_logs.size || 0 %> 次</span>
       </div>
       <section>
         <h3 class='text-gray-500'>贊助方案內容：</h3>
