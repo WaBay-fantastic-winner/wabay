@@ -49,7 +49,7 @@
                       <td class="table-layout"><%= link_to Project.find_by!(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id).title, project_path(id: DonateItem.find_by!(id: transaction.donate_item_id).project_id) %></td>
                       <td class="table-layout"><%= DonateItem.find_by!(id: transaction.donate_item_id).title %></td>
                       <td class="table-layout"><%= transaction.price %></td>
-                      <td class="table-layout"><%= t("transaction.#{state}") %></td>
+                      <td class="table-layout"><%= t("transcation.state") %></td>
                       <% if transaction.state === 'pending' %>
                         <td class="text-red-400 table-layout"><%= link_to '取消交易訂單', transaction_path(transaction), method: 'delete', data:{confirm: '確定要取消嗎？' } %></td>
                         <% else %>
