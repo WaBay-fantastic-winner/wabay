@@ -42,7 +42,7 @@
             </div>
             <section class='text-gray-500' >
               <h3 class='rounded-sm w-max'>贊助方案內容：</h3>
-              <div><%= donate_item.content %></div>
+              <p class='break-words'><%= donate_item.content %></p>
             </section>
           </div>
           <%= link_to '贊助', project_donate_item_path(project_id:  donate_item.project_id, id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>
