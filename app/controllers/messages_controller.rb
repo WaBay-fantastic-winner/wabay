@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(params_message)
     @message.save!
     @project = Project.find(params[:project_id])
-    SendMessageJob.perform_now(@message, @project, current_user)
+    SendMessageJob.perform_now(@message, @project)
   end
 
   private
@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content, :project_id, :user_id)
   end
 
-  def has_donated?(project, user)
-    @donated = Transaction..exists?(project:, user:)
+  def has_donated?(project_id, user_id)
+    @donated = Transaction.find_by(project_id: project_id, user_id: user_id).present?
   end
 end
