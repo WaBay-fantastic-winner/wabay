@@ -10,7 +10,7 @@ RSpec.describe "贊助方案", type: :feature do
     visit project_path(project)
     click_on '新增贊助方案'
 
-    within 'div#donate_item' do
+    within 'section#donate_item' do
       fill_in 'donate_item_title', with: Faker::Food.ingredient
       fill_in 'donate_item_price', with: Faker::Number.number(digits: 4)
       fill_in 'donate_item_amount', with: Faker::Number.number(digits: 3)
@@ -25,7 +25,7 @@ RSpec.describe "贊助方案", type: :feature do
     login_as user
     visit edit_project_donate_item_path(project.id, donate_item.id)
 
-    within 'div#donate_item' do
+    within 'section#donate_item' do
       find("trix-editor").set(Faker::Food.description)
     end
     

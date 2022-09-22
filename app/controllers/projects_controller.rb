@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!, except: %i[show]
+  include PriceSumable
+
+  before_action :authenticate_user!, except: %i[index show]
   before_action :find_project, only: %i[show edit destroy update follow]
-  include ProjectPriceSum
-  
+
   def index
     @projects = Project.all
     respond_to do |format|
@@ -35,14 +36,10 @@ class ProjectsController < ApplicationController
 
     @donate_users_count = Transaction.where(project_id: @project.id).select(:user_id).map(&:user_id).uniq.count
 
-    @follow_state = if follow_list.empty?
-                      '追蹤專案'
-                    else
-                      '取消追蹤'
-                    end
+    @follow_state = follow_list.empty? ? '追蹤專案' : '取消追蹤'
 
     project_current_total(params[:id])
-    percentage_of_currency(params[:id])
+    percentage_of_currency
   end
 
   def update
@@ -63,18 +60,22 @@ class ProjectsController < ApplicationController
   end
 
   def follow
-    if follow_list.empty?
-      add_follow
-    else
-      cancel_follow
-    end
+    follow_list.empty? ? add_follow : cancel_follow
   end
 
   private
 
   def project_params
-    params.require(:project).permit(:organizer, :email, :phone, :title, :amount_target, :end_time, :description,
-                                    :avatar)
+    params.require(:project).permit(
+      :organizer, 
+      :email, 
+      :phone, 
+      :title, 
+      :amount_target, 
+      :end_time, 
+      :description,
+      :avatar,
+    )
   end
 
   def find_project
@@ -93,9 +94,5 @@ class ProjectsController < ApplicationController
   def cancel_follow
     follow_list.first.destroy
     render json: { status: 'cancel_follow' }
-  end
-
-  def to_project_show(notice)
-    redirect_to project_path(id: params[:id]), notice:
   end
 end

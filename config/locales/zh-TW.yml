@@ -33,6 +33,7 @@ zh-TW:
         phone: 電話
         email: 電子信箱
         organizer: 提案人
+        avatar: 封面照片
       transaction:
         state: 
           pending: 尚未付款
@@ -148,7 +149,7 @@ zh-TW:
       unlocked: 您的帳號已被解鎖，現在已經登入。
   errors:
     messages:
-      content_type_invalid: 格式有誤。
+      content_type_invalid: 檔案格式錯誤
       already_confirmed: 已經驗證，請直接登入。
       confirmation_period_expired: 必須在 %{period} 內驗證，請重新申請。
       expired: 已經過期，請重新申請。
