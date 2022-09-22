@@ -14,6 +14,6 @@ class Project < ApplicationRecord
   has_many :messages
 
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,
-            :description, presence: true
-  validates :avatar, attached: true, content_type: ['image/png', 'image/jpeg', 'image/jpg']
+            :description, :avatar, presence: true
+  validates :avatar, attached: true, content_type: ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/gif']
 end
