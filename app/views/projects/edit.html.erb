@@ -35,15 +35,19 @@
         </div> 
         <div class="form-list">
           <%= form.label :end_time, "提案結束日期 *", class:"form-list-label" %>
-          <%= form.date_field :end_time, class: "col-span-3 rounded ml-5 input-focus" %>
+          <%= form.date_field :end_time, class: "ml-5 input-focus col-span-2" %>
         </div>
         <div class="form-list">
-          <%= form.label :avatar, "封面照片 *", class:"form-list-label" %>
-          <%= form.file_field :avatar , class: "col-span-3 rounded ml-5 input-focus"%>
+          <div class='col-span-4 border-r-2  border-purple-300 primary-text-color'>
+            <%= form.label :avatar, "封面照片 *", class:"" %>
+            <p class=' text-gray-400 text-sm'>請使用.png, .jpeg, .jpg, .webp, .gif</p>
+          </div>
+          <%= form.file_field :avatar , class: "ml-5 input-focus col-span-6"%>
         </div>
         <div class="px-6 py-6 mb-4 border-2 border-purple-300 border-solid">
-          <%= form.label :description, "提案描述 *", class:"primary-text-color" %>
-          <%= form.rich_text_area :description , class:"input-focus" %>
+            <%= form.label :description, "提案描述 *", class:"text-purple-400" %>
+            <p class=' mb-2 text-gray-400 text-sm'>附件圖片請使用.png, .jpeg, .jpg, .webp, .gif</p>
+            <%= form.rich_text_area :description , class:"input-focus" %>
         </div>
         <%= form.submit "確認送出", class:"field bg-purple-400 hover:bg-purple-600 w-full rounded px-6 py-2 text-white" %>
       <% end %>

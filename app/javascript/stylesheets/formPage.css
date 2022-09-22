@@ -1,8 +1,6 @@
-.form-list :first-child{
-  grid-column: span 2 / span 2;
-}
-.form-list :last-child{
-  grid-column: span 8 / span 8
+.field_with_errors {
+  grid-column-start: 5;
+  grid-column-end: 11;
 }
 .field_with_errors input {
   border-color: red;
