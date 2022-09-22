@@ -30,7 +30,7 @@
       <div class="max-w-6xl grid-cols-9 pt-8 mx-auto md:grid">
         <% @projects.each do |project| %>
           <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
-            <a href='projects/<%= "#{project.id}" %>' class='flex flex-col h-80'>
+            <a href='projects/<%= "#{project.id}" %>' class='flex flex-col h-365'>
               <div class="projects-img-box">
                   <div class='fit-size'>
                       <% if project.avatar.attached? %>
@@ -40,8 +40,8 @@
                       <% end %>
                   </div>
               </div>
-              <div class='flex-1 mb-4'>
-                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= project.title %></h3>
+              <div class='flex-1'>
+                <h3 class='my-1 text-xl font-semibold break-all hover:text-purple-400'><%= project.title %></h3>
                 <p class='my-1'>提案者 <span class='primary-text-color'><%= project.organizer %></span></p>
               </div>
               <div>

@@ -10,7 +10,7 @@
           <div class="projects-img-box">
             <div class='fit-size'>
               <% if @project.avatar.attached? %>
-                  <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl" %>
+                  <%= image_tag @project.avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl", :alt=> '專案照片' %>
                 <% else %>
                   <%= image_tag 'wubay.png' %>
               <% end %>
