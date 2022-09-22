@@ -1,18 +1,12 @@
 class SendMessageJob < ApplicationJob
   queue_as :default
 
-  def perform(message, project)
-    # mine = ApplicationController.render(
-    #   partial: 'messages/message', 
-    #   locals: { message: @message }
-    # )
-
-    # their = ApplicationController.render(
-    #   partial: 'messages/message', 
-    #   locals: { message: @message }
-    # )
-
-    message = ApplicationController.render(partial: 'messages/message', locals: { message: message })
+  def perform(message, project, current_user)
+    if current_user
+      message = ApplicationController.render(partial: 'messages/selfmessage', locals: { message: message })
+    else
+      message = ApplicationController.render(partial: 'messages/message', locals: { message: message })
+    end  
     MessageChannel.broadcast_to(project, message)
   end
 end
