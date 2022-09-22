@@ -15,4 +15,8 @@ class Project < ApplicationRecord
 
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,
             :description, :avatar, presence: true
+
+  def self.archeived
+    
+  end
 end

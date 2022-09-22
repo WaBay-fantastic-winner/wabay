@@ -14,10 +14,10 @@
     right: 0;
 }
 .swiper-button-next{
-    right:15vw !important;
+    right:17vw !important;
 }
 .swiper-button-prev{
-    left: 15vw !important;
+    left: 17vw !important;
 }
 .swiper-button-next, .swiper-button-prev{
     background-color: white;

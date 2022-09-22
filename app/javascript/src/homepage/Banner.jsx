@@ -12,16 +12,20 @@ import '../../stylesheets/banner.css';
 
 const imgUrl = [
     {
-        'src': 'https://image-cdn-flare.qdm.cloud/q62d43d7008f8e/image/data/markus-winkler-1lmpfq7zxem-unsplash_1.jpg'
+        'imgSrc': 'https://wubaywubay.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBZdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2410270d604b6a2badd2ed64cc278f72efe95467/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hSeVpYTnBlbVZmZEc5ZmJHbHRhWFJiQjJrQzZBTnBBdlFCIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5b52a697361bd75c0c9a45f6f610b91d7bc19218/%E5%AC%B0%E5%85%92%E6%BB%91%E6%9D%BF%E8%BB%8A.jpeg',
+        'link': '/projects/10'
     },
     {
-        'src': 'https://cdn.quickper.com/media/oldlondon/article/706d3d17-35de-4371-b45b-617aafb99345/origin.jpeg'
+        'imgSrc': 'https://wubaywubay.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYm89IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3f67c1e404f8d067a6e4b57f851b405d829700a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hSeVpYTnBlbVZmZEc5ZmJHbHRhWFJiQjJrQzZBTnBBdlFCIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5b52a697361bd75c0c9a45f6f610b91d7bc19218/1616040333-2080244173-g_n.jpeg',
+        'link': '/projects/31'
     },
     {
-        'src': 'https://cdn02.pinkoi.com/product/hDrkPCqW/0/8/640x530.jpg'   
+        'imgSrc': 'https://wubaywubay.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzA9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a1f578a90f4b434cc6cd30c2f1000df7f430413/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lJY0c1bkJqb0dSVlE2RkhKbGMybDZaVjkwYjE5c2FXMXBkRnNIYVFMb0Eya0M5QUU9IiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--67314b8f0ba5f658a2b45d430c252feb57d7ef31/%E9%98%B2%E7%9B%9C%E5%8D%88%E9%A4%90%E8%A2%8B1.png',
+        'link': '/project/33'   
     },
     {
-        'src': 'https://www.foodnext.net/dispPageBox/getFile/GetImg.aspx?FileLocation=%2FPJ-FOODNEXT%2FFiles%2F&FileName=photo-08348-i.jpg'  
+        'imgSrc': 'https://wubaywubay.herokuapp.com/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--ced141c4635600e08850c435e8301d4eda1d590c/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCem9MWm05eWJXRjBTU0lKYW5CbFp3WTZCa1ZVT2hSeVpYTnBlbVZmZEc5ZmJHbHRhWFJiQjJrQzZBTnBBdlFCIiwiZXhwIjpudWxsLCJwdXIiOiJ2YXJpYXRpb24ifX0=--5b52a697361bd75c0c9a45f6f610b91d7bc19218/%E9%A0%98%E5%B8%B6%E6%B0%B4%E7%93%B61.jpeg',  
+        'link': '/project/34'
     }
 ]    
 
@@ -44,7 +48,7 @@ const Banner = () => {
             </div>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                slidesPerView={device === "PC" ? 1.5 : 1 }
+                slidesPerView={device === "PC" ? 1.75 : 1 }
                 navigation
                 loop={true}
                 spaceBetween={30}
@@ -55,7 +59,7 @@ const Banner = () => {
                 {imgUrl.map((img, index) =>( 
                     <SwiperSlide className='flex items-center justify-center' key={index} >
                         <div className='img'>
-                            <img className={`${ device === "PC" && 'rounded-3xl' } w-full h-full object-cover`} src={img.src} alt="" />
+                            <a href={img.link} ><img className={`${ device === "PC" && 'rounded-3xl' } w-full h-full object-cover`} src={img.imgSrc} alt="專案照片" /></a>
                         </div>
                     </SwiperSlide>
                     ))}

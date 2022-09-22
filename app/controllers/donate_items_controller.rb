@@ -22,7 +22,7 @@ class DonateItemsController < ApplicationController
     @donate_item = @current_project.donate_items.new(donate_item_params)
 
     if @donate_item.save
-      back_to_project_page '贊助方案已建立，距離夢想更進一步！'
+      redirect_to new_project_question_path(@current_project.id), notice: ' 贊助方案已建立，距離夢想更進一步！'
     else
       render :new
     end
