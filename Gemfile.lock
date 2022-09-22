@@ -390,7 +390,7 @@ DEPENDENCIES
   byebug
   capybara (>= 3.26)
   database_cleaner-active_record (~> 1.8.0.beta)
-  devise
+  devise (~> 4.2)
   devise-i18n (~> 1.10)
   dotenv-rails
   factory_bot_rails (~> 6.2)

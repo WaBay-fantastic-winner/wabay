@@ -7,15 +7,13 @@ class DonateItemsController < ApplicationController
 
   def index
     @donate_items = @current_project.donate_items.order(created_at: :asc)
-    @current_project = @current_project
   end
 
   def show; end
 
   def new
     @donate_item = DonateItem.new
-    @new_url = project_donate_items_path(id: Project.find_by!(id: params[:project_id]))
-    @new_method = 'post'
+    @new_url = project_donate_items_path(Project.find(params[:project_id]))
   end
 
   def create
@@ -30,7 +28,6 @@ class DonateItemsController < ApplicationController
 
   def edit
     @edit_url = project_donate_item_path(project_id: @donate_item.project_id, id: @donate_item)
-    @edit_method = 'put'
   end
 
   def update
@@ -53,14 +50,14 @@ class DonateItemsController < ApplicationController
   end
 
   def current_project
-    @current_project = Project.find_by!(id: params[:project_id])
+    @current_project = Project.find(params[:project_id])
   end
 
   def find_donate_item
-    @donate_item = @current_project.donate_items.find_by!(id: params[:id])
+    @donate_item = @current_project.donate_items.find(params[:id])
   end
 
   def back_to_project_page(notice_sentence)
-    redirect_to project_path(id: params[:project_id]), notice: notice_sentence
+    redirect_to project_path(params[:project_id]), notice: notice_sentence
   end
 end
