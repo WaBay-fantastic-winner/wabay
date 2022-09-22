@@ -108,7 +108,7 @@ class TransactionsController < ApplicationController
 
   def increase_donate_count
     current_donate_item = DonateItem.find(@serial_transaction.donate_item_id)
-    current_donate_item.increment(:donate_logs_count).save
+    current_donate_item.donate_logs.create(ip_address: request.remote_ip)
   end
 
   def decrease_donate_amount(donate_item_title, amount)
