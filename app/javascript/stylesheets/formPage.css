@@ -1,9 +1,8 @@
-.form-list :first-child{
-  grid-column: span 2 / span 2;
-}
-.form-list :last-child{
-  grid-column: span 8 / span 8
-}
+/* .field_with_errors {
+  grid-column-start: 5;
+  grid-column-end: 11;
+} */
+
 .field_with_errors input {
   border-color: red;
   border-width: 1px;
@@ -12,16 +11,15 @@
   color: red;
   display: block;
 }
-.square-bg{
-  background-color: #e5e5f7;
-  background-image:  linear-gradient(30deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(150deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(30deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(150deg, #ca9cff 12%, transparent 12.5%, transparent 87%, #ca9cff 87.5%, #ca9cff), linear-gradient(60deg, #ca9cff77 25%, transparent 25.5%, transparent 75%, #ca9cff77 75%, #ca9cff77), linear-gradient(60deg, #ca9cff77 25%, transparent 25.5%, transparent 75%, #ca9cff77 75%, #ca9cff77);
-  background-size: 56px 98px;
-  background-position: 0 0, 0 0, 28px 49px, 28px 49px, 0 0, 28px 49px;
+.form-list .field_with_errors:first-child {
+  @apply col-span-2
+}
+.form-list .field_with_errors:last-child {
+  @apply col-span-8
 }
 .wave-bg{
   background-image: url(../src/assets/img/YPwave.png);
 }
-
 .divider{
   text-align: center;
   position: relative;

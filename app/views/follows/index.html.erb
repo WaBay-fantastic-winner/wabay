@@ -15,9 +15,8 @@
     <% else %>
       <div class="grid max-w-6xl mx-auto md:grid-cols-9">
         <% @follows.each do |follow| %>
-<<<<<<< HEAD
           <article class="col-span-3 p-3 mx-5 mb-8 bg-white shadow-xl rounded-xl box-shadow">
-            <a href='projects/<%= "#{follow.followable_id}" %>'>
+            <a href='projects/<%= "#{follow.followable_id}" %>' class='flex flex-col h-380'>
               <div class="projects-img-box">
                   <div class='fit-size'>
                       <% if Project.find(follow.followable_id).avatar.attached? %>
@@ -27,8 +26,8 @@
                       <% end %>
                   </div>
               </div>
-              <div class='mb-4'>
-                <h3 class='my-1 text-xl font-semibold hover:text-purple-400'><%= Project.find(follow.followable_id).title %></h3>
+              <div class='flex-1 '>
+                <h3 class='my-1 text-xl font-semibold break-all hover:text-purple-400'><%= Project.find(follow.followable_id).title %></h3>
                 <p class='my-1'>提案者 <span class='primary-text-color'><%= Project.find(follow.followable_id).organizer %></span></p>
               </div>
               <div>

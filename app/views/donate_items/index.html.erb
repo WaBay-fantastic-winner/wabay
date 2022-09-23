@@ -2,7 +2,7 @@
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
       <h2 class="mb-3 text-2xl text-center text-semibold"><%= @current_project.title %></h2>
-      <p class="mb-4 text-center primary-text-color">提案者 <%= @current_project.organizer %></p>
+      <p class="mb-4 text-center primary-text-color">提案組織 <%= @current_project.organizer %></p>
     </div>
   </section>
   <div class='sticky top-0 z-10 bg-white border-t-2 border-b-2 border-gray-200 border-double'>
@@ -38,11 +38,11 @@
               </div>
             <% end %>
             <div class='px-2 my-3 bg-gray-100 rounded-lg w-max '>
-              <span class='text-xs text-gray-500'>已被贊助: <%= donate_item.donate_logs_count || 0 %> 次</span>
+              <span class='text-xs text-gray-500'>已被贊助: <%= donate_item.donate_logs.size || 0 %> 次</span>
             </div>
             <section class='text-gray-500' >
               <h3 class='rounded-sm w-max'>贊助方案內容：</h3>
-              <div><%= donate_item.content %></div>
+              <p class='break-words'><%= donate_item.content %></p>
             </section>
           </div>
           <%= link_to '贊助', project_donate_item_path(project_id:  donate_item.project_id, id: donate_item), class:'bg-purple-400 text-white inline-block w-full text-center py-4 rounded-3xl hover:bg-purple-500'%>

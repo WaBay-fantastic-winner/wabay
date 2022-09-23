@@ -9,10 +9,11 @@ class SendMessageJob < ApplicationJob
 
     # their = ApplicationController.render(
     #   partial: 'messages/message', 
-    #   locals: { message: @message }
+    #   locals: { message: @message }Z
     # )
 
     message = ApplicationController.render(partial: 'messages/message', locals: { message: message })
+
     MessageChannel.broadcast_to(project, message)
   end
 end

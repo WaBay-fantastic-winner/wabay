@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%= favicon_link_tag asset_path('wubaytitle.ico') %>
     <title>Wubay</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application'%>
     <script src="https://kit.fontawesome.com/4b775a86e6.js" crossorigin="anonymous"></script>
   </head>
   <body>
@@ -42,14 +43,6 @@
                 <%= link_to "提案", new_project_path, class:"px-4 block py-4 text-2xl"%>
               </div>
               <div class="mb-3">
-                <h2 class="font-bold primary-text-color">Themes</h2>
-                <ul class="px-4 text-2xl">
-                  <li class='py-2'>原創設計</li>
-                  <li class='py-2'>社會公益</li>
-                  <li class='py-2'>Wubay選物</li>
-                </ul>
-              </div>
-              <div class="mb-3">
                 <h2 class="font-bold primary-text-color">Member</h2>
                 <ul class="px-4 text-2xl">
                   <% if user_signed_in? %>
@@ -73,7 +66,7 @@
           </div>
           <!-- LOGO -->
           <div class="absolute w-40 transform translate-x-1/2 right-1/2">
-            <a href="/" alt='wubay，讓你的夢想超越五倍'><%= image_tag('wubay.png') %></a>
+            <a href="/" alt='wubay，讓你的夢想超越五倍'><%= image_tag('wubay.png')%></a>
           </div>
           <%# 搜尋及會員相關 %>
           <div class="flex items-center">

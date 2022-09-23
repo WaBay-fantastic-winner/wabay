@@ -3,22 +3,18 @@
 class QuestionsController < ApplicationController
   before_action :authenticate_user!, except: %i[index]
   before_action :find_question, only: %i[edit update destroy]
-  before_action :find_project, only: %i[edit update destroy]
-  # before_action :current_project, only: %i[create]
+  before_action :find_project_by_question, only: %i[edit update destroy]
+  before_action :find_project, only: %i[index new create]
 
   def index
     @questions = Question.all
-    @project = Project.find(params[:project_id])
   end
 
   def new
     @question = Question.new
-    @project = Project.find(params[:project_id])
   end
 
   def create
-    @project = Project.find(params[:project_id])
-
     @question = @project.questions.new(params_question)
     if @question.save
       redirect_to project_questions_path(@project.id), notice: '常見問題建立成功'
@@ -56,7 +52,11 @@ class QuestionsController < ApplicationController
     @current_project = current_user.projects.find(params[:project_id])
   end
 
-  def find_project
+  def find_project_by_question
     @project = Question.find(params[:id]).project
+  end
+
+  def find_project
+    @project = Project.find(params[:project_id])
   end
 end
