@@ -1,4 +1,10 @@
 zh-TW:
+  transaction_state:
+    pending: "尚未付款"
+    paid: "已付款"
+    cancellation: "取消訂單"
+    failed: "交易失敗"
+    refunded: "已退款"  
   activerecord:
     attributes:
       user:
@@ -34,13 +40,6 @@ zh-TW:
         email: 電子信箱
         organizer: 提案人
         avatar: 封面照片
-      transaction:
-        state: 
-          pending: 尚未付款
-          paid: 已付款
-          cancellation: 取消訂單
-          failed: 交易失敗
-          refunded: 已退款  
     models:
       user: 使用者
   devise:

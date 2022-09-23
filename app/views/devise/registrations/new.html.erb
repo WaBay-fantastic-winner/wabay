@@ -11,9 +11,6 @@
         <%= f.label :username, "使用者名稱："%>
         <%= f.text_field :username, autofocus: true, placeholder: "請輸入使用者名稱", autocomplete: "username", class:"mt-2 input-focus" %>
       </div> 
-      <div class="py-3">
-        <%= f.label :avatar, "大頭照："%>
-        <%= f.file_field :avatar, autofocus: true, autocomplete: "description", class:"mt-2 input-focus" %>
       </div>
       <div class="py-3">
         <%= f.label :description, "使用者自我簡介："%>
@@ -37,12 +34,6 @@
       <%=link_to user_google_oauth2_omniauth_authorize_path, method: :post  do %>
         <img src='https://diat4w9qa5tx9.cloudfront.net/production-aws/assets/icon/google-68239b5f328377ad0e42357804e1f6d21c2a9e5b9e454b8687631725a5540a4e.png' class='inline w-6 align-top'>
         <span>使用google帳號</span>
-      <% end %>
-    </div>
-    <div class='py-2 outside-link'>
-      <%=link_to user_facebook_omniauth_authorize_path, method: :post do %>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Facebook_F_icon.svg' class='inline w-5 align-top'>
-        <span>使用facebook帳號</span>
       <% end %>
     </div>
   </section> 

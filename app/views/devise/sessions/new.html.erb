@@ -27,12 +27,6 @@
         <span>使用google帳號</span>
       <% end %>
     </div>
-    <div class='py-2 outside-link'>
-      <%=link_to user_facebook_omniauth_authorize_path, method: :post do %>
-        <img src='https://upload.wikimedia.org/wikipedia/commons/d/d5/Facebook_F_icon.svg' class='inline w-5 align-top'>
-        <span>使用facebook帳號</span>
-      <% end %>
-    </div>
     <div class='py-10 my-5 border-t border-b border-gray-200 border-solid'>
       <p class='text-center'>還沒有帳號嗎？ <%= link_to "開始創建帳號", new_user_registration_path, class:"primary-text-color hover:text-purple-300" %></p>
     </div>
