@@ -1,10 +1,6 @@
 <div class='grid items-center grid-cols-8 pr-2 mb-4'>
   <div class='col-span-1'>
-    <%# <% if @project.user.avatar_url != nil %> 
-      <%# <%= image_tag(@project.user.avatar_url, :class=> "inline rounded-2xl h-12 w-12 ") %> 
-    <%# <% else %> 
-      <%= image_tag 'avatar1.png', class: 'rounded-2xl h-12 w-12 mr-1 ' %>
-    <%# <% end %> 
+    <%= image_tag 'avatar1.png', class: 'rounded-2xl h-12 w-12 mr-1 ' %>
   </div>
   <div class='col-span-7 p-1 bg-purple-100 rounded-lg '>
     <p class='flex justify-between text-lg'> <%= message.user.username %><span class='ml-2 text-base text-right text-gray-400'><%= message.created_at.strftime(('%Y-%m-%d %H:%M'))%></span></p>

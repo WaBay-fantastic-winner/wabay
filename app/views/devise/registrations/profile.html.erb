@@ -11,13 +11,7 @@
   <section class='py-10 bg-gray-50'>
     <div class="max-w-2xl px-3 mx-auto">
       <div class="mb-5 text-center">
-          <% if current_user.avatar_url != nil %>
-            <%= current_user.avatar_url %>
-          <% elsif %>
-              <%= image_tag @user_avatar.variant(resize_to_limit: [1000, 500]), :class=> "object-cover w-full h-full rounded-3xl", :alt=> '專案照片' %>
-          <% else %>
-            <%= image_tag 'avatar1.png', class: 'm-auto rounded-2xl h-24 w-24' %>
-          <% end %>
+        <%= image_tag 'avatar1.png', class: 'm-auto rounded-2xl h-24 w-24' %>
       </div>
       <h2 class="text-2xl text-center"><%= current_user.username %> </h2>
       <p class="mb-4 text-center text-gray-500">加入時間：<%= current_user.created_at.strftime("%Y-%m-%d") %></p>

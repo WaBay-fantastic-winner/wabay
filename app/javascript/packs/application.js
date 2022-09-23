@@ -14,8 +14,6 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 import "controllers"
-// import Turbolinks from "turbolinks"
-// Turbolinks.start() 
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -23,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('main').classList.toggle('hidden')
     document.querySelector('footer').classList.toggle('hidden')
   })
+
 })
 
 
