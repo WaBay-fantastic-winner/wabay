@@ -23,6 +23,7 @@
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
       <% if @donated || current_user.id == @project.user.id %>
         <div class="col-span-5 col-start-2 px-3 mb-3 lg:shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
+                <p class="mb-4 text-center">客服人員 <span class="primary-text-color"><%= @project.user.username %></span></p>
           <div data-messageList-target='box' class='overflow-x-hidden overflow-y-auto h-450' id='box'>
             <div data-messageList-target='message' class='p-4 rounded-xl'>
               <% @project.messages.each do |message| %>
@@ -51,11 +52,7 @@
       <div class='col-span-3 col-end-11 '>
         <article class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
           <div class='flex'>
-            <% if @project.user.avatar_url != nil %>
-              <%= image_tag(@project.user.avatar_url, :class=> "inline rounded-2xl") %>
-            <% else %>
-              <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
-            <% end %>
+            <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
             <div>
               <h2 class='mb-3 text-xl primary-text-color'><%= @project.organizer %></h2>
               <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>

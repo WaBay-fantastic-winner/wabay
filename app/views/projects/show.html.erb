@@ -79,11 +79,7 @@
           <div class='p-3 overflow-x-hidden lg:sticky top-20 lg:overflow-y-auto lg:h-screen'>
             <article class='w-full p-4 mb-3 border border-gray-300 border-solid rounded-xl'>
             <div class='flex'>
-              <% if @project.user.avatar_url != nil %>
-                <%= image_tag(@project.user.avatar_url, :class=> "inline rounded-2xl") %>
-              <% else %>
-                <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
-              <% end %>
+              <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
               <div>
                 <h2 class='mb-3 text-xl primary-text-color'><%= @project.organizer %></h2>
                 <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>
