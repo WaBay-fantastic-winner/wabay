@@ -27,6 +27,11 @@ class TransactionsController < ApplicationController
   end
 
   def paid
+    if Payment::EcpayRespond.new(params) === params['CheckMacValue']
+      return 1|OK
+    end
+
+    Payment::EcpayRespond.new(params)
     find_transaction_by_serial_after_ecpay
     pending_to_paid
     decrease_donate_amount(

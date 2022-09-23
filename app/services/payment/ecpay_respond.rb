@@ -2,49 +2,49 @@
 
 module Payment
   class EcpayRespond
-    attr_reader :status, :message, :result, :order_no, :trans_no
+    require 'uri'
+    require 'openssl'
+    require 'cgi'
+    require 'net/http'
 
     def initialize(params)
-      @key = 'your hash key'
-      @iv = 'your hash iv'
-
-      response = decrypy(params)
-      @status = response['Status']
-      @message = response['Message']
-      @result = response['Result']
-      @order_no = @result['MerchantOrderNo']
-      @trans_no = @result['TradeNo']
-      # etc...
+  
+      @basic_params = {
+        "CustomField1"=> params["CustomField1"],
+        "CustomField2"=> params["CustomField2"], 
+        "CustomField3"=> params["CustomField3"], 
+        "CustomField4"=> params["CustomField4"], 
+        "MerchantID"=> params["MerchantID"], 
+        "MerchantTradeNo"=> params["MerchantTradeNo"], 
+        "PaymentDate"=> params["PaymentDate"], 
+        "PaymentType"=> params["PaymentType"], 
+        "PaymentTypeChargeFee"=> params["PaymentTypeChargeFee"], 
+        "RtnCode"=> params["RtnCode"], 
+        "RtnMsg"=> params["RtnMsg"], 
+        "SimulatePaid"=> params["SimulatePaid"], 
+        "StoreID"=> params["StoreID"], 
+        "TradeAmt"=> params["TradeAmt"], 
+        "TradeDate"=> params["TradeDate"], 
+        "TradeNo"=> params["TradeNo"],
+      }
+      # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end
-
-    def success?
-      status == 'SUCCESS'
+  
+    def perform
+      create_check_mac_value(@basic_params)
     end
-
+  
     private
-
-    # AES 解密
-    def decrypy(encrypted_data)
-      encrypted_data = [encrypted_data].pack('H*')
-      decipher = OpenSSL::Cipher.new('aes-256-cbc')
-      decipher.decrypt
-      decipher.padding = 0
-      decipher.key = @key
-      decipher.iv = @iv
-      data = decipher.update(encrypted_data) + decipher.final
-      raw_data = strippadding(data)
-      JSON.parse(raw_data)
-    end
-
-    def strippadding(data)
-      slast = data[-1].ord
-      slastc = slast.chr
-      string_match = /#{slastc}{#{slast}}/ =~ data
-      if string_match.nil?
-        false
-      else
-        data[0, string_match]
-      end
+  
+    def create_check_mac_value(params)
+      # 1.由A到Z的順序並轉換為 query string
+      order_query_string = URI.encode_www_form(params.to_a.sort!)
+      # 2.前後加 Key 跟 IV
+      key_vi = "HashKey=pwFHCqoQZGmho4w6&" + order_query_string + "&HashIV=EkRm7iFT261dpevs"
+      # 3.進行 URL encode 並轉小寫
+      url_encode = (CGI.escape key_vi).downcase.gsub!(/%25/, '%').gsub!(/%2b/, '+')
+      # 4.sha256加密轉大寫
+      encrypted_result = Digest::SHA256.hexdigest(url_encode).upcase
     end
   end
 end
