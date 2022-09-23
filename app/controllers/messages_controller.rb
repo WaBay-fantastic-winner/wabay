@@ -21,7 +21,7 @@ class MessagesController < ApplicationController
     params.require(:message).permit(:content, :project_id, :user_id)
   end
 
-  def has_donated?(project_id, user_id)
-    @donated = Transaction.find_by(project_id: project_id, user_id: user_id).present?
+  def has_donated?(project, user)
+    @donated = Transaction.find_by!(project_id: project, user_id: user),present?
   end
 end
