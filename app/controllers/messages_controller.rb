@@ -22,6 +22,6 @@ class MessagesController < ApplicationController
   end
 
   def has_donated?(project, user)
-    @donated = Transaction.find_by!(project_id: project, user_id: user),present?
+    @donated = Transaction.find_by(project_id: project, user_id: user).present?
   end
 end
