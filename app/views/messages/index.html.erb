@@ -2,7 +2,7 @@
   <section class='py-10 bg-gray-100'>
     <div class="max-w-6xl mx-auto">
       <h2 class="mb-3 text-2xl text-center text-semibold"><%= @project.title %></h2>
-      <p class="mb-4 text-center">提案者 <span class="primary-text-color"><%= @project.organizer %></span></p>
+      <p class="mb-4 text-center">提案組織 <span class="primary-text-color"><%= @project.organizer %></span></p>
     </div>
   </section>
   <div class="px-5 bg-white border-t-2 border-b-2 border-gray-300 border-double " >
@@ -22,15 +22,11 @@
   <section class='py-8 border-b-2 border-gray-300 border-double'>
     <div class="max-w-6xl grid-cols-10 gap-12 mx-auto lg:grid ">
       <% if @donated || current_user.id == @project.user.id %>
-        <div class="col-span-5 col-start-2 px-3 mb-3 lg:shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>>
+        <div class="col-span-5 col-start-2 px-3 mb-3 lg:shadow-xl accordion" data-controller='messageList' data-project-id=<%= @project.id %>
           <div data-messageList-target='box' class='overflow-x-hidden overflow-y-auto h-450' id='box'>
             <div data-messageList-target='message' class='p-4 rounded-xl'>
               <% @project.messages.each do |message| %>
-                <% if message.user == current_user %>
-                  <%= render 'messages/selfmessage', message: message %>
-                <% else %>  
-                    <%= render 'messages/message', message: message %>  
-                <% end %>
+                <%= render 'messages/message', message: message %>  
               <% end %>
             </div>
           </div>
@@ -50,7 +46,7 @@
           <% end %>
         </div>
       <% else %>
-        <p class='col-span-5 col-start-2 mb-16 text-center pt-11 '>請先 <%= link_to '贊助專案', project_donate_items_path(@project) , class:'primary-text-color text-lg p-2 border border-purple-300 rounded-xl hover:bg-purple-400 hover:text-white'%> 即可開通即時通訊</p>
+        <p class='col-span-5 col-start-2 mb-16 text-center pt-11 '>請先 <%= link_to '贊助專案', project_donate_items_path(@project) , class:'primary-text-color text-lg p-2 border border-purple-300 rounded-xl hover:bg-purple-400 hover:text-white'%></p>
       <% end %>
       <div class='col-span-3 col-end-11 '>
         <article class='w-full p-4 border border-gray-300 border-solid rounded-xl'>

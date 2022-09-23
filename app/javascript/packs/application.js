@@ -14,8 +14,8 @@ ActiveStorage.start()
 require("trix")
 require("@rails/actiontext")
 import "controllers"
-import Turbolinks from "turbolinks"
-Turbolinks.start() 
+// import Turbolinks from "turbolinks"
+// Turbolinks.start() 
 
 document.addEventListener('DOMContentLoaded', () => {
 
