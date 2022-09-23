@@ -29,14 +29,14 @@ const FundraisingItem = () => {
         <> 
             {projectItems.length > 0 ? projectItems.map((item , index)=> (
                 <article className="col-span-3 p-3 mb-8 bg-white shadow-xl lg:mx-5 rounded-xl FundraisingItem">
-                    <a href={`/projects/${item.id}`}>
+                    <a href={`/projects/${item.id}`} className='flex flex-col h-365'>
                         <div className="projects-img-box">
                             <div className='fit-size'>
                                 <img className='object-cover w-full h-full rounded-3xl' src={item.img} alt='專案照片'/>
                             </div>
                         </div>
-                        <div className='mb-4'>
-                            <h3 className='my-1 text-xl font-semibold'>{item.title}</h3>
+                        <div className='flex-1'>
+                            <h3 className='my-1 text-xl font-semibold break-all'>{item.title}</h3>
                             <p className='my-1'>提案者 <span className='primary-text-color'>{item.organizer}</span></p>
                         </div>
                         <div>

@@ -37,14 +37,25 @@
             <ul>
               <% @comments.each do |comment| %>
                 <li class="p-4 mt-3 border border-gray-300 rounded-lg">
-                  <div class='flex justify-between'>
-                    <p class="text-xl font-bold"><%= comment.user.username %></p>
-                    <% if comment.user_id == current_user.id%>
-                      <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" %>
-                    <% end %>
-                  </div>
-                  <p class="text-sm text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
-                  <div class='my-4'>
+                  <div class='grid grid-cols-10 gap-3'>
+                    <div class='col-span-1 '>
+                      <% if comment.user.avatar_url != nil %>
+                        <%= image_tag(comment.user.avatar_url, :class=> " mr-3 rounded-2xl") %>
+                      <% else %>
+                        <%= image_tag 'avatar1.png', class: 'rounded-2xl mr-3' %>
+                      <% end %>
+                    </div>
+                    <div class='col-span-9'>
+                      <div class='flex justify-between'>
+                        <p class="flex-1 text-xl font-bold "><%= comment.user.username %></p>
+                        <% if comment.user_id == current_user.id%>
+                          <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" %>
+                        <% end %>
+                      </div>
+                      <p class="text-sm text-gray-500"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></p>
+                    </div>  
+                  </div>  
+                  <div class='my-2'>
                     <p><%= comment.content %></p>
                   </div>
                   <div class='primary-text-color' data-controller="like" data-comment-id="<%=comment.id%>" data-like="<%=current_user&.liked?(comment)%>" data-comment-count="<%=comment.count%>"  >
@@ -55,9 +66,7 @@
                       <%= comment.count %>
                     </span>
                   </div>
-                  <div>
-                    <%= render comment.comments %>
-                  </div>
+                  <%= render comment.comments %>
                   <div id="sub-comment-area" class='my-4'>
                     <% if comment.parent_id.nil? %>
                       <%= form_with model: @comment, class:'flex', url: project_comments_path(project_id: @project)  do |form| %>
@@ -73,13 +82,21 @@
           <% end %>
         </div>
       </div>
-      <%# silde-bar %>
       <div class='col-span-3 mt-5 lg:mt-0'>
         <article class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
-          <h2 class='mb-3 primary-text-color'><%= @project.organizer %></h2>
+          <div class='flex'>
+            <% if @project.user.avatar_url != nil %>
+              <%= image_tag(@project.user.avatar_url, :class=> "inline rounded-2xl") %>
+            <% else %>
+              <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
+            <% end %>
+            <div>
+              <h2 class='mb-3 text-xl primary-text-color'><%= @project.organizer %></h2>
+              <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>
+              <i class="text-2xl fa-brands fa-instagram"></i>
+            </div>
+          </div>
           <p class='mb-3 break-words'><%= @project.user.description%></p>
-          <i class="mr-2 text-2xl fa-brands fa-square-facebook"></i>
-          <i class="text-2xl fa-brands fa-instagram"></i>
         </article>
       </div>
     </div>

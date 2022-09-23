@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(params_message)
     @message.save!
     @project = Project.find(params[:project_id])
-    SendMessageJob.perform_now(@message, @project, current_user)
+    SendMessageJob.perform_now(@message, @project)
   end
 
   private
