@@ -27,19 +27,19 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    if Payment::EcpayRespond.new(params) === params['CheckMacValue']
+    if params['RtnMsg'] === 1
+      find_transaction_by_serial_after_ecpay
+      pending_to_paid
+      decrease_donate_amount(
+        DonateItem.find(@serial_transaction.donate_item_id).title, 
+        @serial_transaction.amount,
+      )
+      increase_donate_count
+      sign_in(User.find(@serial_transaction.user_id))
       return 1|OK
-    end
-
-    Payment::EcpayRespond.new(params)
-    find_transaction_by_serial_after_ecpay
-    pending_to_paid
-    decrease_donate_amount(
-      DonateItem.find(@serial_transaction.donate_item_id).title, 
-      @serial_transaction.amount,
-    )
-    increase_donate_count
-    sign_in(User.find(@serial_transaction.user_id))
+    else
+      transaction.fail!
+      render :transaction_error
   end
 
   def destroy
