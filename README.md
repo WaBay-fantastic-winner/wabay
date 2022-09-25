@@ -7,13 +7,28 @@ Show the ideas you coming up with from your inspiration.
 
 (This is a cover from WaBay due.)
 
+# Project Demo
+
+<iframe
+  width="640"
+  height="480"
+  src="https://www.youtube.com/watch?v=VmQKKfYcdMc"
+  frameborder="0"
+  allow="autoplay; encrypted-media"
+  allowfullscreen
+>
+** WuBay **
+</iframe>
+
 # Team
 - [Shawn](https://github.com/kuoyuhsiang)
 - [Darren](https://github.com/DazzaWoo)
 - [Jie](https://github.com/lee-yu-jie)
 - [Mike](https://github.com/wl02599509)
 
-# Technique
+# Techniques
+
+Here are several frames and gems we used for this project.
 
 ## Back-end
 - RoR
@@ -33,9 +48,7 @@ Show the ideas you coming up with from your inspiration.
 
 ## Database
 - postgreSQL
-
-## Project Demo
-- [Demo video](https://www.youtube.com/watch?v=VmQKKfYcdMc)
+- Redis
 
 
 
