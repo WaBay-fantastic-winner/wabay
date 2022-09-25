@@ -8,7 +8,6 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.order(created_at: :desc)
-
   end
 
   def create
@@ -38,13 +37,15 @@ class TransactionsController < ApplicationController
       sign_in(User.find(@serial_transaction.user_id))
       return 1|OK
     else
-      transaction.fail!
+      @serial_transaction.fail!
       render :transaction_error
+    end
   end
 
   def destroy
     @transaction = Transaction.find_by!(id: params[:id])
     @transaction.update(deleted_at: Time.now)
+    @transaction.cancel!
     redirect_to transactions_path, notice: '此筆交易已刪除...'
   end
 
