@@ -30,10 +30,16 @@
         <%= f.submit "註冊", class:" bg-purple-400 hover:bg-purple-600 w-full rounded px-6 py-2 text-white my-4" %>
       </div>
     <% end %>
-    <div class='my-4 '>
+    <div class='my-4'>
       <%=link_to user_google_oauth2_omniauth_authorize_path,class:"outside-link" , method: :post  do %>
         <img src='https://diat4w9qa5tx9.cloudfront.net/production-aws/assets/icon/google-68239b5f328377ad0e42357804e1f6d21c2a9e5b9e454b8687631725a5540a4e.png' class='inline w-6 align-top'>
         <span>使用google帳號</span>
+      <% end %>
+    </div>
+    <div class='my-4'>
+      <%=link_to user_github_omniauth_authorize_path,class:"outside-link", method: :post do %>
+        <img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' class='inline w-6 align-top'>
+        <span>使用GitHub帳號</span>
       <% end %>
     </div>
   </section> 

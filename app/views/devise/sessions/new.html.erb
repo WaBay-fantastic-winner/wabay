@@ -27,6 +27,12 @@
         <span>使用google帳號</span>
       <% end %>
     </div>
+    <div class='my-4 '>
+      <%=link_to user_github_omniauth_authorize_path,class:"outside-link", method: :post do %>
+        <img src='https://cdn-icons-png.flaticon.com/512/25/25231.png' class='inline w-6 align-top'>
+        <span>使用GitHub帳號</span>
+      <% end %>
+    </div>
     <div class='py-10 my-5 border-t border-b border-gray-200 border-solid'>
       <p class='text-center'>還沒有帳號嗎？ <%= link_to "開始創建帳號", new_user_registration_path, class:"primary-text-color hover:text-purple-300" %></p>
     </div>

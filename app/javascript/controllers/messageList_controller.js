@@ -38,7 +38,7 @@ export default class extends Controller {
   bottom() {
     setTimeout(()=>{
       this.boxTarget.scrollTop = this.boxTarget.scrollHeight;
-    },150)
+    },200)
 
   }
 }

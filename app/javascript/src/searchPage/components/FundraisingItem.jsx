@@ -49,7 +49,7 @@ const FundraisingItem = () => {
                     </a>  
                 </article>
             )) :
-            <div className='col-span-9 py-16 text-gray-600 bg-white rounded-lg'>
+            <div className='col-span-9 text-gray-600 bg-white rounded-lg py-28'>
                 <p className='text-center'>目前沒有專案，試試看重新探索吧！</p>
             </div>}
         </>

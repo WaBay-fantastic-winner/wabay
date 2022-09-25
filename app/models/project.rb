@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   has_one_attached :avatar
   has_many :comments, dependent: :destroy
   has_many :follows, as: :followable, dependent: :destroy
-  has_many :questions, , dependent: :destroy
+  has_many :questions, dependent: :destroy
   has_many :messages, dependent: :destroy
 
   validates :organizer, :email, :phone, :title, :amount_target, :end_time,

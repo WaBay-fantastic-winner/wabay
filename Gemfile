@@ -81,7 +81,7 @@ gem 'net-pop', require: false
 gem 'net-smtp', require: false
 
 gem 'omniauth',  '>= 1.0.0'
-gem 'omniauth-facebook'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 
