@@ -44,7 +44,7 @@
                     <div class='col-span-9'>
                       <div class='flex justify-between'>
                         <p class="flex-1 text-xl font-bold "><%= comment.user.username %></p>
-                        <% if comment.user_id == current_user.id%>
+                        <% if comment.user_id == current_user&.id%>
                           <%= link_to "刪除留言", comment_path(comment), method: "delete",data: {confirm: "確定要刪除嗎"}, class:"ml-2" %>
                         <% end %>
                       </div>
