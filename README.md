@@ -9,15 +9,7 @@ Show the ideas you coming up with from your inspiration.
 
 # Project Demo
 
-<iframe
-  width="640"
-  height="480"
-  src="https://www.youtube.com/watch?v=VmQKKfYcdMc"
-  frameborder="0"
-  allow="autoplay; encrypted-media"
-  allowfullscreen
->
-</iframe>
+- [2022-09-24 WuBay Demo](https://www.youtube.com/watch?v=VmQKKfYcdMc)
 
 # Team
 - [Shawn](https://github.com/kuoyuhsiang)
