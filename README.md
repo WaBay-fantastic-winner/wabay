@@ -7,13 +7,19 @@ Show the ideas you coming up with from your inspiration.
 
 (This is a cover from WaBay due.)
 
+# Project Demo
+
+- [2022-09-24 WuBay Demo](https://www.youtube.com/watch?v=VmQKKfYcdMc)
+
 # Team
 - [Shawn](https://github.com/kuoyuhsiang)
 - [Darren](https://github.com/DazzaWoo)
 - [Jie](https://github.com/lee-yu-jie)
 - [Mike](https://github.com/wl02599509)
 
-# Technique
+# Techniques
+
+Here are several frames and gems we used for this project.
 
 ## Back-end
 - RoR
@@ -33,8 +39,7 @@ Show the ideas you coming up with from your inspiration.
 
 ## Database
 - postgreSQL
-
-
+- Redis
 
 
 
