@@ -17,7 +17,6 @@ Show the ideas you coming up with from your inspiration.
   allow="autoplay; encrypted-media"
   allowfullscreen
 >
-** WuBay **
 </iframe>
 
 # Team
