@@ -8,7 +8,6 @@ class TransactionsController < ApplicationController
 
   def index
     @transactions = Transaction.order(created_at: :desc)
-
   end
 
   def create
@@ -27,19 +26,26 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    find_transaction_by_serial_after_ecpay
-    pending_to_paid
-    decrease_donate_amount(
-      DonateItem.find(@serial_transaction.donate_item_id).title, 
-      @serial_transaction.amount,
-    )
-    increase_donate_count
-    sign_in(User.find(@serial_transaction.user_id))
+    if params['RtnMsg'] === 1
+      find_transaction_by_serial_after_ecpay
+      pending_to_paid
+      decrease_donate_amount(
+        DonateItem.find(@serial_transaction.donate_item_id).title, 
+        @serial_transaction.amount,
+      )
+      increase_donate_count
+      sign_in(User.find(@serial_transaction.user_id))
+      return 1|OK
+    else
+      @serial_transaction.fail!
+      render :transaction_error
+    end
   end
 
   def destroy
     @transaction = Transaction.find_by!(id: params[:id])
     @transaction.update(deleted_at: Time.now)
+    @transaction.cancel!
     redirect_to transactions_path, notice: '此筆交易已刪除...'
   end
 
