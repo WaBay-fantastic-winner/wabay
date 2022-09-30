@@ -22,6 +22,7 @@ class User < ApplicationRecord
   # validatations
   validates :email, presence: true
   validates :password, presence: true
+  validates :username, presence: true
 
   def liked?(comment)
     liked_comments.include?(comment)
