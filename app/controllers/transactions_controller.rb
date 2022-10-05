@@ -31,11 +31,11 @@ class TransactionsController < ApplicationController
       pending_to_paid
       decrease_donate_amount(
         DonateItem.find(@serial_transaction.donate_item_id).title, 
-        @serial_transaction.amount,
+                        @serial_transaction.amount,
       )
       increase_donate_count
       sign_in(User.find(@serial_transaction.user_id))
-      return 1|OK
+      return '1|OK'
     else
       @serial_transaction.fail!
       render :transaction_error
