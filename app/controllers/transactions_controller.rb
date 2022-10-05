@@ -26,13 +26,9 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    if params['RtnMsg'] === 1
+    if params['RtnMsg'] === "Succeeded"
       find_transaction_by_serial_after_ecpay
       pending_to_paid
-      decrease_donate_amount(
-        DonateItem.find(@serial_transaction.donate_item_id).title, 
-                        @serial_transaction.amount,
-      )
       increase_donate_count
       sign_in(User.find(@serial_transaction.user_id))
       return '1|OK'
@@ -74,6 +70,7 @@ class TransactionsController < ApplicationController
 
   def create_order_and_ecpay(project_id)
     if @transaction.save
+      decrease_donate_amount(DonateItem.find(@transaction.donate_item_id).title, @transaction.amount)
       produce_ecpay_basic_params
       @ecpay_params = Payment::EcpayRequest.new(order_params_for_ecpay_params).perform
     else
