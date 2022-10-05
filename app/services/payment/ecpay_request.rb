@@ -36,7 +36,7 @@ module Payment
       # 1.由A到Z的順序並轉換為 query string
       order_query_string = URI.encode_www_form(params.to_a.sort!)
       # 2.前後加 Key 跟 IV
-      key_vi = "HashKey=pwFHCqoQZGmho4w6&" + order_query_string + "&HashIV=EkRm7iFT261dpevs"
+      key_vi = "HashKey=#{ENV["HASH_KEY"]}" + "&" + order_query_string + "&" + "HashIV=#{ENV["HASH_IV"]}"
       # 3.進行 URL encode 並轉小寫
       url_encode = (CGI.escape key_vi).downcase.gsub!(/%25/, '%').gsub!(/%2b/, '+')
       # 4.sha256加密轉大寫

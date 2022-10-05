@@ -26,7 +26,7 @@ class TransactionsController < ApplicationController
   end
 
   def paid
-    if params['RtnMsg'] === 1
+    if params['RtnMsg'] === "Succeeded"
       find_transaction_by_serial_after_ecpay
       pending_to_paid
       decrease_donate_amount(
