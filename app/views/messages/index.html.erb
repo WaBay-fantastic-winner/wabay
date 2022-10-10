@@ -52,9 +52,9 @@
         <article class='w-full p-4 border border-gray-300 border-solid rounded-xl'>
           <div class='flex'>
             <% if @project.user.avatar_url != nil %>
-              <%= image_tag(@project.user.avatar_url, :class=> "inline rounded-2xl") %>
+              <%= image_tag(@project.user.avatar_url, :class=> "rounded-2xl h-20 w-20 mr-3") %>
             <% else %>
-              <%= image_tag 'avatar1.png', class: 'rounded-2xl h-24 w-24 mr-3' %>
+              <%= image_tag 'avatar1.png', class: 'rounded-2xl h-20 w-20 mr-3' %>
             <% end %>
             <div>
               <h2 class='mb-3 text-xl primary-text-color'><%= @project.organizer %></h2>
