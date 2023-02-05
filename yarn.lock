@@ -8226,6 +8226,11 @@ vue-template-compiler@^2.7.14:
     de-indent "^1.0.2"
     he "^1.2.0"
 
+vue-turbolinks@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/vue-turbolinks/-/vue-turbolinks-2.2.2.tgz#6b7b5c4120f5586907ef977be4b63a734bf8cd36"
+  integrity sha512-pPO2Fr+1UgdhUK9dc5OhjLSeYi5LZAm/VZBXOVQgLHCO31bRjAof/+W/e/6SHCbnb1xdZb1gW5T9MX0k9ejSAQ==
+
 vue@^3.2.47:
   version "3.2.47"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.2.47.tgz#3eb736cbc606fc87038dbba6a154707c8a34cff0"
