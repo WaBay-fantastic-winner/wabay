@@ -2,12 +2,12 @@
   <div class='mb-2 font-semibold text-gray-400'>額外贊助</div>
   <div class='flex items-center mb-4'>
     <div class='mr-3'><em>NT$</em></div>
-    <input id="additional_donate_price" type="number" v-model="additional_donate_price" class='flex-1 p-2 border-2 border-gray-300 border-solid rounded-lg input-focus'>
+    <input id="donate_price" type="number" v-model='additional_donate_price' class='flex-1 p-2 border-2 border-gray-300 border-solid rounded-lg input-focus'>
   </div>
   <div class='grid grid-cols-4 gap-2 pb-6 border-b border-gray-200 border-solid'>
     <button class='donate-button'>最低額度</button>
-    <button class='donate-button'>100</button>
-    <button class='donate-button'>1000</button>
+    <button class='donate-button' v-on:click="plusHundred">100</button>
+    <button class='donate-button' v-on:click="plusThousand">1000</button>
     <button class='donate-button'>補整數</button>
   </div>
   <h2 class='mt-3 font-semibold text-gray-400'>總金額〈含商品總價與額外贊助〉：</h2>
@@ -22,10 +22,16 @@
 <script>
   export default {
     data(){
-      const additional_donate_price = 0
-
       return {
-        additional_donate_price
+        additional_donate_price: 0
+      }
+    },
+    methods: {
+      plusHundred: function() {
+        this.additional_donate_price += 100;
+      },
+      plusThousand: function() {
+        this.additional_donate_price += 1000;
       }
     }
   }
