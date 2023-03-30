@@ -9,6 +9,7 @@ class Transaction < ApplicationRecord
   belongs_to :donate_item
 
   before_create :create_serial
+  after_commit :decrease_donate_amount, on: :create
 
   def create_serial
     self.serial = SecureRandom.alphanumeric(6)
@@ -40,6 +41,18 @@ class Transaction < ApplicationRecord
 
     event :cancel do
       transitions from: %i[pending failed], to: :cancellation
+    end
+  end
+
+  # decrease_donate_amount(DonateItem.find(@transaction.donate_item_id).title, @transaction.amount)
+
+  def decrease_donate_amount
+    donate_item = DonateItem.find_by!(title: self.donate_item.title)
+    if donate_item.amount != nil
+      donate_item.with_lock do
+        donate_item.decrement(:amount, self.amount)
+        donate_item.save
+      end
     end
   end
 end

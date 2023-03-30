@@ -1,0 +1,5 @@
+ecpay:
+  return_url_in_product: "https://wubaywubay.herokuapp.com/transactions"
+  order_result_url_in_product: "https://wubaywubay.herokuapp.com/transactions/paid"
+  return_url_in_development: "localhost:3000/transactions"
+  order_result_url_in_development: "localhost:3000/transactions/paid"
