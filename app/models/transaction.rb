@@ -44,8 +44,6 @@ class Transaction < ApplicationRecord
     end
   end
 
-  # decrease_donate_amount(DonateItem.find(@transaction.donate_item_id).title, @transaction.amount)
-
   def decrease_donate_amount
     donate_item = DonateItem.find_by!(title: self.donate_item.title)
     if donate_item.amount != nil

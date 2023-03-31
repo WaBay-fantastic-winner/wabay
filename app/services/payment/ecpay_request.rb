@@ -42,9 +42,9 @@ module Payment
 
     def order_request_url
       if Rails.env.production?
-        Settings.ecpay.order_request_url_in_product
+        Settings.ecpay.order_result_url_in_product
       elsif Rails.env.development?
-        Settings.ecpay.order_request_url_in_development
+        Settings.ecpay.order_result_url_in_development
       end
     end
 
