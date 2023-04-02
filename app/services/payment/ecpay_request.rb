@@ -15,13 +15,13 @@ module Payment
         "PaymentType": "aio", 
         "MerchantTradeDate": args[:merchant_trade_date], 
         "MerchantTradeNo": args[:merchant_trade_no], 
-        "ReturnURL": "https://wubaywubay.herokuapp.com/transactions",
+        "ReturnURL": return_url,
         "ItemName": args[:item_name],
         "TotalAmount": args[:total_amount], 
         "ChoosePayment": "ALL", 
         "IgnorePayment": "WebATM#ATM#CVS#BARCODE",
         "EncryptType": 1,
-        "OrderResultURL": "https://wubaywubay.herokuapp.com/transactions/paid",
+        "OrderResultURL": order_request_url,
       }
       # 增加參數欄位，記得要到 transactions/create.html.erb 增加欄位！
     end
@@ -31,7 +31,23 @@ module Payment
     end
   
     private
-  
+
+    def return_url
+      if Rails.env.production?
+        Settings.ecpay.return_url_in_product
+      elsif Rails.env.development?
+        Settings.ecpay.return_url_in_development
+      end
+    end
+
+    def order_request_url
+      if Rails.env.production?
+        Settings.ecpay.order_result_url_in_product
+      elsif Rails.env.development?
+        Settings.ecpay.order_result_url_in_development
+      end
+    end
+
     def create_check_mac_value(params)
       # 1.由A到Z的順序並轉換為 query string
       order_query_string = URI.encode_www_form(params.to_a.sort!)
