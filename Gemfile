@@ -67,6 +67,7 @@ group :development do
   gem 'spring'
 
   gem 'rubocop', '~> 1.35'
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -94,3 +95,5 @@ gem 'sidekiq', '~> 6.5', '>= 6.5.6'
 gem 'active_storage_validations'
 
 gem 'config', '~> 4.0'
+
+gem 'after_commit_everywhere', '~> 1.3'
