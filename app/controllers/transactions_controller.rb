@@ -79,19 +79,6 @@ class TransactionsController < ApplicationController
       render :save_error
     end
   end
-
-  def followers_not_recepted_yet(project_id)
-    @followers = Follow.where(followable_id: project_id, followable_type: 'Project', mail_sent: 'false')
-  end
-
-  def notify_achievement_to_followers(project_id)
-    if percentage_of_currency >= 100 && followers_not_recepted_yet(project_id).present? === true
-      @followers.each do |follower|
-        MailWorkerJob.perform_later(follower, Project.find(follower.followable_id).title)
-        follower.update(:mail_sent => 'true')
-      end
-    end
-  end
   
   def find_transaction_by_serial_after_ecpay
     @serial_transaction = Transaction.find_by!(serial: params[:MerchantTradeNo])
@@ -101,8 +88,6 @@ class TransactionsController < ApplicationController
     @project = Project.find(find_transaction_by_serial_after_ecpay.project_id)
     total = project_current_total(@project.id) + @serial_transaction.price
     @project.update(current_total: total)
-
-    notify_achievement_to_followers(@project.id)
     @serial_transaction.pay!
   end
 
