@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature '專案功能', type: :feature do
+RSpec.feature '專案功能', type: :feature, js: true do
   let(:project) { create(:project) }
   let(:user) { User.find(project.id) }
 

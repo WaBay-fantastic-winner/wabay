@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "交易訂單", type: :feature do
+RSpec.feature "交易訂單", type: :feature, js: true do
   let(:user) { create(:user) }
   let(:donate_item) { create(:donate_item) }
 

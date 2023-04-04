@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "在專案底下留言", type: :feature do
+RSpec.feature "在專案底下留言", type: :feature, js: true do
   let(:user) { User.find(project.user_id) }
   let(:project) { create(:project) }
   let(:content) { 'Wubay好好用' }

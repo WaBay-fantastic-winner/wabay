@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "額外贊助介面功能", type: :feature do
+RSpec.feature "額外贊助介面功能", type: :feature, js: true do
   let(:user) { create(:user) }
   let(:project) { create(:project) }
   let(:donate_item) { create(:donate_item) }
