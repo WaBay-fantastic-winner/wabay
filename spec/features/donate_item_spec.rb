@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "贊助方案", type: :feature do
+RSpec.describe "贊助方案", type: :feature, js: true do
   let(:donate_item) { create(:donate_item)}
   let(:project) { Project.find(donate_item.project_id) }
   let(:user) { User.find(project.user_id) }
