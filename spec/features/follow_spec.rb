@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "追蹤專案功能", type: :feature do
+RSpec.feature "追蹤專案功能", type: :feature, js: true do
   let(:user) {create(:user)}
   let(:project) {create(:project)}
   before do

@@ -7,12 +7,18 @@
 # Given that it is always loaded, you are encouraged to keep this file as
 # light-weight as possible. Requiring heavyweight dependencies from this file
 # will add to the boot require 'Capybara'
-require 'Capybara'
-Capybara.default_driver = :selenium_chrome
-Capybara.save_path = 'tmp/capybara'
-Capybara.default_max_wait_time = 10
-
 require 'aasm/rspec'
+require 'Capybara'
+require File.expand_path('../config/environment', __dir__)
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+Capybara.configure do |config|
+  config.javascript_driver = :selenium_chrome_headless
+  config.save_path = 'tmp/capybara'
+  config.default_max_wait_time = 10
+end
+
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

@@ -39,7 +39,7 @@ class ProjectsController < ApplicationController
     @follow_state = follow_list.empty? ? '追蹤專案' : '取消追蹤'
 
     project_current_total(params[:id])
-    percentage_of_currency
+    percentage_of_currency(params[:id])
   end
 
   def update
