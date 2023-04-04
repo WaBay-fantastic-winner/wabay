@@ -9,6 +9,9 @@
 # will add to the boot require 'Capybara'
 require 'aasm/rspec'
 require 'Capybara'
+require File.expand_path('../config/environment', __dir__)
+
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 Capybara.configure do |config|
   config.javascript_driver = :selenium_chrome_headless
