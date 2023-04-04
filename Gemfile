@@ -97,3 +97,5 @@ gem 'active_storage_validations'
 gem 'config', '~> 4.0'
 
 gem 'after_commit_everywhere', '~> 1.3'
+
+gem 'nokogiri', '~> 1.14', '>= 1.14.2'
