@@ -13,6 +13,7 @@ development:
   <<: *default
   database: wubay_dev
   username: ec2-user
+  password: 1qaz2wsx
   port: 5432
 
 # Warning: The database defined as "test" will be erased and
@@ -25,5 +26,8 @@ test:
 production:
   <<: *default
   database: wubay_online
+  username: ec2-user
+  password: 1qaz2wsx
+  port: 5432
   username: ec2-user
   port: 5432
