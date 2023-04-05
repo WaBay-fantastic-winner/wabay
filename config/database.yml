@@ -13,10 +13,10 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
-  host: wubay-pg.cpfha24fjaqd.us-west-2.rds.amazonaws.com
+  host: pg-for-wubay.cpfha24fjaqd.us-west-2.rds.amazonaws.com
   username: ec2-user
   password: 1qaz2wsx
-  port: your_rds_port
+  port: 5432
   timeout: 5000
 
 
