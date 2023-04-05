@@ -12,6 +12,9 @@ default: &default
 development:
   <<: *default
   database: wubay_dev
+  username: ec2-user
+  password: 1qaz2wsx
+  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,4 +27,5 @@ production:
   <<: *default
   database: wubay_online
   username: ec2-user
+  password: 1qaz2wsx
   port: 5432
