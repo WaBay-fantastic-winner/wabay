@@ -11,7 +11,6 @@ state_path "#{shared_dir}/sockets/puma.state"
 
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
-daemonize true
 preload_app!
 
 on_worker_boot do
