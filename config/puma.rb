@@ -11,7 +11,6 @@ state_path "#{shared_dir}/sockets/puma.state"
 
 stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
-daemonize true
 preload_app!
 
 on_worker_boot do
@@ -19,3 +18,6 @@ on_worker_boot do
   ActiveRecord::Base.connection.disconnect! rescue ActiveRecord::ConnectionNotEstablished
   ActiveRecord::Base.establish_connection(YAML.load_file("#{app_dir}/config/database.yml")["production"])
 end
+
+# 指定 Rack 应用程序的路径和名称
+rackup "#{app_dir}/config.ru"
