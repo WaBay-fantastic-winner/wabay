@@ -23,3 +23,5 @@ test:
 production:
   <<: *default
   database: wubay_online
+  username: ec2-user
+  port: 5432
