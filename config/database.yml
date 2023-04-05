@@ -9,6 +9,17 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
   timeout: 5000
 
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
+  host: wubay-pg.cpfha24fjaqd.us-west-2.rds.amazonaws.com
+  username: ec2-user
+  password: 1qaz2wsx
+  port: your_rds_port
+  timeout: 5000
+
+
 development:
   <<: *default
   database: wubay_dev
