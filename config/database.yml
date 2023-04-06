@@ -9,23 +9,9 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
   timeout: 5000
 
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 25 } %>
-  host: pg-for-wubay.cpfha24fjaqd.us-west-2.rds.amazonaws.com
-  username: postgres
-  password: 1qaz2wsx
-  port: 5432
-  timeout: 5000
-
-
 development:
   <<: *default
   database: wubay_dev
-  username: postgres
-  password: 1qaz2wsx
-  port: 5432
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -37,6 +23,3 @@ test:
 production:
   <<: *default
   database: wubay_online
-  username: postgres
-  password: 1qaz2wsx
-  port: 5432
