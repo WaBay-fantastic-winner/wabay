@@ -17,11 +17,6 @@ module Wabay
 
     config.autoloader = :classic
 
-    config.redis = {
-      url: ENV['REDIS_URL'],
-      ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE }
-    }
-
     config.i18n.default_locale = 'zh-TW'
     # Configuration for the application, engines, and railties goes here.
     #
