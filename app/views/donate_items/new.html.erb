@@ -1,7 +1,7 @@
 <main class='py-10 bg-gray-100 wave-bg'>
   <section id="donate_item" class="max-w-3xl p-8 py-12 mx-auto bg-white rounded-3xl">
     <h2 class="py-4 my-4 text-2xl tracking-wider text-center text-white bg-purple-400 rounded-2xl"> 新增贊助方案 </h2>
-    <%= render 'input_errors' %>
+    <%= render 'input_errors', object: @donate_item %>
     <%= render 'form', url: @new_url, method: 'post' %>
   </section>  
 </main>
