@@ -17,7 +17,6 @@ module Wabay
 
     config.autoloader = :classic
 
-
     config.i18n.default_locale = 'zh-TW'
     # Configuration for the application, engines, and railties goes here.
     #
