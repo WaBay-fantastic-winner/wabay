@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'pg', '~> 1.4', '>= 1.4.3'
+
 gem 'devise', '~> 4.2'
 
 gem 'react-rails', '~> 2.6', '>= 2.6.2'
@@ -12,7 +14,7 @@ gem 'react-rails', '~> 2.6', '>= 2.6.2'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
 # Use sqlite3 as the database for Active Record
-gem 'pg', '~> 1.4', '>= 1.4.3'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
