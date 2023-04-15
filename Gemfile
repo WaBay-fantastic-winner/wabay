@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
+gem 'pg', '~> 1.4', '>= 1.4.3'
+
 gem 'devise', '~> 4.2'
 
 gem 'react-rails', '~> 2.6', '>= 2.6.2'
